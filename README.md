@@ -1,6 +1,6 @@
 # Building a Database of Bicycle Infrastructure Changes in Norway
 
-Summary based solely on the presentation "Building a Database of Bicycle Infrastructure Changes in Norway: AI-assisted extraction from historical news articles" (NHH Norwegian School of Economics, 15 October 2026).
+Summary based on the presentation "Building a Database of Bicycle Infrastructure Changes in Norway: AI-assisted extraction from historical news articles" (NHH Norwegian School of Economics, 15 October 2026).
 
 ## Objective
 
