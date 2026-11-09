@@ -1,0 +1,41 @@
+PROMPT CHANGELOG
+Prompt files are in this folder (prompt_v1.md, prompt_v2.md, ...). Each new version is a new file; earlier versions are kept unchanged.
+For each version: date, what changed, why, what evidence the change is based on, and which runs used it.
+
+----------------------------------------------------------------------
+v1 - 2026-11-04
+Output format: json_schema_v1.json
+Model: gemini-3.8-flash (Vertex AI), thinking level "low"
+
+What: First version, written from Coding_Schema_EN.xlsx (variables relevant, place, kommune,
+date in text, opening date, date precision, evidence, comment).
+Why: Starting point for prompt tuning.
+Notes:
+- Relevance follows AGENTS.md ("opening that lies in the past relative to the article's date"),
+  not the schema's "planned or completed". Open question for the author.
+- Borderline rules for relevance are provisional, to be refined after the pilot.
+Runs: test run on the first 5 articles of Articles_coding_round_1.xlsx (2026-11-04).
+
+----------------------------------------------------------------------
+v2 - 2026-11-04
+Output format: json_schema_v1.json (unchanged)
+Model: gemini-3.8-flash (Vertex AI), thinking level "low" (unchanged)
+
+What: Rewrote the definition of "place". The model is now told not to stop at the name of the
+town, village or area, and to add street or road names, landmarks the path passes or connects
+(school, shop, church, bridge, station, junction), and start and end points, combined into one
+short description from general to specific. Added a made-up example of the expected format.
+All other variables and rules are unchanged.
+Added "bicycle parking" to the examples of cycling infrastructure
+Also corrected the model line in the header (Vertex AI instead of the Gemini API); this does not
+affect what the model receives.
+
+Why: In the v1 test run on 5 articles, relevance matched the human coding well, but "place" was
+less detailed than the human coding. Example: the AI coded "Homborsund" where the human coder
+wrote "Homborsund ved Eide skole", so the landmark that locates the path was dropped. Detailed
+places matter for georeferencing the paths in OSM later.
+
+Evidence: Author's review of the v1 output for the first 5 articles (2026-11-04).
+Note: The example in the prompt is invented on purpose, not taken from the coded articles, so the
+prompt does not contain the answer to any article in the test data.
+Runs: (fill in)

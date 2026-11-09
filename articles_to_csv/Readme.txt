@@ -1,0 +1,3 @@
+- txt_to_csv turns newspaper articles originally in txt file format into csv files.
+- lag_kodeark_uttrekk4 turns newspaper articles originally in rtf file format into csv files.
+- both scripts highlight duplicates and artificially truncated articles for later deletion

@@ -1,0 +1,4 @@
+- file 20261104_121554_v2_gemini-3.8-flash.xlsx is the AI coding of the validation data set (Articles_coding_round_1) with 34 articles.
+- each article was coded 3 times for this run to assess how much the AI coding randomly varies (internal consistency).
+- run_2 and run_3 are the AI coding of the articles in Articles_coding_round_2 and Articles_coding_round_3.
+- run_4 will be added once complete

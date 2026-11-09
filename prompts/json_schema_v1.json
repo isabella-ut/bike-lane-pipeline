@@ -1,0 +1,16 @@
+{
+  "type": "object",
+  "properties": {
+    "article_id":     { "type": "string" },
+    "relevant":       { "type": "string", "enum": ["yes", "no", "unclear"] },
+    "place":          { "type": "string" },
+    "kommune":        { "type": "string" },
+    "date_in_text":   { "type": "string" },
+    "opening_date":   { "type": "string", "description": "YYYY-MM-DD, YYYY-MM, YYYY, or empty string" },
+    "date_precision": { "type": "string", "enum": ["day", "month", "year", "not stated"] },
+    "evidence":       { "type": "string" },
+    "comment":        { "type": "string" }
+  },
+  "required": ["article_id", "relevant", "place", "kommune", "date_in_text", "opening_date", "date_precision", "evidence", "comment"],
+  "additionalProperties": false
+}
