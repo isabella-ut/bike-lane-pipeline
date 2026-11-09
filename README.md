@@ -1,5 +1,7 @@
 # Building a Database of Bicycle Infrastructure Changes in Norway
 
+**Authors:** Mari Baklund Størseth, Dag Martin Sundelius, Simen Wilsher Lohre, Karl Vika, Valentin Bayas and Isabella Urbano-Trujillo
+
 Code, prompts and LLM output for the term paper *Building a Database of Bicycle Infrastructure Changes in Norway: AI-assisted extraction from historical news articles* (ECS579, Transforming Economic and Financial Research with AI, NHH, Autumn 2026).
 
 The paper tests how accurately a large language model can identify openings of cycling infrastructure in Norwegian newspaper articles, and when and where they took place. Articles from the Retriever/Atekst archive are coded by Gemini 3.8 Flash and compared with two independent human coders.
@@ -31,7 +33,3 @@ The paper tests how accurately a large language model can identify openings of c
 The full newspaper article texts and the manual coding sheets are **not** included in this repository. They contain articles from the Retriever/Atekst archive, many of them behind paywalls, which the licence does not allow us to redistribute. The AI output files include only short evidence quotes.
 
 To reproduce the coding, export articles from Retriever/Atekst with the search terms described in the paper, convert them with the scripts in `articles_to_csv/`, and run `AI_pipeline/run_coding.py`. The pipeline needs Python 3.10 or newer with `google-genai` and `openpyxl`, and a Google Cloud project with the Vertex AI API enabled. The scripts expect the article spreadsheets in the folder layout described in [`AI_pipeline/README.md`](AI_pipeline/README.md).
-
-## Use of AI
-
-Parts of the code were written with help from AI coding assistants, based on the authors' instructions.
