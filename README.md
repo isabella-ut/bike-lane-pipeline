@@ -1,51 +1,37 @@
 # Building a Database of Bicycle Infrastructure Changes in Norway
 
-Summary based on the presentation "Building a Database of Bicycle Infrastructure Changes in Norway: AI-assisted extraction from historical news articles" (NHH Norwegian School of Economics, 15 October 2026).
+Code, prompts and LLM output for the term paper *Building a Database of Bicycle Infrastructure Changes in Norway: AI-assisted extraction from historical news articles* (ECS579, Transforming Economic and Financial Research with AI, NHH, Autumn 2026).
 
-## Objective
+The paper tests how accurately a large language model can identify openings of cycling infrastructure in Norwegian newspaper articles, and when and where they took place. Articles from the Retriever/Atekst archive are coded by Gemini 3.8 Flash and compared with two independent human coders.
 
-The project aims to build a georeferenced database of bicycle infrastructure changes in Norway from newspaper archives. The research question is: how accurately can an agentic AI pipeline identify changes in cycling infrastructure from a news archive in Norway?
+## Repository contents
 
-The motivation is a data gap. Existing maps show where cycling infrastructure is, but almost never when it was implemented. Without exact dates, causal effects are hard to identify, because the strongest designs compare outcomes before and after a route opens. A dataset with exact change dates would allow the following questions to be studied:
+| Folder | Contents |
+|---|---|
+| [`articles_to_csv/`](articles_to_csv) | Scripts that split Retriever/Atekst exports into one row per article, flag duplicates and truncated texts, and create the sheets used for manual coding. `lag_kodeark_uttrekk4.R` handles RTF/Word exports and `txt_to_csv.py` handles text exports. |
+| [`prompts/`](prompts) | The coding schema (`Coding_Schema_EN.xlsx`, with the original Norwegian version), both prompt versions (`prompt_v1.md`, `prompt_v2.md`), the JSON output format, an example output, and `prompt_changelog.txt`, which records what changed between versions and why. |
+| [`AI_pipeline/`](AI_pipeline) | `run_coding.py` sends each article to Gemini in a separate API call and writes the AI coding next to the human coding. The folder README describes setup, Google Cloud login and how to run it. |
+| [`AI_coded_articles/`](AI_coded_articles) | Output of the LLM runs: the validation run on the 34 pilot articles (each coded three times), runs 2–4 on the later extracts, and `Combined_runs_2-4.xlsx` with all 3,187 articles. |
+| [`codes/`](codes) | `Mari_codebook_analysis.py`: the analysis behind the paper's results, including the AI vs. human comparison for the pilot, the descriptive results for rounds 2–4, the hand grouping of relevant articles into 44 projects, and the table of further information in the articles. |
 
-- Does cycling infrastructure increase cycling and reduce driving?
-- Are cycle lanes capitalised into house prices?
-- Does council composition affect bike lane construction?
+## Model settings
 
-## Data
+| Setting | Value |
+|---|---|
+| Model | `gemini-3.8-flash` via Vertex AI (Google Cloud) |
+| Thinking level | `low` |
+| Temperature | Model default |
+| Calls | One independent API call per article, no memory between calls |
+| Prompt | `prompts/prompt_v2.md` for all reported runs |
+| Repeats | 3 per article in the validation run, used to measure internal consistency |
+| Cost | About NOK 70 for the full run of 3,187 articles |
 
-- **Main source:** Norwegian newspaper articles from the Retriever archive, retrieved with the search term "Åpning sykkelvei". The articles are free-form Norwegian text describing what, where and when. Examples shown come from Trøndelag, Oslo, Åmli (NRK) and Stavanger–Sandnes.
-- **Benchmark:** official records from NVDB, the road database of Statens vegvesen (CSV or API download). It is segment-level, but its dates are unclear. OSM historical records are also named as a benchmark.
-- **Scale:** roughly 530–6,400 candidate articles over the last three years.
+## Data not included
 
-## Methods
+The full newspaper article texts and the manual coding sheets are **not** included in this repository. They contain articles from the Retriever/Atekst archive, many of them behind paywalls, which the licence does not allow us to redistribute. The AI output files include only short evidence quotes.
 
-An agentic AI pipeline based on large language models (LLMs) processes the articles in four steps:
+To reproduce the coding, export articles from Retriever/Atekst with the search terms described in the paper, convert them with the scripts in `articles_to_csv/`, and run `AI_pipeline/run_coding.py`. The pipeline needs Python 3.10 or newer with `google-genai` and `openpyxl`, and a Google Cloud project with the Vertex AI API enabled. The scripts expect the article spreadsheets in the folder layout described in [`AI_pipeline/README.md`](AI_pipeline/README.md).
 
-1. **Detect:** decide whether an article is relevant. Keyword search returns many articles that do not report an opening.
-2. **Extract:** identify the infrastructure type, place and date. Dates may be explicit, relative (e.g. "Mandag", resolved using the publication date) or partial (e.g. "16. juni", with no year).
-3. **Deduplicate:** merge several articles on the same project, such as an announcement, an opening and a follow-up, into one record per project.
-4. **Geolocate:** match each project to OSM or NVDB.
+## Use of AI
 
-**Validation:** human raters label a sample at each step, and Norwegian speakers check the article extractions. The approach is scaled up when LLM labelling approximates human labelling. NVDB and OSM historical records serve as benchmarks.
-
-## Expected outputs
-
-- A georeferenced database of bicycle infrastructure changes in Norway, with dates more precise than those in OSM.
-- Partial coverage that varies by region.
-- A resource that enables natural experiments.
-- An accuracy assessment of the LLM-based approach, as framed by the research question.
-- If the project succeeds, the pipeline could be applied to other countries.
-
-## Open questions
-
-- Is coverage sufficient? The presentation lists this as an open issue.
-- Is a completion date stated in the articles? This is an open issue in the presentation.
-- Is the location given precisely enough to georeference? This is an open issue in the presentation.
-- The period covered is unspecified. Only "the last 3 years" is mentioned in connection with the article count, and the range of 530–6,400 is not explained.
-- Which LLM or model is used, and what "agentic" means in practice, is not stated.
-- The presentation gives no sample sizes, accuracy metrics or thresholds for deciding that LLM labelling is close enough to human labelling.
-- How OSM is accessed and used is not described, and the NVDB dates are described only as "unclear".
-- Whether Retriever is the only article source, or whether other archives will be used, is not stated.
-- The planned analyses, such as the difference-in-differences method cited in the references (Callaway and Sant'Anna, 2021), are not described, and the presentation does not say whether they are in scope.
-- No timeline, responsibilities or final format of the database (file type, fields, access) are given.
+Parts of the code were written with help from AI coding assistants, based on the authors' instructions.
