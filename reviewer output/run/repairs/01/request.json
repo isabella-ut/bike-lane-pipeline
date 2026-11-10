@@ -1,0 +1,28 @@
+{
+  "stage": "parser_quality_auditor",
+  "call_reserved": true,
+  "errors": [
+    "reviewer/stage=parser_quality_auditor finding=PARSER-001 source=S1 artifact=tables/table_1.md field=findings.0.source_objects.0.path must stay under work/bicycle-infrastructure-paper/parsed: tables/table_1.md",
+    "reviewer/stage=parser_quality_auditor finding=PARSER-001 source=S2 artifact=page_images/page_005.png field=findings.0.source_objects.1.path must stay under work/bicycle-infrastructure-paper/parsed: page_images/page_005.png",
+    "reviewer/stage=parser_quality_auditor finding=PARSER-002 source=S1 artifact=tables/table_2.md field=findings.1.source_objects.0.path must stay under work/bicycle-infrastructure-paper/parsed: tables/table_2.md",
+    "reviewer/stage=parser_quality_auditor finding=PARSER-002 source=S2 artifact=pages/page_005.md field=findings.1.source_objects.1.path must stay under work/bicycle-infrastructure-paper/parsed: pages/page_005.md",
+    "reviewer/stage=parser_quality_auditor finding=PARSER-003 source=S1 artifact=tables/table_3.md field=findings.2.source_objects.0.path must stay under work/bicycle-infrastructure-paper/parsed: tables/table_3.md",
+    "reviewer/stage=parser_quality_auditor finding=PARSER-004 source=S1 artifact=tables/table_4.md field=findings.3.source_objects.0.path must stay under work/bicycle-infrastructure-paper/parsed: tables/table_4.md",
+    "reviewer/stage=parser_quality_auditor finding=PARSER-005 source=S1 artifact=tables/table_5.md field=findings.4.source_objects.0.path must stay under work/bicycle-infrastructure-paper/parsed: tables/table_5.md",
+    "reviewer/stage=parser_quality_auditor finding=PARSER-006 source=S1 artifact=tables/table_6.md field=findings.5.source_objects.0.path must stay under work/bicycle-infrastructure-paper/parsed: tables/table_6.md",
+    "reviewer/stage=parser_quality_auditor finding=PARSER-007 source=S1 artifact=tables/table_7.md field=findings.6.source_objects.0.path must stay under work/bicycle-infrastructure-paper/parsed: tables/table_7.md",
+    "reviewer/stage=parser_quality_auditor finding=PARSER-007 source=S2 artifact=page_images/page_011.png field=findings.6.source_objects.1.path must stay under work/bicycle-infrastructure-paper/parsed: page_images/page_011.png",
+    "reviewer/stage=parser_quality_auditor finding=PARSER-008 source=S1 artifact=tables/table_8.md field=findings.7.source_objects.0.path must stay under work/bicycle-infrastructure-paper/parsed: tables/table_8.md",
+    "reviewer/stage=parser_quality_auditor finding=PARSER-008 source=S2 artifact=pages/page_015.md field=findings.7.source_objects.1.path must stay under work/bicycle-infrastructure-paper/parsed: pages/page_015.md",
+    "reviewer/stage=parser_quality_auditor finding=PARSER-009 source=S1 artifact=tables/table_9.md field=findings.8.source_objects.0.path must stay under work/bicycle-infrastructure-paper/parsed: tables/table_9.md",
+    "reviewer/stage=parser_quality_auditor finding=PARSER-010 source=S1 artifact=figures/figure_1.txt field=findings.9.source_objects.0.path must stay under work/bicycle-infrastructure-paper/parsed: figures/figure_1.txt",
+    "reviewer/stage=parser_quality_auditor finding=PARSER-010 source=S2 artifact=figures/figure_1.png field=findings.9.source_objects.1.path must stay under work/bicycle-infrastructure-paper/parsed: figures/figure_1.png",
+    "reviewer/stage=parser_quality_auditor finding=PARSER-010 source=S3 artifact=page_images/page_004.png field=findings.9.source_objects.2.path must stay under work/bicycle-infrastructure-paper/parsed: page_images/page_004.png",
+    "reviewer/stage=parser_quality_auditor finding=PARSER-011 source=S1 artifact=pages/page_016.md field=findings.10.source_objects.0.path must stay under work/bicycle-infrastructure-paper/parsed: pages/page_016.md",
+    "reviewer/stage=parser_quality_auditor finding=PARSER-011 source=S2 artifact=figures/figure_3.png field=findings.10.source_objects.1.path must stay under work/bicycle-infrastructure-paper/parsed: figures/figure_3.png",
+    "reviewer/stage=parser_quality_auditor finding=PARSER-012 source=S1 artifact=figures/figure_inventory.json field=findings.11.source_objects.0.path must stay under work/bicycle-infrastructure-paper/parsed: figures/figure_inventory.json",
+    "reviewer/stage=parser_quality_auditor finding=PARSER-012 source=S2 artifact=figures/figure_4.png field=findings.11.source_objects.1.path must stay under work/bicycle-infrastructure-paper/parsed: figures/figure_4.png",
+    "reviewer/stage=parser_quality_auditor finding=PARSER-012 source=S3 artifact=pages/page_017.md field=findings.11.source_objects.2.path must stay under work/bicycle-infrastructure-paper/parsed: pages/page_017.md"
+  ],
+  "previous_sha256": "c7916355f2c43a1415ef78e23e634e5a78e403774ecd64b7a37fc2f08571b29e"
+}

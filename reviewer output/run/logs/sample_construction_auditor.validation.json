@@ -1,0 +1,3 @@
+[
+  "reviewer/stage=sample_construction_auditor finding=SAMPLE-010 field=numeric_check sources=[S1 at work/bicycle-infrastructure-paper/parsed/pages/page_011.md; S2 at work/bicycle-infrastructure-paper/parsed/pages/page_010.md]: Underdetermined numeric_check must remain cannot_verify with missing information"
+]

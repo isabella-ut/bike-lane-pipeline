@@ -1,0 +1,347 @@
+{
+  "reviewer": "theory_logic_auditor",
+  "paper_id": "bicycle-infrastructure-paper",
+  "run_status": "ok",
+  "summary": "The paper contains no formal model, propositions, lemmas or proofs. Its only formal content is two proposed econometric specifications in Section 6.3 (an ordered latent-precision model, eq. 1, and a triple-interaction DiD, eq. 2) and the prose that draws implications from them. Four assumption-to-result defects are reported. (1) The claim that date misassignment biases results toward zero does not extend to the interaction coefficient delta, where differential misclassification can push the estimate away from zero. (2) A positive beta in eq. 1 does not establish that eq. 2 is biased, and the proposed fix (restricting to precisely dated projects) changes the estimand. (3) The ceremony-versus-precision pattern is read as attention driving precision, although a ceremony article mechanically supplies a dated event. (4) Eq. 2 includes the triple interaction without the Near x Attention lower-order term. The parser-quality warnings concern table and figure objects only. I used the page-11 text and image for the equations and checked them visually.",
+  "findings": [
+    {
+      "id": "THEORY-001",
+      "category": "comparative_statics_error",
+      "finding_summary": "The claim that misassigning listings to the wrong side of the opening 'could bias the results toward zero' holds at most for theta. For delta, misclassification that is larger for low-attention projects can bias the estimate away from zero.",
+      "issue_type": "manuscript_issue",
+      "severity": "medium",
+      "confidence": "medium",
+      "location": {
+        "page": 12,
+        "page_label": "12",
+        "section": "6.3 Proposed econometric analysis",
+        "text_quote": "This could bias the results toward zero.",
+        "precision": "exact"
+      },
+      "claim_text": "If projects with less attention are dated less precisely, some listings are assigned to the wrong side of the opening, and this could bias the results toward zero.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "Eq. (2) has two coefficients of interest, theta (Near x Post) and delta (Near x Post x Attention). Non-differential misclassification of Post attenuates theta. The paper's own mechanism is differential: error in Post is said to be larger when Attention is low. Post-by-Attention interactions are then contaminated unevenly across Attention levels. Low-attention projects show attenuated post effects and high-attention projects show less attenuation, which mechanically inflates a positive delta. The sign of the resulting bias in delta is therefore not 'toward zero'. The paper does not state whether the attenuation claim applies to theta only, and it does not state the error process (symmetric, one-sided, window length). Since delta > 0 is a stated hypothesis, an upward bias in delta would produce spurious support for it.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "page 12 text",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_012.md",
+          "page": 12,
+          "page_label": "12",
+          "section": "6.3",
+          "text_quote": "This could bias the results toward zero.",
+          "url": null,
+          "object_id": "OBJ-a6c6d31e7be45f25b775aa47",
+          "correspondence": "text",
+          "verification_note": null
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "page 11 text, eq. (2) and hypotheses",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_011.md",
+          "page": 11,
+          "page_label": "11",
+          "section": "6.3",
+          "text_quote": "The hypotheses are θ > 0 and δ > 0: openings increase mentions of cycling nearby, and",
+          "url": null,
+          "object_id": "OBJ-95b2618a59737e0b1725c4df",
+          "correspondence": "text",
+          "verification_note": "Equation (2) glyphs checked on the retained page-11 image; the text matches the rendered equation."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Date misassignment biases results toward zero",
+          "source_object_ids": [
+            "S1",
+            "S2"
+          ],
+          "relation": "partial",
+          "note": "Plausible attenuation for theta; not derived for the Attention interaction delta, where the error is correlated with the interacting variable."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Restrict the attenuation claim to theta, or state the misclassification process and show the direction of bias for delta. Say explicitly that delta can be biased in either direction when date error varies with Attention."
+    },
+    {
+      "id": "THEORY-002",
+      "category": "theory_claim_not_derived",
+      "finding_summary": "The decision rule that a positive beta in eq. (1) implies results must be reported separately for precisely dated projects, and that eq. (2) should then use only precisely dated projects, does not follow from the specifications. Beta shows association between attention and date precision, not misassignment of Post. The restriction also selects on Attention and so changes the estimand of delta.",
+      "issue_type": "manuscript_issue",
+      "severity": "medium",
+      "confidence": "medium",
+      "location": {
+        "page": 11,
+        "page_label": "11",
+        "section": "6.3 Proposed econometric analysis",
+        "text_quote": "A positive β for projects of similar size would imply that",
+        "precision": "partial"
+      },
+      "claim_text": "A positive beta for projects of similar size would imply that results based on the database should be reported separately for precisely dated projects; if model (1) shows a problem, model (2) should only use precisely dated projects.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "Eq. (1) is an ordered model of the latent precision of the date on Attention. A positive beta shows that more attention goes with a more precise date, but it does not measure the probability or size of misassigning listings across the opening date. The model also has no threshold for when a positive beta counts as 'a problem', and an insignificant beta in a 44-project sample would not rule one out. The proposed remedy keeps only precisely dated projects (day precision is 19 of 43 projects). Since precision is correlated with Attention, this selects on the interacting variable in eq. (2), so delta would be estimated on a restricted Attention range and theta would apply only to well-covered projects. The paper does not discuss this change of estimand. The text says the specifications are examples, so this is a limited assumption-to-implication gap, not an error in the specification itself.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "page 11 text, eq. (1) discussion",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_011.md",
+          "page": 11,
+          "page_label": "11",
+          "section": "6.3",
+          "text_quote": "A positive β for projects of similar size would imply that",
+          "url": null,
+          "object_id": "OBJ-95b2618a59737e0b1725c4df",
+          "correspondence": "text",
+          "verification_note": "Equation (1) rendered correctly on the page-11 image."
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "page 12 text",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_012.md",
+          "page": 12,
+          "page_label": "12",
+          "section": "6.3",
+          "text_quote": "should first test if this is a problem. If it is, then model (2) should only use precisely dated",
+          "url": null,
+          "object_id": "OBJ-a6c6d31e7be45f25b775aa47",
+          "correspondence": "text",
+          "verification_note": null
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Positive beta implies separate reporting / restriction to precisely dated projects",
+          "source_object_ids": [
+            "S1",
+            "S2"
+          ],
+          "relation": "partial",
+          "note": "The step from association between Attention and precision to misassignment bias, and then to sample restriction, is asserted without a derivation."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "State what beta > 0 does and does not imply for Post misclassification. Define the criterion for 'a problem' (for example a bound on the share of misassigned months). Acknowledge that restricting to precisely dated projects selects on Attention and changes the interpretation of theta and delta. Consider a sensitivity design instead, such as dropping a window around imprecise dates."
+    },
+    {
+      "id": "THEORY-003",
+      "category": "formal_prose_mismatch",
+      "finding_summary": "The pattern that 17 of 18 ceremony projects but only 2 of 26 non-ceremony projects are dated to the day is read as date precision 'depending on how much attention an opening receives'. A reported ceremony is itself a dated event, so the association is partly mechanical.",
+      "issue_type": "manuscript_issue",
+      "severity": "low",
+      "confidence": "medium",
+      "location": {
+        "page": 11,
+        "page_label": "11",
+        "section": "6.3 Proposed econometric analysis",
+        "text_quote": "Of these, 17 can be dated to the day, compared with 2 of the 26 projects",
+        "precision": "exact"
+      },
+      "claim_text": "The ceremony-versus-day-precision pattern suggests that the precision of dates is not random but depends on how much attention an opening receives.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "The pattern is a descriptive 2x2 comparison with no test, and the paper hedges it with 'suggests'. The mechanism, however, is not separated from a reporting artefact. An article that reports an official opening ceremony states the ceremony date, which gives a day-level opening date by construction, whereas projects without a reported ceremony have no dated event for the article to report. So Attention measured by a ceremony and Precision measured by day-level date are partly the same information, and eq. (1) with the ceremony indicator would inherit this. The prose then treats the result as evidence about selective attention. The group counts are consistent: 18 + 26 = 44. The same issue applies to using stories or outlets as Attention, since a dated event creates more coverage.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "page 11 text",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_011.md",
+          "page": 11,
+          "page_label": "11",
+          "section": "6.3",
+          "text_quote": "This suggests that the precision of the dates is not random but",
+          "url": null,
+          "object_id": "OBJ-95b2618a59737e0b1725c4df",
+          "correspondence": "text",
+          "verification_note": null
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Date precision depends on attention",
+          "source_object_ids": [
+            "S1"
+          ],
+          "relation": "partial",
+          "note": "Ceremony articles mechanically report a dated event, so the association does not isolate an attention mechanism."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Qualify the interpretation to acknowledge the mechanical link between a ceremony and a day-level date. Use Attention measures that do not themselves provide the opening date, such as the number of distinct stories or outlets before the opening, or check robustness to excluding ceremony-based dates."
+    },
+    {
+      "id": "THEORY-004",
+      "category": "hidden_assumption",
+      "finding_summary": "Eq. (2) includes the triple interaction Near x Post x Attention but omits the lower-order interaction Near x Attention. Delta is therefore identified only if Near x Attention has no independent effect on listing text. The paper states neither this assumption nor the term.",
+      "issue_type": "manuscript_issue",
+      "severity": "low",
+      "confidence": "medium",
+      "location": {
+        "page": 11,
+        "page_label": "11",
+        "section": "6.3 Proposed econometric analysis",
+        "text_quote": "θ Nearj × Postpt + δ Nearj × Postpt × Attentionp",
+        "precision": "exact"
+      },
+      "claim_text": "Eq. (2), with area and project-by-month fixed effects and the terms Near x Post and Near x Post x Attention, identifies delta > 0 as openings increasing mentions of cycling nearby more when the opening is well known locally.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "Post_pt, Attention_p and Post x Attention are absorbed by the project-by-month fixed effects lambda_pt, so omitting their main terms is consistent. Near_j and Near_j x Attention_p vary across listings within a project-month. Near_j is only partly absorbed by area effects alpha_a(j), since the paper does not say that Near is constant within an area. Near_j x Attention_p is not absorbed and not included. If listings in the inner band of high-attention projects differ systematically in cycling mentions at all times, for example because such projects are in cycling-oriented areas, delta picks up this level difference through the pre/post contrast only if it changes with Post. The standard DiD triple-difference result still needs the lower-order term, or the assumption that its coefficient is zero, to read delta as the differential post-opening effect. The paper describes the specification as an example, so this is a specification-completeness point, not a refutation.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "equation",
+          "label": "Eq. (2) and variable definitions",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_011.md",
+          "page": 11,
+          "page_label": "11",
+          "section": "6.3",
+          "text_quote": "θ Nearj × Postpt + δ Nearj × Postpt × Attentionp",
+          "url": null,
+          "object_id": "OBJ-95b2618a59737e0b1725c4df",
+          "correspondence": "text",
+          "verification_note": "Equation (2) read on the retained page-11 image: terms are alpha_a(j), lambda_pt, theta Near x Post, delta Near x Post x Attention, epsilon; no Near x Attention term."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Delta identifies the differential post-opening effect of attention",
+          "source_object_ids": [
+            "S1"
+          ],
+          "relation": "partial",
+          "note": "Needs Near x Attention included, or assumed zero."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Include Near_j x Attention_p in eq. (2), or state the assumption that it has no independent effect. Say whether Near_j varies within area a(j)."
+    }
+  ],
+  "notes": [
+    "The paper has no formal theory section, model, propositions or proofs. The audit therefore covered the Section 6.3 specifications (eqs. 1-2) and the prose conclusions drawn from them.",
+    "The validation claims (97 percent agreement, 3 relevant articles) and descriptive tables are statistical or empirical matters outside the theory_logic remit and were not assessed here.",
+    "Equations (1)-(2) were checked on the retained page-11 image; the extracted text and the rendered equations agree."
+  ],
+  "completion": {
+    "version": 1,
+    "state": "complete",
+    "scope_description": "Full read of the manuscript text (pages 1-18) to establish whether any formal theory exists, followed by an assumption-to-result audit of the proposed econometric specifications and implied conclusions in Section 6.3. The page-11 image was inspected for the equation glyphs.",
+    "checks_completed": [
+      "Read the parser-quality output and noted that its warnings concern table and figure objects only; equation text on page 11 was cross-checked against the page image",
+      "Read the full text including the appendices to confirm no propositions, lemmas, proofs or formal model exist",
+      "Audited eq. (1): latent ordered-precision model, definition of Attention, and the beta > 0 implication",
+      "Audited eq. (2): fixed-effect absorption, included and omitted interaction terms, hypotheses theta > 0 and delta > 0",
+      "Audited the prose claims on misassignment bias toward zero and the proposed restriction to precisely dated projects",
+      "Checked the 17-of-18 versus 2-of-26 ceremony claim for consistency (18 + 26 = 44) and for mechanism"
+    ],
+    "missing_checks": [],
+    "evidence_limitations": [
+      "The specifications are explicitly proposed examples with no stated estimator, error process or data structure, so identification claims are assessed only against what is written.",
+      "No retained evidence documents how Near, Post or area a(j) would be constructed."
+    ]
+  },
+  "coverage": [
+    {
+      "item_id": "assigned_remit",
+      "source_object_ids": [],
+      "claim": null,
+      "check_performed": "Read the full manuscript for formal content, found no theoretical model, and audited the proposed specifications (eqs. 1-2) and the implications drawn from them for assumption-to-result validity.",
+      "status": "linked_finding",
+      "reason": "No formal theory exists. Four defects were found in the Section 6.3 specifications and their prose implications. The rest of the paper is empirical and descriptive and outside the remit.",
+      "finding_ids": [
+        "THEORY-001",
+        "THEORY-002",
+        "THEORY-003",
+        "THEORY-004"
+      ],
+      "attempted": true,
+      "importance": "central",
+      "scope": "exhaustive"
+    },
+    {
+      "item_id": "claim:misassignment-bias-toward-zero",
+      "source_object_ids": [
+        "OBJ-a6c6d31e7be45f25b775aa47"
+      ],
+      "claim": "Misassigning listings to the wrong side of the opening could bias the results toward zero.",
+      "check_performed": "Compared the stated bias direction with the two coefficients of eq. (2), theta and delta, under differential error.",
+      "status": "linked_finding",
+      "reason": "Holds for theta only; not derived for delta.",
+      "finding_ids": [
+        "THEORY-001"
+      ],
+      "attempted": true,
+      "importance": "central",
+      "scope": "exhaustive"
+    },
+    {
+      "item_id": "claim:beta-implication-and-restriction",
+      "source_object_ids": [
+        "OBJ-95b2618a59737e0b1725c4df",
+        "OBJ-a6c6d31e7be45f25b775aa47"
+      ],
+      "claim": "A positive beta in eq. (1) implies results should be reported separately for precisely dated projects, and eq. (2) should then use only precisely dated projects.",
+      "check_performed": "Traced whether beta > 0 implies Post misclassification and whether the proposed sample restriction preserves the estimand.",
+      "status": "linked_finding",
+      "reason": "The step from association to bias and the effect of restricting the sample on the estimand are not derived.",
+      "finding_ids": [
+        "THEORY-002"
+      ],
+      "attempted": true,
+      "importance": "central",
+      "scope": "exhaustive"
+    },
+    {
+      "item_id": "claim:attention-drives-precision",
+      "source_object_ids": [
+        "OBJ-95b2618a59737e0b1725c4df"
+      ],
+      "claim": "Date precision depends on how much attention an opening receives.",
+      "check_performed": "Checked the 17/18 vs 2/26 comparison for internal consistency and for a mechanical link between a ceremony and a dated event.",
+      "status": "linked_finding",
+      "reason": "Counts are consistent (18 + 26 = 44); the mechanism is partly mechanical.",
+      "finding_ids": [
+        "THEORY-003"
+      ],
+      "attempted": true,
+      "importance": "peripheral",
+      "scope": "exhaustive"
+    },
+    {
+      "item_id": "claim:eq2-identification",
+      "source_object_ids": [
+        "OBJ-95b2618a59737e0b1725c4df"
+      ],
+      "claim": "Eq. (2) identifies theta and delta as the post-opening effect near a project and its differential by attention.",
+      "check_performed": "Worked out which terms the fixed effects absorb and whether the triple interaction has its lower-order terms, using the equation image on page 11.",
+      "status": "linked_finding",
+      "reason": "Near x Attention is missing and its absence is not stated as an assumption.",
+      "finding_ids": [
+        "THEORY-004"
+      ],
+      "attempted": true,
+      "importance": "central",
+      "scope": "exhaustive"
+    },
+    {
+      "item_id": "claim:eq1-ordered-model-definition",
+      "source_object_ids": [
+        "OBJ-95b2618a59737e0b1725c4df"
+      ],
+      "claim": "Eq. (1) is an ordered latent-variable model of date precision with categories none, year, month, day.",
+      "check_performed": "Checked the latent variable and observed categories against Table 6 precision counts (Day 19, Month 10, Year 9, Not stated 5 = 43) and against the ordering of the categories.",
+      "status": "checked_no_issue",
+      "reason": "The ordered specification is coherent as a proposal; the categories match Table 6, and the 44th project (Stord) is outside the 43 counted in Table 6.",
+      "finding_ids": [],
+      "attempted": true,
+      "importance": "peripheral",
+      "scope": "exhaustive"
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+[
+  "reviewer/stage=grammar_auditor finding=GRAM-002 source=p10 object=OBJ-e9b90e0f75ce05ff1ce150cc field=findings.1.source_objects.0 artifact=work/bicycle-infrastructure-paper/parsed/pages/page_010.md: Quote/value does not correspond to registered source; inspect visual evidence explicitly. Intact visual candidates (not yet inspected): OBJ-ac24aa7e3206f52a9b3986d0 at work/bicycle-infrastructure-paper/parsed/page_images/page_010.png (PDF page 10); OBJ-1fd9a1cf9ed9ce73718f35c9 at work/bicycle-infrastructure-paper/parsed/tables/table_6.png (PDF page 10). Only after inspection, use correspondence=visual with an explicit verification_note identifying the image and what it establishes; otherwise retain unresolved/cannot_verify. Do not alter the quote to force a match."
+]

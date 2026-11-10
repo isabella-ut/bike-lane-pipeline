@@ -1,0 +1,342 @@
+{
+  "reviewer": "reference_auditor",
+  "paper_id": "bicycle-infrastructure-paper",
+  "run_status": "ok",
+  "summary": "I built the author-year and bibliography identity sets from the retained page text. The manuscript has 20 author-year citations, and the reference list has 20 entries. Each citation matches exactly one entry on first author, year and title, with no missing pairs, wrong years, duplicates or wrong in-text keys. I found no integrity defects in the manuscript's reference pairing. Two items are secondary: the paper names the NVDB road database as a data source without a formal reference, and it points to a public GitHub repository (bike-lane-pipeline) without a URL or reference entry. Two further findings are parser artifacts. The parsed reference_list.json absorbs appendix prose as pseudo-references, and in_text_citations.json captures only the narrative-form citations. Neither should be read as a manuscript defect. One bibliography-maintenance note concerns the Klein et al. 2026 entry, which is dated December 2026 but was accessed in September 2026.",
+  "findings": [
+    {
+      "id": "REF-001",
+      "category": "data_source_citation",
+      "finding_summary": "The paper links to the National Road Database (NVDB) as an administrative data source and uses it in Table 5. It gives no reference-list entry or other citation for NVDB, its owner's documentation, or the version or date accessed.",
+      "issue_type": "reference_integrity",
+      "severity": "low",
+      "confidence": "medium",
+      "location": {
+        "page": 8,
+        "page_label": "8",
+        "section": "4.3 Linking newspaper articles to administrative data",
+        "text_quote": "we link one of the identified openings to the National Road Database",
+        "precision": "exact"
+      },
+      "claim_text": "Every named data source the paper relies on is traceable to a citation or reference-list entry.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "Section 4.3 and Table 5 use NVDB identifiers and attributes (road link sequence IDs, road system references, geometry registration date) as evidence for the linkage example. They describe NVDB as maintained by the Norwegian Public Roads Administration. The 20-entry reference list has no NVDB, Norwegian Public Roads Administration or Statistics Norway entry. The paper does name the owner in prose, so the source is identifiable but not formally cited. No access date or database version is given for NVDB, and the example's registration date of 4 September 2026 depends on the extraction date. The paper does not use an author-year key for NVDB, so no in-text key is mismatched.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "page 8 text",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_008.md",
+          "page": 8,
+          "page_label": "8",
+          "section": "4.3",
+          "text_quote": "we link one of the identified openings to the National Road Database",
+          "url": null,
+          "object_id": "OBJ-b41cc221a4f064e5990acabf",
+          "correspondence": "text",
+          "verification_note": "Quote found in page 8 text."
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "page 13 text (reference list)",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_013.md",
+          "page": 13,
+          "page_label": "13",
+          "section": "References",
+          "text_quote": "European Commission (2026).",
+          "url": null,
+          "object_id": "OBJ-ac3fc0b78f79115ca2a383d8",
+          "correspondence": "text",
+          "verification_note": "Reference list read on pages 12-14 (full_text.md); no NVDB-related entry found."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "NVDB is used as a data source in Section 4.3 and Table 5",
+          "source_object_ids": [
+            "S1"
+          ],
+          "relation": "supports",
+          "note": "Use of NVDB is explicit."
+        },
+        {
+          "claim_text": "NVDB has a reference-list entry",
+          "source_object_ids": [
+            "S2"
+          ],
+          "relation": "contradicts",
+          "note": "No such entry in the reference list."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Add a reference-list entry for NVDB (owner, dataset name, URL, extraction or access date). Cite it where Table 5 and Section 4.3 introduce it."
+    },
+    {
+      "id": "REF-002",
+      "category": "software_repository_citation",
+      "finding_summary": "Appendix B cites a public GitHub repository, \"bike-lane-pipeline\", as the location of all code and prompts. It gives no URL, owner or version, and the repository has no reference-list entry.",
+      "issue_type": "reference_integrity",
+      "severity": "low",
+      "confidence": "medium",
+      "location": {
+        "page": 18,
+        "page_label": "18",
+        "section": "B Work pipeline and LLM prompts",
+        "text_quote": "All code and prompts used in this paper are available in a public GitHub repository bike-lane-pipeline.",
+        "precision": "exact"
+      },
+      "claim_text": "The code and prompts used in the paper are available in an identifiable public repository.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "Appendix B names the repository only by its bare name, with no URL, organisation or user, commit or release, or access date. The reference list has no entry for it. The reference list does give URLs for other online-only sources such as Bartik et al. (2026), Google Cloud (2026) and Google DeepMind (2026). I did not search for the repository, because there is no locator to check. Whether it exists, or contains the stated material, is therefore unverified.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "page 18 text",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_018.md",
+          "page": 18,
+          "page_label": "18",
+          "section": "Appendix B",
+          "text_quote": "All code and prompts used in this paper are available in a public GitHub repository bike-lane-pipeline.",
+          "url": null,
+          "object_id": "OBJ-03dcf11e0f4853cb90843dbe",
+          "correspondence": "text",
+          "verification_note": "Quote found on page 18."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Repository is identifiable",
+          "source_object_ids": [
+            "S1"
+          ],
+          "relation": "partial",
+          "note": "Name only; no URL or version."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Give the full repository URL and a commit hash or release tag, and add a reference-list entry for the software and prompts."
+    },
+    {
+      "id": "REF-003",
+      "category": "bibliography_maintenance",
+      "finding_summary": "The Klein et al. entry is dated \"Dec. 2026\" and given as Journal of Transport Geography volume 137. Its access date, 09/24/2026, is earlier than the printed issue date. The paper cites it as 2026, which agrees with the in-text year.",
+      "issue_type": "bibliography_maintenance",
+      "severity": "low",
+      "confidence": "low",
+      "location": {
+        "page": 13,
+        "page_label": "13",
+        "section": "References",
+        "text_quote": "Klein, Robert et al. (Dec. 2026).",
+        "precision": "exact"
+      },
+      "claim_text": "The Klein et al. (2026) reference gives a publication date consistent with its access date and volume.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "The in-text year (2026) and the bibliography year (2026) agree, so this is not a citation mismatch. The retained entry is dated Dec. 2026 and was visited on 09/24/2026. An external record (TRID) lists volume 137, article 104822, with publication date 2026-12, which matches the reference. An arXiv preprint (2603.00095) dates from February 2026. The December date appears to be an issue-level placeholder for an article that was online earlier. I did not retrieve the publisher page, so I cannot confirm the actual online-first date or the final issue.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "page 13 text",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_013.md",
+          "page": 13,
+          "page_label": "13",
+          "section": "References",
+          "text_quote": "Klein, Robert et al. (Dec. 2026).",
+          "url": null,
+          "object_id": "OBJ-ac3fc0b78f79115ca2a383d8",
+          "correspondence": "text",
+          "verification_note": "Reference entry quoted."
+        },
+        {
+          "id": "S2",
+          "type": "external",
+          "label": "TRID record",
+          "path": null,
+          "page": null,
+          "page_label": null,
+          "section": null,
+          "text_quote": null,
+          "url": "https://trid.trb.org/View/2775526",
+          "object_id": null,
+          "correspondence": "url_only",
+          "verification_note": "Only a search-result summary was seen; the page itself was not retrieved."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Reference date consistent with access date",
+          "source_object_ids": [
+            "S1",
+            "S2"
+          ],
+          "relation": "partial",
+          "note": "Date appears to be an issue-level date that is later than the online access."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Check the publisher page. If the article is online-first, give the online publication date or mark it as in press, and keep the in-text year consistent."
+    },
+    {
+      "id": "REF-004",
+      "category": "parsed_reference_artifact",
+      "finding_summary": "The parsed reference_list.json contains 43 entries, but only entries 1-20 are bibliography items. Entries 21-43 are appendix headings and body lines (Appendix A text, pages 15 onward), so the parsed list is not a clean bibliography.",
+      "issue_type": "parser_artifact",
+      "severity": "low",
+      "confidence": "high",
+      "location": {
+        "page": null,
+        "page_label": null,
+        "section": null,
+        "text_quote": "A An Application to Housing Listings",
+        "precision": "partial"
+      },
+      "claim_text": "The parsed reference_list.json contains only the paper's bibliography entries.",
+      "assessment": "no",
+      "cannot_verify_reason": null,
+      "evidence_summary": "References 1-20 match the 20 entries of the printed reference list on pages 12-14 (full_text.md). References 21-43 are appendix section heading and body text from page 15, the last of which is the sentence ending \"and by proximity, at around 11 percent each.\" This is extraction contamination from the page after the reference list, not an error in the manuscript. I used the page text, not this JSON, for the bibliography identity set. Entry 17 (Raudszus) is shown wholly on page 13 even though its URL line sits on page 14; this is a layout carry-over.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "parsed_artifact",
+          "label": "reference_list.json",
+          "path": "work/bicycle-infrastructure-paper/parsed/reference_list.json",
+          "page": null,
+          "page_label": null,
+          "section": null,
+          "text_quote": "A An Application to Housing Listings",
+          "url": null,
+          "object_id": "OBJ-0fd49646e5e14c8a86251321",
+          "correspondence": "text",
+          "verification_note": "Entry 21 is appendix heading text."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "reference_list.json holds only references",
+          "source_object_ids": [
+            "S1"
+          ],
+          "relation": "contradicts",
+          "note": "Entries 21-43 are appendix text."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Terminate reference parsing at the end of the bibliography (before the appendix heading) and rely on the page text for reference identity checks."
+    },
+    {
+      "id": "REF-005",
+      "category": "parsed_citation_artifact",
+      "finding_summary": "The parsed in_text_citations.json lists only 14 narrative-form citations, and some matches are truncated (\"Koch (2021)\", \"Machin (2005)\"). It misses parenthetical citations, for example Fosgerau et al. 2023, Klein et al. 2026, European Commission 2026 and Benedictow et al. 2025, so it cannot serve as a full citation inventory.",
+      "issue_type": "parser_artifact",
+      "severity": "low",
+      "confidence": "high",
+      "location": {
+        "page": 2,
+        "page_label": "2",
+        "section": "1 Introduction",
+        "text_quote": "Koch (2021)",
+        "precision": "partial"
+      },
+      "claim_text": "The parsed in_text_citations.json captures all in-text citations in the manuscript.",
+      "assessment": "no",
+      "cannot_verify_reason": null,
+      "evidence_summary": "The extraction pattern needs the form Name (Year) and so skips parenthetical citations such as (Fosgerau et al. 2023), (Goodman et al. 2014; Kraus and Koch 2021), (Klein et al. 2026; Pazdan and Kiec 2023), (European Commission 2026), (Quintero-Gomez and Calvo-Bascones 2026), (Google DeepMind 2026), (Google Cloud 2026) and (Benedictow et al. 2025). It also cuts two-author citations to the second name only. I built the in-text set from full_text.md. That set has 20 distinct citations, and each maps to one reference entry. The artifact limitation does not indicate a manuscript defect.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "parsed_artifact",
+          "label": "in_text_citations.json",
+          "path": "work/bicycle-infrastructure-paper/parsed/in_text_citations.json",
+          "page": null,
+          "page_label": null,
+          "section": null,
+          "text_quote": "Koch (2021)",
+          "url": null,
+          "object_id": "OBJ-4d4d9b2df686774a1d49efa9",
+          "correspondence": "text",
+          "verification_note": "Truncated match on the cited text."
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "page 1 text",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_001.md",
+          "page": 1,
+          "page_label": "1",
+          "section": "1 Introduction",
+          "text_quote": "(Fosgerau et al. 2023)",
+          "url": null,
+          "object_id": "OBJ-ae6010b8e427194ea28d441e",
+          "correspondence": "text",
+          "verification_note": "Parenthetical citation present on page 1 and absent from the parsed list."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "All in-text citations captured",
+          "source_object_ids": [
+            "S1",
+            "S2"
+          ],
+          "relation": "contradicts",
+          "note": "Parenthetical forms are missing."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Broaden the citation pattern to parenthetical and multi-author forms, or use the page text for citation inventories."
+    }
+  ],
+  "notes": [
+    "The in-text identity set comes from full_text.md pages 1-18. It has 20 author-year keys: Fosgerau 2023; Goodman 2014; Kraus and Koch 2021; Klein 2026; Pazdan and Kiec 2023; European Commission 2026; Quintero-Gomez and Calvo-Bascones 2026; Fyhri 2026; Roaf 2024; Ferster 2020; Raudszus 2025; Gibbons and Machin 2005; Welch 2016; Earl 2004; Gilardi 2023; Ziems 2024; Bartik 2026; Google DeepMind 2026; Google Cloud 2026; Benedictow 2025.",
+    "Each key matches one of the 20 reference entries on pages 12-14, and each entry is cited. I found no missing pairs, duplicates, wrong years or wrong author names.",
+    "Quintero-Gomez (doi 2025, dated Jan. 2026) and Fyhri (doi 2025, dated Jan. 2026) are cited as 2026, which matches their bibliography dates. Raudszus (dated Dec. 2025) is cited as 2025, which matches.",
+    "External checks: the Klein, Fosgerau and Raudszus bibliographic details agree with web records. The Fosgerau 60 percent figure was confirmed by search. The Fyhri paper's identity was not independently retrieved; only a TØI listing of the title was found.",
+    "Retriever/Atekst and FINN.no are cited as 'own data' and as the data source respectively. I did not treat their lack of reference entries as defects.",
+    "Citation-supported content claims (for example the Gilardi, Ziems and Bartik findings) were not checked against the cited works; the assignment was identity and pairing integrity."
+  ],
+  "completion": {
+    "version": 1,
+    "state": "complete",
+    "scope_description": "Checked the manuscript's in-text author-year citations, the 20-entry reference list, data-source and software citations, and the parsed reference artifacts. The check used full_text.md and page text, and a sampled external check of bibliographic details.",
+    "checks_completed": [
+      "Read the parser-quality guidance and used page text as primary evidence, since reference_list.json and in_text_citations.json are partial or contaminated",
+      "Built the in-text author-year set from pages 1-18, including parenthetical and multi-citation groups, and the 20-entry bibliography set from pages 12-14",
+      "Matched each citation to a reference entry on first author, year, title identity and co-author naming; no mismatch, missing pair or duplicate found",
+      "Checked named data sources and software (NVDB, Retriever/Atekst, FINN.no, GitHub repository, Google Cloud, Google DeepMind) for reference entries",
+      "Compared the parsed reference_list.json and in_text_citations.json with the page text",
+      "Searched the web for Klein, Fyhri, Fosgerau and Raudszus bibliographic details"
+    ],
+    "missing_checks": [],
+    "evidence_limitations": [
+      "External verification was limited to web search summaries for four references; the other 16 entries were checked for internal consistency, and from general knowledge for the well-known ones, not retrieved.",
+      "The Fyhri et al. record was not retrieved beyond a title listing.",
+      "Whether each cited work supports the manuscript's substantive claims was not assessed."
+    ]
+  },
+  "coverage": [
+    {
+      "item_id": "assigned_remit",
+      "source_object_ids": [],
+      "claim": null,
+      "check_performed": "Built the in-text and bibliography identity sets from the retained page text, matched all 20 pairs, checked data-source and software citations, compared the parsed reference artifacts with the page text, and ran sampled external checks on four references.",
+      "status": "linked_finding",
+      "reason": "No citation/reference pairing defect was found. The linked findings are two secondary data-source and software citation gaps, one bibliography-maintenance note and two parser-artifact notes. External verification covered four of the 20 references.",
+      "finding_ids": [
+        "REF-001",
+        "REF-002",
+        "REF-003",
+        "REF-004",
+        "REF-005"
+      ],
+      "attempted": true,
+      "importance": "central",
+      "scope": "sampled"
+    }
+  ]
+}

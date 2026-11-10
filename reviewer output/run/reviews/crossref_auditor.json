@@ -1,0 +1,364 @@
+{
+  "reviewer": "crossref_auditor",
+  "paper_id": "bicycle-infrastructure-paper",
+  "run_status": "ok",
+  "summary": "Almost all internal references resolve. The Section 1 roadmap, the Section 3.1.2/3.1.4/4/5/6.1/6.3 pointers, Tables 1–5 and 7–9, Figures 1–4, equations (1)–(2), and Appendices A, A.3.1 and A.3.2 each point to an existing, correctly numbered target. Five genuine manuscript issues remain. Footnote 3 contradicts Section 4.1 and Table 3 about how the Stord article was coded. Table 6 is never cited in the text. Appendix B is never cited. The 'rounds 1–4' labels are never defined. The Figure 3 text says the first quarter of 2024 is missing, while the appendix and the caption say January to April 2024. One parser artifact was also found: spurious entries in the section inventory.",
+  "findings": [
+    {
+      "id": "CROSSREF-001",
+      "category": "manuscript_crossref_issue",
+      "finding_summary": "Footnote 3 says the Stord article was coded not relevant by both human coders, but Section 4.1 and Table 3 show the second coder coded it relevant (it is the single disagreement).",
+      "issue_type": "manuscript_issue",
+      "severity": "medium",
+      "confidence": "medium",
+      "location": {
+        "page": 10,
+        "page_label": "10",
+        "section": "6 Further Uses of the Articles, footnote 3",
+        "text_quote": "was coded as not relevant by both human coders",
+        "precision": "exact"
+      },
+      "claim_text": "Footnote 3: the project in Stord 'appears only in the pilot and was coded as not relevant by both human coders (Section 4)'.",
+      "assessment": "no",
+      "cannot_verify_reason": null,
+      "evidence_summary": "Section 4.1 (page 7) says the two coders disagree on exactly one article, a dispute between Stord municipality and Vestland County. Table 3 puts that article in the cell 'pilot coder Not relevant / second coder Relevant' (1) and gives a second-coder total of 4 relevant against 3 for the pilot coder. Section 4.2 says the LLM coded the same Stord article relevant by majority. So the cross-reference to Section 4 does not support 'both human coders'. It is accurate only for the pilot coder. The reading is based on the page text and Table 3's body cells, as the parser-quality review verified; I did not view the table image myself.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "page 10 text (footnote 3)",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_010.md",
+          "page": 10,
+          "page_label": "10",
+          "section": null,
+          "text_quote": "was coded as not relevant by both human coders",
+          "url": null,
+          "object_id": "OBJ-e9b90e0f75ce05ff1ce150cc",
+          "correspondence": "text",
+          "verification_note": "Footnote 3 text; the footnote marker is attached to 'The 96 articles', so it was not quoted."
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "page 7 text (Section 4.1)",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_007.md",
+          "page": 7,
+          "page_label": "7",
+          "section": "4.1",
+          "text_quote": "The only article they disagree on covers a dispute between Stord municipality and Vestland County",
+          "url": null,
+          "object_id": "OBJ-4e6da301f188ae5c7e5d0a63",
+          "correspondence": "text",
+          "verification_note": "Table 3 body cells (3,0,3 / 1,30,31 / 4,30,34) are on the same page."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Stord article coded not relevant by both human coders",
+          "source_object_ids": [
+            "S1",
+            "S2"
+          ],
+          "relation": "contradicts",
+          "note": "Section 4.1/Table 3: the second coder coded it relevant."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Correct footnote 3 so it matches Section 4.1 and Table 3. For example, state that the pilot coder coded the Stord article not relevant, while the second coder and the LLM coded it relevant. Then make clear why it is counted among the 44 projects."
+    },
+    {
+      "id": "CROSSREF-002",
+      "category": "manuscript_crossref_issue",
+      "finding_summary": "Table 6 is never referred to in the running text. Section 5 gives the same figures in prose without citing the table.",
+      "issue_type": "manuscript_issue",
+      "severity": "low",
+      "confidence": "high",
+      "location": {
+        "page": 10,
+        "page_label": "10",
+        "section": "5 Results / Table 6",
+        "text_quote": "Table 6: Results of the LLM coding of rounds 2–4",
+        "precision": "exact"
+      },
+      "claim_text": "Every numbered table in the paper is introduced by a reference in the text.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "A search of the full text for 'Table 6' returns only the caption on page 10. Section 5 (page 9) reports 3,187 articles, 92 openings, 43 projects, 50 outlets and 29 day/month-dated projects, which match the table, but it never says 'Table 6'. The parser's crossrefs.json lists only the caption as a Table 6 occurrence. Tables 1–5 and 7–9 each have a text call-out.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "page 10 text",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_010.md",
+          "page": 10,
+          "page_label": "10",
+          "section": null,
+          "text_quote": "Table 6: Results of the LLM coding of rounds 2–4",
+          "url": null,
+          "object_id": "OBJ-e9b90e0f75ce05ff1ce150cc",
+          "correspondence": "text",
+          "verification_note": "Only occurrence of 'Table 6' in full_text.md."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Table 6 is cited in text",
+          "source_object_ids": [
+            "S1"
+          ],
+          "relation": "partial",
+          "note": "Caption only; no call-out in Section 5."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Add a call-out such as 'Table 6 summarises the results' in Section 5."
+    },
+    {
+      "id": "CROSSREF-003",
+      "category": "manuscript_crossref_issue",
+      "finding_summary": "Appendix B (pipeline and prompts) is never referenced from the main text or from Appendix A. Section 3.2 describes the pipeline without pointing to it.",
+      "issue_type": "manuscript_issue",
+      "severity": "low",
+      "confidence": "high",
+      "location": {
+        "page": 18,
+        "page_label": "18",
+        "section": "B Work pipeline and LLM prompts",
+        "text_quote": "All code and prompts used in this paper are available in a public GitHub repository bike-lane-pipeline.",
+        "precision": "exact"
+      },
+      "claim_text": "Appendix B documents the code and prompts used in the paper and is linked from the text where they are described.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "A full-text search finds 'Appendix B' nowhere. The crossrefs inventory lists only Appendix A, A.3.1 and A.3.2 as appendix references. Section 3.2 discusses the prompt, schema and script but does not point to Appendix B. The appendix exists, so this is a missing call-out rather than a broken target.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "page 18 text",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_018.md",
+          "page": 18,
+          "page_label": "18",
+          "section": "B",
+          "text_quote": "All code and prompts used in this paper are available in a public GitHub repository bike-lane-pipeline.",
+          "url": null,
+          "object_id": "OBJ-03dcf11e0f4853cb90843dbe",
+          "correspondence": "text",
+          "verification_note": "Appendix B body text; no incoming reference found."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Appendix B referenced from text",
+          "source_object_ids": [
+            "S1"
+          ],
+          "relation": "partial",
+          "note": "Target exists; no call-out."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Cite Appendix B in Section 3.2, where the prompt, schema and script are described."
+    },
+    {
+      "id": "CROSSREF-004",
+      "category": "manuscript_crossref_issue",
+      "finding_summary": "The 'rounds 1–4' labels used in Section 5, Section 6, footnote 3, Table 6 and the Table 7 note are never defined or mapped to the pilot and the full run.",
+      "issue_type": "manuscript_issue",
+      "severity": "low",
+      "confidence": "medium",
+      "location": {
+        "page": 10,
+        "page_label": "10",
+        "section": "Table 6",
+        "text_quote": "Table 6: Results of the LLM coding of rounds 2–4",
+        "precision": "exact"
+      },
+      "claim_text": "The data rounds cited as 'rounds 2–4' and 'rounds 1–4' are identifiable from the text.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "Section 5 says '3,187 articles from rounds 2–4'. Footnote 3 contrasts the 92 articles from rounds 2–4 with 'four from the pilot run', and the Table 7 note cites 'rounds 1–4'. Section 3.1.2 and Section 3.2 never name or number the rounds. The reader must infer that round 1 is the pilot. The paper also does not say whether any round overlaps the 34 pilot articles.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "page 10 text",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_010.md",
+          "page": 10,
+          "page_label": "10",
+          "section": null,
+          "text_quote": "Table 6: Results of the LLM coding of rounds 2–4",
+          "url": null,
+          "object_id": "OBJ-e9b90e0f75ce05ff1ce150cc",
+          "correspondence": "text",
+          "verification_note": "A search for 'round' finds no definition of the numbering."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Rounds identifiable",
+          "source_object_ids": [
+            "S1"
+          ],
+          "relation": "cannot_verify",
+          "note": "Round numbering is never defined in the retained text."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Define the rounds once in Section 3.2 or Section 5, stating that round 1 is the pilot, and use the labels consistently."
+    },
+    {
+      "id": "CROSSREF-005",
+      "category": "manuscript_crossref_issue",
+      "finding_summary": "The Figure 3 discussion says only the first quarter of 2024 is missing, while A.1 and the Figure 3 caption say listing text is missing from January to April 2024.",
+      "issue_type": "manuscript_issue",
+      "severity": "low",
+      "confidence": "medium",
+      "location": {
+        "page": 16,
+        "page_label": "16",
+        "section": "A.2 / Figure 3",
+        "text_quote": "The first quarter of 2024 is missing",
+        "precision": "exact"
+      },
+      "claim_text": "The data gap described in the Figure 3 discussion matches the gap described in A.1 and the Figure 3 caption.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "Page 15 (A.1) says 'Listings from January to April 2024 are missing'. The Figure 3 caption says 'missing listing text from January to April 2024'. The Figure 3 paragraph says 'The first quarter of 2024 is missing', which covers only January to March. April falls in the second quarter. The quarterly figure's treatment of April 2024 is not stated. I did not view the Figure 3 image, so I cannot say whether Q2 2024 is drawn.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "page 16 text",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_016.md",
+          "page": 16,
+          "page_label": "16",
+          "section": null,
+          "text_quote": "The first quarter of 2024 is missing",
+          "url": null,
+          "object_id": "OBJ-8f4894d007c8a183053537bc",
+          "correspondence": "text",
+          "verification_note": "Wording from the Figure 3 paragraph."
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "page 15 text (A.1)",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_015.md",
+          "page": 15,
+          "page_label": "15",
+          "section": "A.1",
+          "text_quote": "Listings from January to April 2024 are missing",
+          "url": null,
+          "object_id": "OBJ-6402cd90a906f1f82672a86f",
+          "correspondence": "text",
+          "verification_note": "Gap definition."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Same gap described",
+          "source_object_ids": [
+            "S1",
+            "S2"
+          ],
+          "relation": "partial",
+          "note": "Q1 versus January to April."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Describe the gap consistently, for example as January to April 2024, and say how Q2 2024 is treated in Figure 3."
+    },
+    {
+      "id": "CROSSREF-006",
+      "category": "section_inventory_artifact",
+      "finding_summary": "sections.json contains false headings (a body sentence, 'C. Keys for linkage to other registers', and SQL lines such as 'CROSS APPLY (' and 'FROM (VALUES'). It treats 'A.3 Technical details' as a section. It therefore cannot be used as a reliable index of section targets.",
+      "issue_type": "parser_artifact",
+      "severity": "low",
+      "confidence": "high",
+      "location": {
+        "page": 6,
+        "page_label": "6",
+        "section": "3.2 LLM pipeline",
+        "text_quote": "A Python script was developed to call the model with the predefined prompt and write the coded",
+        "precision": "exact"
+      },
+      "claim_text": "The parsed section inventory lists only genuine manuscript headings.",
+      "assessment": "no",
+      "cannot_verify_reason": null,
+      "evidence_summary": "The full text shows that 'A Python script was developed…' is an ordinary paragraph in Section 3.2, that 'C. Keys for linkage…' is a panel label inside Table 5, and that 'CROSS APPLY (' and 'FROM (VALUES' are SQL code in A.3.1. Real headings such as 4.3, 5 and A.3.2 are present, and every section number referenced in the text resolves against the full text. These false entries are a parsing issue, not a defect in the paper.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "parsed_artifact",
+          "label": "sections.json",
+          "path": "work/bicycle-infrastructure-paper/parsed/sections.json",
+          "page": null,
+          "page_label": null,
+          "section": null,
+          "text_quote": "A Python script was developed to call the model with the predefined prompt and write the coded",
+          "url": null,
+          "object_id": "OBJ-e41491b25ed5482e411e42ab",
+          "correspondence": "text",
+          "verification_note": "False heading entry."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Inventory holds only real headings",
+          "source_object_ids": [
+            "S1"
+          ],
+          "relation": "contradicts",
+          "note": "Body sentence, table panel label and code lines listed as headings."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Use the page text or full_text.md rather than sections.json to resolve section targets. Filter the code and table-panel lines out of the heading detector."
+    }
+  ],
+  "notes": [
+    "Internal references were resolved against full_text.md and the page text, not against sections.json alone. A search found no occurrence of 'Table 6' or 'Appendix B' outside their own captions and headings.",
+    "No equation, figure or appendix reference was found to be broken. Equations (1) and (2), Figures 1–4, Tables 1–5 and 7–9, and Appendices A, A.3.1 and A.3.2 all resolve."
+  ],
+  "completion": {
+    "version": 1,
+    "state": "complete",
+    "scope_description": "Audit of internal reference resolution, numbering consistency and appendix-label consistency across the full parsed text of the 18-page paper.",
+    "checks_completed": [
+      "Read parser_quality_auditor.json and used full_text.md and page text rather than the structured table CSV/markdown",
+      "Resolved every Section reference (2, 3.1, 3.2, 3.1.2, 4, 5, 6, 6.1, 6.3, 7, 8) against the headings in the full text",
+      "Resolved Table 1–9 and Figure 1–4 call-outs against captions and searched for uncited tables, figures and appendices",
+      "Checked equation (1)/(2) and 'model (1)/(2)' references",
+      "Checked Appendix A, A.1–A.3.2 and B labels and incoming references",
+      "Cross-checked footnote 3 and the 43/44-project and 92/96-article counts against Sections 4.1–4.2, Table 3 and Table 4",
+      "Compared crossrefs.json and sections.json with the full text to separate parser artifacts from manuscript issues"
+    ],
+    "missing_checks": [],
+    "evidence_limitations": [
+      "Checks relied on page text; page images were not viewed for this audit.",
+      "Figure 3's rendering of Q2 2024 could not be verified from text alone."
+    ]
+  },
+  "coverage": [
+    {
+      "item_id": "assigned_remit",
+      "source_object_ids": [],
+      "claim": null,
+      "check_performed": "Resolved all section, table, figure, equation and appendix references in the full text; checked numbering and appendix labels; compared the parser's crossrefs.json and sections.json with the text; checked footnote 3 against Section 4.1 and Table 3.",
+      "status": "linked_finding",
+      "reason": "Five genuine manuscript cross-reference issues and one section-inventory parser artifact were found. All other references resolved. Scope was exhaustive over the retained text; images were not viewed.",
+      "finding_ids": [
+        "CROSSREF-001",
+        "CROSSREF-002",
+        "CROSSREF-003",
+        "CROSSREF-004",
+        "CROSSREF-005",
+        "CROSSREF-006"
+      ],
+      "attempted": true,
+      "importance": "central",
+      "scope": "exhaustive"
+    }
+  ]
+}

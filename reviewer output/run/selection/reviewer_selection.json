@@ -1,0 +1,59 @@
+{
+  "paper_id": "bicycle-infrastructure-paper",
+  "paper_type": "methods",
+  "selection_confidence": "high",
+  "selection_mode": "applicability",
+  "selected_optional_reviewers": [
+    {
+      "name": "numerical_auditor",
+      "reason": "Many central counts and rates must reconcile across abstract, text, figures and tables: 70 hits, 34 unique, 3,187 articles, 92 relevant, 43 vs 44 projects, 92 vs 96 articles, 97% agreement (Tables 3\u20134), Table 6 precision counts, Table 7 counts, Table 8 listing shares (700,579 listings; 266,625 any mention; 38.1%), NVDB link values (Table 5) and the 17/18 and 2/26 ceremony counts."
+    },
+    {
+      "name": "identification_auditor",
+      "reason": "Section 6.3 proposes a difference-in-differences model (Eq. 2) and an ordered model (Eq. 1). It also makes identification-type claims about timing, such as dates not being random and misdated listings biasing estimates toward zero. The intro and Table 1 frame the data as 'treatment data' for causal research, and Table 1 lists 'quasi-random timing' and 'confounders'. The assumptions behind these claims need an audit even though nothing is estimated."
+    },
+    {
+      "name": "robustness_auditor",
+      "reason": "The paper makes stability claims that need checking: three LLM runs per article (1 of 34 disagree), a prompt revised and the validation rerun, temperature left at default and reasoning set to 'low', majority-vote aggregation, a keyword-based classification of listings that the paper calls coarse, and a masking rule for motorcycles and scooters. It does not report sensitivity checks for these choices."
+    },
+    {
+      "name": "sample_construction_auditor",
+      "reason": "Nontrivial sample flows and denominators: 70 hits \u2192 36 duplicates \u2192 34 unique \u2192 4 with missing text; 'unclear' articles recoded as not relevant; 3,187 articles from 'rounds 2\u20134' versus 'rounds 1\u20134'; 92 articles \u2192 43 projects versus 96 \u2192 44 with the Stord project; the keyword search term 'sykkelvei'; the FINN.no listings with a January\u2013April 2024 gap, vacation homes excluded, and 700,579 listings."
+    },
+    {
+      "name": "limitations_external_validity_auditor",
+      "reason": "The paper claims a 'scalable pipeline' and 'feasibility' from a 34-article pilot containing 3 relevant articles. It generalises to the whole archive without a random validation sample. It acknowledges newspaper selection and description bias, the incompleteness of 14 of 15 county coverage, and sparse July\u2013August coverage. It also draws seasonality inferences, extends to other infrastructure types, and draws policy-research implications."
+    },
+    {
+      "name": "theory_logic_auditor",
+      "reason": "No formal model or propositions appear, so this is low-yield. However, Section 6.3 contains an assumption-to-conclusion argument built on Eqs. (1)\u2013(2). It argues that a positive \u03b2 implies results should be reported separately by date precision, and that misdated listings bias estimates toward zero. It also states hypotheses \u03b8>0 and \u03b4>0 and a sequential testing strategy. Under the rule to select when uncertain, this logic is included."
+    },
+    {
+      "name": "data_availability_replication_auditor",
+      "reason": "Appendix B claims that all code, prompts, earlier prompt versions, model settings and schema are in a public GitHub repository, 'bike-lane-pipeline'. This is a material replication claim. The data depend on a proprietary Retriever/Atekst archive, the FINN.no data, NVDB, and a model that is cited with a September 2026 release date. Reproducibility of the pipeline output therefore needs checking, and web search is enabled for this role."
+    },
+    {
+      "name": "institutional_context_auditor",
+      "reason": "Institutional facts are material to interpretation: the Retriever/Atekst archive coverage, NVDB (maintained by the Norwegian Public Roads Administration, geometry registration versus opening date), county road ownership, municipality and county numbering (15 counties; \u00d8stfold absent), FINN.no's roughly 70% share of housing transactions, and Norwegian written standards (Bokm\u00e5l and Nynorsk)."
+    },
+    {
+      "name": "power_multiple_testing_auditor",
+      "reason": "The paper claims human\u2013LLM agreement 'matches' human\u2013human agreement (97% vs 97%) on 34 articles with only 3 relevant, and itself says the sample is too small to test for a difference. This is equivalence-style language with a power limit. The paper also reports several descriptive comparisons without testing: 17 of 18 vs 2 of 26 for date precision, monthly clustering, and multiple outcome types in the housing application."
+    },
+    {
+      "name": "economic_magnitude_auditor",
+      "reason": "The paper makes cost and scalability claims: NOK 70 total API cost described as 'cheap', a 300-dollar credit being the main reason for choosing the model, comparison to prohibitive manual cost, and a 9 percentage-point rise in cycling mentions. Practical significance of the 97% agreement and of the 29 dated projects out of 3,187 articles also needs a check."
+    }
+  ],
+  "skipped_optional_reviewers": [
+    {
+      "name": "design_randomization_auditor",
+      "reason": "The paper uses no experiment, RCT, survey experiment, randomized offer or assigned treatment. The pilot is an observational keyword sample, the validation is a coder-agreement exercise, and the proposed DiD in Section 6.3 is observational and not randomized. The randomization remit is entirely absent."
+    }
+  ],
+  "notes": [
+    "Classified as a methods paper: the main contribution is an LLM-based pipeline for building a dated dataset of bicycle infrastructure openings from Norwegian newspapers, validated on a 34-article pilot, with a descriptive full run and an NVDB linkage example. The econometric models in Section 6.3 are proposed but not estimated, and there are no causal claims of its own, so empirical_causal and mixed were not chosen.",
+    "Parsed artifacts were readable (full_text.md, 18 pages, tables extracted), so classification confidence is high. Only design_randomization_auditor is skipped because its entire remit is absent. All other conditional specialists are selected because some plausible issue class exists.",
+    "Possible internal inconsistencies for downstream reviewers to examine: the abstract and conclusion speak of 43 projects while Section 6 uses 44 projects and 96 articles; the pilot relevant count appears as 5 in Figure 1 and Section 3.1.4 but as 3 in Section 4; 'rounds 2\u20134' versus 'rounds 1\u20134'; Section 3.2 says the validation was repeated after the prompt update."
+  ]
+}

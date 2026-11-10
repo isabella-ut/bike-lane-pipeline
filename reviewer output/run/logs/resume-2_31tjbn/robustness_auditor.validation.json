@@ -1,0 +1,3 @@
+[
+  "reviewer/stage=robustness_auditor finding=ROB-005 source=S2 object=OBJ-d7d273cd87e135b0c6194dd6 field=findings.4.source_objects.1 artifact=work/bicycle-infrastructure-paper/parsed/pages/page_002.md: Registered source object and cited path differ"
+]

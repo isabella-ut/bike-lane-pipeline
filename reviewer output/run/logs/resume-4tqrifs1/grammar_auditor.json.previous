@@ -1,0 +1,329 @@
+{
+  "reviewer": "grammar_auditor",
+  "paper_id": "bicycle-infrastructure-paper",
+  "run_status": "ok",
+  "summary": "The manuscript is generally clean. Six isolated low-severity copyedit issues were found: one subject-verb agreement error, one word-choice problem, two punctuation issues, and two sentence-level clarity issues. None changes meaning.",
+  "findings": [
+    {
+      "id": "GRAM-001",
+      "category": "grammar",
+      "finding_summary": "Subject-verb disagreement in footnote 3: plural subject \"The 96 articles\" takes singular \"consists\".",
+      "issue_type": "copyedit_issue",
+      "severity": "low",
+      "confidence": "high",
+      "location": {
+        "page": 10,
+        "page_label": "10",
+        "section": "6 Further Uses of the Articles (footnote 3)",
+        "text_quote": "The 96 articles consists of the 92 articles from rounds 2–4",
+        "precision": "exact"
+      },
+      "claim_text": "The footnote \"The 96 articles consists of the 92 articles from rounds 2–4\" is grammatically correct.",
+      "assessment": "no",
+      "cannot_verify_reason": null,
+      "evidence_summary": "The plural subject \"The 96 articles\" is paired with the singular verb \"consists\".",
+      "source_objects": [
+        {
+          "id": "p10",
+          "type": "text",
+          "label": "Page 10 parsed text",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_010.md",
+          "page": 10,
+          "page_label": "10",
+          "section": "Footnote 3",
+          "text_quote": "The 96 articles consists of the 92 articles from rounds 2–4",
+          "url": null,
+          "object_id": "OBJ-e9b90e0f75ce05ff1ce150cc",
+          "correspondence": "text",
+          "verification_note": null
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "The footnote is grammatically correct.",
+          "source_object_ids": [
+            "p10"
+          ],
+          "relation": "contradicts",
+          "note": "Plural subject with singular verb."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Change \"consists of\" to \"consist of\"."
+    },
+    {
+      "id": "GRAM-002",
+      "category": "word_choice",
+      "finding_summary": "\"test if\" should be \"test whether\" in the proposal for model (1).",
+      "issue_type": "copyedit_issue",
+      "severity": "low",
+      "confidence": "medium",
+      "location": {
+        "page": 12,
+        "page_label": "12",
+        "section": "6.3 Proposed econometric analysis",
+        "text_quote": "model (1) should first test if this is a problem",
+        "precision": "exact"
+      },
+      "claim_text": "The sentence \"Therefore, model (1) should first test if this is a problem\" uses correct formal wording.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "\"Test if\" is informal. Formal academic prose normally uses \"test whether\" for a yes/no question.",
+      "source_objects": [
+        {
+          "id": "p12",
+          "type": "text",
+          "label": "Page 12 parsed text",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_012.md",
+          "page": 12,
+          "page_label": "12",
+          "section": "6.3",
+          "text_quote": "model (1) should first test if this is a problem",
+          "url": null,
+          "object_id": "OBJ-a6c6d31e7be45f25b775aa47",
+          "correspondence": "text",
+          "verification_note": null
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Formal wording is used.",
+          "source_object_ids": [
+            "p12"
+          ],
+          "relation": "partial",
+          "note": "Informal conjunction."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Change to \"model (1) should first test whether this is a problem\"."
+    },
+    {
+      "id": "GRAM-003",
+      "category": "punctuation",
+      "finding_summary": "Missing comma before \"for example\" makes the end of the sentence read ambiguously.",
+      "issue_type": "copyedit_issue",
+      "severity": "low",
+      "confidence": "medium",
+      "location": {
+        "page": 10,
+        "page_label": "10",
+        "section": "6.1 An application to house listing data",
+        "text_quote": "a short cycling distance to the city centre for example",
+        "precision": "exact"
+      },
+      "claim_text": "The sentence ending \"a short cycling distance to the city centre for example\" is correctly punctuated.",
+      "assessment": "no",
+      "cannot_verify_reason": null,
+      "evidence_summary": "The parenthetical \"for example\" is not set off by a comma. In the sentence it also sits awkwardly after \"instead\".",
+      "source_objects": [
+        {
+          "id": "p10",
+          "type": "text",
+          "label": "Page 10 parsed text",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_010.md",
+          "page": 10,
+          "page_label": "10",
+          "section": "6.1",
+          "text_quote": "a short cycling distance to the city centre for example",
+          "url": null,
+          "object_id": "OBJ-e9b90e0f75ce05ff1ce150cc",
+          "correspondence": "text",
+          "verification_note": "Quote spans a line break in the parsed text; whitespace is normalized."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Sentence is correctly punctuated.",
+          "source_object_ids": [
+            "p10"
+          ],
+          "relation": "contradicts",
+          "note": "Missing comma."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Write \"a short cycling distance to the city centre, for example.\" Alternatively, move it earlier: \"may, for example, have described...\"."
+    },
+    {
+      "id": "GRAM-004",
+      "category": "sentence_clarity",
+      "finding_summary": "\"describes the data of the articles\" is awkward and slightly unclear; \"the article data\" or \"the article sample\" is intended.",
+      "issue_type": "copyedit_issue",
+      "severity": "low",
+      "confidence": "medium",
+      "location": {
+        "page": 3,
+        "page_label": "3",
+        "section": "3.1 Data",
+        "text_quote": "This section describes the data of the articles",
+        "precision": "exact"
+      },
+      "claim_text": "The sentence \"This section describes the data of the articles\" is clear.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "The phrase \"the data of the articles\" is redundant after \"The articles of Norwegian newspapers form the core of the database\". It is unclear whether it refers to the archive, the metadata, or the text.",
+      "source_objects": [
+        {
+          "id": "p3",
+          "type": "text",
+          "label": "Page 3 parsed text",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_003.md",
+          "page": 3,
+          "page_label": "3",
+          "section": "3.1 Data",
+          "text_quote": "This section describes the data of the articles",
+          "url": null,
+          "object_id": "OBJ-03b644fd8d90eae779e2345d",
+          "correspondence": "text",
+          "verification_note": null
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Sentence is clear.",
+          "source_object_ids": [
+            "p3"
+          ],
+          "relation": "partial",
+          "note": "Awkward phrasing."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Write \"This section describes the article data (the archive and its metadata), the pilot sample...\"."
+    },
+    {
+      "id": "GRAM-005",
+      "category": "sentence_clarity",
+      "finding_summary": "\"the same two dimensions\" has no clear antecedent, because the preceding text discusses types and words rather than two named dimensions.",
+      "issue_type": "copyedit_issue",
+      "severity": "low",
+      "confidence": "medium",
+      "location": {
+        "page": 15,
+        "page_label": "15",
+        "section": "A.2 Analysis",
+        "text_quote": "We next look at how the mentions develop along the same two dimensions.",
+        "precision": "exact"
+      },
+      "claim_text": "The sentence \"We next look at how the mentions develop along the same two dimensions\" has a clear referent.",
+      "assessment": "no",
+      "cannot_verify_reason": null,
+      "evidence_summary": "The two dimensions (time and county) are named only in the appendix introduction. The immediately preceding paragraph breaks down mention types and words, so \"same\" is confusing.",
+      "source_objects": [
+        {
+          "id": "p15",
+          "type": "text",
+          "label": "Page 15 parsed text",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_015.md",
+          "page": 15,
+          "page_label": "15",
+          "section": "A.2 Analysis",
+          "text_quote": "We next look at how the mentions develop along the same two dimensions.",
+          "url": null,
+          "object_id": "OBJ-6402cd90a906f1f82672a86f",
+          "correspondence": "text",
+          "verification_note": "Located by parsed page text; the quote may be on page 16 in the PDF layout. Verify against the page image before finalizing."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "The sentence has a clear referent.",
+          "source_object_ids": [
+            "p15"
+          ],
+          "relation": "contradicts",
+          "note": "No immediate antecedent."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Write \"We next look at how the mentions vary over time and across counties.\""
+    },
+    {
+      "id": "GRAM-006",
+      "category": "punctuation",
+      "finding_summary": "Colon after \"For example\" is incorrect; use a comma.",
+      "issue_type": "copyedit_issue",
+      "severity": "low",
+      "confidence": "medium",
+      "location": {
+        "page": 18,
+        "page_label": "18",
+        "section": "A.3.2 Classification of cycling mentions",
+        "text_quote": "For example: words containing “bysykkel” (city bike)",
+        "precision": "exact"
+      },
+      "claim_text": "The sentence \"For example: words containing “bysykkel” (city bike), such as “bysykkelstativ”, are counted as infrastructure\" is correctly punctuated.",
+      "assessment": "no",
+      "cannot_verify_reason": null,
+      "evidence_summary": "\"For example\" is followed by a colon, but the clause that follows is a full sentence. A comma is standard.",
+      "source_objects": [
+        {
+          "id": "p18",
+          "type": "text",
+          "label": "Page 18 parsed text",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_018.md",
+          "page": 18,
+          "page_label": "18",
+          "section": "A.3.2",
+          "text_quote": "For example: words containing “bysykkel” (city bike)",
+          "url": null,
+          "object_id": "OBJ-03dcf11e0f4853cb90843dbe",
+          "correspondence": "text",
+          "verification_note": null
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Punctuation is correct.",
+          "source_object_ids": [
+            "p18"
+          ],
+          "relation": "contradicts",
+          "note": "Colon misused."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Change to \"For example, words containing “bysykkel” (city bike), such as “bysykkelstativ”, are counted as infrastructure.\""
+    }
+  ],
+  "notes": [],
+  "completion": {
+    "version": 1,
+    "state": "complete",
+    "scope_description": "Read the full parsed text (full_text.md, pages 1–18) of the manuscript, including abstract, body, table and figure captions, footnotes, references and appendices, for grammar, typo, punctuation, word-choice and sentence-clarity issues.",
+    "checks_completed": [
+      "Read the full text for subject-verb agreement and other grammar errors",
+      "Scanned for typos and duplicated words",
+      "Checked punctuation that affects readability",
+      "Checked word choice and sentence clarity",
+      "Confirmed that quoted passages exist in the parsed page files"
+    ],
+    "missing_checks": [],
+    "evidence_limitations": [
+      "The parsed text was read directly. The page images were not inspected, so footnote-marker attachments such as \"pilot2\" were not treated as typos.",
+      "Reference-list formatting and citation issues were excluded as out of remit."
+    ]
+  },
+  "coverage": [
+    {
+      "item_id": "assigned_remit",
+      "source_object_ids": [],
+      "claim": null,
+      "check_performed": "Read the full parsed manuscript text, pages 1–18, and audited it for grammar, typos, duplicated words, punctuation, word choice and sentence clarity. Verified that each quote appears in its page artifact.",
+      "status": "linked_finding",
+      "reason": "Six low-severity copyedit findings were recorded. The full text was read, but the page images were not inspected. Footnote markers attached to words were ignored as parser artifacts.",
+      "finding_ids": [
+        "GRAM-001",
+        "GRAM-002",
+        "GRAM-003",
+        "GRAM-004",
+        "GRAM-005",
+        "GRAM-006"
+      ],
+      "attempted": true,
+      "importance": "central",
+      "scope": "exhaustive"
+    }
+  ]
+}

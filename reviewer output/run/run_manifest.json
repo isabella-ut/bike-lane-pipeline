@@ -1,0 +1,39 @@
+{
+  "paper_id": "bicycle-infrastructure-paper",
+  "status": "failed",
+  "started_at_utc": "2026-11-09T22:09:07.517751+00:00",
+  "source_pdf": "inputs\\bicycle_infrastructure_paper.pdf",
+  "source_pdf_sha256": "4d06259754bac6edef07a2622859cc74bcb564b9f0097e58655c292b4be6f5b3",
+  "model": "claude-sonnet-5-5",
+  "backend": "claude",
+  "backend_source": "explicit choice",
+  "reviewer_editor_reasoning_effort": "high",
+  "preflight_reasoning_effort": "high",
+  "selector_reasoning_effort": "high",
+  "reviewer_selection": "applicability",
+  "max_parallel_reviewers": 4,
+  "agent_timeout_minutes": 45.0,
+  "selector_timeout_minutes": 15.0,
+  "reviewers_config": "config/reviewers.json",
+  "resumed_after_preflight": false,
+  "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+  "git": {
+    "commit": null,
+    "dirty": null
+  },
+  "capabilities": {
+    "requested": {
+      "model_tools": "read-only",
+      "non_search_roles": "web_search disabled"
+    },
+    "effective": "host-dependent; requested capabilities are not an enforcement receipt",
+    "isolation": "degraded: read-only execution does not isolate absolute-path reads or connected tools",
+    "inference": "cloud-backed; disabling search does not make inference local"
+  },
+  "backend_version": "2.1.321",
+  "backend_permissions": "read-only tools; search roles also WebSearch/WebFetch; dontAsk",
+  "stopped_at_utc": "2026-11-10T09:33:55.877545+00:00",
+  "failure_type": "RuntimeError",
+  "resumed_at_utc": "2026-11-10T09:30:25.837926+00:00",
+  "resume_attempt": "work\\bicycle-infrastructure-paper\\logs\\resume-bc9_om6h"
+}

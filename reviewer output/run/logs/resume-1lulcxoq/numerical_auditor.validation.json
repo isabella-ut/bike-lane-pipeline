@@ -1,0 +1,6 @@
+[
+  "reviewer/stage=numerical_auditor finding=NUM-001 field=numeric_check sources=[S1 at work/bicycle-infrastructure-paper/parsed/pages/page_004.md; S2 at work/bicycle-infrastructure-paper/parsed/pages/page_005.md]: numeric_check does not establish a numerical discrepancy: unresolved",
+  "reviewer/stage=numerical_auditor finding=NUM-001 field=numeric_check sources=[S1 at work/bicycle-infrastructure-paper/parsed/pages/page_004.md; S2 at work/bicycle-infrastructure-paper/parsed/pages/page_005.md]: Indispensable numerical source is unresolved; retain conditional analysis as cannot_verify",
+  "reviewer/stage=numerical_auditor finding=NUM-002 field=numeric_check sources=[S1 at work/bicycle-infrastructure-paper/parsed/pages/page_010.md; S2 at work/bicycle-infrastructure-paper/parsed/pages/page_007.md]: Indispensable numerical source is unresolved; retain conditional analysis as cannot_verify",
+  "reviewer/stage=numerical_auditor finding=NUM-002 field=numeric_check sources=[S1 at work/bicycle-infrastructure-paper/parsed/pages/page_010.md; S2 at work/bicycle-infrastructure-paper/parsed/pages/page_007.md]: Indispensable numerical source is unresolved; retain conditional analysis as cannot_verify"
+]

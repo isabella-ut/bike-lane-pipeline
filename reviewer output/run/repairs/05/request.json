@@ -1,0 +1,9 @@
+{
+  "stage": "model_equation_auditor",
+  "call_reserved": true,
+  "errors": [
+    "reviewer/stage=model_equation_auditor finding=MODEL-008 field=numeric_check sources=[S1 at work/bicycle-infrastructure-paper/parsed/pages/page_004.md; S2 at work/bicycle-infrastructure-paper/parsed/pages/page_005.md]: numeric_check does not establish a numerical discrepancy: unresolved",
+    "reviewer/stage=model_equation_auditor finding=MODEL-008 field=numeric_check sources=[S1 at work/bicycle-infrastructure-paper/parsed/pages/page_004.md; S2 at work/bicycle-infrastructure-paper/parsed/pages/page_005.md]: Numerical quantity is not present in its source quote; copy published values/scales or retain explicit unresolved/visual evidence"
+  ],
+  "previous_sha256": "dec8b073cb556548d72968fa8a4607b8a8b354eb41c66531c8a3df2e895389e8"
+}

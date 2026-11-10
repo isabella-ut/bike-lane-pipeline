@@ -1,0 +1,158 @@
+Act as the sample_construction_auditor for this run.
+
+Use the repo guidance and the paper-reviewer workflow.
+
+Audit sample construction, data-flow, and variable construction only:
+`work/bicycle-infrastructure-paper/parsed`
+
+Return one JSON object that strictly conforms to:
+`schemas/reviewer_output.schema.json`
+
+For this run:
+- reviewer = "sample_construction_auditor"
+- paper_id = "bicycle-infrastructure-paper"
+- finding IDs must be stable and formatted SAMPLE-001, SAMPLE-002, ...
+
+Focus on:
+- sample restrictions, exclusions, attrition, denominators, missingness, and observation counts
+- variable definitions and transformations
+- consistency between data section, tables, figures, appendices, and result interpretation
+- whether claims use person-level, observation-level, account-level, scenario-level, or time-weighted quantities consistently
+- whether table and figure denominators or conditioning samples are clear enough for the claims they support
+- repeated-record timing and aggregation rules, including first/last/average/person weighting and the unit used when people contribute multiple observations
+- cross-source definition and coding reconciliation, especially human-coded versus AI- or LLM-coded measures, thresholds, missingness, and repeated versions of the same construct
+
+For every empirical study or wave, trace the available flow from screened or invited observations through eligibility, assignment, download/login/onboarding, nonzero activity, follow-up, and final outcome-specific analysis. Compare figure and table N labels with stated exclusions, especially zero-consumption or active-user restrictions, and report material assigned-versus-observed denominator gaps even when the manuscript does not provide a formal flow diagram.
+
+For every finding:
+- Set issue_type to manuscript_issue, parser_artifact, or cannot_verify.
+- Set category to sample_restriction_mismatch, attrition_unclear, denominator_mismatch, variable_construction_unclear, data_flow_inconsistency, or cannot_verify.
+- Set confidence to high, medium, or low.
+- Set location.precision to exact, partial, or missing.
+- Include source_objects for relevant data descriptions, tables, figures, appendix material, or parsed artifacts.
+- Include claim_evidence_links when comparing a data claim to a table or appendix source.
+- Use cannot_verify only when artifacts do not allow a check, and include cannot_verify_reason.
+
+Do not include process notes about skill availability, tooling, or session state.
+
+Shared finding contract:
+
+- For substantive reviewers only: first read `work/bicycle-infrastructure-paper/reviews/parser_quality_auditor.json` and respect its warnings, using safer deterministic artifacts when available. The parser-quality auditor creates that output: it must not try to read its own missing or previous output, and must audit the parsed artifacts independently. Mark evidence cannot_verify when parser quality blocks a reliable check; do not reconstruct missing text, numbers, signs, tables, or formulas.
+- First determine whether the paper contains material within your assigned remit. If it does not, return run_status `ok`, an empty findings array, and a concise summary. The absence of a method, dataset, experiment, or claim type is not a defect; do not stretch the remit to manufacture findings.
+- Audit independently. Do not inspect, quote, or rely on another substantive reviewer's JSON, logs, or conclusions. Use the deterministic manuscript artifacts, the supplied parser-quality guidance, and any external sources permitted for your role. Cross-reviewer comparison and deduplication happen only in downstream normalization and editing.
+- Return findings only for material problems, limitations, or items that require correction or explicit qualification. Do not emit confirmed strengths as findings.
+- Put exactly one independently fixable defect in each finding. If related evidence reveals distinct problems in different claims, questions, denominators, locations, or corrections, emit separate findings rather than bundling them.
+- finding_summary must state the problem directly and unambiguously. Example: "Table 1 reverses the signs of labeling functions 20 and 21."
+- In location, precision="missing" requires page, page_label, section, and text_quote all to be null. Do not use placeholders such as "Throughout" or a paraphrased explanation as a location. If a trustworthy page, section, or verbatim quote is available, retain it and use precision="partial" or "exact" as appropriate; put explanations of document-wide absences in evidence_summary.
+- claim_text must state the manuscript or artifact claim being assessed. When auditing parser quality, grammar, references, or another object without an explicit manuscript claim, phrase claim_text as the positive quality assertion being tested.
+- assessment describes support for claim_text: yes = supported, no = contradicted, partially = only partly supported, cannot_verify = evidence is insufficient. It does not describe whether finding_summary is true.
+- Use one source_objects entry per source. For manuscript or parser evidence, path must be one existing repo-relative file under `work/bicycle-infrastructure-paper/parsed`, never a semicolon-separated list, glob, directory, invented path, prompt, log, or reviewer output. Parser-quality findings guide artifact choice but are not themselves source evidence. For external evidence, set path to null and provide an HTTP(S) URL.
+- Preserve exact signs, decimal points, percentages, units, parentheses, and appendix labels in quotes and numerical checks.
+- Distinguish what the evidence displays from what the authors actually computed or implemented. A missing table row, undocumented covariate, or unavailable analysis file establishes a disclosure limit, not proof that the underlying procedure omitted it. Ask for clarification unless independent retained evidence establishes the implementation error.
+- Before calling two quantities inconsistent, establish that they measure the same estimand, aggregation, sample, denominator, and time period. A ratio of averages need not equal an average of individual ratios; relative percentages can coexist with percentage-point differences. If the needed definition is unavailable, describe the uncertainty rather than inventing a corrected value.
+- An explicitly scoped comparison need not include every treatment arm, outcome, or subgroup. Flag an exclusion only when evidence establishes a misleading claim, an unexplained change of scope, or a material threat to the stated estimand; do not turn a useful extension into a required correction.
+- Separate the observation from the diagnosis and proposed repair. A verified inconsistency may have several explanations; do not assert an unobserved coding mistake, outcome identity, cause, or replacement value as fact.
+- If evidence is missing or unsafe, use cannot_verify rather than reconstructing or guessing.
+- Before a material omission claim, check the relevant main text AND appendix.
+  Distinguish no definition, a partial definition with specific missing operational
+  details, and information already supplied. Acknowledge the existing definition
+  in evidence_summary and ask only for what is actually missing in suggested_fix.
+
+Completion record (version 1):
+- Return completion with version=1, state, scope_description, checks_completed,
+  missing_checks and evidence_limitations. Describe checks actually performed,
+  not just files opened. An empty findings list does not establish completion.
+- Use state=complete only after attempting the entire assigned remit; list any
+  required unattempted checks in missing_checks and use state/run_status=partial.
+  A failed execution uses state/run_status=failed. Retain useful partial findings.
+- A completed attempt may encounter unavailable evidence. Record the attempted
+  check and evidence_limitations, keep missing_checks empty, and use finding-level
+  cannot_verify. Run-level cannot_verify is accepted only with a complete record.
+- If the entire remit is absent, use state=not_applicable, run_status=ok, no
+  findings, and explain the applicability check in checks_completed and scope_description.
+- Never return completion=null for a new audit. Null/missing completion is legacy
+  diagnostic evidence and cannot authorize downstream stages or completed reuse.
+
+Source correspondence:
+- Look up manuscript source objects in `work/bicycle-infrastructure-paper/parsed/source_registry.json`. Copy
+  object_id from its registered id, matching the exact artifact and original PDF
+  page. Your local source id may still be a short alias used by claim-evidence links.
+- Set correspondence=text only with a verbatim text_quote found in that object.
+  Whitespace and discretionary soft-hyphen line wraps are tolerated; visible hyphens, signs,
+  decimals, percentages, inequalities and subscripts are not interchangeable.
+- For page-image/crop evidence or extraction ambiguity, use correspondence=visual
+  and verification_note describing the region inspected and what remains uncertain.
+  Use unresolved when no trustworthy correspondence can be checked. Never invent
+  a text match to satisfy a validator. A located source is not proof of relevance
+  or of the criticism; assess these separately in evidence_summary.
+- If extraction attaches a footnote number to a word (for example 21Our), do not
+  remove digits to claim a text match. Inspect the retained page image and use
+  correspondence=visual with a note identifying the footnote marker and passage.
+  If it cannot be inspected, use unresolved. A null quote is never a text match.
+- External evidence has object_id=null; correspondence=retrieved_external only
+  after actual retrieval, with verification_note identifying checked context and
+  retrieval limitations. Otherwise use url_only and cannot_verify as appropriate.
+
+Numerical contract:
+- numeric_check is null for non-numerical findings. Otherwise use one of the typed
+  contracts in the schema: arithmetic, cross_source, or underdetermined. The old
+  untyped object is for legacy diagnosis only and is not accepted in a new audit.
+- Arithmetic quantities need source_id links, units, explicit percent/proportion
+  scales, sample-specific denominators, context and rounding_half_width (zero only
+  for exact inputs). Use computed_value in the reported scale and an explicit
+  tolerance. Separate observed_discrepancy, possible_explanation and suggested_correction.
+- Copy published arithmetic AND cross-source values and their published scale from the linked
+  quotes. Do not insert an inferred or silently transformed value under a valid
+  source ID. A valid object ID alone does not establish quantity correspondence.
+  If an indispensable input is unresolved, the conclusion remains cannot_verify
+  and explicitly conditional. An unrelated unresolved background citation does
+  not undermine an otherwise verified calculation.
+- The safe wrapper tool is `python scripts/numerical_checks.py`, reading one JSON
+  arithmetic object from stdin. Its allowlist is sum, difference (first minus
+  second), mean, product, ratio (first / second), percent_change (new / old - 1),
+  and percentage_points. No model-supplied code or shell payload is evaluated.
+  If execution is unavailable, retain source-linked evidence without claiming
+  independent recomputation; wrapper validation performs the same calculation.
+- Rounding-compatible intervals are not an arithmetic error. An unsupported or
+  underdetermined check must remain cannot_verify; identify missing information.
+  A ratio of means cannot independently refute a reported mean of ratios. Arithmetic
+  does not establish common samples, estimands or specifications.
+
+Coverage ledger:
+- Return coverage records for every supplied assignment, including an explicit
+  check_performed and attempted boolean. Use checked_no_issue, linked_finding,
+  cannot_verify, not_applicable, or not_checked. Every record needs a nonempty
+  reason: explain the outcome and actual scope, especially sampling limitations.
+- Copy assigned object IDs and use finding_ids only for linked_finding. A file
+  opened is not a claim checked. An unattempted central/required check stays
+  not_checked and makes completion partial; never relabel it cannot_verify.
+- Add overlooked source-linked claims with new claim: IDs, claim text, central or
+  peripheral importance, and the check actually performed. The claim-evidence
+  audit must identify central claims and their supporting main/appendix evidence.
+  A source-linked check for an absent claim may use claim=null only with
+  status=not_applicable, an attempted applicability check, and an explicit reason.
+  Do not invent a manuscript claim to document its absence.
+  Initial display/equation assignments are deterministic candidates, not an
+  exhaustive inventory or the only allowed source of findings.
+- Mark scope=sampled when peripheral material was sampled; describe that scope
+  and its limits in reason. Never describe sampled checks as exhaustive.
+
+Required coverage assignments (not an exhaustive claim inventory):
+[
+  {
+    "id": "assigned_remit",
+    "required": true,
+    "check": "Complete the role-specific checks in the supplied reviewer prompt",
+    "object_ids": []
+  }
+]
+
+One bounded repair of this stage only.
+The previous response was NOT accepted. Read the preserved response at work/bicycle-infrastructure-paper/repairs/08/previous.json.
+Correct the precise errors below using the assigned sources. Do any missing work; do not invent quotations, reasons, sources or completion. If the evidence/work remains unavailable, report that honestly even if this stage remains blocked. Return the entire replacement JSON, not a patch.
+Validation errors:
+[
+  "reviewer/stage=sample_construction_auditor finding=SAMPLE-007 source=S2 object=OBJ-4e6da301f188ae5c7e5d0a63 field=findings.6.source_objects.1 artifact=work/bicycle-infrastructure-paper/parsed/pages/page_007.md: Quote/value does not correspond to registered source; inspect visual evidence explicitly. Intact visual candidates (not yet inspected): OBJ-ce45ed03a529b6805920f1f9 at work/bicycle-infrastructure-paper/parsed/page_images/page_007.png (PDF page 7); OBJ-cc092ca8884bf388ae98dcfa at work/bicycle-infrastructure-paper/parsed/tables/table_3.png (PDF page 7). Only after inspection, use correspondence=visual with an explicit verification_note identifying the image and what it establishes; otherwise retain unresolved/cannot_verify. Do not alter the quote to force a match.",
+  "reviewer/stage=sample_construction_auditor finding=SAMPLE-013 source=S1 object=OBJ-9d16c139938370d7a97e77c6 field=findings.12.source_objects.0 artifact=work/bicycle-infrastructure-paper/parsed/pages/page_005.md: Quote/value does not correspond to registered source; inspect visual evidence explicitly. Intact visual candidates (not yet inspected): OBJ-c95aac7deda93a66f4e54a92 at work/bicycle-infrastructure-paper/parsed/page_images/page_005.png (PDF page 5); OBJ-2795770a05d1783bb9e3b0a5 at work/bicycle-infrastructure-paper/parsed/tables/table_1.png (PDF page 5); OBJ-8032db09354b2426273a53db at work/bicycle-infrastructure-paper/parsed/tables/table_2.png (PDF page 5). Only after inspection, use correspondence=visual with an explicit verification_note identifying the image and what it establishes; otherwise retain unresolved/cannot_verify. Do not alter the quote to force a match.",
+  "reviewer/stage=sample_construction_auditor finding=SAMPLE-001 field=numeric_check sources=[S1 at work/bicycle-infrastructure-paper/parsed/pages/page_004.md; S2 at work/bicycle-infrastructure-paper/parsed/pages/page_005.md]: Numerical quantity is not present in its source quote; copy published values/scales or retain explicit unresolved/visual evidence"
+]

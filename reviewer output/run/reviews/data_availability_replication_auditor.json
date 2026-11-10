@@ -1,0 +1,321 @@
+{
+  "reviewer": "data_availability_replication_auditor",
+  "paper_id": "bicycle-infrastructure-paper",
+  "run_status": "ok",
+  "summary": "The paper is a descriptive pipeline-validation study with a small pilot and a descriptive full run. It reports no prospectively planned experiment, RCT or survey, and it proposes (but does not estimate) the econometric models in Section 6.3. Preregistration and planned-vs-reported checks therefore do not apply, and no registry record is cited. The one concrete reproducibility claim is Appendix B: all code and prompts are in a public GitHub repository. It covers code and prompts only. The paper has no data availability statement for the proprietary newspaper articles, the LLM-coded output or the FINN.no listings. The full-run sample (\"rounds 2-4\") is not defined, and the Table 7 keyword rules are not given. The repository link target cannot be checked from the parsed artifacts.",
+  "findings": [
+    {
+      "id": "REPL-001",
+      "category": "data_availability_unclear",
+      "finding_summary": "The paper has no data availability statement for the datasets behind its headline results (the Retriever/Atekst articles, the LLM-coded output and the FINN.no listings). Appendix B covers only code, prompts, model settings and the pilot coding schema.",
+      "issue_type": "manuscript_issue",
+      "severity": "medium",
+      "confidence": "medium",
+      "location": {
+        "page": 18,
+        "page_label": "18",
+        "section": "B Work pipeline and LLM prompts",
+        "text_quote": "All code and prompts used in this paper are available in a public GitHub repository",
+        "precision": "exact"
+      },
+      "claim_text": "All code and prompts used in this paper are available in a public GitHub repository bike-lane-pipeline.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "Appendix B lists the repository contents as scripts, final and earlier prompts, model settings and the pilot coding schema. It does not say whether the 3,187 article texts or metadata, the LLM output (92 relevant articles, 43 projects), the human coding of the 34 pilot articles or the 700 579 listings are shared, restricted or obtainable. Sections 3.1.1 and A.1 identify the sources (Retriever/Atekst archive, FINN.no), but neither the main text nor the appendix says how a reader could access them. The code claim is concrete, but it does not establish that the reported counts and tables can be reproduced. Absence of a statement is a disclosure limit and does not show that the data are unavailable.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "page 18 text",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_018.md",
+          "page": 18,
+          "page_label": "18",
+          "section": "B Work pipeline and LLM prompts",
+          "text_quote": "All code and prompts used in this paper are available in a public GitHub repository",
+          "url": null,
+          "object_id": "OBJ-03dcf11e0f4853cb90843dbe",
+          "correspondence": "text",
+          "verification_note": "Page 18 image viewed; Appendix B is the only availability statement found in the main text and appendices."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "All code and prompts are public",
+          "source_object_ids": [
+            "S1"
+          ],
+          "relation": "partial",
+          "note": "Covers code and prompts only; no statement on data access for the results."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Add a data availability statement saying which datasets (article texts and metadata, LLM output, human pilot codings, listing texts or aggregates) are released, which are restricted by the Retriever/Atekst and FINN.no licences, and how an eligible reader can obtain them. If article texts cannot be shared, say whether article identifiers, the coded output and the aggregate listing counts are in the repository."
+    },
+    {
+      "id": "REPL-002",
+      "category": "reproducibility_detail_missing",
+      "finding_summary": "The full-run sample behind the main results (3,187 articles from \"rounds 2-4\") is not defined. The paper does not explain what the rounds are, which search terms, dates or deduplication rules produced the articles, or how the pilot round 1 relates to them.",
+      "issue_type": "manuscript_issue",
+      "severity": "medium",
+      "confidence": "high",
+      "location": {
+        "page": 9,
+        "page_label": "9",
+        "section": "5 Results",
+        "text_quote": "The LLM coded 3,187 articles from rounds 2–4, published between October 2025 and October 2026 in 236 different outlets.",
+        "precision": "exact"
+      },
+      "claim_text": "The LLM coded 3,187 articles from rounds 2–4, published between October 2025 and October 2026 in 236 different outlets.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "Section 3.1.1 gives one search term (\"sykkelvei\") and describes the pilot (70 hits, 2 September to 10 October 2026, duplicates and truncated texts excluded). Section 3.2 says only that \"a larger set of 3,187 articles was analysed\". The word \"rounds\" appears first in Section 5 and Table 6; Table 7's note refers to \"rounds 1–4\" and footnote 3 to \"the pilot run\". The main text and appendix define no round numbering, per-round search terms, date windows, query dates, hit counts or duplicate and truncated-text exclusions for the full run. The pilot window is September to October 2026, but the full run is dated October 2025 to October 2026 with few July-August 2026 articles, so the relationship between the two is unexplained. These gaps prevent a reader from re-creating the sample, even if the GitHub repository helps.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "page 9 text",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_009.md",
+          "page": 9,
+          "page_label": "9",
+          "section": "5 Results",
+          "text_quote": "The LLM coded 3,187 articles from rounds 2–4, published between October 2025 and October 2026 in 236 different outlets.",
+          "url": null,
+          "object_id": "OBJ-521bfe93a764059cd1136195",
+          "correspondence": "text",
+          "verification_note": "Full-run sample description."
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "page 4 text",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_004.md",
+          "page": 4,
+          "page_label": "4",
+          "section": "3.1.1 News article base",
+          "text_quote": "The Norwegian search term used to filter newspaper articles is “sykkelvei”.",
+          "url": null,
+          "object_id": "OBJ-1a119a3cb70f2153fc56dd97",
+          "correspondence": "text",
+          "verification_note": "Only search description in the data section; it is framed as the pilot search."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "3,187 articles from rounds 2–4",
+          "source_object_ids": [
+            "S1",
+            "S2"
+          ],
+          "relation": "partial",
+          "note": "Data section describes the pilot search only; round structure of the full run is undefined."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Define rounds 1-4 in Section 3.1. Report for each round the search terms, date window, retrieval date, number of hits, and the duplicate and missing-text exclusions that lead to 3,187 articles. State whether the pilot articles are part of any round."
+    },
+    {
+      "id": "REPL-003",
+      "category": "reproducibility_detail_missing",
+      "finding_summary": "Table 7's counts of projects containing further information rest on a keyword search with hand checking, but the keywords for each field group and the checking rule are not reported.",
+      "issue_type": "manuscript_issue",
+      "severity": "low",
+      "confidence": "medium",
+      "location": {
+        "page": 11,
+        "page_label": "11",
+        "section": "6.2 / Table 7",
+        "text_quote": "Coded by keyword search for each field group, with every match checked by hand.",
+        "precision": "exact"
+      },
+      "claim_text": "Table 7 shows how many of the 44 projects are described within the groups in Table 1, coded by keyword search for each field group with every match checked by hand.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "The note gives the method in one sentence. The appendix reports keyword rules for the FINN.no listings (A.3.1 and Table 9) but none for the article field groups. The paper does not say which keywords define a field group, who checked the matches or whether the check could only remove or also add matches. The note's pointer to rounds 1-4 inherits the undefined round structure. Because Section 6.3 uses these fields for proposed analyses, readers need the rules to check the counts (for example 19, 21, 23, 42). The paper does not claim these counts are validated.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "page 11 text",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_011.md",
+          "page": 11,
+          "page_label": "11",
+          "section": "6.2 / Table 7",
+          "text_quote": "Coded by keyword search for each field group, with every match checked by hand.",
+          "url": null,
+          "object_id": "OBJ-95b2618a59737e0b1725c4df",
+          "correspondence": "text",
+          "verification_note": "Note to Table 7; the table body was read from page text, not the structured CSV, because of parser warnings."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Keyword coding of field groups with manual checks",
+          "source_object_ids": [
+            "S1"
+          ],
+          "relation": "partial",
+          "note": "Method named, but keyword lists and checking procedure not provided."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Add the keyword list per field group and the manual-check rule to the appendix, or point to the specific repository file that holds them."
+    },
+    {
+      "id": "REPL-004",
+      "category": "cannot_verify",
+      "finding_summary": "The code-and-prompts availability claim cannot be checked from the parsed artifacts. The repository name is a hyperlink, but the parsed text has no URL, owner or commit or release identifier, so the repository's existence and contents cannot be confirmed.",
+      "issue_type": "cannot_verify",
+      "severity": "low",
+      "confidence": "low",
+      "location": {
+        "page": 18,
+        "page_label": "18",
+        "section": "B Work pipeline and LLM prompts",
+        "text_quote": "The repository contains the scripts that call the LLM and process its output",
+        "precision": "exact"
+      },
+      "claim_text": "The repository contains the scripts that call the LLM and process its output, the final prompt and its earlier versions, the model settings, and the coding schema used for the manual coding of the pilot sample.",
+      "assessment": "cannot_verify",
+      "cannot_verify_reason": "The parsed text gives only the name 'bike-lane-pipeline'. The page-18 image shows it as a hyperlink, but the target URL is not in any retained artifact and no registry URL is cited, so the repository could not be inspected. Broad web searches for undisclosed locations were out of scope.",
+      "evidence_summary": "The claim is specific, covering scripts, the final prompt and earlier versions, model settings and the pilot coding schema. Section 3.2 says the prompt was revised after the first run and the validation set re-analysed, so the earlier prompt versions are material for reproducing the reported agreement figures. The reference list contains no entry for the repository, and the text does not give a version, commit hash or archived release matching the 2026 results. The hyperlink may point to a valid repository. Its absence from the retained text means a reader of the extracted text, or a printed copy, cannot locate it.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "page 18 text",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_018.md",
+          "page": 18,
+          "page_label": "18",
+          "section": "B Work pipeline and LLM prompts",
+          "text_quote": "The repository contains the scripts that call the LLM and process its output",
+          "url": null,
+          "object_id": "OBJ-03dcf11e0f4853cb90843dbe",
+          "correspondence": "text",
+          "verification_note": "Page 18 image shows 'bike-lane-pipeline' as a hyperlink; the URL is not recoverable from the parsed text."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Public repository contains scripts, prompts, settings and schema",
+          "source_object_ids": [
+            "S1"
+          ],
+          "relation": "cannot_verify",
+          "note": "Link target unavailable; contents not inspected."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Print the full repository URL in the text or the reference list, and cite a fixed commit hash or archived release (for example a DOI-minted snapshot) corresponding to the reported runs."
+    }
+  ],
+  "notes": [
+    "No preregistration, pre-analysis plan or registry identifier is cited. The design is a descriptive validation, so none is required, and the Section 6.3 models are explicitly proposals (\"The specifications mentioned in this section are examples\") that are not estimated.",
+    "Prompt revision after the first run and re-analysis of the validation set are disclosed in Section 3.2, so no undisclosed planned-vs-reported deviation is raised.",
+    "Tables 7 and 8 were read from page text rather than the structured CSV/markdown because of the parser-quality warnings. Page-18 image was viewed to confirm the repository name is a hyperlink."
+  ],
+  "completion": {
+    "version": 1,
+    "state": "complete",
+    "scope_description": "Applicability check for preregistration and planned-vs-reported analyses, plus a scoped check of the concrete code/prompt availability claim and reproducibility details tied to reported counts, using the parsed full text and page text for the 18-page manuscript.",
+    "checks_completed": [
+      "Read parser-quality output and used page text rather than structured table CSV/markdown",
+      "Searched all pages for preregistration, pre-analysis plan, registry, GitHub and round terminology",
+      "Read the full manuscript text, including Sections 3-6, Section 8 and Appendices A-B",
+      "Checked the Appendix B availability claim against the main text and appendices for a data statement, URL, version and data access",
+      "Compared Section 3.1.1, Section 3.2, Section 5, Table 6 and Table 7 for sample definition consistency",
+      "Viewed the page-18 image to check the repository reference"
+    ],
+    "missing_checks": [],
+    "evidence_limitations": [
+      "The repository hyperlink target is not in the parsed artifacts, so repository contents could not be inspected.",
+      "No external registry applies because none is cited; no web search for undisclosed plans was done."
+    ]
+  },
+  "coverage": [
+    {
+      "item_id": "assigned_remit",
+      "source_object_ids": [
+        "OBJ-03dcf11e0f4853cb90843dbe",
+        "OBJ-521bfe93a764059cd1136195",
+        "OBJ-95b2618a59737e0b1725c4df",
+        "OBJ-1a119a3cb70f2153fc56dd97"
+      ],
+      "claim": null,
+      "check_performed": "Read the full parsed manuscript; applicability check for preregistration and planned-vs-reported analyses; checked the code/prompt availability claim, the data statement, sample-definition consistency and keyword-rule disclosure.",
+      "status": "linked_finding",
+      "reason": "Preregistration and planned-vs-reported checks are not applicable because the study is a descriptive pipeline validation with no prospectively planned experiment or survey. Four reproducibility findings were raised: missing data availability statement, undefined full-run rounds, missing Table 7 keyword rules, and an unverifiable repository link.",
+      "finding_ids": [
+        "REPL-001",
+        "REPL-002",
+        "REPL-003",
+        "REPL-004"
+      ],
+      "attempted": true,
+      "importance": "central",
+      "scope": "exhaustive"
+    },
+    {
+      "item_id": "claim:preregistration-applicability",
+      "source_object_ids": [
+        "OBJ-1a119a3cb70f2153fc56dd97"
+      ],
+      "claim": null,
+      "check_performed": "Searched all pages for preregistration, pre-analysis plan, registry and AEA/OSF/AsPredicted terms, and checked whether any design is prospectively planned.",
+      "status": "not_applicable",
+      "reason": "No experiment, RCT, survey or registered plan is reported. The Section 6.3 econometric models are described as proposals and are not estimated, so there are no planned analyses to compare with reported ones.",
+      "finding_ids": [],
+      "attempted": true,
+      "importance": "central",
+      "scope": "exhaustive"
+    },
+    {
+      "item_id": "claim:appendix-b-code-availability",
+      "source_object_ids": [
+        "OBJ-03dcf11e0f4853cb90843dbe"
+      ],
+      "claim": "All code and prompts used in this paper are available in a public GitHub repository bike-lane-pipeline.",
+      "check_performed": "Compared the claim with the page-18 text and image and with the rest of the manuscript for a URL, version and data-access statement.",
+      "status": "linked_finding",
+      "reason": "The claim is concrete but covers code only, and the link target cannot be retrieved from parsed artifacts.",
+      "finding_ids": [
+        "REPL-001",
+        "REPL-004"
+      ],
+      "attempted": true,
+      "importance": "central",
+      "scope": "exhaustive"
+    },
+    {
+      "item_id": "claim:full-run-sample",
+      "source_object_ids": [
+        "OBJ-521bfe93a764059cd1136195"
+      ],
+      "claim": "The LLM coded 3,187 articles from rounds 2–4, published between October 2025 and October 2026 in 236 different outlets.",
+      "check_performed": "Compared the sample description in Section 5 with Sections 3.1.1 and 3.2, Table 6, Table 7 and footnote 3.",
+      "status": "linked_finding",
+      "reason": "Rounds are used in Section 5, Table 6 and Table 7 but never defined, and the search and deduplication rules for the full run are not described.",
+      "finding_ids": [
+        "REPL-002"
+      ],
+      "attempted": true,
+      "importance": "central",
+      "scope": "exhaustive"
+    },
+    {
+      "item_id": "claim:table7-keyword-coding",
+      "source_object_ids": [
+        "OBJ-95b2618a59737e0b1725c4df"
+      ],
+      "claim": "Table 7 counts are coded by keyword search for each field group, with every match checked by hand.",
+      "check_performed": "Checked the main text and Appendix A-B for keyword lists and manual-check rules for the article field groups.",
+      "status": "linked_finding",
+      "reason": "Keyword lists exist only for the FINN.no listings, not for the article field groups.",
+      "finding_ids": [
+        "REPL-003"
+      ],
+      "attempted": true,
+      "importance": "peripheral",
+      "scope": "exhaustive"
+    }
+  ]
+}

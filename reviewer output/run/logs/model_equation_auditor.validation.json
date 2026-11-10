@@ -1,0 +1,4 @@
+[
+  "Added central/peripheral claims must link manuscript evidence",
+  "reviewer/stage=model_equation_auditor finding=MODEL-001 source=S2 object=None field=findings.0.source_objects.1 artifact=work/bicycle-infrastructure-paper/parsed/page_images/page_016.png: Missing or unknown registered source object ID"
+]

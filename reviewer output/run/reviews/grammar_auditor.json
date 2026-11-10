@@ -1,0 +1,282 @@
+{
+  "reviewer": "grammar_auditor",
+  "paper_id": "bicycle-infrastructure-paper",
+  "run_status": "ok",
+  "summary": "Read the full parsed text (pages 1–18, including abstract, body, tables, footnotes and appendices). The prose is generally clean. Five isolated copyediting issues were found: a subject–verb disagreement, an unfilled placeholder, a broken parallel construction, and two missing commas. Quotes for findings on pages 6 and 10 were confirmed against the rendered page images.",
+  "findings": [
+    {
+      "id": "GRAM-001",
+      "category": "grammar",
+      "finding_summary": "Subject–verb disagreement in footnote 3: \"The 96 articles consists of\".",
+      "issue_type": "copyedit_issue",
+      "severity": "low",
+      "confidence": "high",
+      "location": {
+        "page": 10,
+        "page_label": "10",
+        "section": "6 Further Uses of the Articles (footnote 3)",
+        "text_quote": "The 96 articles consists of",
+        "precision": "exact"
+      },
+      "claim_text": "The 96 articles consists of the 92 articles from rounds 2–4 (Section 5) and four from the pilot run.",
+      "assessment": "no",
+      "cannot_verify_reason": null,
+      "evidence_summary": "The plural subject \"The 96 articles\" takes a singular verb in footnote 3. Confirmed in the rendered page 10 image (footnote at the bottom of the page).",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "figure",
+          "label": "Page 10 rendered image",
+          "path": "work/bicycle-infrastructure-paper/parsed/page_images/page_010.png",
+          "page": 10,
+          "page_label": "10",
+          "section": "Footnote 3",
+          "text_quote": null,
+          "url": null,
+          "object_id": "OBJ-ac24aa7e3206f52a9b3986d0",
+          "correspondence": "visual",
+          "verification_note": "Inspected the page 10 image, footnote 3 at the bottom of the page. It reads \"The 96 articles consists of the 92 articles from rounds 2–4 (Section 5) and four from the pilot run.\" The same wording appears in parsed pages/page_010.md."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "The 96 articles consists of the 92 articles from rounds 2–4",
+          "source_object_ids": [
+            "S1"
+          ],
+          "relation": "contradicts",
+          "note": "Grammatical agreement error."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Change \"consists\" to \"consist\": \"The 96 articles consist of the 92 articles from rounds 2–4 (Section 5) and four from the pilot run.\""
+    },
+    {
+      "id": "GRAM-002",
+      "category": "sentence_clarity",
+      "finding_summary": "The title-page author contribution for Valentin Bayas is an unfilled placeholder, \"[add contribution]\".",
+      "issue_type": "copyedit_issue",
+      "severity": "medium",
+      "confidence": "high",
+      "location": {
+        "page": 1,
+        "page_label": "1",
+        "section": "Title page",
+        "text_quote": "Valentin Bayas: [add contribution]",
+        "precision": "exact"
+      },
+      "claim_text": "Valentin Bayas: [add contribution]",
+      "assessment": "no",
+      "cannot_verify_reason": null,
+      "evidence_summary": "Every other author has a contribution statement. This entry still contains drafting placeholder text.",
+      "source_objects": [
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "Parsed page 1 blocks",
+          "path": "work/bicycle-infrastructure-paper/parsed/blocks/page_001.blocks.json",
+          "page": 1,
+          "page_label": "1",
+          "section": "Title page",
+          "text_quote": "[add contribution]",
+          "url": null,
+          "object_id": "OBJ-24d51acffc9e6c868ee9bc67",
+          "correspondence": "text",
+          "verification_note": null
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Valentin Bayas: [add contribution]",
+          "source_object_ids": [
+            "S2"
+          ],
+          "relation": "contradicts",
+          "note": "Placeholder text left in the manuscript."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Replace the placeholder with the actual contribution statement."
+    },
+    {
+      "id": "GRAM-003",
+      "category": "sentence_clarity",
+      "finding_summary": "Broken parallel structure in coding rule 3: \"are linked ... and counted as metadata\" leaves the subject of \"counted\" unclear.",
+      "issue_type": "copyedit_issue",
+      "severity": "medium",
+      "confidence": "medium",
+      "location": {
+        "page": 6,
+        "page_label": "6",
+        "section": "3.1.4 Manual coding of the pilot",
+        "text_quote": "as with the four articles about Homborsund and counted as metadata to analyse coverage",
+        "precision": "exact"
+      },
+      "claim_text": "Articles about the same project are linked to a single project record, as with the four articles about Homborsund and counted as metadata to analyse coverage.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "\"counted as metadata\" attaches grammatically to \"the four articles about Homborsund\", and the intended parallel with \"are linked\" is lost. The reader must infer the intended meaning. Confirmed in the rendered page 6 image, item 3 of the list; the sentence wraps across lines there.",
+      "source_objects": [
+        {
+          "id": "S3",
+          "type": "figure",
+          "label": "Page 6 rendered image",
+          "path": "work/bicycle-infrastructure-paper/parsed/page_images/page_006.png",
+          "page": 6,
+          "page_label": "6",
+          "section": "3.1.4 coding rule 3",
+          "text_quote": null,
+          "url": null,
+          "object_id": "OBJ-dae0dc01e25d4ff3c8ca0898",
+          "correspondence": "visual",
+          "verification_note": "Inspected the page 6 image, item 3 \"One record per event\" at the top of the page. It reads \"...linked to a single project record, as with the four articles about Homborsund and counted as metadata to analyse coverage.\" The quote wraps across three lines in the rendering, so the block-level JSON text did not match as a single string."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Articles about the same project are linked to a single project record ... and counted as metadata to analyse coverage.",
+          "source_object_ids": [
+            "S3"
+          ],
+          "relation": "partial",
+          "note": "Sentence structure obscures what is counted as metadata."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Rewrite, for example: \"Articles about the same project are linked to a single project record, as with the four articles about Homborsund, and the number of articles per project is recorded as metadata to analyse coverage.\""
+    },
+    {
+      "id": "GRAM-004",
+      "category": "punctuation",
+      "finding_summary": "Missing comma before \"for example\" at the end of the sentence.",
+      "issue_type": "copyedit_issue",
+      "severity": "low",
+      "confidence": "medium",
+      "location": {
+        "page": 10,
+        "page_label": "10",
+        "section": "6.1 An application to house listing data",
+        "text_quote": "short cycling distance to the city centre for example",
+        "precision": "exact"
+      },
+      "claim_text": "real estate agents may instead have described a short cycling distance to the city centre for example.",
+      "assessment": "no",
+      "cannot_verify_reason": null,
+      "evidence_summary": "The sentence-final \"for example\" needs to be set off with a comma. In the rendered page 10 image the phrase wraps from \"city centre\" to \"for example.\" on the next line, with no comma.",
+      "source_objects": [
+        {
+          "id": "S4",
+          "type": "figure",
+          "label": "Page 10 rendered image",
+          "path": "work/bicycle-infrastructure-paper/parsed/page_images/page_010.png",
+          "page": 10,
+          "page_label": "10",
+          "section": "6.1",
+          "text_quote": null,
+          "url": null,
+          "object_id": "OBJ-ac24aa7e3206f52a9b3986d0",
+          "correspondence": "visual",
+          "verification_note": "Inspected the page 10 image, the third paragraph of Section 6.1 (\"As a first step, Appendix A ...\"). It reads \"...as real estate agents may instead have described a short cycling distance to the city centre for example.\" The phrase wraps across two lines, which is why the block-level text did not match as a single string."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "a short cycling distance to the city centre for example",
+          "source_object_ids": [
+            "S4"
+          ],
+          "relation": "supports",
+          "note": "Punctuation omission confirmed."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Write \"city centre, for example.\""
+    },
+    {
+      "id": "GRAM-005",
+      "category": "punctuation",
+      "finding_summary": "Missing comma before \"but\" joining two independent clauses.",
+      "issue_type": "copyedit_issue",
+      "severity": "low",
+      "confidence": "medium",
+      "location": {
+        "page": 4,
+        "page_label": "4",
+        "section": "3.1.1 News article base",
+        "text_quote": "cycling paths in this pilot but the analysis could easily be expanded",
+        "precision": "exact"
+      },
+      "claim_text": "We restrict the search to articles discussing cycling paths in this pilot but the analysis could easily be expanded to include other types of bicycle or transport infrastructure.",
+      "assessment": "no",
+      "cannot_verify_reason": null,
+      "evidence_summary": "Two independent clauses are joined by \"but\" with no comma, which makes the long sentence harder to read.",
+      "source_objects": [
+        {
+          "id": "S5",
+          "type": "text",
+          "label": "Parsed page 4 blocks",
+          "path": "work/bicycle-infrastructure-paper/parsed/blocks/page_004.blocks.json",
+          "page": 4,
+          "page_label": "4",
+          "section": "3.1.1",
+          "text_quote": "cycling paths in this pilot but the analysis could easily be expanded",
+          "url": null,
+          "object_id": "OBJ-99c91734277ecbde7ebfa5de",
+          "correspondence": "text",
+          "verification_note": null
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "We restrict the search ... in this pilot but the analysis could easily be expanded",
+          "source_object_ids": [
+            "S5"
+          ],
+          "relation": "supports",
+          "note": "Punctuation omission confirmed."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Insert a comma: \"...in this pilot, but the analysis could easily be expanded...\""
+    }
+  ],
+  "notes": [
+    "Scope was limited to grammar and copyediting. Content, numbers, references and citations were not assessed.",
+    "Footnote markers attached to words in the extraction (for example \"projects3\") were treated as parser artifacts and not reported."
+  ],
+  "completion": {
+    "version": 1,
+    "state": "complete",
+    "scope_description": "Grammar and copyediting audit of the full parsed manuscript text (pages 1–18, including body, table captions and notes, footnotes and appendices).",
+    "checks_completed": [
+      "Read the entire full_text.md for grammar, typos, duplicated words, punctuation and word-choice errors",
+      "Checked footnotes, table notes and figure captions for agreement and punctuation",
+      "Confirmed the page 6 and page 10 findings against the rendered page images and the page-level markdown, because the quotes wrap across lines",
+      "Confirmed the page 1 and page 4 quotes against the registered block text"
+    ],
+    "missing_checks": [],
+    "evidence_limitations": [
+      "Review relied mainly on text extraction. Only pages 6 and 10 were inspected as rendered images, so typographic issues visible only in the rendered PDF on other pages would not be detected."
+    ]
+  },
+  "coverage": [
+    {
+      "item_id": "assigned_remit",
+      "source_object_ids": [],
+      "claim": null,
+      "check_performed": "Read the whole parsed full text and audited it for grammar, typos, duplicated words, punctuation and sentence clarity. Quotes on pages 6 and 10 were verified against the rendered page images; the other quotes were verified against the registered page block text.",
+      "status": "linked_finding",
+      "reason": "Exhaustive read of the manuscript text. Five low- or medium-severity copyedit findings were recorded. Parser artifacts such as footnote markers attached to words were deliberately not reported.",
+      "finding_ids": [
+        "GRAM-001",
+        "GRAM-002",
+        "GRAM-003",
+        "GRAM-004",
+        "GRAM-005"
+      ],
+      "attempted": true,
+      "importance": "central",
+      "scope": "exhaustive"
+    }
+  ]
+}

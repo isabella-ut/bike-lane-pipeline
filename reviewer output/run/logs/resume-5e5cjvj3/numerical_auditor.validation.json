@@ -1,0 +1,3 @@
+[
+  "reviewer/stage=numerical_auditor finding=NUM-002 source=S4 object=OBJ-4e6da301f188ae5c7e5d0a63 field=findings.1.source_objects.3 artifact=work/bicycle-infrastructure-paper/parsed/pages/page_007.md: Quote/value does not correspond to registered source; inspect visual evidence explicitly. Intact visual candidates (not yet inspected): OBJ-ce45ed03a529b6805920f1f9 at work/bicycle-infrastructure-paper/parsed/page_images/page_007.png (PDF page 7); OBJ-cc092ca8884bf388ae98dcfa at work/bicycle-infrastructure-paper/parsed/tables/table_3.png (PDF page 7). Only after inspection, use correspondence=visual with an explicit verification_note identifying the image and what it establishes; otherwise retain unresolved/cannot_verify. Do not alter the quote to force a match."
+]

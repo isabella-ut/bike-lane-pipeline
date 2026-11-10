@@ -1,0 +1,3 @@
+[
+  "reviewer/stage=abstract_conclusion_consistency_auditor finding=CONSIST-008 field=numeric_check sources=[S1 at work/bicycle-infrastructure-paper/parsed/pages/page_004.md; S2 at work/bicycle-infrastructure-paper/parsed/pages/page_005.md]: Numerical quantity is not present in its source quote; copy published values/scales or retain explicit unresolved/visual evidence"
+]

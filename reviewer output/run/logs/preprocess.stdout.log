@@ -1,0 +1,10 @@
+Consider using the pymupdf_layout package for a greatly improved page layout analysis.
+{
+  "status": "ok",
+  "paper_id": "bicycle-infrastructure-paper",
+  "parsed_dir": "C:\\Users\\isabelu\\OneDrive - NTNU\\Courses\\NHH Bergen\\reviewer\\work\\bicycle-infrastructure-paper\\parsed",
+  "reviews_dir": "C:\\Users\\isabelu\\OneDrive - NTNU\\Courses\\NHH Bergen\\reviewer\\work\\bicycle-infrastructure-paper\\reviews",
+  "page_count": 18,
+  "likely_scanned_pages": [],
+  "ocr_recommended_pages": []
+}

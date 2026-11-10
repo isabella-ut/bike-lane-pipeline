@@ -1,0 +1,760 @@
+{
+  "reviewer": "model_equation_auditor",
+  "paper_id": "bicycle-infrastructure-paper",
+  "run_status": "ok",
+  "summary": "The paper has no estimated regression or formal theoretical model. Its only model content is two proposed specifications in Section 6.3: an ordered latent-variable model of date precision (eq. 1) and a triple-difference housing-listing model (eq. 2). The audit found several problems in how eq. (2) is specified and interpreted. The outcome is defined as both an indicator and a price. Near_j has no project index. The triple-difference model omits the lower-order Near×Attention term. The claim that misdating biases results toward zero ignores differential error. Restricting to precisely dated projects removes most variation in the Attention variable. The interpretation of eq. (1) also overlooks a mechanical link between attention and precision. Separately, the Table 9 classification rule contradicts its own example, and three text-table or definition inconsistencies were found (Figure 1 unit drift, Stord footnote, Q1 2024 vs January–April gap). Tables 3, 4 and 8, the Table 6 counts and the Table 5 geometry were cross-checked and are consistent within rounding. The structured table CSV/markdown was avoided per parser-quality guidance; page text was used.",
+  "findings": [
+    {
+      "id": "MODEL-001",
+      "category": "notation_inconsistency",
+      "finding_summary": "Eq. (2) defines Y_jpt as an indicator for a cycling mention but allows the same Y_jpt to be a listing price, so the outcome's type and the sign hypotheses (θ>0, δ>0) are not defined for the price case.",
+      "issue_type": "manuscript_issue",
+      "severity": "medium",
+      "confidence": "high",
+      "location": {
+        "page": 11,
+        "page_label": "11",
+        "section": "6.3 Proposed econometric analysis",
+        "text_quote": "alternatively, its price), Nearj indicates the inner distance band,",
+        "precision": "exact"
+      },
+      "claim_text": "Y_jpt indicates that listing j near project p in month t mentions cycling (any type, or each type separately; alternatively, its price).",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "The text says Y_jpt 'indicates that' a listing mentions cycling, a binary variable. It then adds 'alternatively, its price' as another value of the same symbol. A price is continuous (levels or logs unspecified), so the interpretation of θ and δ, the estimator (linear probability vs price regression) and the hypotheses θ>0 and δ>0 differ by outcome. The paper does not distinguish them. The equation is labelled an example specification, so this is a definitional ambiguity, not a computational error.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "page 11 text, eq. (2) and definitions",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_011.md",
+          "page": 11,
+          "page_label": "11",
+          "section": "6.3",
+          "text_quote": "alternatively, its price), Nearj indicates the inner distance band,",
+          "url": null,
+          "object_id": "OBJ-95b2618a59737e0b1725c4df",
+          "correspondence": "text",
+          "verification_note": "Quote located in page-11 text; equation read from page text rather than the structured table."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Y_jpt is a mention indicator, or alternatively a price",
+          "source_object_ids": [
+            "S1"
+          ],
+          "relation": "partial",
+          "note": "One symbol is given two incompatible measurement types."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Define separate outcome symbols (a mention indicator and log price) and state the hypothesis sign and interpretation for each. If a binary outcome is used, state the estimator."
+    },
+    {
+      "id": "MODEL-002",
+      "category": "notation_inconsistency",
+      "finding_summary": "Eq. (2) indexes treatment by listing only (Near_j) although nearness is defined relative to a specific project p and Y_jpt already carries a project index, so the notation does not handle listings near several projects.",
+      "issue_type": "manuscript_issue",
+      "severity": "low",
+      "confidence": "medium",
+      "location": {
+        "page": 11,
+        "page_label": "11",
+        "section": "6.3 Proposed econometric analysis",
+        "text_quote": "Yjpt = αa(j) + λpt + θ Nearj × Postpt + δ Nearj × Postpt × Attentionp + εjpt, (2)",
+        "precision": "exact"
+      },
+      "claim_text": "Near_j indicates the inner distance band; listing j is near project p in month t.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "Y, Post and Attention are indexed by project (jpt, pt, p), and the text describes 'listing j near project p'. Near_j has only a listing subscript. Being in the inner band is a property of a listing–project pair. If a listing lies near one project and far from another, Near_j is not well defined. The stacking of listings across projects (a listing appearing once per project) is not described.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "equation",
+          "label": "Eq. (2)",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_011.md",
+          "page": 11,
+          "page_label": "11",
+          "section": "6.3",
+          "text_quote": "Yjpt = αa(j) + λpt + θ Nearj × Postpt + δ Nearj × Postpt × Attentionp + εjpt, (2)",
+          "url": null,
+          "object_id": "OBJ-95b2618a59737e0b1725c4df",
+          "correspondence": "text",
+          "verification_note": "Equation line located in page text."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Near_j defined relative to project p",
+          "source_object_ids": [
+            "S1"
+          ],
+          "relation": "partial",
+          "note": "The index structure of Near_j does not match its definition."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Use Near_jp and state how listings near more than one project are treated (stacked, nearest project only, or excluded)."
+    },
+    {
+      "id": "MODEL-003",
+      "category": "model_interpretation_overreach",
+      "finding_summary": "Eq. (2) includes the triple interaction Near×Post×Attention without the Near_j×Attention_p lower-order term, which neither fixed effect absorbs, so δ is not clearly the differential post-opening effect of attention.",
+      "issue_type": "manuscript_issue",
+      "severity": "medium",
+      "confidence": "medium",
+      "location": {
+        "page": 11,
+        "page_label": "11",
+        "section": "6.3 Proposed econometric analysis",
+        "text_quote": "The hypotheses are θ > 0 and δ > 0: openings increase mentions of cycling nearby, and",
+        "precision": "exact"
+      },
+      "claim_text": "The hypotheses are θ > 0 and δ > 0: openings increase mentions of cycling nearby, and more so when the opening is well known locally.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "The fixed effects are area α_a(j) and project-by-month λ_pt. λ_pt absorbs Post_pt, Attention_p and Post_pt×Attention_p, because all three vary only at project-month level. α_a(j) absorbs Near_j only if Near_j is constant within area, and it never absorbs Near_j×Attention_p. The displayed model contains Near×Post and Near×Post×Attention but not the Near_j×Attention_p term, so a pre-existing difference in cycling mentions between near and far listings that varies with Attention_p loads onto δ. Interpreting δ>0 as 'more so when the opening is well known' needs that term or an explicit assumption that it is zero. The paper calls these specifications examples, so this is a specification gap to fix.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "equation",
+          "label": "Eq. (2) and hypotheses",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_011.md",
+          "page": 11,
+          "page_label": "11",
+          "section": "6.3",
+          "text_quote": "Yjpt = αa(j) + λpt + θ Nearj × Postpt + δ Nearj × Postpt × Attentionp + εjpt, (2)",
+          "url": null,
+          "object_id": "OBJ-95b2618a59737e0b1725c4df",
+          "correspondence": "text",
+          "verification_note": "Equation and subsequent hypothesis sentence read from page 11 text."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "δ>0 means openings matter more when well known",
+          "source_object_ids": [
+            "S1"
+          ],
+          "relation": "partial",
+          "note": "Interpretation requires the omitted Near×Attention term or an explicit zero restriction."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Add Near_jp×Attention_p (and state which main effects are absorbed by the fixed effects), or state the restriction under which δ identifies the differential effect."
+    },
+    {
+      "id": "MODEL-004",
+      "category": "model_interpretation_overreach",
+      "finding_summary": "The statement that date misclassification 'could bias the results toward zero' does not follow for eq. (2), because misclassification that is larger for low-Attention projects would attenuate θ differently across Attention and so bias δ, possibly away from zero.",
+      "issue_type": "manuscript_issue",
+      "severity": "medium",
+      "confidence": "medium",
+      "location": {
+        "page": 12,
+        "page_label": "12",
+        "section": "6.3 Proposed econometric analysis",
+        "text_quote": "attention are dated less precisely. This could bias the results toward zero.",
+        "precision": "exact"
+      },
+      "claim_text": "Some listings could be assigned to the wrong side of the opening if projects with less attention are dated less precisely. This could bias the results toward zero.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "The premise is that misdating of Post_pt is related to Attention_p, which is differential measurement error. Classical attenuation of θ is plausible. In eq. (2), however, δ is the coefficient on Near×Post×Attention. If the effect is attenuated more for low-Attention projects, the estimated interaction rises mechanically, so δ>0 could appear even when the true effect does not depend on attention. The sentence refers generally to 'the results', but the sign and direction of the bias on the heterogeneity coefficient is not toward zero. The text does not distinguish θ from δ.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "page 12 text",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_012.md",
+          "page": 12,
+          "page_label": "12",
+          "section": "6.3",
+          "text_quote": "attention are dated less precisely. This could bias the results toward zero.",
+          "url": null,
+          "object_id": "OBJ-a6c6d31e7be45f25b775aa47",
+          "correspondence": "text",
+          "verification_note": "Quote located in page-12 text."
+        },
+        {
+          "id": "S2",
+          "type": "equation",
+          "label": "Eq. (2)",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_011.md",
+          "page": 11,
+          "page_label": "11",
+          "section": "6.3",
+          "text_quote": "Yjpt = αa(j) + λpt + θ Nearj × Postpt + δ Nearj × Postpt × Attentionp + εjpt, (2)",
+          "url": null,
+          "object_id": "OBJ-95b2618a59737e0b1725c4df",
+          "correspondence": "text",
+          "verification_note": "Equation line located in page-11 text."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Misdating biases results toward zero",
+          "source_object_ids": [
+            "S1",
+            "S2"
+          ],
+          "relation": "partial",
+          "note": "True for θ under non-differential error; not established for the interaction δ."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Qualify the claim: state that attenuation applies to θ under non-differential error and that attention-dependent misdating can bias δ in either direction, or state the assumed error structure."
+    },
+    {
+      "id": "MODEL-005",
+      "category": "assumption_mismatch",
+      "finding_summary": "The proposed remedy of restricting eq. (2) to precisely dated projects conflicts with the paper's own counts: most day-dated projects are ones with a reported ceremony, so the sample would have little variation in Attention and δ would be poorly identified.",
+      "issue_type": "manuscript_issue",
+      "severity": "medium",
+      "confidence": "medium",
+      "location": {
+        "page": 12,
+        "page_label": "12",
+        "section": "6.3 Proposed econometric analysis",
+        "text_quote": "should first test if this is a problem. If it is, then model (2) should only use precisely dated",
+        "precision": "exact"
+      },
+      "claim_text": "If date precision is related to attention, model (2) should only use precisely dated projects.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "The paper reports that of 44 projects, 18 have a reported ceremony and 17 of those can be dated to the day, versus 2 of the 26 without a ceremony. So 17 of the 19 day-dated projects have a ceremony. If 'precisely dated' means day precision and Attention is measured by ceremony, the restricted sample contains almost no no-ceremony projects, and the Near×Post×Attention coefficient δ rests on about two projects. The restriction also selects on the variable (Attention) whose effect δ is meant to estimate. If month precision is included (29 projects in Table 6), variation may be larger, but the paper does not define 'precisely dated'.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "page 12 text",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_012.md",
+          "page": 12,
+          "page_label": "12",
+          "section": "6.3",
+          "text_quote": "should first test if this is a problem. If it is, then model (2) should only use precisely dated",
+          "url": null,
+          "object_id": "OBJ-a6c6d31e7be45f25b775aa47",
+          "correspondence": "text",
+          "verification_note": "Quote located in page-12 text."
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "page 11 text, ceremony counts",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_011.md",
+          "page": 11,
+          "page_label": "11",
+          "section": "6.3",
+          "text_quote": "Of these, 17 can be dated to the day, compared with 2 of the 26 projects",
+          "url": null,
+          "object_id": "OBJ-95b2618a59737e0b1725c4df",
+          "correspondence": "text",
+          "verification_note": "Counts read from page-11 text; the quote spans a line break."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Restrict model (2) to precisely dated projects",
+          "source_object_ids": [
+            "S1",
+            "S2"
+          ],
+          "relation": "partial",
+          "note": "Own counts show the restricted sample is dominated by ceremony projects."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Define 'precisely dated' (day only vs day or month), report how much variation in Attention remains in the restricted sample, and discuss alternatives such as bounding or modelling date uncertainty."
+    },
+    {
+      "id": "MODEL-006",
+      "category": "model_interpretation_overreach",
+      "finding_summary": "The conclusion that date precision 'depends on how much attention an opening receives' is drawn from a ceremony-versus-precision split, but the proposed Attention measures (stories, outlets, ceremony) are measured from the same articles that determine precision, so the relationship may be mechanical.",
+      "issue_type": "manuscript_issue",
+      "severity": "low",
+      "confidence": "low",
+      "location": {
+        "page": 11,
+        "page_label": "11",
+        "section": "6.3 Proposed econometric analysis",
+        "text_quote": "depends on how much attention an opening receives.",
+        "precision": "exact"
+      },
+      "claim_text": "The precision of the dates is not random but depends on how much attention an opening receives, and eq. (1) tests this.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "In eq. (1), Attention_p is the number of distinct stories, number of outlets or a reported ceremony, and the outcome is the best date precision found in articles about the project. Projects with more articles have more chances to contain a precise date, and ceremony reports typically state the date of the ceremony. A positive β in eq. (1) would therefore be expected without any attention-dependent selection into dating. The text treats the 17/18 vs 2/26 contrast as evidence about attention. The paper presents it as a suggestion and a possible extension, so the issue is one of interpretation. Eq. (1) also uses one β for three differently scaled alternative Attention measures.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "page 11 text, eq. (1) discussion",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_011.md",
+          "page": 11,
+          "page_label": "11",
+          "section": "6.3",
+          "text_quote": "depends on how much attention an opening receives.",
+          "url": null,
+          "object_id": "OBJ-95b2618a59737e0b1725c4df",
+          "correspondence": "text",
+          "verification_note": "Quote located in page-11 text; the surrounding sentence spans a line break."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Attention affects date precision",
+          "source_object_ids": [
+            "S1"
+          ],
+          "relation": "partial",
+          "note": "Mechanical measurement relation is an alternative explanation."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "State that β in eq. (1) combines selection and mechanical effects, and consider an attention measure independent of the dating articles or controlling for article count."
+    },
+    {
+      "id": "MODEL-007",
+      "category": "equation_text_mismatch",
+      "finding_summary": "The Appendix A.3.2 rule 'a word that fits more than one type is given the first type in the table' contradicts its own example: 'bysykkelstativ' contains 'stativ' (Parking & storage, listed before Infrastructure) yet is said to be classified as infrastructure.",
+      "issue_type": "manuscript_issue",
+      "severity": "medium",
+      "confidence": "high",
+      "location": {
+        "page": 18,
+        "page_label": "18",
+        "section": "A.3.2 Classification of cycling mentions",
+        "text_quote": "“bysykkelstativ”, are counted as infrastructure.",
+        "precision": "exact"
+      },
+      "claim_text": "If a word fits more than one type, it is given the first type in the table. For example, words containing 'bysykkel', such as 'bysykkelstativ', are counted as infrastructure.",
+      "assessment": "no",
+      "cannot_verify_reason": null,
+      "evidence_summary": "Table 9 (read from page text, not the structured CSV) lists types in the order: The word 'bicycle', Proximity, Parking & storage, Leisure, Infrastructure, Other. Parking & storage includes 'stativ' (rack), which appears in 'bysykkelstativ'. Infrastructure, listed later, includes 'bysykkel'. A first-match rule would classify 'bysykkelstativ' as Parking & storage, not Infrastructure. Figure 2 lists 'bysykkelstativ' at 0.5%, and Table 8 aggregates by type. So either the stated precedence or the example is wrong, and the Infrastructure share (13.4%) and Parking & storage share (10.8%) in Table 8 depend on which was implemented. This shows a text inconsistency, not which rule was implemented.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "page 18 text, rule and example",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_018.md",
+          "page": 18,
+          "page_label": "18",
+          "section": "A.3.2",
+          "text_quote": "“bysykkelstativ”, are counted as infrastructure.",
+          "url": null,
+          "object_id": "OBJ-03dcf11e0f4853cb90843dbe",
+          "correspondence": "text",
+          "verification_note": "Rule sentence 'given the first type in the table' is on the preceding line of the same page."
+        },
+        {
+          "id": "S2",
+          "type": "table",
+          "label": "Table 9 as printed in page text",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_018.md",
+          "page": 18,
+          "page_label": "18",
+          "section": "A.3.2 Table 9",
+          "text_quote": "“stativ” (rack), “rom”",
+          "url": null,
+          "object_id": "OBJ-03dcf11e0f4853cb90843dbe",
+          "correspondence": "text",
+          "verification_note": "Row order taken from the page text; the structured table file was not used."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "First-type-in-table rule with bysykkelstativ as infrastructure",
+          "source_object_ids": [
+            "S1",
+            "S2"
+          ],
+          "relation": "contradicts",
+          "note": "Parking & storage precedes Infrastructure in Table 9."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Correct the example or the precedence order, and confirm which rule produced the Table 8 type shares."
+    },
+    {
+      "id": "MODEL-008",
+      "category": "sign_or_definition_error",
+      "finding_summary": "Section 3.1.2 and the Figure 1 caption report 'only 2 of the 34 unique articles (about 6 percent)' as concerning an opening that took place, but 2 is the number of distinct openings; the paper's own coding gives three relevant articles about openings that took place.",
+      "issue_type": "manuscript_issue",
+      "severity": "low",
+      "confidence": "medium",
+      "location": {
+        "page": 4,
+        "page_label": "4",
+        "section": "3.1.2 Pilot sample",
+        "text_quote": "Only 2 of the 34 unique articles (about 6 percent) concern an opening that took place.",
+        "precision": "exact"
+      },
+      "claim_text": "Only 2 of the 34 unique articles (about 6 percent) concern an opening that took place.",
+      "assessment": "no",
+      "cannot_verify_reason": null,
+      "evidence_summary": "Figure 1 labels 'Distinct openings that took place 2' and the caption says 2 of 70 search hits concern an actual opening. Section 3.1.4 says that of five relevant articles, two Homborsund articles predate the opening and are recoded not relevant, 'leaving three relevant articles'; Tables 3 and 4 show 3 relevant. The numerator 2 therefore counts projects, while the denominator counts articles. Three of 34 articles is 8.8 percent, not about 6 percent. The abstract's 'two actual openings' is a project count and is consistent.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "page 4 text",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_004.md",
+          "page": 4,
+          "page_label": "4",
+          "section": "3.1.2",
+          "text_quote": "Only 2 of the 34 unique articles (about 6 percent) concern an opening that took place.",
+          "url": null,
+          "object_id": "OBJ-1a119a3cb70f2153fc56dd97",
+          "correspondence": "text",
+          "verification_note": "Quote located in page-4 text."
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "page 5 text, manual coding",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_005.md",
+          "page": 5,
+          "page_label": "5",
+          "section": "3.1.4",
+          "text_quote": "leaving three relevant articles.",
+          "url": null,
+          "object_id": "OBJ-9d16c139938370d7a97e77c6",
+          "correspondence": "text",
+          "verification_note": "Quote spans a line break in page text."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "2 of 34 articles concern an opening that took place",
+          "source_object_ids": [
+            "S1",
+            "S2"
+          ],
+          "relation": "contradicts",
+          "note": "2 is the project count; the article count is 3 under the paper's validation coding."
+        }
+      ],
+      "numeric_check": {
+        "kind": "arithmetic",
+        "operation": "ratio",
+        "quantities": [
+          {
+            "value": "3",
+            "source_id": "S2",
+            "unit": "articles",
+            "sample": "34 unique pilot articles",
+            "denominator": "not applicable (count)",
+            "context": "relevant articles after recoding the two pre-opening Homborsund articles as not relevant",
+            "rounding_half_width": "0",
+            "scale": "number"
+          },
+          {
+            "value": "34",
+            "source_id": "S1",
+            "unit": "articles",
+            "sample": "unique pilot articles",
+            "denominator": "not applicable (count)",
+            "context": "unique articles in the pilot sample",
+            "rounding_half_width": "0",
+            "scale": "number"
+          }
+        ],
+        "reported": {
+          "value": "6",
+          "source_id": "S1",
+          "unit": "percent",
+          "sample": "34 unique pilot articles",
+          "denominator": "34 unique articles",
+          "context": "share of unique articles said to concern an opening that took place ('about 6 percent')",
+          "rounding_half_width": "0.5",
+          "scale": "percent"
+        },
+        "computed_value": "8.8 percent (3/34)",
+        "tolerance": "0.5 percentage points",
+        "observed_discrepancy": "6 percent reported vs 8.8 percent from 3/34; 2/34 equals 5.9 percent",
+        "possible_explanation": "The numerator is the number of distinct openings (2), not articles.",
+        "suggested_correction": "Report 3 of 34 articles (about 9 percent) or '2 distinct openings in 34 articles'."
+      },
+      "suggested_fix": "State the numerator unit explicitly. Report either 3 of 34 articles or 2 distinct openings, and align the Figure 1 caption."
+    },
+    {
+      "id": "MODEL-009",
+      "category": "notation_inconsistency",
+      "finding_summary": "Footnote 3 says the Stord project was 'coded as not relevant by both human coders', but Section 4.1 and Table 3 show the Stord article is the one article on which the two coders disagree.",
+      "issue_type": "manuscript_issue",
+      "severity": "low",
+      "confidence": "medium",
+      "location": {
+        "page": 10,
+        "page_label": "10",
+        "section": "6 Further Uses of the Articles, footnote 3",
+        "text_quote": "relevant by both human coders (Section 4)",
+        "precision": "exact"
+      },
+      "claim_text": "The project in Stord appears only in the pilot and was coded as not relevant by both human coders (Section 4).",
+      "assessment": "no",
+      "cannot_verify_reason": null,
+      "evidence_summary": "Section 4.1: 'The only article they disagree on covers a dispute between Stord municipality and Vestland County'. Table 3 has one article coded not relevant by the pilot coder and relevant by the second coder. Section 4.2 and Table 4 show the LLM also coded one article relevant that the pilot coder coded not relevant, the same Stord article. So the Stord article was not coded not relevant by both coders. The footnote's description therefore contradicts Section 4 and Table 3, and it is unclear why a project not coded relevant by both is counted among the 44 projects. The paper does not say whether Stord is the disputed article.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "page 10 footnote 3",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_010.md",
+          "page": 10,
+          "page_label": "10",
+          "section": "6, footnote 3",
+          "text_quote": "relevant by both human coders (Section 4)",
+          "url": null,
+          "object_id": "OBJ-e9b90e0f75ce05ff1ce150cc",
+          "correspondence": "text",
+          "verification_note": "Footnote marker is attached to the footnote text in the page extraction; the quoted phrase is the tail of the footnote."
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "page 7 text, Section 4.1",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_007.md",
+          "page": 7,
+          "page_label": "7",
+          "section": "4.1",
+          "text_quote": "The only article they disagree on covers a",
+          "url": null,
+          "object_id": "OBJ-4e6da301f188ae5c7e5d0a63",
+          "correspondence": "text",
+          "verification_note": "Quote located in page-7 text; the sentence continues 'dispute between Stord municipality and Vestland County'."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Stord coded not relevant by both coders",
+          "source_object_ids": [
+            "S1",
+            "S2"
+          ],
+          "relation": "contradicts",
+          "note": "The only coder disagreement concerns the Stord article."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Reconcile the footnote with Section 4 and Table 3, and explain why this project is counted among the 44 projects."
+    },
+    {
+      "id": "MODEL-010",
+      "category": "notation_inconsistency",
+      "finding_summary": "The text on Figure 3 says the first quarter of 2024 is missing, while Appendix A.1 and the Figure 3 caption define the gap as January to April 2024, which extends beyond Q1.",
+      "issue_type": "manuscript_issue",
+      "severity": "low",
+      "confidence": "medium",
+      "location": {
+        "page": 16,
+        "page_label": "16",
+        "section": "A.2 Analysis",
+        "text_quote": "The first quarter of 2024 is",
+        "precision": "exact"
+      },
+      "claim_text": "The first quarter of 2024 is missing due to the gap in the listing text data.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "Appendix A.1 states 'Listings from January to April 2024 are missing' and the Figure 3 caption says 'missing listing text from January to April 2024'. Four months cover all of Q1 plus April, which is part of Q2. The prose refers only to Q1. If April is excluded from Q2, that quarter is based on two months. The paper does not say how Q2 2024 is treated, and the figure's data points could not be read from the text.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "page 16 text",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_016.md",
+          "page": 16,
+          "page_label": "16",
+          "section": "A.2",
+          "text_quote": "The first quarter of 2024 is",
+          "url": null,
+          "object_id": "OBJ-8f4894d007c8a183053537bc",
+          "correspondence": "text",
+          "verification_note": "Quote located in page-16 text; the sentence continues 'missing due to the gap in the listing text data'."
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "page 15 text, A.1",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_015.md",
+          "page": 15,
+          "page_label": "15",
+          "section": "A.1",
+          "text_quote": "Listings from January to April 2024 are missing due to a gap in the listing text data.",
+          "url": null,
+          "object_id": "OBJ-6402cd90a906f1f82672a86f",
+          "correspondence": "text",
+          "verification_note": "Quote located in page-15 text."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Only Q1 2024 is missing",
+          "source_object_ids": [
+            "S1",
+            "S2"
+          ],
+          "relation": "partial",
+          "note": "The stated gap is Jan–Apr 2024."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "State that January–April 2024 is missing and how Q2 2024 (April missing) is handled in Figure 3."
+    }
+  ],
+  "notes": [
+    "The paper contains no estimated regression, regression table or formal theoretical model; the only equations are the two proposed specifications (1) and (2) on page 11. Page text was used for all equation and table checks, per parser-quality guidance. Structured table CSV/markdown was not used as primary evidence.",
+    "Table 8 arithmetic (listing counts sum to 700 579; shares 38.1%, 13.4%, 10.8%, 10.7%, 9.8%, 3.8%, 1.0%) and the Table 6 and abstract counts (19+10+9+5 = 43; 19+10 = 29; 18+26 = 44) were checked and are consistent within rounding. Table 5 length 2,132 m versus the 1,492 + 641 m road-reference ranges differs by 1 m and is rounding-compatible."
+  ],
+  "completion": {
+    "version": 1,
+    "state": "complete",
+    "scope_description": "Audit of the model, equation, notation and text-equation consistency of the 18-page paper. The two displayed specifications (eqs. 1 and 2) were checked against definitions and surrounding prose, as were the Table 3, 4, 6, 8 and 9 definitions and counts against text. The paper has no estimated regression tables.",
+    "checks_completed": [
+      "Read parser-quality output and used page text instead of structured table CSV/markdown",
+      "Checked eq. (1) variable definitions, ordering of outcome categories and interpretation of β",
+      "Checked eq. (2) outcome, treatment, interaction and fixed-effect structure and the stated hypotheses",
+      "Checked the misclassification-bias and restriction-to-precisely-dated-projects claims against eq. (2) and the paper's counts",
+      "Cross-checked Tables 3 and 4 cells and agreement percentages against text, and Table 6 and abstract counts",
+      "Recomputed Table 8 shares and totals from listing counts",
+      "Checked Table 9 classification rule against its example and Table 8 type definitions",
+      "Compared Figure 1 and text units, footnote 3 and Figure 3 text against appendix definitions",
+      "Confirmed no regression or estimation table exists to audit for dependent variable, sample, reference group or fixed effects"
+    ],
+    "missing_checks": [],
+    "evidence_limitations": [
+      "Figure 3 and Figure 2 data points are graphics and were not read; only page text labels were used.",
+      "Eq. (1) and (2) were read from page text rather than a typeset image; subscripts are rendered inline (for example 'Precision∗p').",
+      "Whether the authors implemented the Table 9 precedence rule as stated or as exemplified cannot be determined from the paper."
+    ]
+  },
+  "coverage": [
+    {
+      "item_id": "assigned_remit",
+      "source_object_ids": [],
+      "claim": null,
+      "check_performed": "Read the full parsed text and checked every displayed equation, definition and model-related table or figure against its prose.",
+      "status": "linked_finding",
+      "reason": "Ten findings (MODEL-001 to MODEL-010); the paper has no regression tables. Sampling was not used for equations; peripheral descriptive tables were checked for arithmetic and consistency.",
+      "finding_ids": [
+        "MODEL-001",
+        "MODEL-002",
+        "MODEL-003",
+        "MODEL-004",
+        "MODEL-005",
+        "MODEL-006",
+        "MODEL-007",
+        "MODEL-008",
+        "MODEL-009",
+        "MODEL-010"
+      ],
+      "attempted": true,
+      "importance": "central",
+      "scope": "exhaustive"
+    },
+    {
+      "item_id": "claim:eq1",
+      "source_object_ids": [
+        "OBJ-95b2618a59737e0b1725c4df"
+      ],
+      "claim": "Eq. (1) is an ordered latent-variable model of date precision in which a positive β indicates that attention raises precision.",
+      "check_performed": "Checked the sign convention, outcome ordering (none, year, month, day against Table 6 'Not stated/Year/Month/Day') and the definition of Attention.",
+      "status": "linked_finding",
+      "reason": "Sign and ordering are consistent with Table 6; the attention-precision interpretation is flagged in MODEL-006.",
+      "finding_ids": [
+        "MODEL-006"
+      ],
+      "attempted": true,
+      "importance": "central",
+      "scope": "exhaustive"
+    },
+    {
+      "item_id": "claim:eq2",
+      "source_object_ids": [
+        "OBJ-95b2618a59737e0b1725c4df",
+        "OBJ-a6c6d31e7be45f25b775aa47"
+      ],
+      "claim": "Eq. (2) is a difference-in-differences design in which θ>0 and δ>0 identify the effect of openings and its heterogeneity by attention.",
+      "check_performed": "Checked the outcome definition, indexing, fixed-effect absorption of lower-order terms and the stated bias and sample-restriction claims.",
+      "status": "linked_finding",
+      "reason": "Notation and identification issues found in MODEL-001 to MODEL-005.",
+      "finding_ids": [
+        "MODEL-001",
+        "MODEL-002",
+        "MODEL-003",
+        "MODEL-004",
+        "MODEL-005"
+      ],
+      "attempted": true,
+      "importance": "central",
+      "scope": "exhaustive"
+    },
+    {
+      "item_id": "claim:agreement_tables",
+      "source_object_ids": [
+        "OBJ-4e6da301f188ae5c7e5d0a63",
+        "OBJ-b41cc221a4f064e5990acabf"
+      ],
+      "claim": "Tables 3 and 4 show 97 percent (33 of 34) agreement between coders and between the pilot coder and the LLM.",
+      "check_performed": "Recomputed the diagonal sum and margins (3+30 = 33; 33/34 = 97.06 percent) and compared the cells with the text on disagreement and coding of unclear articles.",
+      "status": "checked_no_issue",
+      "reason": "Cells, margins and percentages are consistent with the text.",
+      "finding_ids": [],
+      "attempted": true,
+      "importance": "central",
+      "scope": "exhaustive"
+    },
+    {
+      "item_id": "claim:table8_shares",
+      "source_object_ids": [
+        "OBJ-6402cd90a906f1f82672a86f"
+      ],
+      "claim": "Table 8 reports the number and share of listings by type of cycling mention, with 38.1 percent mentioning cycling.",
+      "check_performed": "Recomputed the total (266 625 + 433 954 = 700 579) and each share from the counts.",
+      "status": "checked_no_issue",
+      "reason": "All shares match the counts within rounding. Type rows overlap by design, as noted.",
+      "finding_ids": [],
+      "attempted": true,
+      "importance": "peripheral",
+      "scope": "exhaustive"
+    },
+    {
+      "item_id": "claim:table9_rule",
+      "source_object_ids": [
+        "OBJ-03dcf11e0f4853cb90843dbe"
+      ],
+      "claim": "Table 9 classifies each word by the first matching type in the table.",
+      "check_performed": "Compared the stated precedence rule with Table 9 row order and the 'bysykkelstativ' example.",
+      "status": "linked_finding",
+      "reason": "The rule and example conflict.",
+      "finding_ids": [
+        "MODEL-007"
+      ],
+      "attempted": true,
+      "importance": "peripheral",
+      "scope": "exhaustive"
+    },
+    {
+      "item_id": "claim:figure1_units",
+      "source_object_ids": [
+        "OBJ-1a119a3cb70f2153fc56dd97",
+        "OBJ-9d16c139938370d7a97e77c6"
+      ],
+      "claim": "Only 2 of the 34 unique articles concern an opening that took place; footnote 3 and the Q1/gap definitions are consistent with Section 4 and the appendix.",
+      "check_performed": "Compared the numerator and denominator units with Section 3.1.4, Tables 3 and 4, footnote 3 and the data-gap definitions.",
+      "status": "linked_finding",
+      "reason": "Unit, footnote and gap-definition inconsistencies found.",
+      "finding_ids": [
+        "MODEL-008",
+        "MODEL-009",
+        "MODEL-010"
+      ],
+      "attempted": true,
+      "importance": "peripheral",
+      "scope": "exhaustive"
+    }
+  ]
+}

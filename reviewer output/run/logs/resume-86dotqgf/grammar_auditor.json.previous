@@ -1,0 +1,376 @@
+{
+  "reviewer": "grammar_auditor",
+  "paper_id": "bicycle-infrastructure-paper",
+  "run_status": "ok",
+  "summary": "The manuscript is generally clean. Six low-to-medium copyedit items were found: a leftover placeholder, a subject-verb disagreement, an unclear sentence, an ambiguous reference, and two missing commas.",
+  "findings": [
+    {
+      "id": "GRAM-001",
+      "category": "sentence_clarity",
+      "finding_summary": "Contribution list contains an unfinished placeholder instead of text.",
+      "issue_type": "copyedit_issue",
+      "severity": "medium",
+      "confidence": "high",
+      "location": {
+        "page": 1,
+        "page_label": "1",
+        "section": "Title page",
+        "text_quote": "Valentin Bayas: [add contribution]",
+        "precision": "exact"
+      },
+      "claim_text": "Valentin Bayas: [add contribution]",
+      "assessment": "no",
+      "cannot_verify_reason": null,
+      "evidence_summary": "The title page lists the author contributions, and one entry still contains a drafting placeholder.",
+      "source_objects": [
+        {
+          "id": "p1",
+          "type": "text",
+          "label": "Page 1",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_001.md",
+          "page": 1,
+          "page_label": "1",
+          "section": "Title page",
+          "text_quote": "Valentin Bayas: [add contribution]",
+          "url": null,
+          "object_id": "OBJ-ae6010b8e427194ea28d441e",
+          "correspondence": "text",
+          "verification_note": null
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Valentin Bayas: [add contribution]",
+          "source_object_ids": [
+            "p1"
+          ],
+          "relation": "contradicts",
+          "note": "The text should be finished wording, but it is a placeholder."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Replace the placeholder with the author's actual contribution, or remove the entry."
+    },
+    {
+      "id": "GRAM-002",
+      "category": "grammar",
+      "finding_summary": "Subject-verb disagreement in footnote 3: 'The 96 articles consists of'.",
+      "issue_type": "copyedit_issue",
+      "severity": "low",
+      "confidence": "high",
+      "location": {
+        "page": 10,
+        "page_label": "10",
+        "section": "6 Further Uses of the Articles, footnote 3",
+        "text_quote": "The 96 articles consists of the 92 articles from rounds 2–4",
+        "precision": "exact"
+      },
+      "claim_text": "The 96 articles consists of the 92 articles from rounds 2–4 (Section 5) and four from the pilot run.",
+      "assessment": "no",
+      "cannot_verify_reason": null,
+      "evidence_summary": "The plural subject 'articles' takes a singular verb.",
+      "source_objects": [
+        {
+          "id": "p10",
+          "type": "text",
+          "label": "Page 10",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_010.md",
+          "page": 10,
+          "page_label": "10",
+          "section": "Footnote 3",
+          "text_quote": "The 96 articles consists of the 92 articles from rounds 2–4",
+          "url": null,
+          "object_id": "OBJ-e9b90e0f75ce05ff1ce150cc",
+          "correspondence": "text",
+          "verification_note": null
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "The 96 articles consists of the 92 articles from rounds 2–4",
+          "source_object_ids": [
+            "p10"
+          ],
+          "relation": "contradicts",
+          "note": "Verb should be plural."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Change to 'The 96 articles consist of the 92 articles from rounds 2–4 (Section 5) and four from the pilot'."
+    },
+    {
+      "id": "GRAM-003",
+      "category": "sentence_clarity",
+      "finding_summary": "Item 3 of the coding-rule list is unclear: the clause 'and counted as metadata to analyse coverage' is attached ambiguously to the sentence's subject.",
+      "issue_type": "copyedit_issue",
+      "severity": "medium",
+      "confidence": "medium",
+      "location": {
+        "page": 6,
+        "page_label": "6",
+        "section": "3.1.4 Manual coding of the pilot",
+        "text_quote": "as with the four articles about Homborsund and counted as metadata to analyse coverage",
+        "precision": "exact"
+      },
+      "claim_text": "Articles about the same project are linked to a single project record, as with the four articles about Homborsund and counted as metadata to analyse coverage.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "The sentence mixes the example ('as with the four articles about Homborsund') and a second action ('counted as metadata') with unclear parallelism. A reader may not know what is counted.",
+      "source_objects": [
+        {
+          "id": "p6",
+          "type": "text",
+          "label": "Page 6",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_006.md",
+          "page": 6,
+          "page_label": "6",
+          "section": "3.1.4",
+          "text_quote": "as with the four articles about Homborsund and counted as metadata to analyse coverage",
+          "url": null,
+          "object_id": "OBJ-e13eccc23f4c883050d15bcf",
+          "correspondence": "text",
+          "verification_note": null
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Articles about the same project are linked to a single project record",
+          "source_object_ids": [
+            "p6"
+          ],
+          "relation": "partial",
+          "note": "Sentence structure obscures the meaning."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "For example: 'Articles about the same project are linked to a single project record, as with the four articles about Homborsund, and the number of articles per project is kept as metadata to analyse coverage.'"
+    },
+    {
+      "id": "GRAM-004",
+      "category": "punctuation",
+      "finding_summary": "Missing comma before 'but' joining two independent clauses.",
+      "issue_type": "copyedit_issue",
+      "severity": "low",
+      "confidence": "medium",
+      "location": {
+        "page": 4,
+        "page_label": "4",
+        "section": "3.1.1 News article base",
+        "text_quote": "We restrict the search to articles discussing cycling paths in this pilot but the analysis could easily be expanded",
+        "precision": "exact"
+      },
+      "claim_text": "We restrict the search to articles discussing cycling paths in this pilot but the analysis could easily be expanded to include other types of bicycle or transport infrastructure",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "Two independent clauses are joined by 'but' with no comma.",
+      "source_objects": [
+        {
+          "id": "p4",
+          "type": "text",
+          "label": "Page 4",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_004.md",
+          "page": 4,
+          "page_label": "4",
+          "section": "3.1.1",
+          "text_quote": "We restrict the search to articles discussing cycling paths in this pilot but the analysis could easily be expanded",
+          "url": null,
+          "object_id": "OBJ-1a119a3cb70f2153fc56dd97",
+          "correspondence": "text",
+          "verification_note": null
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "We restrict the search ... in this pilot but the analysis could easily be expanded",
+          "source_object_ids": [
+            "p4"
+          ],
+          "relation": "partial",
+          "note": "Punctuation only."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Insert a comma: '... in this pilot, but the analysis could easily be expanded ...'."
+    },
+    {
+      "id": "GRAM-005",
+      "category": "punctuation",
+      "finding_summary": "Missing comma around 'for example' at the end of the sentence.",
+      "issue_type": "copyedit_issue",
+      "severity": "low",
+      "confidence": "medium",
+      "location": {
+        "page": 10,
+        "page_label": "10",
+        "section": "6.1 An application to house listing data",
+        "text_quote": "a short cycling distance to the city centre for example",
+        "precision": "exact"
+      },
+      "claim_text": "real estate agents may instead have described a short cycling distance to the city centre for example.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "The sentence-final 'for example' is not set off by a comma and reads awkwardly.",
+      "source_objects": [
+        {
+          "id": "p10b",
+          "type": "text",
+          "label": "Page 10",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_010.md",
+          "page": 10,
+          "page_label": "10",
+          "section": "6.1",
+          "text_quote": "a short cycling distance to the city centre for example",
+          "url": null,
+          "object_id": "OBJ-e9b90e0f75ce05ff1ce150cc",
+          "correspondence": "text",
+          "verification_note": null
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "real estate agents may instead have described a short cycling distance to the city centre for example",
+          "source_object_ids": [
+            "p10b"
+          ],
+          "relation": "partial",
+          "note": "Punctuation only."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Write '... to the city centre, for example.' or move 'for example' to after 'instead'."
+    },
+    {
+      "id": "GRAM-006",
+      "category": "sentence_clarity",
+      "finding_summary": "'the same two dimensions' has no clear antecedent in the preceding text.",
+      "issue_type": "copyedit_issue",
+      "severity": "low",
+      "confidence": "medium",
+      "location": {
+        "page": 16,
+        "page_label": "16",
+        "section": "A.2 Analysis",
+        "text_quote": "We next look at how the mentions develop along the same two dimensions.",
+        "precision": "exact"
+      },
+      "claim_text": "We next look at how the mentions develop along the same two dimensions.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "The preceding paragraph discusses types of mentions and individual words. The two dimensions (time and county, listed in the appendix introduction) are not named here, and this section goes on to cover time first.",
+      "source_objects": [
+        {
+          "id": "p16",
+          "type": "text",
+          "label": "Page 16",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_016.md",
+          "page": 16,
+          "page_label": "16",
+          "section": "A.2 Analysis",
+          "text_quote": "We next look at how the mentions develop along the same two dimensions.",
+          "url": null,
+          "object_id": "OBJ-8f4894d007c8a183053537bc",
+          "correspondence": "text",
+          "verification_note": null
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "how the mentions develop along the same two dimensions",
+          "source_object_ids": [
+            "p16"
+          ],
+          "relation": "partial",
+          "note": "Antecedent unclear."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Replace with 'We next look at how the mentions vary over time and across counties.'"
+    },
+    {
+      "id": "GRAM-007",
+      "category": "punctuation",
+      "finding_summary": "Colon after 'For example' is incorrect.",
+      "issue_type": "copyedit_issue",
+      "severity": "low",
+      "confidence": "medium",
+      "location": {
+        "page": 18,
+        "page_label": "18",
+        "section": "A.3.2 Classification of cycling mentions",
+        "text_quote": "For example: words containing “bysykkel” (city bike), such as",
+        "precision": "exact"
+      },
+      "claim_text": "For example: words containing “bysykkel” (city bike), such as “bysykkelstativ”, are counted as infrastructure.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "A colon follows 'For example' before a full sentence. A comma is standard, and the earlier 'For example,' in the same subsection uses a comma.",
+      "source_objects": [
+        {
+          "id": "p18",
+          "type": "text",
+          "label": "Page 18",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_018.md",
+          "page": 18,
+          "page_label": "18",
+          "section": "A.3.2",
+          "text_quote": "For example: words containing “bysykkel” (city bike), such as",
+          "url": null,
+          "object_id": "OBJ-03dcf11e0f4853cb90843dbe",
+          "correspondence": "text",
+          "verification_note": null
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "For example: words containing “bysykkel”",
+          "source_object_ids": [
+            "p18"
+          ],
+          "relation": "partial",
+          "note": "Punctuation only."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Change to 'For example, words containing “bysykkel” (city bike), such as “bysykkelstativ”, are counted as infrastructure.'"
+    }
+  ],
+  "notes": [],
+  "completion": {
+    "version": 1,
+    "state": "complete",
+    "scope_description": "Full read of parsed full_text.md (pages 1-18) for grammar, typo, punctuation, word-choice and sentence-clarity issues. Substantive and economic content was not audited.",
+    "checks_completed": [
+      "Read the full text of all 18 pages",
+      "Checked for typos, duplicated words and subject-verb agreement",
+      "Checked punctuation and sentence clarity in the main text, table notes, footnotes and appendix",
+      "Matched each finding quote to its parsed page file and registry object ID"
+    ],
+    "missing_checks": [],
+    "evidence_limitations": [
+      "Table cells and figure labels were read only from extracted text, not visually.",
+      "Footnote markers attached to words in the extraction were treated as parser artifacts and not reported."
+    ]
+  },
+  "coverage": [
+    {
+      "item_id": "assigned_remit",
+      "source_object_ids": [],
+      "claim": null,
+      "check_performed": "Read the full parsed text and checked every section, including the abstract, body, table notes, footnotes and appendices, for grammar and copyediting issues.",
+      "status": "linked_finding",
+      "reason": "Seven findings were identified across pages 1, 4, 6, 10, 16 and 18. The check was a complete read-through, but without a systematic proofreading tool. Parser artifacts and style preferences were excluded.",
+      "finding_ids": [
+        "GRAM-001",
+        "GRAM-002",
+        "GRAM-003",
+        "GRAM-004",
+        "GRAM-005",
+        "GRAM-006",
+        "GRAM-007"
+      ],
+      "attempted": true,
+      "importance": "central",
+      "scope": "exhaustive"
+    }
+  ]
+}

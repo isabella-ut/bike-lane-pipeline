@@ -1,0 +1,791 @@
+{
+  "reviewer": "identification_auditor",
+  "paper_id": "bicycle-infrastructure-paper",
+  "run_status": "ok",
+  "summary": "The paper is mainly a measurement and validation exercise and makes no causal estimates. Its identification content is the proposal in Sections 6.1 and 6.3, plus claims about how openings are timed. Section 8 hedges appropriately that the database is not yet ready for causal research. Eleven problems remain. (1) The outcome 'mentions of cycling in agent-written listing text' is interpreted as capitalisation or a stronger selling point. (2) The paper's own Table 7 shows that 23 of 44 projects had concurrent interventions and that some were bundled with developer or utility works, but Eq. (2) has no strategy for these. (3) Table 1 labels project triggers and delay reasons as 'quasi-random' or 'exogenous' timing without support. (4) The treatment date is ambiguous in the pilot (official versus actual opening, partial sections, delayed openings). (5) The ceremony-precision association is largely mechanical. (6) The claim that date misclassification biases results toward zero, and the proposed remedy, are not supported. (7) The attention moderator δ is post-treatment and endogenous. (8) The seasonal-clustering claim is inferred from article shares. (9) The near/far control group is exposed to spillovers and is only vaguely defined. (10) There is no pre-trend or anticipation assessment, and the post-opening window is at most about 12 months. (11) Treated projects are selected through news coverage. The parser-quality output flagged only table and figure extraction problems, so I relied on the page text, which carries all the passages cited.",
+  "findings": [
+    {
+      "id": "ID-001",
+      "category": "interpretation_overreach",
+      "finding_summary": "Mentions of cycling in agent-written listing text are interpreted as evidence that a route is capitalised or has become a stronger selling point, but the proposed outcome does not identify buyer valuation or that mechanism.",
+      "issue_type": "manuscript_issue",
+      "severity": "medium",
+      "confidence": "medium",
+      "location": {
+        "page": 10,
+        "page_label": "10",
+        "section": "6.1 An application to house listing data",
+        "text_quote": "An increase in any type of mention would thus indicate that the route has made cycling a stronger selling point.",
+        "precision": "exact"
+      },
+      "claim_text": "An increase in any type of cycling mention in listings would indicate that the route has made cycling a stronger selling point, and the DiD tests whether new infrastructure is capitalised into how homes are marketed.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "Section 6.1 and Appendix A define the outcome as keyword mentions of 'sykkel'/'sykling' in agent text, including proximity, parking and storage, and leisure terms. The Section 6.1 text itself says agents may mention a cycling distance to the city centre. Even a clean DiD estimate of θ would show a change in agent wording near a route. Several things could drive such a change without a stronger selling point: a change in which homes are listed, agents describing a visible new path simply as a location feature, or new-build marketing. The outcome is not linked to demand or price. Section 6.1 says the listings are not yet linked to the database, so the paper reports no estimate. The only evidence for the mechanism is the plausibility argument in the text.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "Page 10 text, Section 6.1",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_010.md",
+          "page": 10,
+          "page_label": "10",
+          "section": "6.1",
+          "text_quote": "An increase in any type of mention would thus indicate that the route has made cycling a stronger selling point.",
+          "url": null,
+          "object_id": "OBJ-e9b90e0f75ce05ff1ce150cc",
+          "correspondence": "text",
+          "verification_note": null
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "Page 11 text, Section 6.3",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_011.md",
+          "page": 11,
+          "page_label": "11",
+          "section": "6.3",
+          "text_quote": "openings increase mentions of cycling nearby, and",
+          "url": null,
+          "object_id": "OBJ-95b2618a59737e0b1725c4df",
+          "correspondence": "text",
+          "verification_note": null
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Mentions indicate the route made cycling a stronger selling point / capitalisation",
+          "source_object_ids": [
+            "S1",
+            "S2"
+          ],
+          "relation": "partial",
+          "note": "Outcome is agent wording of all cycling mentions; it does not identify valuation or the selling-point mechanism."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Describe θ as the effect on the frequency of cycling mentions in listing text. Treat 'selling point' and capitalisation as a hypothesis, and specify which outcomes (for example route-specific mentions, or sale price) would test it. Discuss changes in the composition of listed homes."
+    },
+    {
+      "id": "ID-002",
+      "category": "threat_to_validity",
+      "finding_summary": "Concurrent interventions and bundled works, which Table 7 finds in many projects, can coincide with the opening date. Eq. (2) has no strategy for separating them from the route effect.",
+      "issue_type": "manuscript_issue",
+      "severity": "medium",
+      "confidence": "medium",
+      "location": {
+        "page": 11,
+        "page_label": "11",
+        "section": "Table 7 / 6.3",
+        "text_quote": "Concurrent interventions 23 New roundabout and lighting (Tysvær)",
+        "precision": "exact"
+      },
+      "claim_text": "A DiD comparing listings close to a project with listings further away, before and after the opening, with area and project-by-month fixed effects, can test whether new infrastructure is capitalised into how homes are marketed.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "Table 7 reports concurrent interventions for 23 of 44 projects. It also reports 15 projects with a trigger such as being paid by a developer as a planning condition, and 19 with an initiator or conflict. Table 1 itself lists concurrent interventions as 'Confounders'. Such changes (roundabouts, lighting, new development) can affect near-vs-far listings in the same project-month at the same time as the opening, and developer-linked routes can come with new housing. Project-by-month fixed effects absorb only shocks common to a project's near and far listings. Eq. (2) has no covariates and no stated plan to use the coded fields as controls or to restrict the sample.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "table",
+          "label": "Table 7 (page 11 text)",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_011.md",
+          "page": 11,
+          "page_label": "11",
+          "section": "Table 7",
+          "text_quote": "Concurrent interventions 23 New roundabout and lighting (Tysvær)",
+          "url": null,
+          "object_id": "OBJ-95b2618a59737e0b1725c4df",
+          "correspondence": "text",
+          "verification_note": null
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "Table 7 trigger row",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_011.md",
+          "page": 11,
+          "page_label": "11",
+          "section": "Table 7",
+          "text_quote": "Trigger for the project 15 Paid by a developer as a planning condition (Kristiansand)",
+          "url": null,
+          "object_id": "OBJ-95b2618a59737e0b1725c4df",
+          "correspondence": "text",
+          "verification_note": null
+        },
+        {
+          "id": "S3",
+          "type": "text",
+          "label": "Eq. (2) description",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_011.md",
+          "page": 11,
+          "page_label": "11",
+          "section": "6.3",
+          "text_quote": "A difference-in-differences design could compare listings close to a project with listings further away,",
+          "url": null,
+          "object_id": "OBJ-95b2618a59737e0b1725c4df",
+          "correspondence": "text",
+          "verification_note": null
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "DiD in Eq. (2) can identify the effect of an opening",
+          "source_object_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "relation": "partial",
+          "note": "The paper's own data show frequent concurrent changes that the specification does not address."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "State the assumption that no differential local shock coincides with openings. Say how the coded concurrent-intervention, trigger and cost fields will be used (controls, exclusion, or heterogeneity). Add a sensitivity analysis excluding projects with concurrent works."
+    },
+    {
+      "id": "ID-003",
+      "category": "identification_assumption",
+      "finding_summary": "Table 1 presents project triggers and reasons for delay as sources of 'quasi-random' or 'exogenous' timing without any support, while the paper's own examples suggest endogenous or non-random timing.",
+      "issue_type": "manuscript_issue",
+      "severity": "medium",
+      "confidence": "medium",
+      "location": {
+        "page": 5,
+        "page_label": "5",
+        "section": "Table 1",
+        "text_quote": "Trigger for the project Built together with water and sewage works Quasi-random timing No",
+        "precision": "exact"
+      },
+      "claim_text": "Trigger and delay information extracted from the articles provides quasi-random timing and exogenous timing variation.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "Table 1 labels the 'Trigger for the project' field 'Quasi-random timing' and the 'Reasons for delay' field 'Exogenous timing variation'. Its own examples are 'Built together with water and sewage works' and 'Wind, ground conditions, payment dispute'. Table 7 adds 'Paid by a developer as a planning condition' and 'Defects and budget overrun'. A developer condition ties the opening to housing development. A payment dispute or budget overrun may correlate with municipal characteristics. Delay reasons also tell us only about the delay, not about the baseline plan. No argument or test for as-good-as-random timing is given, and the later text does not return to it. The paper presents these as intended uses, not findings, so the problem is the unsupported label.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "table",
+          "label": "Table 1 (page 5 text)",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_005.md",
+          "page": 5,
+          "page_label": "5",
+          "section": "Table 1",
+          "text_quote": "Trigger for the project Built together with water and sewage works Quasi-random timing No",
+          "url": null,
+          "object_id": "OBJ-9d16c139938370d7a97e77c6",
+          "correspondence": "text",
+          "verification_note": "Page text used because the table CSV/markdown is mis-columned."
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "Table 1 delay row",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_005.md",
+          "page": 5,
+          "page_label": "5",
+          "section": "Table 1",
+          "text_quote": "Reasons for delay Wind, ground conditions, payment dispute Exogenous timing",
+          "url": null,
+          "object_id": "OBJ-9d16c139938370d7a97e77c6",
+          "correspondence": "text",
+          "verification_note": null
+        },
+        {
+          "id": "S3",
+          "type": "text",
+          "label": "Table 7 trigger example",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_011.md",
+          "page": 11,
+          "page_label": "11",
+          "section": "Table 7",
+          "text_quote": "Paid by a developer as a planning condition (Kristiansand)",
+          "url": null,
+          "object_id": "OBJ-95b2618a59737e0b1725c4df",
+          "correspondence": "text",
+          "verification_note": null
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Triggers and delays give quasi-random / exogenous timing",
+          "source_object_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "relation": "partial",
+          "note": "Labels are asserted; examples include developer-linked and dispute-driven timing."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Relabel these fields as candidate timing information. State the exogeneity assumption each would need and how it would be defended, for example showing that delay reasons are unrelated to local housing or cycling conditions."
+    },
+    {
+      "id": "ID-004",
+      "category": "identification_assumption",
+      "finding_summary": "The treatment date is not defined unambiguously. The pilot shows disagreement between an official and an actual opening date, partial-section openings, and planned dates that are delayed, and the paper does not say which date defines Post.",
+      "issue_type": "manuscript_issue",
+      "severity": "medium",
+      "confidence": "medium",
+      "location": {
+        "page": 7,
+        "page_label": "7",
+        "section": "4.1",
+        "text_quote": "The pilot coder used the official opening, while the second coder used the start of the school year.",
+        "precision": "exact"
+      },
+      "claim_text": "The pipeline produces an opening date that can serve as treatment timing for before-and-after research designs.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "In one of the three relevant pilot articles the path opened before the school year started and the official opening was held later, and the two human coders chose different dates. Table 2 footnote b records a planned date that was delayed after publication. Table 7 includes 'First section of a 2.4 km route opened (Bergen)', so partial openings exist. The paper defines 'opening date' as the date a route opens, with precision categories, and notes that planned openings must be filtered. It gives no rule for choosing between the date the route is usable, the ceremony date, or the date a first section opens, nor for how the treatment variable Postpt is set. Different dates move the pre/post boundary for the same listings.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "Page 7 text, Section 4.1",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_007.md",
+          "page": 7,
+          "page_label": "7",
+          "section": "4.1",
+          "text_quote": "In the third article, the path opened before the school year started, and the official opening was held later.",
+          "url": null,
+          "object_id": "OBJ-4e6da301f188ae5c7e5d0a63",
+          "correspondence": "text",
+          "verification_note": null
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "Table 2 footnote b (page 5 text)",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_005.md",
+          "page": 5,
+          "page_label": "5",
+          "section": "Table 2",
+          "text_quote": "As of 6 November, the opening date has been delayed",
+          "url": null,
+          "object_id": "OBJ-9d16c139938370d7a97e77c6",
+          "correspondence": "text",
+          "verification_note": null
+        },
+        {
+          "id": "S3",
+          "type": "text",
+          "label": "Table 7 partial opening example",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_011.md",
+          "page": 11,
+          "page_label": "11",
+          "section": "Table 7",
+          "text_quote": "First section of a 2.4 km route opened (Bergen)",
+          "url": null,
+          "object_id": "OBJ-95b2618a59737e0b1725c4df",
+          "correspondence": "text",
+          "verification_note": null
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Opening date can serve as treatment timing",
+          "source_object_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "relation": "partial",
+          "note": "Treatment date is ambiguous across official/actual, planned/delayed and partial openings."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Define the treatment event (usable-by-public date, ceremony date, or first-section date) and record alternative dates where articles give several. Show sensitivity of results to the choice."
+    },
+    {
+      "id": "ID-005",
+      "category": "interpretation_overreach",
+      "finding_summary": "The association between a reported opening ceremony and day-level date precision is read as showing that attention drives precision, but the measures overlap mechanically and the evidence is uncontrolled and descriptive.",
+      "issue_type": "manuscript_issue",
+      "severity": "low",
+      "confidence": "medium",
+      "location": {
+        "page": 11,
+        "page_label": "11",
+        "section": "6.3",
+        "text_quote": "This suggests that the precision of the dates is not random but depends on how much attention an opening receives.",
+        "precision": "exact"
+      },
+      "claim_text": "Date precision depends on how much attention an opening receives (17 of 18 ceremony projects dated to the day versus 2 of 26 without).",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "The paper reports that 17 of the 18 projects with an article reporting an official opening ceremony can be dated to the day, versus 2 of the 26 without. The wording is cautious ('suggests'), but 'attention' is measured by a reported ceremony, the number of distinct stories or the number of outlets (Section 6.3). A ceremony is itself a dated event that articles report, so the two are linked by construction. More stories mean more chances to find one day-level date, since the data are coded at project level from all articles. Both measures also depend on the same article set. Project size, length and cost, which could drive both attention and precision, are not shown for this comparison. The text concedes that this has not been tested conditionally.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "Page 11 text, Section 6.3",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_011.md",
+          "page": 11,
+          "page_label": "11",
+          "section": "6.3",
+          "text_quote": "Of these, 17 can be dated to the day, compared with 2 of the 26 projects without a reported ceremony.",
+          "url": null,
+          "object_id": "OBJ-95b2618a59737e0b1725c4df",
+          "correspondence": "text",
+          "verification_note": null
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Precision depends on attention",
+          "source_object_ids": [
+            "S1"
+          ],
+          "relation": "partial",
+          "note": "Raw split only; ceremony and precision are partly mechanically linked and unadjusted."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Qualify this as a descriptive association. Discuss the mechanical link between ceremony or story count and precision, and use attention measures that are not tied to date reporting."
+    },
+    {
+      "id": "ID-006",
+      "category": "identification_assumption",
+      "finding_summary": "The claim that date misclassification would bias estimates toward zero, and the plan to restrict model (2) to precisely dated projects if model (1) finds a problem, are unsupported. Under the paper's own premise, error is correlated with attention, which enters the interaction term.",
+      "issue_type": "manuscript_issue",
+      "severity": "medium",
+      "confidence": "medium",
+      "location": {
+        "page": 12,
+        "page_label": "12",
+        "section": "6.3",
+        "text_quote": "Some of the listings could be assigned to the wrong side of the opening if projects with less attention are dated less precisely. This could bias the results toward zero.",
+        "precision": "exact"
+      },
+      "claim_text": "Misdated openings could bias the results toward zero, and model (1) can show whether this is a problem so that model (2) can then be limited to precisely dated projects.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "Attenuation toward zero requires classification error in Postpt that is unrelated to the outcome and to Attention. The paper's premise is that error rises as attention falls, and Attention is interacted in model (2). The error is therefore differential in attention, so the direction of bias in δ, and its effect on θ, is not determined. Model (1) tests whether precision varies with attention. It does not test whether misdating biases model (2). Restricting to day- or month-precise projects selects on attention (17 of 18 ceremony projects are day-dated), which changes the estimand towards high-attention projects. Table 6 shows only 19 projects at day precision and 10 at month precision, 9 at year precision, and 5 with no date stated, so the restriction would shrink the sample. Month-level Postpt is undefined for the 14 year-dated or undated projects.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "Page 12 text, Section 6.3",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_012.md",
+          "page": 12,
+          "page_label": "12",
+          "section": "6.3",
+          "text_quote": "Therefore, model (1) should first test if this is a problem. If it is, then model (2) should only use precisely dated projects.",
+          "url": null,
+          "object_id": "OBJ-a6c6d31e7be45f25b775aa47",
+          "correspondence": "text",
+          "verification_note": null
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "Page 10 text, Table 6",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_010.md",
+          "page": 10,
+          "page_label": "10",
+          "section": "Table 6",
+          "text_quote": "Coded by the LLM 3,187 Day 19",
+          "url": null,
+          "object_id": "OBJ-e9b90e0f75ce05ff1ce150cc",
+          "correspondence": "text",
+          "verification_note": "Page-10 text used; table markdown interleaves the two panels. Day 19, Month 10, Year 9, Not stated 5 read from the page text."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Misdating biases toward zero; restrict to precisely dated projects",
+          "source_object_ids": [
+            "S1",
+            "S2"
+          ],
+          "relation": "partial",
+          "note": "Error is differential in attention; restriction selects on attention."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "State the measurement-error assumptions needed for attenuation. Treat misdating as differential in attention, and consider bounds or sensitivity analysis. Report how the precisely dated restriction changes the sample and estimand."
+    },
+    {
+      "id": "ID-007",
+      "category": "identification_assumption",
+      "finding_summary": "The attention moderator δ in Eq. (2), built from post-opening reported ceremonies, stories and outlets, is post-treatment and endogenous. The 'more so when the opening is well known locally' hypothesis therefore does not identify an attention effect.",
+      "issue_type": "manuscript_issue",
+      "severity": "medium",
+      "confidence": "medium",
+      "location": {
+        "page": 11,
+        "page_label": "11",
+        "section": "6.3",
+        "text_quote": "more so when the opening is well known locally.",
+        "precision": "exact"
+      },
+      "claim_text": "The hypothesis δ > 0 tests that openings increase mentions of cycling nearby more so when the opening is well known locally.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "Section 6.3 says Attention is measured by a reported ceremony, the number of distinct stories or the number of outlets. Table 1 lists use and attention and coverage as fields coded from articles. These measures come from news coverage after or around the opening and depend on project size, cost and local salience. They can also depend on the same local conditions that drive housing marketing. They are not randomly assigned. A positive δ would be compatible with larger or more central projects having larger effects, or with media covering places where housing markets are more active. Eq. (2) has no control for such characteristics. Section 6.3 lists length, cost and larger road projects only in model (1).",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "Page 11 text, Section 6.3",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_011.md",
+          "page": 11,
+          "page_label": "11",
+          "section": "6.3",
+          "text_quote": "The hypotheses are θ > 0 and δ > 0: openings increase mentions of cycling nearby, and",
+          "url": null,
+          "object_id": "OBJ-95b2618a59737e0b1725c4df",
+          "correspondence": "text",
+          "verification_note": null
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "Page 11 text, Attention measures",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_011.md",
+          "page": 11,
+          "page_label": "11",
+          "section": "6.3",
+          "text_quote": "is measured by a reported ceremony, the number of distinct stories or the",
+          "url": null,
+          "object_id": "OBJ-95b2618a59737e0b1725c4df",
+          "correspondence": "text",
+          "verification_note": null
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "δ > 0 means effects are larger when the opening is well known",
+          "source_object_ids": [
+            "S1",
+            "S2"
+          ],
+          "relation": "partial",
+          "note": "Attention is an endogenous, post-opening coverage measure; δ is not an attention effect."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Interpret δ as heterogeneity by observed coverage, not an effect of local awareness. Add controls for project size and cost interacted with Post and Near, or use a pre-determined attention proxy."
+    },
+    {
+      "id": "ID-008",
+      "category": "interpretation_overreach",
+      "finding_summary": "The conclusion that openings cluster before winter and summer holidays is inferred from the monthly share of relevant articles, which measures coverage timing and not opening dates, and the paper itself says July–August coverage is thin.",
+      "issue_type": "manuscript_issue",
+      "severity": "low",
+      "confidence": "medium",
+      "location": {
+        "page": 10,
+        "page_label": "10",
+        "section": "5 Results",
+        "text_quote": "This indicates that openings cluster before winter and summer holidays, although the archive extraction contains few articles from July–August 2026.",
+        "precision": "exact"
+      },
+      "claim_text": "The monthly share of relevant articles indicates that openings cluster before winter and summer holidays.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "The claim uses the share of relevant articles by month (highest in October–December 2025 and May–June 2026, lowest in February–April 2026). Section 5 shows no table or figure for this. The share depends on the publication date, which can differ from the opening date. It also depends on the denominator, the number of other 'sykkelvei' articles, which can change with the season. The extraction has few articles from July–August 2026, the period just after the claimed pre-summer cluster. The project-level opening dates and their precision (29 of 43 to the day or month) are available but not used. The sentence reads as a conclusion about opening timing.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "Page 10 text, Section 5",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_010.md",
+          "page": 10,
+          "page_label": "10",
+          "section": "5",
+          "text_quote": "October–December 2025 and May–June 2026 have the highest share of relevant articles, and",
+          "url": null,
+          "object_id": "OBJ-e9b90e0f75ce05ff1ce150cc",
+          "correspondence": "text",
+          "verification_note": null
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Openings cluster before winter and summer holidays",
+          "source_object_ids": [
+            "S1"
+          ],
+          "relation": "partial",
+          "note": "Evidence is the monthly share of relevant articles, not opening dates; no data shown."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Use project-level opening dates for the day or month precision subset, or state that the pattern refers to publication timing. Show the monthly counts and denominators."
+    },
+    {
+      "id": "ID-009",
+      "category": "threat_to_validity",
+      "finding_summary": "The near/far design in Eq. (2) assumes that listings in the 'further away' group are unaffected by the new route. The paper does not discuss spillovers or define the distance bands, so the comparison group may be contaminated.",
+      "issue_type": "manuscript_issue",
+      "severity": "medium",
+      "confidence": "medium",
+      "location": {
+        "page": 11,
+        "page_label": "11",
+        "section": "6.3",
+        "text_quote": "Nearj indicates the inner distance band,",
+        "precision": "exact"
+      },
+      "claim_text": "A DiD comparing listings close to a project with listings further away identifies the effect of the opening on mentions of cycling nearby.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "Section 6.3 says only that Nearj indicates the inner distance band and that the comparison is with listings 'further away'. Bands are not defined and the paper never mentions spillovers. Cycling routes serve areas beyond the corridor (Table 5 links the route to the road network, schools and neighbourhood statistics), and listings use phrases such as cycling distance to the city centre. If the route affects mentions in the outer band, θ is not the total effect. The spatial extent also varies with project length (Table 7 mentions 480 m and 2.4 km examples) and with listing density, so one band may mean different exposure across projects. Small municipalities, where projects are concentrated, may have few listings, which makes the near/far split fragile.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "Page 11 text, Eq. (2) definition",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_011.md",
+          "page": 11,
+          "page_label": "11",
+          "section": "6.3",
+          "text_quote": "Nearj indicates the inner distance band,",
+          "url": null,
+          "object_id": "OBJ-95b2618a59737e0b1725c4df",
+          "correspondence": "text",
+          "verification_note": null
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "Page 11 text, DiD description",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_011.md",
+          "page": 11,
+          "page_label": "11",
+          "section": "6.3",
+          "text_quote": "compare listings close to a project with listings further away,",
+          "url": null,
+          "object_id": "OBJ-95b2618a59737e0b1725c4df",
+          "correspondence": "text",
+          "verification_note": null
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Near-vs-far DiD identifies the opening effect",
+          "source_object_ids": [
+            "S1",
+            "S2"
+          ],
+          "relation": "partial",
+          "note": "Distance bands and no-spillover assumption are not stated."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Define the distance bands and justify them by route length or use. State the no-spillover assumption and propose a gradient or multiple-band specification with a far-away reference group."
+    },
+    {
+      "id": "ID-010",
+      "category": "identification_assumption",
+      "finding_summary": "The DiD proposal does not state or plan to test parallel pre-trends or anticipation, even though project-stage dates are announced in advance and construction precedes opening. The post-opening window for the openings in the database is at most about one year.",
+      "issue_type": "manuscript_issue",
+      "severity": "medium",
+      "confidence": "medium",
+      "location": {
+        "page": 9,
+        "page_label": "9",
+        "section": "5 Results",
+        "text_quote": "The LLM coded 3,187 articles from rounds 2–4, published between October 2025 and October 2026 in 236 different outlets.",
+        "precision": "exact"
+      },
+      "claim_text": "The database can support a DiD estimating the effect of an opening on listings, as in Eq. (2).",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "Eq. (2) uses a single Near × Post term with no leads, lags or event-study plan. Table 1 and Table 7 record project-stage dates ('Construction started summer 2023 (Hammerfest)', 19 projects), and Table 1 notes 'Announcement vs. opening effects; delay'. Announcement and visible construction can change marketing before the opening and violate no-anticipation. Articles are from October 2025 to October 2026 and the listing data run to October 2026 (Appendix A.1), so for the observed openings the post-period is at most about 12 months, and shorter for later openings. Only short-run effects are estimable. The listings gap January–April 2024 is irrelevant to this window. The paper does list larger validation as a prerequisite to causal research in Section 8 but does not mention pre-trend checks.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "Page 9 text, Section 5",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_009.md",
+          "page": 9,
+          "page_label": "9",
+          "section": "5",
+          "text_quote": "The LLM coded 3,187 articles from rounds 2–4, published between October 2025 and October 2026 in 236 different outlets.",
+          "url": null,
+          "object_id": "OBJ-521bfe93a764059cd1136195",
+          "correspondence": "text",
+          "verification_note": null
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "Table 7 project-stage row",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_011.md",
+          "page": 11,
+          "page_label": "11",
+          "section": "Table 7",
+          "text_quote": "Project-stage dates 19 Construction started summer 2023 (Hammerfest)",
+          "url": null,
+          "object_id": "OBJ-95b2618a59737e0b1725c4df",
+          "correspondence": "text",
+          "verification_note": null
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Database supports Eq. (2) DiD",
+          "source_object_ids": [
+            "S1",
+            "S2"
+          ],
+          "relation": "partial",
+          "note": "No pre-trend/anticipation plan; short observation window."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "State parallel-trends and no-anticipation assumptions. Propose an event-study with leads and lags using announcement and construction dates, and note that the current database permits only short-run post-opening effects."
+    },
+    {
+      "id": "ID-011",
+      "category": "threat_to_validity",
+      "finding_summary": "Treated projects are selected through newspaper coverage. The paper acknowledges this for the pipeline but does not discuss how it affects what a DiD on these projects estimates.",
+      "issue_type": "manuscript_issue",
+      "severity": "low",
+      "confidence": "medium",
+      "location": {
+        "page": 3,
+        "page_label": "3",
+        "section": "2 Literature Review",
+        "text_quote": "Both apply to our setting, where small projects in rural municipalities may be less likely to be covered",
+        "precision": "exact"
+      },
+      "claim_text": "The database of newspaper-reported openings can be used as treatment data for research questions such as the effects of cycling infrastructure on cycling, driving and house prices.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "Section 2 notes selection bias, since only some events are reported, and description bias. Table 1 lists 'Selection bias in news coverage' as a use of the coverage field. Section 6.3 uses coverage as the Attention variable and also proposes to restrict to precisely dated projects. The estimand is therefore the effect of openings that are reported and dated, which are those with more attention. The database found projects in 14 of 15 counties, with most in Nordland, followed by Agder and Vestfold (Section 5). The listing data show large differences in baseline mentions across counties (Oslo 60.8%, Møre og Romsdal 6.8%). The paper does not say what population of openings the database represents, how many openings are missed, or how selection into coverage relates to local housing market activity. Section 8 does say a random sample from the full run should be checked.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "Page 3 text, Section 2",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_003.md",
+          "page": 3,
+          "page_label": "3",
+          "section": "2",
+          "text_quote": "Both apply to our setting, where small projects in rural municipalities may be less likely to be covered",
+          "url": null,
+          "object_id": "OBJ-03b644fd8d90eae779e2345d",
+          "correspondence": "text",
+          "verification_note": null
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "Page 10 text, Section 5",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_010.md",
+          "page": 10,
+          "page_label": "10",
+          "section": "5",
+          "text_quote": "Most projects are found in Nordland county, followed",
+          "url": null,
+          "object_id": "OBJ-e9b90e0f75ce05ff1ce150cc",
+          "correspondence": "text",
+          "verification_note": null
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Database provides treatment data for causal research",
+          "source_object_ids": [
+            "S1",
+            "S2"
+          ],
+          "relation": "partial",
+          "note": "Coverage selection is acknowledged but its implications for the estimand are not addressed."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Define the target population of openings and discuss how coverage-based selection limits the estimand to reported openings. Plan a coverage check against NVDB or other records, as in Section 8, and consider reweighting or sensitivity analysis."
+    }
+  ],
+  "notes": [
+    "Parser-quality output was read first. It flags table and figure extraction defects but no page-text defects, so all quotes come from the pages/page_NNN.md files, not the table CSV/markdown.",
+    "The paper makes no causal estimates. The findings address the proposed designs (Eqs. 1–2), the treatment-timing definition, and causal and mechanism language in Sections 5 and 6.",
+    "Validation of LLM relevance and date coding (Tables 3–4) was treated as measurement and not audited for identification beyond the treatment-date definition."
+  ],
+  "completion": {
+    "version": 1,
+    "state": "complete",
+    "scope_description": "Identification and causal-interpretation audit of the full parsed manuscript (main text and Appendix A/B), covering causal language, the Eq. (1)–(2) proposals, treatment timing, confounding, spillovers, selection, pre-trends and mechanism language.",
+    "checks_completed": [
+      "Read the parser-quality output and used page text as the safe source",
+      "Read the full text including appendices and searched for causal and mechanism language",
+      "Compared the Section 6.1 and 6.3 interpretations with the outcome definition in Appendix A",
+      "Assessed the Eq. (2) assumptions (confounding, spillovers, anticipation, pre-trends, misclassification)",
+      "Checked treatment-date definitions against Tables 2, 5, 6 and 7 and the Section 4 coder disagreement",
+      "Checked the Section 5 seasonality claim and the Section 6.3 attention/precision claim against the evidence shown"
+    ],
+    "missing_checks": [],
+    "evidence_limitations": [
+      "Table markdown and CSV files were not used because of parser warnings; page text was used instead.",
+      "No estimates exist, so no empirical identification diagnostics could be assessed.",
+      "Appendix B repository code was not available for inspection."
+    ]
+  },
+  "coverage": [
+    {
+      "item_id": "assigned_remit",
+      "source_object_ids": [
+        "OBJ-e9b90e0f75ce05ff1ce150cc",
+        "OBJ-95b2618a59737e0b1725c4df",
+        "OBJ-a6c6d31e7be45f25b775aa47",
+        "OBJ-9d16c139938370d7a97e77c6",
+        "OBJ-4e6da301f188ae5c7e5d0a63",
+        "OBJ-521bfe93a764059cd1136195",
+        "OBJ-03b644fd8d90eae779e2345d"
+      ],
+      "claim": null,
+      "check_performed": "Read the full parsed text and audited causal language, estimands, treatment timing, identifying assumptions, threats to validity, and mechanism language across main text and appendices.",
+      "status": "linked_finding",
+      "reason": "Eleven identification and interpretation issues were found in the proposed econometric designs and treatment definitions. No causal estimates are reported, so there are no empirical identification checks. The full text was read and the checks were exhaustive for the causal remit.",
+      "finding_ids": [
+        "ID-001",
+        "ID-002",
+        "ID-003",
+        "ID-004",
+        "ID-005",
+        "ID-006",
+        "ID-007",
+        "ID-008",
+        "ID-009",
+        "ID-010",
+        "ID-011"
+      ],
+      "attempted": true,
+      "importance": "central",
+      "scope": "exhaustive"
+    },
+    {
+      "item_id": "claim:abstract-conclusion-causal",
+      "source_object_ids": [
+        "OBJ-a6c6d31e7be45f25b775aa47"
+      ],
+      "claim": "The database can support causal research on cycling behaviour and housing markets, but only after further validation and automation (Section 7 and 8).",
+      "check_performed": "Compared the abstract, introduction, conclusion and Section 8 wording with the evidence in the paper.",
+      "status": "checked_no_issue",
+      "reason": "Conclusion and Section 8 are appropriately hedged and state that several steps remain before causal research. The specific design issues are covered in ID-001 to ID-011.",
+      "finding_ids": [],
+      "attempted": true,
+      "importance": "peripheral",
+      "scope": "exhaustive"
+    },
+    {
+      "item_id": "claim:lit-review-causal-statements",
+      "source_object_ids": [
+        "OBJ-03b644fd8d90eae779e2345d"
+      ],
+      "claim": "The literature review describes before-after and DiD evidence on cycling infrastructure and housing valuation.",
+      "check_performed": "Read the Section 1–2 causal statements about cited studies for mismatch with the designs as described.",
+      "status": "checked_no_issue",
+      "reason": "These are summaries of other studies. I did not verify them against the cited works, which is outside the identification remit.",
+      "finding_ids": [],
+      "attempted": true,
+      "importance": "peripheral",
+      "scope": "sampled"
+    }
+  ]
+}

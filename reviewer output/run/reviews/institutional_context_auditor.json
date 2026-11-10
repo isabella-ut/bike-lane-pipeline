@@ -1,0 +1,129 @@
+{
+  "reviewer": "institutional_context_auditor",
+  "paper_id": "bicycle-infrastructure-paper",
+  "run_status": "ok",
+  "summary": "The paper's institutional claims are mostly checkable only against facts it supplies itself. I found one material event-timing inconsistency. The Figure 1 caption, and the abstract's \"two actual openings\" claim, treat Grettefoss Bridge as a planned opening that did not occur. Table 2 footnote c states that it was confirmed to have opened on 3 November 2026. Other institutional details are internally consistent and consistent with public knowledge: Norway's 15 counties, Agder as county number 42, Grimstad's municipality number 4202, Flesberg, the NVDB road-owner category \"F\", and 5 October 2026 falling on a Monday. The Gemini 3.8 Flash model exists, with a Google model card. I could not verify the NVDB field semantics, the FINN.no coverage claim, the Retriever/Atekst coverage claim or the specific project facts from authoritative sources. The NVDB API documentation only shows startdato as a version-validity date and lists no opening-date field. That supports the paper's description but does not establish it, so I report no finding on it.",
+  "findings": [
+    {
+      "id": "INST-001",
+      "category": "event_timing_problem",
+      "finding_summary": "Figure 1 and the abstract count only two openings that took place, but Table 2 footnote c says Grettefoss Bridge was confirmed to have opened on 3 November 2026. The paper's own event-status information therefore gives three realised openings.",
+      "issue_type": "manuscript_issue",
+      "severity": "medium",
+      "confidence": "medium",
+      "location": {
+        "page": 4,
+        "page_label": "4",
+        "section": "3.1.2 Pilot sample / Figure 1 caption",
+        "text_quote": "Only 2 of 70 search hits concern a cycling infrastructure opening that actually took place (Homborsund and Stod/Steinkjer).",
+        "precision": "exact"
+      },
+      "claim_text": "Only 2 of 70 search hits concern a cycling infrastructure opening that actually took place; the two further openings (Tromsø Bridge and Grettefoss Bridge) are only planned.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "Figure 1 (p. 4) says only 2 openings 'actually took place' and describes Tromsø and Grettefoss as 'planned'. The abstract says the pilot 'contained only two actual openings'. Table 2 on p. 5 (inspected in the retained page image) lists Grettefoss Bridge with status 'Planned' and opening date 3 Nov 2026, but footnote c reads 'Confirmed to have opened 3 November as planned.' By the paper's own account the opening therefore occurred. The 'planned' label and the count of two are correct only as of the articles' publication dates (pilot window 2 Sep-10 Oct 2026). The caption states neither this qualification nor the later status. This matters for the headline noise ratio (2 of 70 hits), because status was updated for only some projects: footnote b records Tromsø's delay as of 6 November. It also bears on the planned-versus-actual date rule in Section 3.1.4. I did not check local-news or road-authority records for the real events, so this finding relies on the manuscript's internal statements.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "Figure 1 caption, page 4",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_004.md",
+          "page": 4,
+          "page_label": "4",
+          "section": "3.1.2",
+          "text_quote": "Only 2 of 70 search hits concern a cycling infrastructure opening that actually took place (Homborsund and Stod/Steinkjer).",
+          "url": null,
+          "object_id": "OBJ-1a119a3cb70f2153fc56dd97",
+          "correspondence": "text",
+          "verification_note": "Quote found in page 4 text; the caption line wraps across two lines in the extraction."
+        },
+        {
+          "id": "S2",
+          "type": "figure",
+          "label": "Table 2 and footnote c, page 5 (page image)",
+          "path": "work/bicycle-infrastructure-paper/parsed/page_images/page_005.png",
+          "page": 5,
+          "page_label": "5",
+          "section": "3.1.4 / Table 2",
+          "text_quote": null,
+          "url": null,
+          "object_id": "OBJ-c95aac7deda93a66f4e54a92",
+          "correspondence": "visual",
+          "verification_note": "Inspected the page 5 image. In the Table 2 region, the Grettefoss Bridge row (Flesberg, 1 article, '3 Nov 2026' with superscript c) has status 'Planned'. The footnote below the table reads 'c Confirmed to have opened 3 November as planned.' The image establishes both the 'Planned' status cell and footnote c. The text-extraction match for the footnote was not accepted by the validator, so the visual evidence is used."
+        },
+        {
+          "id": "S3",
+          "type": "text",
+          "label": "Abstract, page 1",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_001.md",
+          "page": 1,
+          "page_label": "1",
+          "section": "Abstract",
+          "text_quote": "contained only two actual openings",
+          "url": null,
+          "object_id": "OBJ-ae6010b8e427194ea28d441e",
+          "correspondence": "text",
+          "verification_note": "Phrase wraps across lines in the extraction; whitespace-normalised match."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Only two pilot openings actually took place; Grettefoss Bridge was only planned.",
+          "source_object_ids": [
+            "S1",
+            "S3",
+            "S2"
+          ],
+          "relation": "partial",
+          "note": "Correct as of the articles' publication dates; Table 2 footnote c (page image) says Grettefoss opened on 3 November 2026, so the caption and abstract are not updated to the paper's own later status information."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "State in the abstract, the Figure 1 caption and Section 3.1.2 that the counts are as of article publication or the extraction date. Report separately the later-confirmed status of Grettefoss (opened 3 November 2026) and Tromsø (delayed to 27 November), or update the status for all pilot projects at one stated reference date. Reconcile the status label 'Planned' in Table 2 with footnote c. If the aim is to show what share of hits concern openings that took place, say whether Grettefoss should count."
+    }
+  ],
+  "notes": [
+    "The manuscript is dated November 2026 and describes events from September to November 2026. Specific project facts, such as the Homborsund, Stod, Tromsø Bridge and Grettefoss Bridge openings, and the NVDB record values, could not be checked against external records.",
+    "The NVDB API v4 documentation shows startdato and sluttdato only as version-validity dates in JSON examples. It lists no opening-date field. The documentation fetched did not define the fields, so the paper's statement that NVDB records only geometry registration is neither confirmed nor refuted."
+  ],
+  "completion": {
+    "version": 1,
+    "state": "complete",
+    "scope_description": "Audit of institutional, legal, administrative-data, platform and event-timing claims in the 18-page paper, using full_text.md, page text, the page 5 image and the parser-quality guidance, plus targeted external checks of NVDB field semantics, Gemini 3.8 Flash and the Homborsund road.",
+    "checks_completed": [
+      "Read the parser-quality output and avoided structured table CSV/markdown as primary evidence, using page text and the page image instead",
+      "Checked event timing and status consistency across the abstract, Figure 1, Table 2 and its footnotes (inspected in the page 5 image), Section 3.1.4 and the dated manuscript",
+      "Checked weekday and date resolution (5 October 2026 as a Monday) and the pilot window against opening dates",
+      "Checked NVDB characterisation (owner, category F, municipality 4202, county 42) for internal and public-knowledge consistency, and searched NVDB API documentation for opening-date semantics",
+      "Checked Norwegian county structure (15 counties, Østfold the missing county) against Figure 4 and Table 6",
+      "Checked the existence of the Gemini 3.8 Flash model and its model card",
+      "Reviewed the FINN.no coverage claim, the Retriever/Atekst description and the Google Cloud trial description for material overgeneralisation"
+    ],
+    "missing_checks": [],
+    "evidence_limitations": [
+      "Real-world project facts and NVDB record values for events in September to November 2026 could not be verified from authoritative sources",
+      "NVDB API documentation did not define startdato or list an opening-date field, so the 'geometry registered' semantics could not be confirmed",
+      "The FINN.no and Retriever/Atekst claims rely on secondary or unspecified sources and were not externally verified"
+    ]
+  },
+  "coverage": [
+    {
+      "item_id": "assigned_remit",
+      "source_object_ids": [
+        "OBJ-1a119a3cb70f2153fc56dd97",
+        "OBJ-c95aac7deda93a66f4e54a92",
+        "OBJ-ae6010b8e427194ea28d441e"
+      ],
+      "claim": null,
+      "check_performed": "Read the full text and checked event-timing claims, NVDB administrative-data semantics, FINN.no and Retriever data provenance claims, Norwegian county structure, Google Cloud/Gemini platform claims, and internal date consistency. Inspected the page 5 image for Table 2 status and footnote c. Ran targeted external checks for NVDB fields, Gemini 3.8 Flash and the Homborsund project.",
+      "status": "linked_finding",
+      "reason": "One event-timing inconsistency found (Grettefoss Bridge status). Other institutional claims were consistent or could not be verified externally. The scope was a targeted check on material claims, not an exhaustive verification of every real-world project fact.",
+      "finding_ids": [
+        "INST-001"
+      ],
+      "attempted": true,
+      "importance": "central",
+      "scope": "sampled"
+    }
+  ]
+}

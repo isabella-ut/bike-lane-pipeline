@@ -1,0 +1,11 @@
+{
+  "stage": "source_consistency_auditor",
+  "call_reserved": true,
+  "errors": [
+    "reviewer/stage=source_consistency_auditor finding=SOURCE-001 field=numeric_check sources=[S1 at work/bicycle-infrastructure-paper/parsed/pages/page_004.md; S2 at work/bicycle-infrastructure-paper/parsed/pages/page_004.md; S3 at work/bicycle-infrastructure-paper/parsed/pages/page_005.md]: Numerical quantity is not present in its source quote; copy published values/scales or retain explicit unresolved/visual evidence",
+    "reviewer/stage=source_consistency_auditor finding=SOURCE-005 field=numeric_check sources=[S1 at work/bicycle-infrastructure-paper/parsed/pages/page_016.md; S2 at work/bicycle-infrastructure-paper/parsed/pages/page_015.md; S3 at work/bicycle-infrastructure-paper/parsed/figures/figure_3.png]: Underdetermined numeric_check must remain cannot_verify with missing information",
+    "reviewer/stage=source_consistency_auditor finding=SOURCE-006 field=numeric_check sources=[S1 at work/bicycle-infrastructure-paper/parsed/figures/figure_2.png; S2 at work/bicycle-infrastructure-paper/parsed/pages/page_016.md]: Underdetermined numeric_check must remain cannot_verify with missing information",
+    "reviewer/stage=source_consistency_auditor finding=SOURCE-007 field=numeric_check sources=[S1 at work/bicycle-infrastructure-paper/parsed/pages/page_005.md; S2 at work/bicycle-infrastructure-paper/parsed/page_images/page_005.png; S3 at work/bicycle-infrastructure-paper/parsed/pages/page_004.md]: Underdetermined numeric_check must remain cannot_verify with missing information"
+  ],
+  "previous_sha256": "8e98b59d40ad191e74ce72dcecf8452466ada3c1c7c7b6667da3106fa48a1e94"
+}

@@ -1,0 +1,9 @@
+{
+  "stage": "abstract_conclusion_consistency_auditor",
+  "call_reserved": true,
+  "errors": [
+    "Added central/peripheral claims must link manuscript evidence",
+    "reviewer/stage=abstract_conclusion_consistency_auditor finding=CONSIST-008 field=numeric_check sources=[S1 at work/bicycle-infrastructure-paper/parsed/pages/page_004.md; S2 at work/bicycle-infrastructure-paper/parsed/pages/page_005.md]: Invalid decimal value"
+  ],
+  "previous_sha256": "20d44e4748aecaaa04efc0131ae66e9c955f91a57ecada420d2fa7e070e2af2a"
+}

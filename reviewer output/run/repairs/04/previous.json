@@ -1,0 +1,633 @@
+{
+  "reviewer": "abstract_conclusion_consistency_auditor",
+  "paper_id": "bicycle-infrastructure-paper",
+  "run_status": "ok",
+  "summary": "The headline counts match the body (92 articles, 43 projects, 29 day/month-dated, 14 of 15 counties, 97 percent agreement, 38 percent of listings). The problems are in framing. The abstract and conclusion state the human–LLM parity result without the body's small-sample caveat (3 relevant articles, 'indicative only'). They present full-run counts as findings although the body says the full run is unvalidated and the project grouping was done by hand. The abstract generalises from one NVDB match, says the listings data was 'linked' although the body says they have not yet been linked, and says the pilot 'shows' that an LLM filter is needed. One body-level inconsistency: '2 of 34 articles' is used for openings, while five articles were coded relevant.",
+  "findings": [
+    {
+      "id": "CONSIST-001",
+      "category": "abstract_overstatement",
+      "finding_summary": "The abstract reports human–LLM agreement as equal to human–human agreement (97 percent) with no caveat that only 3 of 34 pilot articles were relevant and that the body calls the result 'indicative only' and untestable.",
+      "issue_type": "manuscript_issue",
+      "severity": "medium",
+      "confidence": "high",
+      "location": {
+        "page": 1,
+        "page_label": "1",
+        "section": "Abstract",
+        "text_quote": "the LLM agrees with a human coder on the relevance of 97 percent of the articles, the same rate as between two human coders",
+        "precision": "exact"
+      },
+      "claim_text": "On the pilot, the LLM agrees with a human coder on the relevance of 97 percent of the articles, the same rate as between two human coders, and gives the same opening date for all three relevant articles.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "The figures are correct (Tables 3 and 4: 33 of 34 each). Section 4 says: 'With only 34 articles, of which 3 were coded as relevant in the pilot, the sample is too small to test whether the two agreement rates differ. The results are thus indicative only.' Both tables show 30 of the 33 agreements are on not-relevant articles, and the single disagreement is the same Stord article in each. The abstract and Introduction give the parity result and the three-for-three date match without these limits.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "Abstract",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_001.md",
+          "page": 1,
+          "page_label": "1",
+          "section": "Abstract",
+          "text_quote": "the same rate as between two human coders",
+          "url": null,
+          "object_id": "OBJ-ae6010b8e427194ea28d441e",
+          "correspondence": "text",
+          "verification_note": null
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "Section 4 caveat",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_007.md",
+          "page": 7,
+          "page_label": "7",
+          "section": "4 Validation",
+          "text_quote": "the sample is too small to",
+          "url": null,
+          "object_id": "OBJ-4e6da301f188ae5c7e5d0a63",
+          "correspondence": "text",
+          "verification_note": "Quote is a fragment of 'the sample is too small to test whether the two agreement rates differ'."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Abstract: LLM–human agreement is the same as human–human agreement",
+          "source_object_ids": [
+            "S1",
+            "S2"
+          ],
+          "relation": "partial",
+          "note": "Point estimates match, but the body states the sample cannot test equality and the results are indicative only."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Add to the abstract that the pilot has 34 articles with only 3 relevant ones, so the comparison is indicative and no test of equality is possible. Replace 'the same rate' with 'a similar rate'."
+    },
+    {
+      "id": "CONSIST-002",
+      "category": "conclusion_overstatement",
+      "finding_summary": "The conclusion reports human–LLM agreement 'matched' human–human agreement on 97 percent and says the study demonstrated the potential of LLMs, omitting the body's statements that the pilot has only 3 relevant articles, cannot test equality, and that more validation is needed before causal use.",
+      "issue_type": "manuscript_issue",
+      "severity": "medium",
+      "confidence": "high",
+      "location": {
+        "page": 12,
+        "page_label": "12",
+        "section": "7 Conclusion",
+        "text_quote": "human–LLM agreement on relevance matched human–human agreement on 97 percent of the articles",
+        "precision": "exact"
+      },
+      "claim_text": "The study included a pilot with 34 articles where human–LLM agreement on relevance matched human–human agreement on 97 percent of the articles.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "Section 8 on the same page says: 'With only three relevant articles in the pilot, we cannot test whether human–LLM agreement differs from human–human agreement', and Section 4 says the results are 'indicative only'. The conclusion carries neither caveat. It also states no limit on the unvalidated full run.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "Conclusion",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_012.md",
+          "page": 12,
+          "page_label": "12",
+          "section": "7 Conclusion",
+          "text_quote": "matched human–human agreement on 97 percent of the articles",
+          "url": null,
+          "object_id": "OBJ-a6c6d31e7be45f25b775aa47",
+          "correspondence": "text",
+          "verification_note": null
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "Next Steps",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_012.md",
+          "page": 12,
+          "page_label": "12",
+          "section": "8 Next Steps",
+          "text_quote": "we cannot test whether human–LLM agreement differs from human–human agreement",
+          "url": null,
+          "object_id": "OBJ-a6c6d31e7be45f25b775aa47",
+          "correspondence": "text",
+          "verification_note": null
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Conclusion: agreement matched",
+          "source_object_ids": [
+            "S1",
+            "S2"
+          ],
+          "relation": "partial",
+          "note": "Equal point estimates, but Section 8 says equality cannot be tested."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Qualify the sentence, for example 'was similar in a small pilot with three relevant articles, too few to test for a difference', and add that the full-run output has not yet been validated."
+    },
+    {
+      "id": "CONSIST-003",
+      "category": "abstract_overstatement",
+      "finding_summary": "The abstract and conclusion report the full-run counts (92 openings, 43 projects, 29 dated to the day or month) as pipeline results without saying the full run was never checked against human coding, which Section 8 lists as a future step.",
+      "issue_type": "manuscript_issue",
+      "severity": "high",
+      "confidence": "high",
+      "location": {
+        "page": 1,
+        "page_label": "1",
+        "section": "Abstract",
+        "text_quote": "Applied to 3,187 articles, the pipeline finds 92 articles reporting an opening",
+        "precision": "exact"
+      },
+      "claim_text": "Applied to 3,187 articles, the pipeline finds 92 articles reporting an opening, which we group into 43 projects across 14 of 15 counties, 29 of them dated to the day or month.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "The counts agree with Table 6 (Day 19 + Month 10 = 29; 19+10+9+5 = 43). Validation covers only the 34-article pilot, in which the LLM flagged 4 articles as relevant against 3 by the pilot coder. Section 8 says 'a random sample from the full run of 3,187 articles should also be checked against human coding'. No precision, recall or error rate is reported for the 92 articles. Because the pilot yield was 2 openings in 34 articles, false positives could be a large share of 92. The abstract and conclusion do not say the counts are unvalidated.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "Abstract",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_001.md",
+          "page": 1,
+          "page_label": "1",
+          "section": "Abstract",
+          "text_quote": "the pipeline finds 92 articles reporting an opening",
+          "url": null,
+          "object_id": "OBJ-ae6010b8e427194ea28d441e",
+          "correspondence": "text",
+          "verification_note": null
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "Next Steps",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_012.md",
+          "page": 12,
+          "page_label": "12",
+          "section": "8 Next Steps",
+          "text_quote": "a random sample from the full run of 3,187 articles should also be checked against",
+          "url": null,
+          "object_id": "OBJ-a6c6d31e7be45f25b775aa47",
+          "correspondence": "text",
+          "verification_note": "Quote is a fragment of the sentence ending 'checked against human coding'."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "92 articles / 43 projects found by the pipeline",
+          "source_object_ids": [
+            "S1",
+            "S2"
+          ],
+          "relation": "partial",
+          "note": "Counts match Table 6, but the body concedes the full run is not validated against human coding."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "State in the abstract and conclusion that the full-run counts are unvalidated model output, or report a human check on a random sample of the full run."
+    },
+    {
+      "id": "CONSIST-004",
+      "category": "conclusion_overstatement",
+      "finding_summary": "The conclusion credits the pipeline with identifying 43 unique projects, but Section 8 says grouping articles into projects was done by hand in this paper and has not been automated.",
+      "issue_type": "manuscript_issue",
+      "severity": "medium",
+      "confidence": "high",
+      "location": {
+        "page": 12,
+        "page_label": "12",
+        "section": "7 Conclusion",
+        "text_quote": "The pipeline was applied to 3,187 articles, identifying 43 unique projects.",
+        "precision": "exact"
+      },
+      "claim_text": "The pipeline was applied to 3,187 articles, identifying 43 unique projects.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "Section 3.2 describes the pipeline as extracting relevance, location and opening date per article, with each article analysed in a separate API call. Section 8 says: 'the steps that were done by hand in this paper should be automated: grouping articles on the same project into one record'. The abstract's 'which we group into 43 projects' is worded correctly. The conclusion attributes the project count to the pipeline.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "Conclusion",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_012.md",
+          "page": 12,
+          "page_label": "12",
+          "section": "7 Conclusion",
+          "text_quote": "identifying 43 unique projects",
+          "url": null,
+          "object_id": "OBJ-a6c6d31e7be45f25b775aa47",
+          "correspondence": "text",
+          "verification_note": null
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "Next Steps",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_012.md",
+          "page": 12,
+          "page_label": "12",
+          "section": "8 Next Steps",
+          "text_quote": "grouping articles on the same project into one record",
+          "url": null,
+          "object_id": "OBJ-a6c6d31e7be45f25b775aa47",
+          "correspondence": "text",
+          "verification_note": null
+        },
+        {
+          "id": "S3",
+          "type": "text",
+          "label": "Pipeline description",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_006.md",
+          "page": 6,
+          "page_label": "6",
+          "section": "3.2 LLM pipeline",
+          "text_quote": "Each article is analysed by an individual API call without memory",
+          "url": null,
+          "object_id": "OBJ-e13eccc23f4c883050d15bcf",
+          "correspondence": "text",
+          "verification_note": "Quote is a fragment spanning a line break in the source; the sentence continues 'of the previous calls'."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Pipeline identified 43 projects",
+          "source_object_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "relation": "partial",
+          "note": "Articles are coded individually by the LLM; project grouping is described as manual."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Reword the conclusion, for example 'the pipeline flagged 92 articles, which were grouped by hand into 43 projects'."
+    },
+    {
+      "id": "CONSIST-005",
+      "category": "abstract_overstatement",
+      "finding_summary": "The abstract says linking one opening to NVDB 'shows that the articles add an exact opening date, which NVDB lacks', generalising a single Homborsund match into a statement about the articles' added value, while Section 8 says how much the articles add has not yet been measured.",
+      "issue_type": "manuscript_issue",
+      "severity": "medium",
+      "confidence": "medium",
+      "location": {
+        "page": 1,
+        "page_label": "1",
+        "section": "Abstract",
+        "text_quote": "Linking one opening to the national road database NVDB shows that the articles add an exact opening date, which NVDB lacks.",
+        "precision": "exact"
+      },
+      "claim_text": "Linking one opening to the national road database NVDB shows that the articles add an exact opening date, which NVDB lacks.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "Section 4.3 documents one case (Homborsund). It says NVDB 'does not record when a road opens to traffic, only when its geometry was registered', which supports the narrower point that NVDB has no opening-date field. Section 8 lists as future work that 'the opening dates should be compared systematically with NVDB registration dates and historical OpenStreetMap records, to measure how much the articles add and how coverage varies across regions'. The body therefore presents the link as an illustration ('To illustrate...'), not as evidence of added value across the 43 projects.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "Abstract",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_001.md",
+          "page": 1,
+          "page_label": "1",
+          "section": "Abstract",
+          "text_quote": "shows that the articles add an exact opening date, which NVDB lacks",
+          "url": null,
+          "object_id": "OBJ-ae6010b8e427194ea28d441e",
+          "correspondence": "text",
+          "verification_note": null
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "Section 4.3",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_008.md",
+          "page": 8,
+          "page_label": "8",
+          "section": "4.3 Linking newspaper articles to administrative data",
+          "text_quote": "To illustrate how the information extracted from newspaper articles can be combined with",
+          "url": null,
+          "object_id": "OBJ-b41cc221a4f064e5990acabf",
+          "correspondence": "text",
+          "verification_note": "Fragment of a sentence that continues across a line break."
+        },
+        {
+          "id": "S3",
+          "type": "text",
+          "label": "Next Steps",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_012.md",
+          "page": 12,
+          "page_label": "12",
+          "section": "8 Next Steps",
+          "text_quote": "to measure how much the articles add and how coverage varies across regions",
+          "url": null,
+          "object_id": "OBJ-a6c6d31e7be45f25b775aa47",
+          "correspondence": "text",
+          "verification_note": null
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Abstract: linking shows articles add an exact date",
+          "source_object_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "relation": "partial",
+          "note": "One illustrative match; added value across projects is deferred to future work."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Change 'shows' to 'illustrates with one opening (Homborsund)' and state that the added value over NVDB and OSM has not yet been measured across projects."
+    },
+    {
+      "id": "CONSIST-006",
+      "category": "abstract_overstatement",
+      "finding_summary": "The abstract says 'we show how the data can be linked to 700 579 housing listings', but the body says the listings have not yet been linked to the database. The appendix only describes keyword shares in the listings.",
+      "issue_type": "manuscript_issue",
+      "severity": "medium",
+      "confidence": "high",
+      "location": {
+        "page": 1,
+        "page_label": "1",
+        "section": "Abstract",
+        "text_quote": "Finally, we show how the data can be linked to 700 579 housing listings from FINN.no",
+        "precision": "exact"
+      },
+      "claim_text": "Finally, we show how the data can be linked to 700 579 housing listings from FINN.no, where 38 percent of listings mention cycling, and propose models for future analysis.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "Section 6.1 says: 'We have not yet linked the listings to the database.' The appendix reports descriptive keyword shares (38.1 percent any mention; 266 625 of 700 579 listings). Equation (2) is a proposed specification, and Section 8 lists linkage as a final remaining step. The abstract does end with 'propose models for future analysis', but 'show how ... linked' implies a demonstrated linkage. The abstract also gives the 38 percent without saying it counts any bicycle-related keyword, not infrastructure mentions.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "Abstract",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_001.md",
+          "page": 1,
+          "page_label": "1",
+          "section": "Abstract",
+          "text_quote": "we show how the data can be linked to 700 579 housing listings",
+          "url": null,
+          "object_id": "OBJ-ae6010b8e427194ea28d441e",
+          "correspondence": "text",
+          "verification_note": null
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "Section 6.1",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_010.md",
+          "page": 10,
+          "page_label": "10",
+          "section": "6.1 An application to house listing data",
+          "text_quote": "We have not yet linked the listings to the database.",
+          "url": null,
+          "object_id": "OBJ-e9b90e0f75ce05ff1ce150cc",
+          "correspondence": "text",
+          "verification_note": null
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Abstract: data linked to listings",
+          "source_object_ids": [
+            "S1",
+            "S2"
+          ],
+          "relation": "contradicts",
+          "note": "The body says no linkage has been performed; only listing descriptives and a proposed model are given."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Reword, for example 'we describe 700 579 housing listings from FINN.no (38 percent mention cycling) that could be linked to the database, and propose models for future analysis'."
+    },
+    {
+      "id": "CONSIST-007",
+      "category": "abstract_overstatement",
+      "finding_summary": "The abstract says the pilot shows that keyword search is too noisy and that an LLM filter is needed, but the pilot uses one search term ('sykkelvei') and 34 unique articles, and no non-LLM filter was compared. The body says only that the low yield 'points to the need' for an LLM.",
+      "issue_type": "manuscript_issue",
+      "severity": "low",
+      "confidence": "medium",
+      "location": {
+        "page": 1,
+        "page_label": "1",
+        "section": "Abstract",
+        "text_quote": "showing that keyword search alone is too noisy and that an LLM filter is needed",
+        "precision": "exact"
+      },
+      "claim_text": "A pilot of 70 search hits, of which 34 were unique articles, contained only two actual openings, showing that keyword search alone is too noisy and that an LLM filter is needed.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "Section 3.1.2 says 'The low yield points to the need for an LLM to filter the articles', which is softer than 'showing ... is needed'. Section 3.1.1 reports a single search term ('sykkelvei'), and the same section notes other terms such as 'åpning sykkelvei' yield about 530 hits. The pilot does not compare keyword refinements, rule-based filters or other tools, so it cannot show that an LLM is required.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "Abstract",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_001.md",
+          "page": 1,
+          "page_label": "1",
+          "section": "Abstract",
+          "text_quote": "showing that keyword search alone is too noisy",
+          "url": null,
+          "object_id": "OBJ-ae6010b8e427194ea28d441e",
+          "correspondence": "text",
+          "verification_note": null
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "Section 3.1.2",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_004.md",
+          "page": 4,
+          "page_label": "4",
+          "section": "3.1.2 Pilot sample",
+          "text_quote": "The low yield points to the need for an LLM to filter the",
+          "url": null,
+          "object_id": "OBJ-1a119a3cb70f2153fc56dd97",
+          "correspondence": "text",
+          "verification_note": "Fragment of a sentence continuing across a line break."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Pilot shows an LLM filter is needed",
+          "source_object_ids": [
+            "S1",
+            "S2"
+          ],
+          "relation": "partial",
+          "note": "The body language is weaker ('points to the need'), and no alternative filter was tested."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Soften the abstract to 'suggesting that keyword search alone is too noisy and that a filter such as an LLM is useful', and note that the pilot used a single search term."
+    },
+    {
+      "id": "CONSIST-008",
+      "category": "section_inconsistency",
+      "finding_summary": "Section 3.1.2 and the Figure 1 caption count the yield as '2 of 34' articles (and '2 of 70' hits) concerning an opening, but Section 3.1.4 and Figure 1 itself give five articles coded relevant, which cover those two openings. The two openings are counted as if they were articles.",
+      "issue_type": "manuscript_issue",
+      "severity": "medium",
+      "confidence": "high",
+      "location": {
+        "page": 4,
+        "page_label": "4",
+        "section": "3.1.2 Pilot sample",
+        "text_quote": "Only 2 of the 34 unique articles (about 6 percent) concern an opening that took place.",
+        "precision": "exact"
+      },
+      "claim_text": "Only 2 of the 34 unique articles (about 6 percent) concern an opening that took place.",
+      "assessment": "no",
+      "cannot_verify_reason": null,
+      "evidence_summary": "Section 3.1.4 states 'This resulted in five relevant articles' and 'Of the five relevant articles, only two unique openings were found. Four of the articles mention Homborsund and one Stod.' Figure 1 shows 'Coded relevant 5' and 'Distinct openings 2'. By article count, 5 of 34 articles (about 15 percent, as Figure 1's own '15 % retained') concern an opening that took place, though two of the Homborsund articles were published before the opening. The 2 is a count of distinct openings. The Figure 1 caption's 'Only 2 of 70 search hits' has the same mix of units. The abstract's 'two actual openings' is correctly worded, but the yield rate used to motivate the LLM filter is stated inconsistently.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "Section 3.1.2 text",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_004.md",
+          "page": 4,
+          "page_label": "4",
+          "section": "3.1.2 Pilot sample",
+          "text_quote": "Only 2 of the 34 unique articles (about 6 percent) concern an opening that took place.",
+          "url": null,
+          "object_id": "OBJ-1a119a3cb70f2153fc56dd97",
+          "correspondence": "text",
+          "verification_note": null
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "Section 3.1.4",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_005.md",
+          "page": 5,
+          "page_label": "5",
+          "section": "3.1.4 Manual coding of the pilot",
+          "text_quote": "Of the five relevant articles, only two unique openings were found.",
+          "url": null,
+          "object_id": "OBJ-9d16c139938370d7a97e77c6",
+          "correspondence": "text",
+          "verification_note": null
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "2 of 34 articles concern an opening",
+          "source_object_ids": [
+            "S1",
+            "S2"
+          ],
+          "relation": "contradicts",
+          "note": "Five articles were coded relevant; the two is a count of distinct openings."
+        }
+      ],
+      "numeric_check": {
+        "kind": "cross_source",
+        "quantities": [
+          {
+            "value": "2",
+            "source_id": "S1",
+            "unit": "articles (as stated)",
+            "sample": "34 unique pilot articles",
+            "denominator": "34 unique articles",
+            "context": "Section 3.1.2 yield 'about 6 percent'",
+            "rounding_half_width": "0",
+            "scale": "number"
+          },
+          {
+            "value": "five",
+            "source_id": "S2",
+            "unit": "articles",
+            "sample": "34 unique pilot articles",
+            "denominator": "34 unique articles",
+            "context": "Section 3.1.4 relevant articles, covering two distinct openings",
+            "rounding_half_width": "0",
+            "scale": "number"
+          }
+        ],
+        "comparability": "Both refer to the 34 unique pilot articles. The first labels the count as articles; the second states five articles that cover two distinct openings. They are comparable only if the 2 is a count of openings, which is not what the sentence says.",
+        "observed_discrepancy": "Articles about an opening that took place are given as 2 (about 6 percent) in Section 3.1.2 but as five (about 15 percent, per Figure 1) in Section 3.1.4.",
+        "possible_explanation": "The authors may have meant 2 distinct openings, or may be excluding the two Homborsund articles published before the opening.",
+        "suggested_correction": "State yield per unit explicitly, for example '5 of 34 articles (15 percent) were coded relevant, covering 2 distinct openings'."
+      },
+      "suggested_fix": "Rewrite the sentence and Figure 1 caption so articles and distinct openings are counted separately, and reconcile with the five relevant articles in Section 3.1.4."
+    }
+  ],
+  "notes": [
+    "Parser-quality guidance was followed: manuscript evidence is taken from pages/page_NNN.md text, not from the structured table CSV/markdown. Table 3, 4 and 6 values were read from page text.",
+    "Cross-checked headline numbers: 97% = 33/34; 38.1% = 266 625/700 579; Table 6: Day 19 + Month 10 = 29, 19+10+9+5 = 43; 44 projects = 18 ceremony + 26 without. All consistent.",
+    "The 96/44 counts in Section 6 differ from the abstract's 92/43 but are reconciled by footnote 3 (pilot added), so they are not reported as an inconsistency."
+  ],
+  "completion": {
+    "version": 1,
+    "state": "complete",
+    "scope_description": "Compared the abstract, introduction and conclusion (and Section 8 next steps) with the body, tables, validation sections, and appendix of the 18-page manuscript, using parsed page text and following parser-quality guidance.",
+    "checks_completed": [
+      "Read the full parsed text, with the abstract, introduction and conclusion compared against Sections 3-6 and Section 8",
+      "Recomputed headline counts and percentages against Tables 3, 4, 6, 8 and Section 6.3",
+      "Checked summary claims for caveats on pilot size, validation of the full run, manual steps, NVDB generalisation, and listings linkage",
+      "Checked policy or research-use statements in the conclusion against the evidence reported",
+      "Checked appendix A for consistency with abstract and Section 6.1 claims"
+    ],
+    "missing_checks": [],
+    "evidence_limitations": [
+      "Table CSV/markdown are unreliable per parser-quality audit, so table values were read from page text only; page images were not separately viewed.",
+      "External literature claims (for example the Fosgerau 60 percent figure) were outside this remit and not verified."
+    ]
+  },
+  "coverage": [
+    {
+      "item_id": "assigned_remit",
+      "source_object_ids": [],
+      "claim": null,
+      "check_performed": "Compared abstract, introduction, conclusion and next steps against the body and appendix for overstatement, missing caveats, stale numbers, and unsupported generalisation from pilot, single-case and descriptive evidence.",
+      "status": "linked_finding",
+      "reason": "Eight findings: six summary-section overstatements or missing caveats, and one body-level unit inconsistency in the pilot yield. Headline numbers were consistent. Page text was the evidence base; images were not separately viewed.",
+      "finding_ids": [
+        "CONSIST-001",
+        "CONSIST-002",
+        "CONSIST-003",
+        "CONSIST-004",
+        "CONSIST-005",
+        "CONSIST-006",
+        "CONSIST-007",
+        "CONSIST-008"
+      ],
+      "attempted": true,
+      "importance": "central",
+      "scope": "exhaustive"
+    },
+    {
+      "item_id": "claim:headline-counts",
+      "source_object_ids": [
+        "OBJ-e9b90e0f75ce05ff1ce150cc"
+      ],
+      "claim": "The pipeline finds 92 articles reporting an opening, grouped into 43 projects across 14 of 15 counties, 29 dated to the day or month.",
+      "check_performed": "Compared abstract, introduction and conclusion counts with Table 6 and Section 5 text; summed date-precision categories.",
+      "status": "checked_no_issue",
+      "reason": "Counts match: Day 19 + Month 10 = 29, categories sum to 43, and 14 of 15 counties matches the text (all except Østfold). Validation framing is addressed in CONSIST-003.",
+      "finding_ids": [],
+      "attempted": true,
+      "importance": "central",
+      "scope": "exhaustive"
+    },
+    {
+      "item_id": "claim:listing-shares",
+      "source_object_ids": [],
+      "claim": "38 percent of 700 579 FINN.no listings mention cycling; the share rose about 9 percentage points.",
+      "check_performed": "Compared abstract and Section 6.1 with Appendix A text on Table 8 and Figure 3.",
+      "status": "checked_no_issue",
+      "reason": "266 625 / 700 579 = 38.1 percent, and the rise from about 35 to about 44 percent fits 'about 9 percentage points'. The linkage claim is addressed in CONSIST-006.",
+      "finding_ids": [],
+      "attempted": true,
+      "importance": "peripheral",
+      "scope": "sampled"
+    }
+  ]
+}

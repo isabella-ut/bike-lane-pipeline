@@ -1,0 +1,764 @@
+{
+  "reviewer": "abstract_conclusion_consistency_auditor",
+  "paper_id": "bicycle-infrastructure-paper",
+  "run_status": "ok",
+  "summary": "The abstract, introduction and conclusion were compared with the body, appendix and tables. The headline counts match the body: 3,187 articles, 92 relevant articles, 43 projects, 29 day- or month-dated, 14 of 15 counties, 97% pilot agreement, 700 579 listings and 38%. The summaries still overstate or omit caveats in nine places. The abstract says the data are linked to the housing listings, but the body says they have not yet been linked. The abstract says the pilot contained \"only two actual openings\", but a Table 2 footnote says a third opening was confirmed. The abstract, introduction and conclusion present the 97% pilot agreement without the body's caveat that only 3 relevant articles exist and the results are \"indicative only\". The 92-article and 43-project counts are presented as openings and projects although the full run is unvalidated and the pilot shows one LLM-flagged article that both humans coded not relevant. The conclusion says the linked data \"can support research\" on cycling behaviour and housing markets, which goes beyond the body. The abstract generalises the NVDB comparison from one case and from a single-term pilot. There is also a body-level inconsistency about the missing 2024 listing data.",
+  "findings": [
+    {
+      "id": "CONSIST-001",
+      "category": "abstract_overstatement",
+      "finding_summary": "The abstract says the paper shows how the data can be linked to 700 579 FINN.no housing listings, but Section 6.1 states the listings have not yet been linked to the database.",
+      "issue_type": "manuscript_issue",
+      "severity": "medium",
+      "confidence": "high",
+      "location": {
+        "page": 1,
+        "page_label": "1",
+        "section": "Abstract",
+        "text_quote": "Finally, we show how the data can be linked to 700 579 housing listings from FINN.no, where",
+        "precision": "exact"
+      },
+      "claim_text": "Finally, we show how the data can be linked to 700 579 housing listings from FINN.no.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "Section 6.1 and Appendix A describe the listings (keyword shares by type, quarter and county) and propose a model in 6.3. Section 6.1 states \"We have not yet linked the listings to the database.\" Section 8 lists linking as a future step. The body therefore describes the listing data and proposed models, not a demonstrated linkage. The abstract wording \"show how the data can be linked\" is partly supported (a proposal), but it implies an implemented step.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "Abstract",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_001.md",
+          "page": 1,
+          "page_label": "1",
+          "section": "Abstract",
+          "text_quote": "Finally, we show how the data can be linked to 700 579 housing listings from FINN.no, where",
+          "url": null,
+          "object_id": "OBJ-ae6010b8e427194ea28d441e",
+          "correspondence": "text",
+          "verification_note": null
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "Section 6.1",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_010.md",
+          "page": 10,
+          "page_label": "10",
+          "section": "6.1 An application to house listing data",
+          "text_quote": "We have not yet linked the listings to the database.",
+          "url": null,
+          "object_id": "OBJ-e9b90e0f75ce05ff1ce150cc",
+          "correspondence": "text",
+          "verification_note": null
+        },
+        {
+          "id": "S3",
+          "type": "text",
+          "label": "Section 8",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_012.md",
+          "page": 12,
+          "page_label": "12",
+          "section": "8 Next Steps",
+          "text_quote": "Finally, the database can be linked to the FINN.no listings to estimate the models",
+          "url": null,
+          "object_id": "OBJ-a6c6d31e7be45f25b775aa47",
+          "correspondence": "text",
+          "verification_note": null
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Abstract: we show how the data can be linked to 700 579 housing listings",
+          "source_object_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "relation": "partial",
+          "note": "Linking is not performed; it is proposed as a next step."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Reword the abstract to say that the paper describes the FINN.no listing data and proposes how they could be linked to the database, and that the linkage is not yet done."
+    },
+    {
+      "id": "CONSIST-002",
+      "category": "stale_summary_claim",
+      "finding_summary": "The abstract says the pilot \"contained only two actual openings\", but the Table 2 footnote states that the Grettefoss Bridge opening was confirmed on 3 November, while the table row still reads \"Planned\".",
+      "issue_type": "manuscript_issue",
+      "severity": "medium",
+      "confidence": "medium",
+      "location": {
+        "page": 1,
+        "page_label": "1",
+        "section": "Abstract",
+        "text_quote": "contained only two actual openings",
+        "precision": "exact"
+      },
+      "claim_text": "A pilot of 70 search hits, of which 34 were unique articles, contained only two actual openings.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "Figure 1 and the abstract count two openings that took place (Homborsund and Stod/Steinkjer). Footnote c of Table 2 says the Grettefoss Bridge opening was \"Confirmed to have opened 3 November as planned\", and the manuscript is dated 9 November 2026. Footnote b says the Tromsø opening was delayed to 27 November. The abstract, Figure 1 and the Table 2 status column ('Planned') appear not to have been updated after the footnote. The two counts may refer to openings that had occurred when the articles were published. If so, the abstract should say so, because the manuscript now records three openings that took place within or after the pilot window.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "Abstract",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_001.md",
+          "page": 1,
+          "page_label": "1",
+          "section": "Abstract",
+          "text_quote": "contained only two actual openings",
+          "url": null,
+          "object_id": "OBJ-ae6010b8e427194ea28d441e",
+          "correspondence": "text",
+          "verification_note": null
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "Table 2 footnote c",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_005.md",
+          "page": 5,
+          "page_label": "5",
+          "section": "3.1.4 / Table 2",
+          "text_quote": "Confirmed to have opened 3 November as planned.",
+          "url": null,
+          "object_id": "OBJ-9d16c139938370d7a97e77c6",
+          "correspondence": "text",
+          "verification_note": "Page text used because the structured table_2 file omits the Grettefoss row (parser-quality warning)."
+        },
+        {
+          "id": "S3",
+          "type": "text",
+          "label": "Figure 1 caption",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_004.md",
+          "page": 4,
+          "page_label": "4",
+          "section": "3.1.2 / Figure 1",
+          "text_quote": "Two further articles describe",
+          "url": null,
+          "object_id": "OBJ-1a119a3cb70f2153fc56dd97",
+          "correspondence": "text",
+          "verification_note": "Caption says two further articles describe planned openings coded as unclear."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Abstract: only two actual openings in the pilot",
+          "source_object_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "relation": "partial",
+          "note": "Footnote c records a third opening as confirmed; the status column and abstract were not updated."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Update the Table 2 status column and the abstract and Figure 1 wording so they state whether openings are counted as of article publication or as of the manuscript date, and reconcile the Grettefoss entry."
+    },
+    {
+      "id": "CONSIST-003",
+      "category": "abstract_overstatement",
+      "finding_summary": "The abstract and introduction report 97% pilot human–LLM agreement as matching human–human agreement without the body's caveat that only 3 articles are relevant and that the results are 'indicative only'.",
+      "issue_type": "manuscript_issue",
+      "severity": "medium",
+      "confidence": "high",
+      "location": {
+        "page": 1,
+        "page_label": "1",
+        "section": "Abstract",
+        "text_quote": "On the pilot, the LLM agrees with a human coder on the",
+        "precision": "exact"
+      },
+      "claim_text": "On the pilot, the LLM agrees with a human coder on the relevance of 97 percent of the articles, the same rate as between two human coders, and gives the same opening date for all three relevant articles.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "The figures are right: Tables 3 and 4 show 33 of 34 agreement for both pairs. Section 4 says that with 34 articles, 3 of them relevant, the sample \"is too small to test whether the two agreement rates differ\" and that \"The results are thus indicative only.\" Of the 34 articles, 30 are not relevant for both pairs, so the agreement figure largely reflects the negatives. In Table 4 the LLM marks 4 articles relevant and 1 is a disagreement. The date check uses only three articles. The abstract and introduction (which calls the rate 'very close') omit this caveat. The caveat appears only in Section 4 and Section 8.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "Abstract",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_001.md",
+          "page": 1,
+          "page_label": "1",
+          "section": "Abstract",
+          "text_quote": "On the pilot, the LLM agrees with a human coder on the",
+          "url": null,
+          "object_id": "OBJ-ae6010b8e427194ea28d441e",
+          "correspondence": "text",
+          "verification_note": null
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "Introduction",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_002.md",
+          "page": 2,
+          "page_label": "2",
+          "section": "1 Introduction",
+          "text_quote": "which is very close to the rate between",
+          "url": null,
+          "object_id": "OBJ-c45862491200db070adbb6ed",
+          "correspondence": "text",
+          "verification_note": null
+        },
+        {
+          "id": "S3",
+          "type": "text",
+          "label": "Section 4",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_007.md",
+          "page": 7,
+          "page_label": "7",
+          "section": "4 Validation",
+          "text_quote": "The results are thus indicative only.",
+          "url": null,
+          "object_id": "OBJ-4e6da301f188ae5c7e5d0a63",
+          "correspondence": "text",
+          "verification_note": null
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Abstract/introduction: 97% agreement equal to human-human rate",
+          "source_object_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "relation": "partial",
+          "note": "Numbers match the body; the body qualifies them as indicative with only 3 relevant articles, but the summaries do not."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Add to the abstract and introduction that the pilot has 34 articles, 3 relevant, and that the agreement comparison is indicative only."
+    },
+    {
+      "id": "CONSIST-004",
+      "category": "abstract_overstatement",
+      "finding_summary": "The abstract and conclusion present the full-run counts (92 opening articles, 43 projects) as findings about openings without noting that the full run is unvalidated and that the pilot's LLM-flagged set included a project both human coders judged not relevant.",
+      "issue_type": "manuscript_issue",
+      "severity": "medium",
+      "confidence": "medium",
+      "location": {
+        "page": 1,
+        "page_label": "1",
+        "section": "Abstract",
+        "text_quote": "pipeline finds 92 articles reporting an opening, which we group into 43 projects across 14",
+        "precision": "exact"
+      },
+      "claim_text": "Applied to 3,187 articles, the pipeline finds 92 articles reporting an opening, which we group into 43 projects across 14 of 15 counties, 29 of them dated to the day or month.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "The counts agree with Section 5 and Table 6. Section 8 says that \"a random sample from the full run of 3,187 articles should also be checked against human coding\", so the 92 and 43 are LLM output not checked against human coding. Footnote 3 in Section 6 says the pilot LLM-flagged Stord project \"was coded as not relevant by both human coders\". It is one of four pilot LLM-flagged articles (Table 4: 4 LLM relevant, 3 confirmed). The abstract and conclusion do not say the counts are unvalidated or that the LLM can flag articles that are not actual openings. Precision in the full run is unknown. Grouping into projects was done by hand (Section 8).",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "Abstract",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_001.md",
+          "page": 1,
+          "page_label": "1",
+          "section": "Abstract",
+          "text_quote": "pipeline finds 92 articles reporting an opening, which we group into 43 projects across 14",
+          "url": null,
+          "object_id": "OBJ-ae6010b8e427194ea28d441e",
+          "correspondence": "text",
+          "verification_note": null
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "Conclusion",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_012.md",
+          "page": 12,
+          "page_label": "12",
+          "section": "7 Conclusion",
+          "text_quote": "The pipeline was applied to 3,187 articles, identifying",
+          "url": null,
+          "object_id": "OBJ-a6c6d31e7be45f25b775aa47",
+          "correspondence": "text",
+          "verification_note": "Sentence continues onto the next line: 43 unique projects."
+        },
+        {
+          "id": "S3",
+          "type": "text",
+          "label": "Section 8",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_012.md",
+          "page": 12,
+          "page_label": "12",
+          "section": "8 Next Steps",
+          "text_quote": "a random sample from the full run of 3,187 articles should also be checked against",
+          "url": null,
+          "object_id": "OBJ-a6c6d31e7be45f25b775aa47",
+          "correspondence": "text",
+          "verification_note": null
+        },
+        {
+          "id": "S4",
+          "type": "text",
+          "label": "Footnote 3",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_010.md",
+          "page": 10,
+          "page_label": "10",
+          "section": "6 Further Uses of the Articles",
+          "text_quote": "the project in Stord, which appears only in the pilot and was coded as not",
+          "url": null,
+          "object_id": "OBJ-e9b90e0f75ce05ff1ce150cc",
+          "correspondence": "text",
+          "verification_note": null
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Abstract/conclusion: pipeline finds 92 opening articles and 43 projects",
+          "source_object_ids": [
+            "S1",
+            "S2",
+            "S3",
+            "S4"
+          ],
+          "relation": "partial",
+          "note": "Counts match; accuracy of the full run is not validated and the pilot shows at least one non-relevant LLM-flagged project."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "State in the abstract and conclusion that the 92 and 43 are unvalidated LLM-identified counts and that precision in the full run has not been assessed."
+    },
+    {
+      "id": "CONSIST-005",
+      "category": "conclusion_overstatement",
+      "finding_summary": "The conclusion states that human–LLM agreement matched human–human agreement on 97 percent of the articles, with no mention of the three-relevant-article limit and no validation caveat; the body says the results are indicative only.",
+      "issue_type": "manuscript_issue",
+      "severity": "low",
+      "confidence": "medium",
+      "location": {
+        "page": 12,
+        "page_label": "12",
+        "section": "7 Conclusion",
+        "text_quote": "where human–LLM agreement on relevance matched human–human agreement",
+        "precision": "exact"
+      },
+      "claim_text": "The study included a pilot with 34 articles where human–LLM agreement on relevance matched human–human agreement on 97 percent of the articles.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "The sample size is stated (34 articles) and the figure is correct. Section 8 states that with only three relevant articles \"we cannot test whether human–LLM agreement differs from human–human agreement\". The conclusion mentions neither this limit nor that the full run was not checked against human coding, and it says the study \"demonstrated the potential for LLMs\". Section 8 does contain the caveat, so the summary section needs only a qualifier.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "Conclusion",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_012.md",
+          "page": 12,
+          "page_label": "12",
+          "section": "7 Conclusion",
+          "text_quote": "where human–LLM agreement on relevance matched human–human agreement",
+          "url": null,
+          "object_id": "OBJ-a6c6d31e7be45f25b775aa47",
+          "correspondence": "text",
+          "verification_note": null
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "Section 8",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_012.md",
+          "page": 12,
+          "page_label": "12",
+          "section": "8 Next Steps",
+          "text_quote": "we cannot test whether human–LLM agreement differs from human–human",
+          "url": null,
+          "object_id": "OBJ-a6c6d31e7be45f25b775aa47",
+          "correspondence": "text",
+          "verification_note": null
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Conclusion: agreement matched human-human agreement",
+          "source_object_ids": [
+            "S1",
+            "S2"
+          ],
+          "relation": "partial",
+          "note": "Descriptive match holds; the body says the comparison cannot be tested with three relevant articles."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Add a short qualifier in the conclusion that the pilot comparison is indicative (three relevant articles) and that the full run remains unvalidated."
+    },
+    {
+      "id": "CONSIST-006",
+      "category": "conclusion_overstatement",
+      "finding_summary": "The conclusion says the linked data can support research on cycling behaviour and housing markets, but the paper links no data to behaviour or housing outcomes, and Section 8 says several steps remain before the database can be used for causal research.",
+      "issue_type": "manuscript_issue",
+      "severity": "low",
+      "confidence": "medium",
+      "location": {
+        "page": 12,
+        "page_label": "12",
+        "section": "7 Conclusion",
+        "text_quote": "such linked data can support research on",
+        "precision": "exact"
+      },
+      "claim_text": "The study illustrates how data from newspapers can complement administrative data by adding opening dates, and such linked data can support research on subject matters such as cycling behaviour and housing markets.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "The only linkage performed is one Homborsund opening to NVDB (Table 5). The housing-listing data are not linked to the database. Equations (1)–(2) are proposed, not estimated. Section 8 says \"several steps remain before the database can be used for causal research\", including a larger validation sample, automated grouping and matching, and the systematic NVDB comparison. The conclusion's phrase is conditional ('can support') but gives no indication of these limits. It also says nothing about the selection and description biases the literature review concedes for newspaper data.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "Conclusion",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_012.md",
+          "page": 12,
+          "page_label": "12",
+          "section": "7 Conclusion",
+          "text_quote": "such linked data can support research on",
+          "url": null,
+          "object_id": "OBJ-a6c6d31e7be45f25b775aa47",
+          "correspondence": "text",
+          "verification_note": null
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "Section 8",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_012.md",
+          "page": 12,
+          "page_label": "12",
+          "section": "8 Next Steps",
+          "text_quote": "but several steps remain before the database can be",
+          "url": null,
+          "object_id": "OBJ-a6c6d31e7be45f25b775aa47",
+          "correspondence": "text",
+          "verification_note": "Sentence continues: used for causal research."
+        },
+        {
+          "id": "S3",
+          "type": "text",
+          "label": "Section 6.1",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_010.md",
+          "page": 10,
+          "page_label": "10",
+          "section": "6.1",
+          "text_quote": "We have not yet linked the listings to the database.",
+          "url": null,
+          "object_id": "OBJ-e9b90e0f75ce05ff1ce150cc",
+          "correspondence": "text",
+          "verification_note": null
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Conclusion: linked data can support research on cycling behaviour and housing markets",
+          "source_object_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "relation": "partial",
+          "note": "Only one NVDB link is shown; behaviour and housing linkages and analyses are proposals."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Rephrase to say the database could support such research once the validation, automation and linkage steps in Section 8 are completed."
+    },
+    {
+      "id": "CONSIST-007",
+      "category": "abstract_overstatement",
+      "finding_summary": "The abstract says linking one opening to NVDB 'shows that the articles add an exact opening date, which NVDB lacks', generalising from a single Homborsund case, while Section 8 lists the systematic comparison with NVDB dates as future work.",
+      "issue_type": "manuscript_issue",
+      "severity": "low",
+      "confidence": "medium",
+      "location": {
+        "page": 1,
+        "page_label": "1",
+        "section": "Abstract",
+        "text_quote": "road database NVDB shows that the articles add an exact opening date, which NVDB lacks.",
+        "precision": "exact"
+      },
+      "claim_text": "Linking one opening to the national road database NVDB shows that the articles add an exact opening date, which NVDB lacks.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "Section 4.3 states that NVDB does not record when a road opens to traffic, only when its geometry was registered. In the single example, the geometry was registered one month before the opening. The day-level date comes from resolving 'Monday' with the publication date. The abstract's wording is scoped to one opening, but 'NVDB lacks' reads as a general finding. Section 8 says the opening dates \"should be compared systematically with NVDB registration dates and historical OpenStreetMap records, to measure how much the articles add\". The extent of the gain is therefore untested.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "Abstract",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_001.md",
+          "page": 1,
+          "page_label": "1",
+          "section": "Abstract",
+          "text_quote": "road database NVDB shows that the articles add an exact opening date, which NVDB lacks.",
+          "url": null,
+          "object_id": "OBJ-ae6010b8e427194ea28d441e",
+          "correspondence": "text",
+          "verification_note": null
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "Section 4.3",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_008.md",
+          "page": 8,
+          "page_label": "8",
+          "section": "4.3 Linking newspaper articles to administrative data",
+          "text_quote": "NVDB does not record when a road opens to traffic,",
+          "url": null,
+          "object_id": "OBJ-b41cc221a4f064e5990acabf",
+          "correspondence": "text",
+          "verification_note": null
+        },
+        {
+          "id": "S3",
+          "type": "text",
+          "label": "Section 8",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_012.md",
+          "page": 12,
+          "page_label": "12",
+          "section": "8 Next Steps",
+          "text_quote": "be compared systematically with NVDB registration dates and historical OpenStreetMap records,",
+          "url": null,
+          "object_id": "OBJ-a6c6d31e7be45f25b775aa47",
+          "correspondence": "text",
+          "verification_note": null
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Abstract: one NVDB linkage shows articles add an exact opening date",
+          "source_object_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "relation": "partial",
+          "note": "Supported for one illustrative case; systematic comparison is future work."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Say in the abstract that the single illustrative example suggests the articles can add an exact opening date, and that the systematic comparison with NVDB is future work."
+    },
+    {
+      "id": "CONSIST-008",
+      "category": "abstract_overstatement",
+      "finding_summary": "The abstract says the pilot shows 'keyword search alone is too noisy', but the pilot used one broad term ('sykkelvei') over about five weeks, and the body reports a narrower term ('åpning sykkelvei') that was not tested.",
+      "issue_type": "manuscript_issue",
+      "severity": "low",
+      "confidence": "low",
+      "location": {
+        "page": 1,
+        "page_label": "1",
+        "section": "Abstract",
+        "text_quote": "showing that keyword search alone is too noisy and that an LLM filter is needed.",
+        "precision": "exact"
+      },
+      "claim_text": "A pilot of 70 search hits ... contained only two actual openings, showing that keyword search alone is too noisy and that an LLM filter is needed.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "Section 3.1.2 reports that 2 of 34 unique articles concern an opening that took place, from one search term (\"sykkelvei\") and a sample of 70 hits between 2 September and 10 October 2026. The body's own wording is weaker: \"The low yield points to the need for an LLM to filter\". Section 3.1.1 reports preliminary searches with a narrower term (\"åpning sykkelvei\", about 530 articles), but the pilot does not evaluate its yield. The abstract's 'showing' and 'alone' therefore generalise from one term. The pilot does show that this term has a low yield.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "Abstract",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_001.md",
+          "page": 1,
+          "page_label": "1",
+          "section": "Abstract",
+          "text_quote": "showing that keyword search alone is too noisy and that an LLM filter is needed.",
+          "url": null,
+          "object_id": "OBJ-ae6010b8e427194ea28d441e",
+          "correspondence": "text",
+          "verification_note": null
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "Section 3.1.2",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_004.md",
+          "page": 4,
+          "page_label": "4",
+          "section": "3.1.2 Pilot sample",
+          "text_quote": "The low yield points to the need for an LLM to filter",
+          "url": null,
+          "object_id": "OBJ-1a119a3cb70f2153fc56dd97",
+          "correspondence": "text",
+          "verification_note": null
+        },
+        {
+          "id": "S3",
+          "type": "text",
+          "label": "Section 3.1.1",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_004.md",
+          "page": 4,
+          "page_label": "4",
+          "section": "3.1.1 News article base",
+          "text_quote": "(using the search term “åpning sykkelvei”)",
+          "url": null,
+          "object_id": "OBJ-1a119a3cb70f2153fc56dd97",
+          "correspondence": "text",
+          "verification_note": null
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Abstract: pilot shows keyword search alone is too noisy",
+          "source_object_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "relation": "partial",
+          "note": "Supported for the single term and window; the body says the yield 'points to' the need for a filter."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Soften the abstract to say the low yield of a broad single-term search in the pilot points to the need for an LLM filter."
+    },
+    {
+      "id": "CONSIST-009",
+      "category": "section_inconsistency",
+      "finding_summary": "The text on Figure 3 says the first quarter of 2024 is missing, but Appendix A.1 and the Figure 3 caption say listings from January to April 2024 are missing, which covers part of the second quarter as well.",
+      "issue_type": "manuscript_issue",
+      "severity": "low",
+      "confidence": "medium",
+      "location": {
+        "page": 16,
+        "page_label": "16",
+        "section": "A.2 / Figure 3",
+        "text_quote": "The first quarter of 2024 is",
+        "precision": "exact"
+      },
+      "claim_text": "The first quarter of 2024 is missing due to the gap in the listing text data.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "Appendix A.1 states \"Listings from January to April 2024 are missing due to a gap in the listing text data\". The Figure 3 caption says \"missing listing text from January to April 2024\". The A.2 sentence names only the first quarter. April belongs to the second quarter, so the text understates the gap and the second quarter of 2024 is presumably affected. The effect on the quarterly series cannot be checked because the figure's data points are graphics.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "A.2 Figure 3 text",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_016.md",
+          "page": 16,
+          "page_label": "16",
+          "section": "A.2",
+          "text_quote": "The first quarter of 2024 is",
+          "url": null,
+          "object_id": "OBJ-8f4894d007c8a183053537bc",
+          "correspondence": "text",
+          "verification_note": null
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "A.1 data description",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_015.md",
+          "page": 15,
+          "page_label": "15",
+          "section": "A.1",
+          "text_quote": "Listings from January to April 2024 are missing due to a gap in the listing text data.",
+          "url": null,
+          "object_id": "OBJ-6402cd90a906f1f82672a86f",
+          "correspondence": "text",
+          "verification_note": null
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Only Q1 2024 is missing",
+          "source_object_ids": [
+            "S1",
+            "S2"
+          ],
+          "relation": "contradicts",
+          "note": "Gap spans January to April 2024."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Align the Figure 3 text with the stated January–April 2024 gap and state how the affected quarters are shown."
+    }
+  ],
+  "notes": [
+    "All findings use page-level text as evidence. Structured table CSV/markdown files were not used, as the parser-quality output warns against them.",
+    "Page text for page 10 (Table 6) interleaves the two panels, but the values match the Section 5 text and abstract (3,187; 92; 43; 50; Day 19, Month 10, Year 9, Not stated 5; 14 of 15)."
+  ],
+  "completion": {
+    "version": 1,
+    "state": "complete",
+    "scope_description": "Compared the abstract, introduction and conclusion/next steps with the body (Sections 3-6), Tables 2-8 as present in page text, and Appendix A for overstated, stale, uncaveated or inconsistent claims and for translation of pilot and listing measures into broader claims.",
+    "checks_completed": [
+      "Read parser-quality output and used page text rather than structured table files",
+      "Matched abstract numbers (70/34/2, 97%, 3,187, 92, 43, 14 of 15, 29, 700 579, 38%) to body and Table 6/8 values",
+      "Checked abstract, introduction and conclusion claims against the Section 4 and Section 8 caveats",
+      "Checked the linking claims (NVDB, FINN.no) against Sections 4.3, 6.1 and 8",
+      "Checked internal consistency of the pilot counts across Figure 1, Table 2 and its footnotes",
+      "Checked 96/44 versus 92/43 counts against footnote 3",
+      "Checked appendix statements on the 2024 data gap against Figure 3 text"
+    ],
+    "missing_checks": [],
+    "evidence_limitations": [
+      "Page images were not individually viewed; page text was used, and the parser-quality report confirms page text is reliable apart from the table and figure objects.",
+      "External literature claims (e.g. Fosgerau 60 percent) were not verified, as they are outside this remit.",
+      "Figure 3 data points are graphics and could not be read from text, so the 'about 35 percent to about 44 percent' claim was not checked against the plotted series."
+    ]
+  },
+  "coverage": [
+    {
+      "item_id": "assigned_remit",
+      "source_object_ids": [],
+      "claim": null,
+      "check_performed": "Compared abstract, introduction, conclusion and next steps with the body and appendix for overstatement, stale language, missing caveats and extrapolation from pilot or listing measures.",
+      "status": "linked_finding",
+      "reason": "Nine summary-level or section-level issues were found; the headline counts match the body.",
+      "finding_ids": [
+        "CONSIST-001",
+        "CONSIST-002",
+        "CONSIST-003",
+        "CONSIST-004",
+        "CONSIST-005",
+        "CONSIST-006",
+        "CONSIST-007",
+        "CONSIST-008",
+        "CONSIST-009"
+      ],
+      "attempted": true,
+      "importance": "central",
+      "scope": "exhaustive"
+    },
+    {
+      "item_id": "claim:abstract_counts",
+      "source_object_ids": [
+        "OBJ-ae6010b8e427194ea28d441e",
+        "OBJ-e9b90e0f75ce05ff1ce150cc"
+      ],
+      "claim": "Abstract counts: 92 articles, 43 projects, 14 of 15 counties, 29 dated to the day or month.",
+      "check_performed": "Matched the numbers to Section 5 and the Table 6 page text (Day 19 + Month 10 = 29; 19+10+9+5 = 43).",
+      "status": "checked_no_issue",
+      "reason": "The counts are consistent across the abstract, introduction, Section 5, Table 6 and conclusion. The accuracy caveat is raised separately in CONSIST-004.",
+      "finding_ids": [],
+      "attempted": true,
+      "importance": "central",
+      "scope": "exhaustive"
+    },
+    {
+      "item_id": "claim:listing_shares",
+      "source_object_ids": [
+        "OBJ-6402cd90a906f1f82672a86f",
+        "OBJ-e9b90e0f75ce05ff1ce150cc"
+      ],
+      "claim": "38 percent of listings mention cycling; infrastructure 13 percent; about 9 percentage-point rise; 61 percent in Oslo and 7 percent in Møre og Romsdal.",
+      "check_performed": "Compared Section 6.1 and the abstract with Appendix A.2 text, Table 8 and the Figure 4 labels (38.1%, 13.4%, 60.8%, 6.8%; about 35 to about 44 percent).",
+      "status": "checked_no_issue",
+      "reason": "Rounded values agree with the appendix. The rise from about 35 to about 44 percent could not be checked against the plotted Figure 3 data, only against the text.",
+      "finding_ids": [],
+      "attempted": true,
+      "importance": "peripheral",
+      "scope": "sampled"
+    }
+  ]
+}

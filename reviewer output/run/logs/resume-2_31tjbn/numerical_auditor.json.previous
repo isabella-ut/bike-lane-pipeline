@@ -1,0 +1,955 @@
+{
+  "reviewer": "numerical_auditor",
+  "paper_id": "bicycle-infrastructure-paper",
+  "run_status": "ok",
+  "summary": "Most headline numbers reconcile. The pilot funnel (70 hits, 36 duplicates, 34 unique, 5 relevant, 2 openings) and the 2x2 agreement tables (33/34 = 97%) hold. The project counts (19+10+9+5 = 43; 29 dated to the day or month) and the Section 6.3 split (17 + 2 = 19 day-dated) also hold. The FINN listing shares in Table 8 match 700 579 listings (266 625 + 433 954 = 700 579), and the county and quarterly figures agree with the text. Six issues remain. The most substantive is that footnote 3 says the Stord article was coded not relevant by both human coders, but Table 3 shows the second coder coded one article relevant that the pilot coder did not, and the text names that article as the Stord one. The other five are low severity: an imprecise \"between a third and a half\" claim for Table 7, a Q1-versus-Jan–Apr mismatch in the 2024 data gap, an end-of-period quarter that may rest on one month, an unresolved 96 = 92 + 4 record count, and Figure 2 tick labels. Table CSV/markdown cells were not used as primary evidence, following the parser-quality warnings. Page text and retained images were used instead.",
+  "findings": [
+    {
+      "id": "NUM-001",
+      "category": "count_consistency",
+      "finding_summary": "Footnote 3 says the Stord article was coded not relevant by both human coders, but Table 3 shows the second coder coded one article relevant that the pilot coder did not. The Section 4.1 text names that article as the Stord one.",
+      "issue_type": "manuscript_issue",
+      "severity": "medium",
+      "confidence": "high",
+      "location": {
+        "page": 10,
+        "page_label": "10",
+        "section": "6 Further Uses of the Articles, footnote 3",
+        "text_quote": "the project in Stord, which appears only in the pilot and was coded as not relevant by both human coders (Section 4)",
+        "precision": "exact"
+      },
+      "claim_text": "The Stord project appears only in the pilot and was coded as not relevant by both human coders.",
+      "assessment": "no",
+      "cannot_verify_reason": null,
+      "evidence_summary": "Table 3 (rows = pilot coder, columns = second coder) has Not relevant / Relevant = 1, Not relevant / Not relevant = 30, and a second-coder Relevant total of 4 against 3 for the pilot coder. Section 4.1 says the two coders agree on 33 of 34 articles and that the only disagreement is the Stord dispute article. If both coders had coded Stord not relevant, the disagreement count would be 0 and the second coder's relevant total would be 3. Table 4 likewise has one article that is relevant for the LLM and not relevant for the pilot coder, and the text identifies it as the same Stord article. The footnote may mean the pilot coder only, or may reflect a different article, but the published counts do not support 'both human coders'.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "Footnote 3, page 10",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_010.md",
+          "page": 10,
+          "page_label": "10",
+          "section": "6",
+          "text_quote": "the project in Stord, which appears only in the pilot and was coded as not relevant by both human coders (Section 4)",
+          "url": null,
+          "object_id": "OBJ-e9b90e0f75ce05ff1ce150cc",
+          "correspondence": "text",
+          "verification_note": "The footnote marker is attached to the sentence start in extraction; the quote starts after it."
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "Table 3 body, page 7 text",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_007.md",
+          "page": 7,
+          "page_label": "7",
+          "section": "4.1",
+          "text_quote": "Not relevant 1 30 31",
+          "url": null,
+          "object_id": "OBJ-4e6da301f188ae5c7e5d0a63",
+          "correspondence": "text",
+          "verification_note": "Body cells were also compared in table_3.png by the parser audit. Pilot-coder rows, second-coder columns."
+        },
+        {
+          "id": "S3",
+          "type": "text",
+          "label": "Section 4.1 disagreement sentence",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_007.md",
+          "page": 7,
+          "page_label": "7",
+          "section": "4.1",
+          "text_quote": "The only article they disagree on covers a dispute between Stord municipality and Vestland County over a pedestrian crossing.",
+          "url": null,
+          "object_id": "OBJ-4e6da301f188ae5c7e5d0a63",
+          "correspondence": "text",
+          "verification_note": "Line wrap tolerated."
+        },
+        {
+          "id": "S4",
+          "type": "text",
+          "label": "Section 4.2, page 8",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_008.md",
+          "page": 8,
+          "page_label": "8",
+          "section": "4.2",
+          "text_quote": "The only article they disagree on is the same Stord article.",
+          "url": null,
+          "object_id": "OBJ-b41cc221a4f064e5990acabf",
+          "correspondence": "text",
+          "verification_note": "Line wrap tolerated."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Stord coded not relevant by both human coders",
+          "source_object_ids": [
+            "S1",
+            "S2",
+            "S3",
+            "S4"
+          ],
+          "relation": "contradicts",
+          "note": "Table 3 and Section 4.1 imply the second coder coded the Stord article relevant."
+        }
+      ],
+      "numeric_check": {
+        "kind": "cross_source",
+        "quantities": [
+          {
+            "value": "1",
+            "source_id": "S2",
+            "unit": "articles",
+            "sample": "34 unique pilot articles",
+            "denominator": "34 articles",
+            "context": "Table 3 cell: pilot coder Not relevant, second coder Relevant (the only disagreement, named as the Stord article in the text)",
+            "rounding_half_width": "0",
+            "scale": "number"
+          },
+          {
+            "value": "0",
+            "source_id": "S1",
+            "unit": "articles",
+            "sample": "Stord article in the pilot",
+            "denominator": "1 article",
+            "context": "Literal reading of footnote 3: the article was not relevant for either coder, so the number of coders coding it relevant is 0 and the Table 3 disagreement cell would not include it",
+            "rounding_half_width": "0",
+            "scale": "number"
+          }
+        ],
+        "comparability": "Both refer to the same pilot sample of 34 unique articles and the same two human coders on relevance. Footnote 3 gives no numeric value of its own, so its count is the literal reading of its wording.",
+        "observed_discrepancy": "Table 3 and Section 4.1 imply the Stord article is relevant for the second coder, while footnote 3 says it was not relevant for both coders.",
+        "possible_explanation": "The footnote may refer only to the pilot coder, or the Stord article in the footnote may differ from the Section 4.1 disagreement article. Neither is stated.",
+        "suggested_correction": "Reconcile footnote 3 with Tables 3 and 4 by stating each coder's and the LLM's coding of the Stord article. Do not assume which source is right."
+      },
+      "suggested_fix": "State which coders and which LLM runs coded the Stord article relevant, and make footnote 3, Section 4.1 and Tables 3 and 4 consistent."
+    },
+    {
+      "id": "NUM-002",
+      "category": "percent_description",
+      "finding_summary": "Section 6.2 says between a third and a half of the 44 projects contain most other field groups, but Table 7 shows 23 (52%) and 24 (55%) for two groups and 4 (9%) for another.",
+      "issue_type": "manuscript_issue",
+      "severity": "low",
+      "confidence": "high",
+      "location": {
+        "page": 10,
+        "page_label": "10",
+        "section": "6.2 Additional information in the articles",
+        "text_quote": "between a third and a half of them contained",
+        "precision": "exact"
+      },
+      "claim_text": "Almost all projects contain location descriptions, and between a third and a half of them contain most of the other field groups.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "With 44 projects, a third is 14.7 and half is 22. Table 7 counts for the other groups are 19, 19, 21, 16, 15, 4, 23, 19, 24 and 16 (cost). Seven of ten are inside the range (34% to 48%). Concurrent interventions (23, 52.3%) and Project status (24, 54.5%) exceed a half, and Reasons for delay (4, 9.1%) is far below a third. 'Most' is satisfied (7 of 10), so this is a precision issue, not a headline error. Location description at 42 of 44 (95%) supports 'almost all'.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "Table 7 Project status row, page 11 text",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_011.md",
+          "page": 11,
+          "page_label": "11",
+          "section": "6.2 / Table 7",
+          "text_quote": "Project status 24 First section of a 2.4 km route opened (Bergen)",
+          "url": null,
+          "object_id": "OBJ-95b2618a59737e0b1725c4df",
+          "correspondence": "text",
+          "verification_note": "Page text used because the table markdown detaches counts from labels. The row pairing was confirmed against table_7.png."
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "Table 7 caption",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_011.md",
+          "page": 11,
+          "page_label": "11",
+          "section": "6.2 / Table 7",
+          "text_quote": "Table 7: Further information found in the articles on the 44 projects",
+          "url": null,
+          "object_id": "OBJ-95b2618a59737e0b1725c4df",
+          "correspondence": "text",
+          "verification_note": "Denominator of 44 projects."
+        },
+        {
+          "id": "S3",
+          "type": "text",
+          "label": "Section 6.2 text, page 10",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_010.md",
+          "page": 10,
+          "page_label": "10",
+          "section": "6.2",
+          "text_quote": "between a third and a half of them contained",
+          "url": null,
+          "object_id": "OBJ-e9b90e0f75ce05ff1ce150cc",
+          "correspondence": "text",
+          "verification_note": "The sentence continues on page 11 ('most of the other groups')."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "between a third and a half of them contained most of the other groups",
+          "source_object_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "relation": "partial",
+          "note": "7 of 10 groups are inside the range. Two exceed a half and one is far below a third."
+        }
+      ],
+      "numeric_check": {
+        "kind": "arithmetic",
+        "operation": "ratio",
+        "quantities": [
+          {
+            "value": "24",
+            "source_id": "S1",
+            "unit": "projects",
+            "sample": "44 projects (pilot plus rounds 2-4)",
+            "denominator": "44 projects",
+            "context": "Projects whose articles contain project-status information",
+            "rounding_half_width": "0",
+            "scale": "number"
+          },
+          {
+            "value": "44",
+            "source_id": "S2",
+            "unit": "projects",
+            "sample": "all projects in Table 7",
+            "denominator": "44 projects",
+            "context": "Total projects",
+            "rounding_half_width": "0",
+            "scale": "number"
+          }
+        ],
+        "reported": {
+          "value": "0.5",
+          "source_id": "S3",
+          "unit": "share of projects",
+          "sample": "44 projects",
+          "denominator": "44 projects",
+          "context": "Upper end of the verbal range 'between a third and a half'",
+          "rounding_half_width": "0",
+          "scale": "proportion"
+        },
+        "computed_value": "0.545",
+        "tolerance": "0.005",
+        "observed_discrepancy": "24/44 = 0.545 exceeds the stated upper bound 0.5. 23/44 = 0.523 also exceeds it, and 4/44 = 0.091 is below one third (0.333).",
+        "possible_explanation": "Loose verbal summary of Table 7.",
+        "suggested_correction": "Describe the range as roughly a third to just over half, with Reasons for delay (4 projects) as an exception, or report the counts."
+      },
+      "suggested_fix": "Qualify the sentence to match Table 7 (about 34% to 55% for most groups, except Reasons for delay at 4 of 44)."
+    },
+    {
+      "id": "NUM-003",
+      "category": "timing_scale",
+      "finding_summary": "The text says the first quarter of 2024 is missing from the quarterly series, but the data gap covers January to April 2024, so the Q2 2024 point appears to rest on a partial quarter.",
+      "issue_type": "manuscript_issue",
+      "severity": "low",
+      "confidence": "medium",
+      "location": {
+        "page": 16,
+        "page_label": "16",
+        "section": "A.2 Figure 3 discussion",
+        "text_quote": "The first quarter of 2024 is missing due to the gap in the listing text data.",
+        "precision": "exact"
+      },
+      "claim_text": "The first quarter of 2024 is missing because of the gap in the listing text data.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "Appendix A.1 and the Figure 3 caption state that listings from January to April 2024 are missing (4 months). A quarter is 3 months. Figure 3 shows no point at Q1 2024 and a point shortly after, at the Q2 2024 position (about 39%). The Q2 point would then be based on at most May and June unless April was handled separately, which the paper does not say.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "A.1 data description",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_015.md",
+          "page": 15,
+          "page_label": "15",
+          "section": "A.1",
+          "text_quote": "Listings from January to April 2024 are missing due to a gap in the listing text data.",
+          "url": null,
+          "object_id": "OBJ-6402cd90a906f1f82672a86f",
+          "correspondence": "text",
+          "verification_note": "Line wrap tolerated."
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "Figure 3 discussion, page 16",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_016.md",
+          "page": 16,
+          "page_label": "16",
+          "section": "A.2",
+          "text_quote": "The first quarter of 2024 is missing due to the gap in the listing text data.",
+          "url": null,
+          "object_id": "OBJ-8f4894d007c8a183053537bc",
+          "correspondence": "text",
+          "verification_note": "Text only. The figure position of the first post-gap point was read visually from figure_3.png."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Only Q1 2024 is missing",
+          "source_object_ids": [
+            "S1",
+            "S2"
+          ],
+          "relation": "contradicts",
+          "note": "The stated gap spans 4 months, one more than a quarter."
+        }
+      ],
+      "numeric_check": {
+        "kind": "cross_source",
+        "quantities": [
+          {
+            "value": "3",
+            "source_id": "S2",
+            "unit": "months",
+            "sample": "listing text data 2024",
+            "denominator": "calendar quarter",
+            "context": "Missing period described as the first quarter of 2024",
+            "rounding_half_width": "0",
+            "scale": "number"
+          },
+          {
+            "value": "4",
+            "source_id": "S1",
+            "unit": "months",
+            "sample": "listing text data 2024",
+            "denominator": "calendar months January to April",
+            "context": "Missing period described as January to April 2024",
+            "rounding_half_width": "0",
+            "scale": "number"
+          }
+        ],
+        "comparability": "Both describe the same gap in the same listing data. The 3-month and 4-month figures come from the quarter wording and the January-to-April range.",
+        "observed_discrepancy": "The gap spans 4 months, not 3, so April 2024 falls in Q2.",
+        "possible_explanation": "The text may simplify the gap, or the Q2 point may be computed from May and June only.",
+        "suggested_correction": "State which months enter the Q2 2024 point and describe the gap as January to April."
+      },
+      "suggested_fix": "Say which months enter the Q2 2024 quarterly share, or drop that point, and align the text with the stated January to April gap."
+    },
+    {
+      "id": "NUM-004",
+      "category": "comparison_base",
+      "finding_summary": "The roughly 9 percentage point rise in the cycling-mention share depends on an end-of-period quarter whose month coverage is not stated, and the data end in October 2026.",
+      "issue_type": "cannot_verify",
+      "severity": "low",
+      "confidence": "low",
+      "location": {
+        "page": 10,
+        "page_label": "10",
+        "section": "6.1 An application to house listing data",
+        "text_quote": "has risen by about 9 percentage points over the period",
+        "precision": "exact"
+      },
+      "claim_text": "The share mentioning cycling has risen by about 9 percentage points over the period, from about 35 percent in 2020 to about 44 percent at the end of the period.",
+      "assessment": "cannot_verify",
+      "cannot_verify_reason": "The paper does not say how many months of listings enter the last plotted quarter or whether quarter-specific seasonality affects the Q1 2020 versus end-of-period comparison.",
+      "evidence_summary": "The arithmetic is consistent: 44 - 35 = 9 percentage points, and Figure 3 shows about 35% in the first 2020 points and about 44% for the last point. The data end in October 2026, so a Q4 2026 point can contain at most one month. The last point is plotted at the Q4 2026 position, but the figure does not label the quarter or the number of listings behind it. The 9 pp comparison therefore may rest on a thinner and possibly seasonally different base than the 2020 value.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "Data span, page 15",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_015.md",
+          "page": 15,
+          "page_label": "15",
+          "section": "A.1",
+          "text_quote": "between January 2020 and October 2026, excluding vacation homes.",
+          "url": null,
+          "object_id": "OBJ-6402cd90a906f1f82672a86f",
+          "correspondence": "text",
+          "verification_note": "Line wrap tolerated."
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "Figure 3 discussion, page 16",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_016.md",
+          "page": 16,
+          "page_label": "16",
+          "section": "A.2",
+          "text_quote": "from about 35 percent in 2020 to about 44 percent at the end of the period",
+          "url": null,
+          "object_id": "OBJ-8f4894d007c8a183053537bc",
+          "correspondence": "text",
+          "verification_note": "Line wrap tolerated."
+        },
+        {
+          "id": "S3",
+          "type": "text",
+          "label": "Section 6.1, page 10",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_010.md",
+          "page": 10,
+          "page_label": "10",
+          "section": "6.1",
+          "text_quote": "has risen by about 9 percentage points over the period",
+          "url": null,
+          "object_id": "OBJ-e9b90e0f75ce05ff1ce150cc",
+          "correspondence": "text",
+          "verification_note": "The sentence begins 'The share mentioning cycling'."
+        },
+        {
+          "id": "S4",
+          "type": "figure",
+          "label": "figure_3.png",
+          "path": "work/bicycle-infrastructure-paper/parsed/figures/figure_3.png",
+          "page": 16,
+          "page_label": "16",
+          "section": "A.2 Figure 3",
+          "text_quote": null,
+          "url": null,
+          "object_id": "OBJ-22f18338a427285653860df1",
+          "correspondence": "visual",
+          "verification_note": "Inspected the whole plot. The last point is near 44% at the Q4 2026 position. Exact quarter assignment of the points is inferred from x-position."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "About 9 pp rise over the period",
+          "source_object_ids": [
+            "S1",
+            "S2",
+            "S3",
+            "S4"
+          ],
+          "relation": "cannot_verify",
+          "note": "Arithmetic holds, but the base of the last quarter is undocumented."
+        }
+      ],
+      "numeric_check": {
+        "kind": "underdetermined",
+        "question": "Does the last quarterly point (about 44%) rest on a comparable number of months and listings as the 2020 starting point (about 35%)?",
+        "quantities": [
+          {
+            "value": "35",
+            "source_id": "S2",
+            "unit": "percent of listings",
+            "sample": "listings in 2020",
+            "denominator": "all listings in the period",
+            "context": "Share mentioning cycling around 2020",
+            "rounding_half_width": "0.5",
+            "scale": "percent"
+          },
+          {
+            "value": "44",
+            "source_id": "S2",
+            "unit": "percent of listings",
+            "sample": "listings at the end of the period",
+            "denominator": "all listings in the period",
+            "context": "Share mentioning cycling at the end of the period",
+            "rounding_half_width": "0.5",
+            "scale": "percent"
+          }
+        ],
+        "missing_information": [
+          "Number of months and listings in the last plotted quarter",
+          "Whether quarterly shares are seasonally adjusted",
+          "Which quarter the plotted points represent"
+        ],
+        "status": "unresolved"
+      },
+      "suggested_fix": "State the months and number of listings behind the first and last quarterly points, and consider comparing the same calendar quarters or full-year shares."
+    },
+    {
+      "id": "NUM-005",
+      "category": "count_reconciliation",
+      "finding_summary": "The reported 96 article records and 44 projects are built as 92 articles plus 4 pilot articles, but the paper does not state whether the pilot articles can also be among the 3,187 articles from rounds 2–4.",
+      "issue_type": "cannot_verify",
+      "severity": "low",
+      "confidence": "low",
+      "location": {
+        "page": 10,
+        "page_label": "10",
+        "section": "6 Further Uses of the Articles, footnote 3",
+        "text_quote": "96 articles consists of the 92 articles from rounds 2–4 (Section 5) and four from the pilot run.",
+        "precision": "exact"
+      },
+      "claim_text": "The 96 articles consist of the 92 articles from rounds 2–4 and four from the pilot run, giving 44 projects.",
+      "assessment": "cannot_verify",
+      "cannot_verify_reason": "The paper does not say whether the pilot sample (2 September to 10 October 2026) was excluded from the rounds 2–4 corpus (October 2025 to October 2026), so the additive 92 + 4 and 43 + 1 cannot be checked for overlap.",
+      "evidence_summary": "The arithmetic is consistent: 92 + 4 = 96, and Table 4 shows 4 relevant LLM codings in the pilot (3 + the Stord article). The footnote says the 44th project is the one in Stord that appears only in the pilot, so the pilot's Homborsund and Stod projects are assumed to be within the 43. The pilot window falls inside the rounds 2–4 publication window, and the footnote does not say pilot articles were removed from rounds 2–4. If they were not removed, some of the 96 records could duplicate articles. This matters because 96 and 44 are the denominators for Table 7 and Section 6.3.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "Footnote 3, page 10",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_010.md",
+          "page": 10,
+          "page_label": "10",
+          "section": "6",
+          "text_quote": "96 articles consists of the 92 articles from rounds 2–4 (Section 5) and four from the pilot run.",
+          "url": null,
+          "object_id": "OBJ-e9b90e0f75ce05ff1ce150cc",
+          "correspondence": "text",
+          "verification_note": "The footnote number is attached to 'The' in extraction; the quote starts at '96'."
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "Section 5 corpus window",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_009.md",
+          "page": 9,
+          "page_label": "9",
+          "section": "5",
+          "text_quote": "published between October 2025 and October 2026 in 236 different outlets",
+          "url": null,
+          "object_id": "OBJ-521bfe93a764059cd1136195",
+          "correspondence": "text",
+          "verification_note": "Line wrap tolerated."
+        },
+        {
+          "id": "S3",
+          "type": "text",
+          "label": "Pilot window",
+          "path": "work/bicycle-infrastructure-paper/parsed/full_text.md",
+          "page": null,
+          "page_label": null,
+          "section": "3.1.2",
+          "text_quote": "A pilot sample of 70 search hits between 2 September and 10 October 2026 was extracted to test",
+          "url": null,
+          "object_id": "OBJ-a50e96cda8f251a4eabe3e71",
+          "correspondence": "text",
+          "verification_note": "Located in full_text.md; the page 4 text is the same passage."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "96 = 92 + 4 distinct records",
+          "source_object_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "relation": "cannot_verify",
+          "note": "Overlap between pilot and rounds 2–4 is not addressed."
+        }
+      ],
+      "numeric_check": {
+        "kind": "underdetermined",
+        "question": "Are the 4 pilot articles disjoint from the 92 relevant articles in rounds 2–4, so that 92 + 4 = 96 distinct records and 43 + 1 = 44 distinct projects?",
+        "quantities": [
+          {
+            "value": "92",
+            "source_id": "S1",
+            "unit": "articles",
+            "sample": "rounds 2-4, LLM-coded relevant",
+            "denominator": "3,187 articles",
+            "context": "Relevant articles reporting an opening",
+            "rounding_half_width": "0",
+            "scale": "number"
+          },
+          {
+            "value": "4",
+            "source_id": "S1",
+            "unit": "articles",
+            "sample": "pilot run",
+            "denominator": "34 unique pilot articles",
+            "context": "Pilot articles added to reach 96",
+            "rounding_half_width": "0",
+            "scale": "number"
+          }
+        ],
+        "missing_information": [
+          "Whether pilot articles were excluded from the rounds 2-4 corpus",
+          "Whether pilot Homborsund and Stod articles are also among the 92",
+          "How articles in both samples were deduplicated"
+        ],
+        "status": "unresolved"
+      },
+      "suggested_fix": "State whether the pilot articles were excluded from rounds 2–4 or deduplicated, and show the reconciliation to 96 records and 44 projects."
+    },
+    {
+      "id": "NUM-006",
+      "category": "axis_labels",
+      "finding_summary": "The Figure 2 x-axis labels equally spaced ticks as 0%, 2%, 5%, 8% and 10%, which misstate the tick values 2.5% and 7.5%.",
+      "issue_type": "manuscript_issue",
+      "severity": "low",
+      "confidence": "medium",
+      "location": {
+        "page": 16,
+        "page_label": "16",
+        "section": "A.2 Figure 2",
+        "text_quote": "0% 2% 5% 8% 10%",
+        "precision": "exact"
+      },
+      "claim_text": "Figure 2 axis ticks are 0%, 2%, 5%, 8% and 10% on a linear share axis.",
+      "assessment": "no",
+      "cannot_verify_reason": null,
+      "evidence_summary": "In figure_2.png the five ticks are equally spaced (about 147 px apart). They sit at 0, 2.5, 5, 7.5 and 10 percent: the 5% tick matches the 5.0% bar (sykkelparkering) and the 10% tick matches the 9.8% bar. The labels 2% and 8% round 2.5% and 7.5% in opposite directions, so the visible label gaps (2, 3, 3, 2) are unequal for equal spacing. Bar labels are given to one decimal and are not affected.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "Figure 2 axis labels, page 16 text",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_016.md",
+          "page": 16,
+          "page_label": "16",
+          "section": "A.2",
+          "text_quote": "0% 2% 5% 8% 10%",
+          "url": null,
+          "object_id": "OBJ-8f4894d007c8a183053537bc",
+          "correspondence": "text",
+          "verification_note": "Axis tick labels from page text."
+        },
+        {
+          "id": "S2",
+          "type": "figure",
+          "label": "figure_2.png",
+          "path": "work/bicycle-infrastructure-paper/parsed/figures/figure_2.png",
+          "page": 16,
+          "page_label": "16",
+          "section": "A.2 Figure 2",
+          "text_quote": null,
+          "url": null,
+          "object_id": "OBJ-be07133eb1a3ae76638fe011",
+          "correspondence": "visual",
+          "verification_note": "Inspected the x-axis; tick spacing read from pixel positions of tick marks. Bar value labels were read in the same view."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Axis tick labels",
+          "source_object_ids": [
+            "S1",
+            "S2"
+          ],
+          "relation": "contradicts",
+          "note": "Equal tick spacing implies 2.5% and 7.5%."
+        }
+      ],
+      "numeric_check": {
+        "kind": "arithmetic",
+        "operation": "mean",
+        "quantities": [
+          {
+            "value": "0",
+            "source_id": "S2",
+            "unit": "percent",
+            "sample": "x-axis ticks",
+            "denominator": "share of ads",
+            "context": "Lower neighbouring tick label",
+            "rounding_half_width": "0",
+            "scale": "percent"
+          },
+          {
+            "value": "5",
+            "source_id": "S2",
+            "unit": "percent",
+            "sample": "x-axis ticks",
+            "denominator": "share of ads",
+            "context": "Upper neighbouring tick label",
+            "rounding_half_width": "0",
+            "scale": "percent"
+          }
+        ],
+        "reported": {
+          "value": "2",
+          "source_id": "S1",
+          "unit": "percent",
+          "sample": "x-axis tick",
+          "denominator": "share of ads",
+          "context": "Label of the tick midway between the 0% and 5% ticks",
+          "rounding_half_width": "0.5",
+          "scale": "percent"
+        },
+        "computed_value": "2.5",
+        "tolerance": "0.05",
+        "observed_discrepancy": "The midpoint tick reads 2.5%, labelled 2%. The midpoint of the 5% and 10% ticks reads 7.5%, labelled 8%.",
+        "possible_explanation": "Tick labels rounded to integers by the plotting software.",
+        "suggested_correction": "Use ticks at 0, 2.5, 5, 7.5, 10 with one decimal, or ticks at 0, 2, 4, 6, 8, 10."
+      },
+      "suggested_fix": "Relabel the axis ticks as 0%, 2.5%, 5%, 7.5% and 10%, or choose integer tick positions."
+    }
+  ],
+  "notes": [
+    "Table CSV/markdown cells were not used as primary evidence, following the parser-quality warnings. Page text and retained page and table images were used instead.",
+    "numbers_in_text.json was inspected only at its head (513 entries). The systematic number pass was run against the full text in full_text.md, which those entries are drawn from.",
+    "Identities verified without issue: 70 - 36 = 34; 34/70 = 48.6% (49%); 5/34 = 14.7% (15%); 2/34 = 5.9% (about 6%); 5 + 8 + 21 = 34; 31 = 21 + 8 + 2; 3 + 30 = 33 of 34 = 97.1%; 1/34 = 2.9% (3%); 19 + 10 + 9 + 5 = 43; 19 + 10 = 29; 17 + 2 = 19 day-dated, equal to the Table 6 Day count of 19 if the 44th project (Stord) is not day-dated; 44 - 18 = 26; 266 625 + 433 954 = 700 579; all Table 8 shares recompute from 700 579 within rounding (38.06%, 61.94%, 13.39%, 10.80%, 10.69%, 9.85%, 3.83%, 0.96%); type rows sum to 346 827, above Any-mention 266 625 as the note on overlap states; county shares in the text match Figure 4 (60.8, 52.0, 14.4, 12.9, 6.8); 33 to 44 in Figure 3 gives about 9 pp; NVDB length 1492 + 641 = 2133 m against 2,132 m is within endpoint rounding; 4 September to 5 October 2026 is about one month; 5 October 2026 is a Monday.",
+    "Not checked or not checkable: the national dashed line in Figure 4 has no printed value and county listing counts are not given, so the 38% national share cannot be reconciled with the county shares. External figures (Copenhagen +60 percent, up to 5 percentage points in Bergen, 96 percent accuracy in Bartik et al.) were not verified against the cited sources.",
+    "Non-numerical observations such as the Table 9 classification rule versus the bysykkelstativ example were left to other reviewers."
+  ],
+  "completion": {
+    "version": 1,
+    "state": "complete",
+    "scope_description": "Numerical audit of the text, tables, figures and appendix in work/bicycle-infrastructure-paper/parsed: funnel and agreement counts, project and date-precision counts, Table 7 shares, NVDB link example values and dates, FINN listing shares, Figures 2–4 values and axes, and cross-section count reconciliation.",
+    "checks_completed": [
+      "Read the parser-quality output and routed around the table CSV/markdown defects",
+      "Read full_text.md in full and recomputed every material sentence with counts, percentages, percentage points, ranges and dates",
+      "Verified the Figure 1 funnel against the page 4 image",
+      "Recomputed Table 8 shares and the overlap bound against the 700 579 listings total",
+      "Compared Figure 2 word shares with Table 8 type shares",
+      "Checked Figure 3 and Figure 4 values against the text, and Figure 2 axis ticks visually",
+      "Verified Tables 3 and 4 cell and margin sums and 33/34 agreement",
+      "Tested the Table 6 adding-up identity and the Section 6.3 17 + 2 against Table 6",
+      "Compared Table 7 shares against the 'between a third and a half' statement",
+      "Cross-checked footnote 3 against Tables 3 and 4"
+    ],
+    "missing_checks": [],
+    "evidence_limitations": [
+      "numbers_in_text.json was only inspected at its head; the pass relied on full_text.md and the page images",
+      "Figure 4's national dashed-line value is not printed and county listing counts are not provided, so no weighted-average check was possible",
+      "External cited figures were not verified",
+      "Figure 2 tick spacing and the Figure 3 quarter positions were read from the image, not from underlying data"
+    ]
+  },
+  "coverage": [
+    {
+      "item_id": "assigned_remit",
+      "source_object_ids": [],
+      "claim": null,
+      "check_performed": "Full read of full_text.md, recomputation of all material numeric statements, identity and bound tests, and inspection of Figures 1–4 and Table 7 images.",
+      "status": "linked_finding",
+      "reason": "Six findings (NUM-001 to NUM-006) were reported. All other recomputations reconciled; see notes. numbers_in_text.json was covered via full_text.md rather than entry by entry.",
+      "finding_ids": [
+        "NUM-001",
+        "NUM-002",
+        "NUM-003",
+        "NUM-004",
+        "NUM-005",
+        "NUM-006"
+      ],
+      "attempted": true,
+      "importance": "central",
+      "scope": "sampled"
+    },
+    {
+      "item_id": "display:OBJ-0b391e5449c5ec2c409159ce",
+      "source_object_ids": [
+        "OBJ-0b391e5449c5ec2c409159ce"
+      ],
+      "claim": null,
+      "check_performed": "Verified Figure 1 values (70, 34, 5, 2, 49%, 15%) against the page 4 image and text, and recomputed 34/70, 5/34, 2/34, 70 - 36.",
+      "status": "checked_no_issue",
+      "reason": "All values and percentages reconcile within rounding. The percentages use different bases (hits, then unique articles) and are labelled accordingly.",
+      "finding_ids": [],
+      "attempted": true,
+      "importance": "central",
+      "scope": "exhaustive"
+    },
+    {
+      "item_id": "display:OBJ-95ecd7ea3c5b8d724f48fffa",
+      "source_object_ids": [
+        "OBJ-95ecd7ea3c5b8d724f48fffa"
+      ],
+      "claim": null,
+      "check_performed": "Compared word shares with Table 8 type shares (each word share at most its type share, type union at most the sum of word shares) and inspected the x-axis ticks.",
+      "status": "linked_finding",
+      "reason": "Bar values are consistent with Table 8 and the text, but the axis labels 2% and 8% sit at 2.5% and 7.5% (NUM-006).",
+      "finding_ids": [
+        "NUM-006"
+      ],
+      "attempted": true,
+      "importance": "central",
+      "scope": "exhaustive"
+    },
+    {
+      "item_id": "display:OBJ-7414d59aee2e3ad29a820798",
+      "source_object_ids": [
+        "OBJ-7414d59aee2e3ad29a820798"
+      ],
+      "claim": null,
+      "check_performed": "Inspected figure_3.png and compared the 35%, 44% and 9 pp statements and the 2024 gap wording with Appendix A.1.",
+      "status": "linked_finding",
+      "reason": "The 9 pp arithmetic holds, but the 2024 gap wording and the end-of-period quarter base are not reconciled (NUM-003, NUM-004).",
+      "finding_ids": [
+        "NUM-003",
+        "NUM-004"
+      ],
+      "attempted": true,
+      "importance": "peripheral",
+      "scope": "exhaustive"
+    },
+    {
+      "item_id": "display:OBJ-d491066348ee1a73c8bce8f5",
+      "source_object_ids": [
+        "OBJ-d491066348ee1a73c8bce8f5"
+      ],
+      "claim": null,
+      "check_performed": "Compared county shares in the text (61, 52, 38, 14, 13, 7 percent) with the Figure 4 values and tested that 38.1% lies between the county minimum and maximum.",
+      "status": "checked_no_issue",
+      "reason": "Text values match Figure 4 within rounding. The weighted national average cannot be tested because county listing counts and the dashed-line value are not given.",
+      "finding_ids": [],
+      "attempted": true,
+      "importance": "peripheral",
+      "scope": "exhaustive"
+    },
+    {
+      "item_id": "display:OBJ-8ec9459ce44d02c62d0a27bf",
+      "source_object_ids": [
+        "OBJ-8ec9459ce44d02c62d0a27bf"
+      ],
+      "claim": null,
+      "check_performed": "Read Table 1 from the page 5 text and compared its numeric examples (4 articles in 2 newspapers, 3 km, 3.5 m) with the rest of the paper.",
+      "status": "checked_no_issue",
+      "reason": "Table 1 holds mainly descriptive field definitions. The only quantities are illustrative examples consistent with Table 2 and the text.",
+      "finding_ids": [],
+      "attempted": true,
+      "importance": "central",
+      "scope": "exhaustive"
+    },
+    {
+      "item_id": "display:OBJ-dbc6f4a9a830bbbd128e371e",
+      "source_object_ids": [
+        "OBJ-dbc6f4a9a830bbbd128e371e"
+      ],
+      "claim": null,
+      "check_performed": "Used page 5 text rather than the truncated table markdown. Compared article counts (4, 1, 1, 1), dates and footnotes with Section 3.1.4 and Figure 1.",
+      "status": "checked_no_issue",
+      "reason": "Counts and the two opened and two planned projects agree with the text; footnote dates were read consistently.",
+      "finding_ids": [],
+      "attempted": true,
+      "importance": "central",
+      "scope": "exhaustive"
+    },
+    {
+      "item_id": "display:OBJ-e3774f186493fe1cf3afe556",
+      "source_object_ids": [
+        "OBJ-e3774f186493fe1cf3afe556"
+      ],
+      "claim": null,
+      "check_performed": "Verified row and column sums and 33/34 agreement, then compared the off-diagonal cell with footnote 3.",
+      "status": "linked_finding",
+      "reason": "Internal sums are correct, but the off-diagonal Stord article conflicts with footnote 3 (NUM-001).",
+      "finding_ids": [
+        "NUM-001"
+      ],
+      "attempted": true,
+      "importance": "central",
+      "scope": "exhaustive"
+    },
+    {
+      "item_id": "display:OBJ-a9068469a80185aaa27470fa",
+      "source_object_ids": [
+        "OBJ-a9068469a80185aaa27470fa"
+      ],
+      "claim": null,
+      "check_performed": "Verified sums and 33/34 agreement, and checked the 'same Stord article' statement and the count of 4 LLM-relevant pilot articles against footnote 3.",
+      "status": "linked_finding",
+      "reason": "Internal sums are correct. The LLM-versus-pilot disagreement being the Stord article is part of the NUM-001 reconciliation, and the 4 pilot articles feed the NUM-005 question.",
+      "finding_ids": [
+        "NUM-001",
+        "NUM-005"
+      ],
+      "attempted": true,
+      "importance": "central",
+      "scope": "exhaustive"
+    },
+    {
+      "item_id": "display:OBJ-e6d7a21f6dac33af8ecba464",
+      "source_object_ids": [
+        "OBJ-e6d7a21f6dac33af8ecba464"
+      ],
+      "claim": null,
+      "check_performed": "Used the page text rather than the mis-columned markdown. Recomputed 1492 + 641 vs 2,132 m, the one-month geometry-to-opening gap, the Monday weekday, and the elevation, climb and gradient plausibility.",
+      "status": "checked_no_issue",
+      "reason": "The 1 m difference in length is within endpoint rounding. Dates and the weekday are consistent. No other cross-checks are possible from the displayed values.",
+      "finding_ids": [],
+      "attempted": true,
+      "importance": "central",
+      "scope": "exhaustive"
+    },
+    {
+      "item_id": "display:OBJ-ff90f28affccf4abf5c4e78c",
+      "source_object_ids": [
+        "OBJ-ff90f28affccf4abf5c4e78c"
+      ],
+      "claim": null,
+      "check_performed": "Used the page 10 text and panel structure. Tested that 19 + 10 + 9 + 5 = 43 and that 14 of 15 counties matches the 'all except Østfold' text, and compared 3,187, 92, 2 and 50 with Section 5.",
+      "status": "checked_no_issue",
+      "reason": "The adding-up identity holds with the same sample of 43 projects. The 29 day-or-month claim equals 19 + 10. The 92 plus 43 base is shared with the footnote reconciliation in NUM-005.",
+      "finding_ids": [],
+      "attempted": true,
+      "importance": "central",
+      "scope": "exhaustive"
+    },
+    {
+      "item_id": "display:OBJ-2c51ead4a14e19e7c3de50a9",
+      "source_object_ids": [
+        "OBJ-2c51ead4a14e19e7c3de50a9"
+      ],
+      "claim": null,
+      "check_performed": "Paired counts with labels from table_7.png and the page 11 text, then computed each count over 44 projects against the Section 6.2 description.",
+      "status": "linked_finding",
+      "reason": "Counts are correctly read, but the 'between a third and a half' wording does not match several values (NUM-002).",
+      "finding_ids": [
+        "NUM-002"
+      ],
+      "attempted": true,
+      "importance": "central",
+      "scope": "exhaustive"
+    },
+    {
+      "item_id": "display:OBJ-8cd1361a5f77a70c5008ee4d",
+      "source_object_ids": [
+        "OBJ-8cd1361a5f77a70c5008ee4d"
+      ],
+      "claim": null,
+      "check_performed": "Used the page 15 text with intact thousands. Recomputed every share over 700 579, the sum of any plus no mention, and the overlap bound across type rows.",
+      "status": "checked_no_issue",
+      "reason": "All shares recompute within rounding and the totals add up. The type rows (346 827) exceed Any-mention (266 625), as the note on overlapping types explains.",
+      "finding_ids": [],
+      "attempted": true,
+      "importance": "central",
+      "scope": "exhaustive"
+    },
+    {
+      "item_id": "display:OBJ-b0c2f2010110ab92e8c28a1c",
+      "source_object_ids": [
+        "OBJ-b0c2f2010110ab92e8c28a1c"
+      ],
+      "claim": null,
+      "check_performed": "Read Table 9 from the page 18 text and checked it for numeric content within the numerical remit.",
+      "status": "not_applicable",
+      "reason": "Table 9 holds word-part classification rules and no quantities, so there is no numerical content. Its rule-ordering question belongs to other reviewers.",
+      "finding_ids": [],
+      "attempted": true,
+      "importance": "peripheral",
+      "scope": "exhaustive"
+    },
+    {
+      "item_id": "claim:agreement-33-of-34",
+      "source_object_ids": [
+        "OBJ-4e6da301f188ae5c7e5d0a63",
+        "OBJ-b41cc221a4f064e5990acabf"
+      ],
+      "claim": "The LLM agrees with the pilot coder on 97 percent of articles, the same rate as between the two human coders.",
+      "check_performed": "Recomputed 33/34 from Tables 3 and 4 and compared with the abstract, introduction and conclusion.",
+      "status": "checked_no_issue",
+      "reason": "33/34 = 97.1% for both tables, so the equality of rates holds. The small-sample caveat is stated by the authors.",
+      "finding_ids": [],
+      "attempted": true,
+      "importance": "central",
+      "scope": "exhaustive"
+    },
+    {
+      "item_id": "claim:ceremony-date-precision",
+      "source_object_ids": [
+        "OBJ-95b2618a59737e0b1725c4df"
+      ],
+      "claim": "Of the 44 projects, 18 have an opening ceremony; 17 of these are dated to the day, compared with 2 of the 26 projects without one.",
+      "check_performed": "Recomputed 44 - 18 = 26 and 17 + 2 = 19, and compared the 19 day-dated projects with the Table 6 Day count.",
+      "status": "checked_no_issue",
+      "reason": "The counts add up and agree with Table 6 if the 44th project is not day-dated. Whether it is is not stated.",
+      "finding_ids": [],
+      "attempted": true,
+      "importance": "central",
+      "scope": "exhaustive"
+    },
+    {
+      "item_id": "claim:external-effect-sizes",
+      "source_object_ids": [],
+      "claim": "Copenhagen bicycle lanes increased bicycle trips by 60 percent; Bergen tunnel increased cycling shares by up to five percentage points; Bartik et al. reach 96 percent accuracy.",
+      "check_performed": "Checked the percent versus percentage-point wording in the text only.",
+      "status": "cannot_verify",
+      "reason": "The cited sources are not part of the retained artifacts. The 60 percent versus 5 percentage points wording is internally consistent with different outcomes.",
+      "finding_ids": [],
+      "attempted": true,
+      "importance": "peripheral",
+      "scope": "sampled"
+    }
+  ]
+}

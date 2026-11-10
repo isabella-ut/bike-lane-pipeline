@@ -1,0 +1,1577 @@
+{
+  "reviewer": "sample_construction_auditor",
+  "paper_id": "bicycle-infrastructure-paper",
+  "run_status": "ok",
+  "summary": "The paper has two data flows: a 70-hit pilot (34 unique articles) validated against human coders, and a 3,187-article LLM run (92 relevant articles, 43 projects). A separate FINN.no listing appendix (700 579 listings) adds a third. I traced each from search hits through deduplication, missing-text handling, relevance coding, project grouping and the final tables. The arithmetic mostly holds: Table 8 counts sum to 700 579 and match the reported shares, Table 6 date precision sums to 43, and 34 articles split 5/8/21. The problems are in unit and definition consistency. The \"2 of 34 articles\" opening yield mixes projects with articles. Footnote 3 contradicts Table 3 on how the Stord article was coded. Rounds 2–4 are undefined and overlap the pilot window. The missing-text exclusion rule contradicts the pilot. The validation set was used for prompt development. The full-run relevance rule for pre-opening or planned articles is unspecified. The \"opening date\" construct is ambiguous, and project-level aggregation of dates and precision is undocumented. The appendix has a Table 9 rule-versus-example conflict, a Figure 2 colour with no matching word part, and a Q1 2024 versus January–April 2024 gap mismatch. Listing denominators are not documented. Parser-quality guidance was respected: tables were read from page text, not the structured CSV/markdown, and figures were read from the retained images.",
+  "findings": [
+    {
+      "id": "SAMPLE-001",
+      "category": "denominator_mismatch",
+      "finding_summary": "The text reports 'Only 2 of the 34 unique articles (about 6 percent)' concern an opening that took place, but the 2 is a count of distinct projects, not articles. Five of the 34 articles were coded relevant and concern those two openings.",
+      "issue_type": "manuscript_issue",
+      "severity": "medium",
+      "confidence": "high",
+      "location": {
+        "page": 4,
+        "page_label": "4",
+        "section": "3.1.2 Pilot sample / Figure 1",
+        "text_quote": "Only 2 of the 34 unique articles (about 6 percent) concern an opening that took place.",
+        "precision": "exact"
+      },
+      "claim_text": "Only 2 of the 34 unique articles (about 6 percent) concern an opening that took place.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "Figure 1 labels the last stage 'Distinct openings that took place 2', a project count. Section 3.1.4 states that five articles were coded relevant and that four of them mention Homborsund and one Stod. The numerator of the 6 percent is therefore projects while the denominator is articles. The Figure 1 caption makes the same mix with 'Only 2 of 70 search hits'. Depending on whether the two pre-opening Homborsund articles count, the article-level count is 5 or 3, not 2 (14.7% or 8.8% of 34). Section 3.1.2 also shows the funnel '34 unique, 5 relevant, 2 openings' with the unit changing at the last step. The abstract's 'only two actual openings' is correctly in project units.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "Page 4 text",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_004.md",
+          "page": 4,
+          "page_label": "4",
+          "section": "3.1.2",
+          "text_quote": "Only 2 of the 34 unique articles (about 6 percent) concern an opening that took place.",
+          "url": null,
+          "object_id": "OBJ-1a119a3cb70f2153fc56dd97",
+          "correspondence": "text",
+          "verification_note": "Figure 1 chart labels 'Distinct openings that took place 2' are on the same page text."
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "Page 5 text",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_005.md",
+          "page": 5,
+          "page_label": "5",
+          "section": "3.1.4",
+          "text_quote": "This resulted in five relevant articles, eight unclear and 21 not relevant.",
+          "url": null,
+          "object_id": "OBJ-9d16c139938370d7a97e77c6",
+          "correspondence": "text",
+          "verification_note": "Same page continues: four articles on Homborsund and one on Stod."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "2 of 34 articles concern an opening that took place",
+          "source_object_ids": [
+            "S1",
+            "S2"
+          ],
+          "relation": "partial",
+          "note": "2 counts projects; 5 articles were coded relevant."
+        }
+      ],
+      "numeric_check": {
+        "kind": "cross_source",
+        "quantities": [
+          {
+            "value": "2",
+            "source_id": "S1",
+            "unit": "distinct openings (projects)",
+            "sample": "Pilot sample, 34 unique articles",
+            "denominator": "Used as numerator over 34 unique articles in the text",
+            "context": "Figure 1 last stage 'Distinct openings that took place'",
+            "rounding_half_width": "0",
+            "scale": "number"
+          },
+          {
+            "value": "5",
+            "source_id": "S2",
+            "unit": "articles coded relevant",
+            "sample": "Pilot sample, 34 unique articles",
+            "denominator": "34 unique articles",
+            "context": "Section 3.1.4 manual coding result: five relevant, eight unclear, 21 not relevant",
+            "rounding_half_width": "0",
+            "scale": "number"
+          }
+        ],
+        "comparability": "Units differ: projects versus articles. The two counts are not directly comparable, and the article-level count depends on whether pre-opening articles are counted.",
+        "observed_discrepancy": "The 6 percent is computed as 2 projects over 34 articles, whereas five articles concern those two projects.",
+        "possible_explanation": "The authors may intend an opening-level yield, with the 'of 34 articles' wording a loose phrasing.",
+        "suggested_correction": "State the yield separately for articles (5 of 34, or 3 of 34 after the pre-opening recoding) and for projects (2), with the unit explicit in the text and Figure 1."
+      },
+      "suggested_fix": "Report the yield at one unit per statement: articles about openings that took place (5 or 3 of 34) and distinct openings (2). Relabel Figure 1 and its caption accordingly."
+    },
+    {
+      "id": "SAMPLE-002",
+      "category": "data_flow_inconsistency",
+      "finding_summary": "Footnote 3 says the Stord article was coded not relevant by both human coders, but Table 3 and the Section 4.1 text show the two coders disagreed on exactly one article, the Stord one.",
+      "issue_type": "manuscript_issue",
+      "severity": "medium",
+      "confidence": "high",
+      "location": {
+        "page": 10,
+        "page_label": "10",
+        "section": "6 Further Uses (footnote 3)",
+        "text_quote": "the project in Stord, which appears only in the pilot and was coded as not relevant by both human coders",
+        "precision": "exact"
+      },
+      "claim_text": "The Stord project appears only in the pilot and was coded as not relevant by both human coders.",
+      "assessment": "no",
+      "cannot_verify_reason": null,
+      "evidence_summary": "Section 4.1 states that the two human coders agree on 33 of 34 articles and that the only article they disagree on is the Stord dispute article. Table 3 shows pilot coder relevant 3 and second coder relevant 4, so the second coder coded one article relevant that the pilot coder coded not relevant. The footnote conflicts with this unless a different Stord article is meant. Table 4 and Section 4.2 add that the LLM also coded this article relevant, so the 4 LLM-relevant pilot articles are 3 true plus Stord. This matters because Stord is the one non-opening project added to the 44-project denominator used in Tables 7 and Section 6.3. It is not reconciled with the 43 projects of Table 6, and its human coding is described inconsistently.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "Page 10 text, footnote 3",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_010.md",
+          "page": 10,
+          "page_label": "10",
+          "section": "6",
+          "text_quote": "the project in Stord, which appears only in the pilot and was coded as not relevant by both human coders",
+          "url": null,
+          "object_id": "OBJ-e9b90e0f75ce05ff1ce150cc",
+          "correspondence": "text",
+          "verification_note": "Footnote marker 3 sits earlier in the passage; the quote starts after it."
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "Page 7 text, Section 4.1",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_007.md",
+          "page": 7,
+          "page_label": "7",
+          "section": "4.1",
+          "text_quote": "The two coders agree on 33 of the 34 articles, or 97 percent.",
+          "url": null,
+          "object_id": "OBJ-4e6da301f188ae5c7e5d0a63",
+          "correspondence": "text",
+          "verification_note": "Table 3 cells (Not relevant 1 30 31; Total 4 30 34) read from page text."
+        },
+        {
+          "id": "S3",
+          "type": "text",
+          "label": "Page 8 text, Section 4.2",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_008.md",
+          "page": 8,
+          "page_label": "8",
+          "section": "4.2",
+          "text_quote": "The only article they disagree on is the same Stord article.",
+          "url": null,
+          "object_id": "OBJ-b41cc221a4f064e5990acabf",
+          "correspondence": "text",
+          "verification_note": "Page text used, not table_4.md."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Stord coded not relevant by both human coders",
+          "source_object_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "relation": "contradicts",
+          "note": "Table 3 and the Section 4.1 text imply one coder coded the Stord article relevant."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Reconcile footnote 3 with Table 3 and Section 4.1. State which coder coded the Stord article relevant, and say whether the 44th project is an LLM-flagged false positive. Consider showing statistics for the 43 verified openings alongside the 44."
+    },
+    {
+      "id": "SAMPLE-003",
+      "category": "data_flow_inconsistency",
+      "finding_summary": "The full-run sample is defined only as 'rounds 2–4'. Round 1, the search terms, the selection from the 13 800-article universe and the relation to the pilot window are never defined, and the pilot window falls inside the rounds 2–4 window.",
+      "issue_type": "manuscript_issue",
+      "severity": "medium",
+      "confidence": "high",
+      "location": {
+        "page": 9,
+        "page_label": "9",
+        "section": "5 Results",
+        "text_quote": "The LLM coded 3,187 articles from rounds 2–4, published between October 2025 and October 2026 in 236 different outlets.",
+        "precision": "exact"
+      },
+      "claim_text": "The LLM coded 3,187 articles from rounds 2–4, published between October 2025 and October 2026 in 236 different outlets.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "Section 3.1 defines only the pilot (70 hits, 2 September to 10 October 2026) and the single search term 'sykkelvei'. It reports 530 to 13 800 potentially relevant articles over three years. It does not say what rounds 1–4 are, how the 3,187 articles were drawn, or whether they are hits or unique articles. Table 7 uses 'rounds 1–4' without a definition. The pilot window lies within the October 2025–October 2026 window of rounds 2–4. Footnote 3 nevertheless adds four pilot articles to the 92 to reach 96, and the Homborsund and Stod projects appear to be among the 43. The paper does not say whether the pilot articles are excluded from rounds 2–4 or counted twice. The unit of analysis is therefore unclear for the headline 92 / 43 / 29 figures.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "Page 9 text, Section 5",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_009.md",
+          "page": 9,
+          "page_label": "9",
+          "section": "5",
+          "text_quote": "The LLM coded 3,187 articles from rounds 2–4, published between October 2025 and October 2026 in 236 different outlets.",
+          "url": null,
+          "object_id": "OBJ-521bfe93a764059cd1136195",
+          "correspondence": "text",
+          "verification_note": "No definition of rounds elsewhere in the parsed text."
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "Page 4 text, Section 3.1.2",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_004.md",
+          "page": 4,
+          "page_label": "4",
+          "section": "3.1.2",
+          "text_quote": "A pilot sample of 70 search hits between 2 September and 10 October 2026 was extracted to test",
+          "url": null,
+          "object_id": "OBJ-1a119a3cb70f2153fc56dd97",
+          "correspondence": "text",
+          "verification_note": "Pilot window overlaps the stated rounds 2–4 publication window."
+        },
+        {
+          "id": "S3",
+          "type": "text",
+          "label": "Page 11 text, Table 7 note",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_011.md",
+          "page": 11,
+          "page_label": "11",
+          "section": "6.2",
+          "text_quote": "Source: own data from Retriever/Atekst, rounds 1–4.",
+          "url": null,
+          "object_id": "OBJ-95b2618a59737e0b1725c4df",
+          "correspondence": "text",
+          "verification_note": "Round 1 first appears here."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "3,187 articles from rounds 2–4 define the full-run sample",
+          "source_object_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "relation": "partial",
+          "note": "Rounds undefined; overlap with the pilot window and the pilot-article add-on are unreconciled."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Define rounds 1–4 (dates, search terms, retrieval date, selection rule). Say whether pilot articles are included in or excluded from the 3,187, and give a flow count from retrieved hits to articles coded."
+    },
+    {
+      "id": "SAMPLE-004",
+      "category": "sample_restriction_mismatch",
+      "finding_summary": "Section 3.1.1 says articles with missing or truncated text are excluded before analysis, but the pilot's 34 unique articles retain four with missing text and two very short ones, and the full run reports no count of such exclusions.",
+      "issue_type": "manuscript_issue",
+      "severity": "medium",
+      "confidence": "high",
+      "location": {
+        "page": 4,
+        "page_label": "4",
+        "section": "3.1.1 News article base",
+        "text_quote": "These duplicates, as well as articles with missing or truncated text, are excluded before the analysis.",
+        "precision": "exact"
+      },
+      "claim_text": "Duplicates and articles with missing or truncated text are excluded before the analysis.",
+      "assessment": "no",
+      "cannot_verify_reason": null,
+      "evidence_summary": "In the pilot, four of the 34 unique articles had 0–23 words of full text and were kept; they were coded 'unclear' and then folded into 'not relevant' in the agreement tables. Two more had very short text. Six of 34 (18%) pilot articles were therefore too short to code. The full-run Table 6 reports 'Unclear 2' of 3,187 and no row for missing or truncated text, so it is unclear whether the exclusion rule was applied in the full run. Table 6 also omits the not-relevant count, implied as 3,093. The rule is stated in the data section but contradicted by the pilot flow, so the N entering each analysis is unclear.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "Page 4 text",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_004.md",
+          "page": 4,
+          "page_label": "4",
+          "section": "3.1.1–3.1.2",
+          "text_quote": "These duplicates, as well as articles with missing or truncated text, are excluded before the analysis.",
+          "url": null,
+          "object_id": "OBJ-1a119a3cb70f2153fc56dd97",
+          "correspondence": "text",
+          "verification_note": "Same page: four of the 34 unique articles had missing text of 0–23 words."
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "Page 5 text",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_005.md",
+          "page": 5,
+          "page_label": "5",
+          "section": "3.1.4",
+          "text_quote": "Six of the eight unclear articles had too little text to code",
+          "url": null,
+          "object_id": "OBJ-9d16c139938370d7a97e77c6",
+          "correspondence": "text",
+          "verification_note": "Page text used."
+        },
+        {
+          "id": "S3",
+          "type": "text",
+          "label": "Page 10 text, Table 6",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_010.md",
+          "page": 10,
+          "page_label": "10",
+          "section": "5 / Table 6",
+          "text_quote": "Unclear 2 Year 9",
+          "url": null,
+          "object_id": "OBJ-e9b90e0f75ce05ff1ce150cc",
+          "correspondence": "text",
+          "verification_note": "Two-panel table; the Unclear row is the left panel (Unclear 2) read from page text, with the right-panel 'Year 9' on the same line."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Missing or truncated articles are excluded before analysis",
+          "source_object_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "relation": "contradicts",
+          "note": "Pilot retains six too-short articles; full-run handling is not reported."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "State the rule applied in each sample: how many articles with missing or short text were retained or excluded in the pilot and in the 3,187. Add the not-relevant and missing-text rows to Table 6."
+    },
+    {
+      "id": "SAMPLE-005",
+      "category": "attrition_unclear",
+      "finding_summary": "The paper says duplicates were excluded before analysis, but the automatic duplicate check is reported to have missed a near-identical online and print version. The deduplication status of the 3,187 articles and the 92 relevant articles is not documented, and the 92-to-43 grouping rule is not described.",
+      "issue_type": "manuscript_issue",
+      "severity": "medium",
+      "confidence": "medium",
+      "location": {
+        "page": 6,
+        "page_label": "6",
+        "section": "3.1.4 Manual coding of the pilot",
+        "text_quote": "the automatic duplicate check missed the near-identical online and print versions of one article (Fanaposten), which was caught by the coder.",
+        "precision": "exact"
+      },
+      "claim_text": "Duplicates are excluded before the analysis, so the 3,187 articles and 92 relevant articles are unique articles that group into 43 projects.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "In the pilot, 36 of 70 hits (51%) were duplicates and the automatic check missed at least one. Section 3.1.2 does not say whether this case is inside the 36 or was a further exclusion from the 34. For the full run, no counts are given for hits, duplicates removed or the manual check used. Section 5 reports 92 articles and 43 projects, and Section 8 lists the grouping of articles into project records as a step 'done by hand'. The paper gives no grouping rule or distribution of articles per project, only that 'most projects are covered by one or two articles'. The unit and de-duplication of the 92 and the 43 cannot be verified.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "Page 6 text",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_006.md",
+          "page": 6,
+          "page_label": "6",
+          "section": "3.1.4",
+          "text_quote": "the automatic duplicate check missed the near-identical online and print versions of one article (Fanaposten), which was caught by the coder.",
+          "url": null,
+          "object_id": "OBJ-e13eccc23f4c883050d15bcf",
+          "correspondence": "text",
+          "verification_note": "Page text used."
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "Page 4 text",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_004.md",
+          "page": 4,
+          "page_label": "4",
+          "section": "3.1.2",
+          "text_quote": "The sample contained 36 duplicates, leaving 34 unique articles.",
+          "url": null,
+          "object_id": "OBJ-1a119a3cb70f2153fc56dd97",
+          "correspondence": "text",
+          "verification_note": "Page text used."
+        },
+        {
+          "id": "S3",
+          "type": "text",
+          "label": "Page 12 text, Section 8",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_012.md",
+          "page": 12,
+          "page_label": "12",
+          "section": "8",
+          "text_quote": "grouping articles on the same project into one record",
+          "url": null,
+          "object_id": "OBJ-a6c6d31e7be45f25b775aa47",
+          "correspondence": "text",
+          "verification_note": "Section 8 lists this among steps done by hand."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Articles are deduplicated and grouped into 43 projects",
+          "source_object_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "relation": "partial",
+          "note": "Dedup failure documented in pilot; full-run procedure and counts not reported."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Report hits, duplicates removed (and how detected), and manual corrections for the full run. Describe the rule and who grouped 92 articles into 43 projects, with the distribution of articles per project."
+    },
+    {
+      "id": "SAMPLE-006",
+      "category": "data_flow_inconsistency",
+      "finding_summary": "The validation articles were used to revise the prompt (output reviewed, prompt altered, validation re-run) and to test consistency, yet Section 4 describes the LLM as evaluated on labels it has not seen and presents the 97% agreement as validation.",
+      "issue_type": "manuscript_issue",
+      "severity": "medium",
+      "confidence": "medium",
+      "location": {
+        "page": 7,
+        "page_label": "7",
+        "section": "4 Validation",
+        "text_quote": "The LLM is thus evaluated against labels it has not seen.",
+        "precision": "exact"
+      },
+      "claim_text": "The LLM is thus evaluated against labels it has not seen.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "Section 4 says no human coding was placed in the prompt, so the labels were not shown to the model. Section 3.2 states that after the first run the output quality was reviewed, the prompt was altered, and the analysis of the validation set was repeated, 'showing an improvement'. The 34 articles thus also serve as a development set for the geographic-information fields, the broader infrastructure scope and the coding rules. The pilot lessons in Section 3.1.4 (pre-opening articles are not relevant; relative dates are resolved against the earliest version) were also derived from these articles. The reported agreement is therefore not out-of-sample. The manuscript does not state whether the prompt was frozen before the three runs used for Table 4 or before the 3,187-article run.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "Page 7 text",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_007.md",
+          "page": 7,
+          "page_label": "7",
+          "section": "4",
+          "text_quote": "The LLM is thus evaluated against labels it has not seen.",
+          "url": null,
+          "object_id": "OBJ-4e6da301f188ae5c7e5d0a63",
+          "correspondence": "text",
+          "verification_note": "Page text used."
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "Page 6 text, Section 3.2",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_006.md",
+          "page": 6,
+          "page_label": "6",
+          "section": "3.2",
+          "text_quote": "After updating the prompt, the analysis of the validation set of articles was repeated showing an improvement",
+          "url": null,
+          "object_id": "OBJ-e13eccc23f4c883050d15bcf",
+          "correspondence": "text",
+          "verification_note": "Quote spans a line break in the page text; whitespace differences only."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Validation labels are unseen by the LLM",
+          "source_object_ids": [
+            "S1",
+            "S2"
+          ],
+          "relation": "partial",
+          "note": "Labels unseen, but the validation set guided prompt revisions."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "State which prompt version produced Table 4 and the full run, and whether the validation set informed prompt changes. Describe the 97% as in-sample for the development steps, or validate on a held-out sample."
+    },
+    {
+      "id": "SAMPLE-007",
+      "category": "variable_construction_unclear",
+      "finding_summary": "The headline '97 percent' human–LLM agreement (the 'same rate' as between human coders) is computed on a 34-article sample where 31 are not relevant. About 10 of those were set to 'not relevant' by recoding. The text provides no measure that conditions on the three positives.",
+      "issue_type": "manuscript_issue",
+      "severity": "medium",
+      "confidence": "medium",
+      "location": {
+        "page": 8,
+        "page_label": "8",
+        "section": "4.2 Agreement between human and LLM",
+        "text_quote": "the pilot coder and the LLM agree on 97 percent of the articles, the same as the agreement between the two human coders",
+        "precision": "exact"
+      },
+      "claim_text": "The pilot coder and the LLM agree on 97 percent of the articles, the same as the agreement between the two human coders.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "Tables 3 and 4 show the pilot coder with 3 relevant and 31 not relevant (31/34 = 91%). The 31 includes 8 'unclear' articles and the 2 pre-opening Homborsund articles that were recoded to 'not relevant'. A rule coding every article not relevant would therefore agree with the pilot coder on 31 of 34 (91%). The 97% mainly reflects agreement on the large negative class, and the paper reports no positive-class agreement or chance-adjusted measure. The manuscript does caveat that the sample is too small to test whether the rates differ, and Section 4.1 describes the one disagreement. The issue is the metric and conditioning sample, not the transparency of the counts.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "Page 8 text",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_008.md",
+          "page": 8,
+          "page_label": "8",
+          "section": "4.2",
+          "text_quote": "the pilot coder and the LLM agree on 97 percent of the articles, the same as",
+          "url": null,
+          "object_id": "OBJ-b41cc221a4f064e5990acabf",
+          "correspondence": "text",
+          "verification_note": "Quote truncated at the line break; the sentence continues 'the agreement between the two human coders'."
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "Page 7 text, Table 3 and note",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_007.md",
+          "page": 7,
+          "page_label": "7",
+          "section": "4.1 / Table 3",
+          "text_quote": "With only 34 articles, of which 3 were coded as relevant in the pilot",
+          "url": null,
+          "object_id": "OBJ-4e6da301f188ae5c7e5d0a63",
+          "correspondence": "text",
+          "verification_note": "Table 3 read from page text; table_3.md header is merged but body cells match."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "97% agreement equals human–human rate",
+          "source_object_ids": [
+            "S1",
+            "S2"
+          ],
+          "relation": "partial",
+          "note": "Equal in value, but dominated by the not-relevant class; positive-class agreement is not reported."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Report positive-class agreement alongside overall agreement (for example, both-relevant counts or recall/precision against the pilot coder) and a chance-adjusted statistic. State that the negative class includes 'unclear' and pre-opening articles recoded to 'not relevant'."
+    },
+    {
+      "id": "SAMPLE-008",
+      "category": "variable_construction_unclear",
+      "finding_summary": "Table 4 does not say how the LLM's three-category output ('unclear' included) was mapped to relevant/not relevant, or how a majority of three runs was taken. The full-run Table 6 reports an LLM 'Unclear' category that the validation tables do not.",
+      "issue_type": "manuscript_issue",
+      "severity": "low",
+      "confidence": "medium",
+      "location": {
+        "page": 8,
+        "page_label": "8",
+        "section": "4.2 / Table 4 note",
+        "text_quote": "The LLM coded each article three times, and the table uses the majority of the three runs.",
+        "precision": "exact"
+      },
+      "claim_text": "The LLM coded each article three times, and the table uses the majority of the three runs.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "The Table 3 note states that 'unclear' articles are counted as not relevant, but the Table 4 note is silent about the LLM. The consistency check in Section 3.2 is described only for first-stage coding 'relevant vs. not relevant'. If the LLM's runs can return three categories, the majority rule for a split such as relevant/unclear/not relevant is not defined. The full run has 2 LLM-unclear articles of 3,187, but the pilot LLM unclear count is not reported. The binary mapping and whether the full run used one call or three are unstated.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "Page 8 text, Table 4 note",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_008.md",
+          "page": 8,
+          "page_label": "8",
+          "section": "4.2",
+          "text_quote": "The LLM coded each article three times, and the table uses the majority of the three runs.",
+          "url": null,
+          "object_id": "OBJ-b41cc221a4f064e5990acabf",
+          "correspondence": "text",
+          "verification_note": "Page text used."
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "Page 6 text, Section 3.2",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_006.md",
+          "page": 6,
+          "page_label": "6",
+          "section": "3.2",
+          "text_quote": "The LLM analysis was performed three times per article in the validation set",
+          "url": null,
+          "object_id": "OBJ-e13eccc23f4c883050d15bcf",
+          "correspondence": "text",
+          "verification_note": "Quote spans a line break."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Majority of three runs defines the LLM relevance label",
+          "source_object_ids": [
+            "S1",
+            "S2"
+          ],
+          "relation": "partial",
+          "note": "Aggregation rule and 'unclear' mapping unspecified."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "State the LLM output categories, the mapping to the binary relevance used in Table 4, the tie or split rule across runs, and whether the full run used one call or three."
+    },
+    {
+      "id": "SAMPLE-009",
+      "category": "variable_construction_unclear",
+      "finding_summary": "The full-run relevance criterion is unclear. Pilot coding recoded two pre-opening Homborsund articles as 'not relevant' and the lessons say planned openings must be filtered by date, but the paper does not say whether the 92 'articles reporting an opening' exclude pre-opening or planned-opening articles.",
+      "issue_type": "manuscript_issue",
+      "severity": "medium",
+      "confidence": "medium",
+      "location": {
+        "page": 5,
+        "page_label": "5",
+        "section": "3.1.4 Manual coding of the pilot",
+        "text_quote": "The filtering of dates should remove planned openings by recording them and checking whether the date has passed.",
+        "precision": "exact"
+      },
+      "claim_text": "The filtering of dates should remove planned openings by recording them and checking whether the date has passed; the full run identifies 92 articles reporting an opening.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "Figure 1 and Section 3.1.4 first code five articles relevant, then the validation recodes two pre-opening Homborsund articles to 'not relevant', leaving three. The 'relevance' variable thus switches from 'article about an opening' to 'article published after an opening took place'. Table 1 defines Relevance as 'Opening of a new walking and cycling path'. Section 3.2 does not state whether the final prompt implements the date-passed rule. Table 6 gives the LLM count as 92 relevant, but the paper does not say whether these include articles published before the opening or planned openings, nor how the cutoff (retrieval date) is defined. This matters because a project-level opening date is the paper's core variable.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "Page 5 text",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_005.md",
+          "page": 5,
+          "page_label": "5",
+          "section": "3.1.4",
+          "text_quote": "In the validation (Section 4), they are therefore coded as not relevant, leaving three relevant articles.",
+          "url": null,
+          "object_id": "OBJ-9d16c139938370d7a97e77c6",
+          "correspondence": "text",
+          "verification_note": "Page text used; Table 1 read from page text, not table_1.md."
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "Page 9 text, Section 5",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_009.md",
+          "page": 9,
+          "page_label": "9",
+          "section": "5",
+          "text_quote": "The result was 92 articles reporting an opening and 43 unique projects",
+          "url": null,
+          "object_id": "OBJ-521bfe93a764059cd1136195",
+          "correspondence": "text",
+          "verification_note": "No stated rule on pre-opening articles."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "92 articles report an opening",
+          "source_object_ids": [
+            "S1",
+            "S2"
+          ],
+          "relation": "partial",
+          "note": "Whether pre-opening or planned-opening articles are excluded is not stated."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Give the operational definition of 'relevant' used in the final prompt (completed openings only, publication-date rule, treatment of planned openings) and report how many of the 92 were published before the opening date."
+    },
+    {
+      "id": "SAMPLE-010",
+      "category": "variable_construction_unclear",
+      "finding_summary": "The 'opening date' construct is not defined. Pilot coders differed on whether it is the physical opening or the official opening ceremony, and the paper does not say which the LLM and the database targets.",
+      "issue_type": "manuscript_issue",
+      "severity": "medium",
+      "confidence": "medium",
+      "location": {
+        "page": 7,
+        "page_label": "7",
+        "section": "4.1 Agreement between the two human coders",
+        "text_quote": "The pilot coder used the official opening, while the second coder used the start of the school year.",
+        "precision": "exact"
+      },
+      "claim_text": "The LLM gives the same opening date as the pilot coder in all three relevant articles.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "Section 4.1 reports that in one of three comparable articles the path opened before the school year and the official opening was held later; the coders chose different dates. The LLM matched the pilot coder (official opening) on all three. The coding rules of Section 3.1.4 add rules for planned versus actual dates and for relative dates, but none says whether the treatment date should be the date the path opened to traffic or the ceremony date. Section 6.3 uses a reported ceremony as an attention variable, so the two dates can differ systematically. The agreement is also computed on only three articles and compares a date, with no stated rule for tolerance or for date precision.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "Page 7 text",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_007.md",
+          "page": 7,
+          "page_label": "7",
+          "section": "4.1",
+          "text_quote": "The pilot coder used the official opening, while the second coder used the start of the school year.",
+          "url": null,
+          "object_id": "OBJ-4e6da301f188ae5c7e5d0a63",
+          "correspondence": "text",
+          "verification_note": "Page text used."
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "Page 8 text",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_008.md",
+          "page": 8,
+          "page_label": "8",
+          "section": "4.2",
+          "text_quote": "The LLM gives the same date as the pilot coder in all three.",
+          "url": null,
+          "object_id": "OBJ-b41cc221a4f064e5990acabf",
+          "correspondence": "text",
+          "verification_note": "Page text used."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "LLM date agreement with pilot coder in 3 of 3",
+          "source_object_ids": [
+            "S1",
+            "S2"
+          ],
+          "relation": "partial",
+          "note": "The date construct that was matched is the contested one."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Define the target date (first public use versus official ceremony) in the coding schema. State what the LLM is instructed to extract, and record both dates where both are reported."
+    },
+    {
+      "id": "SAMPLE-011",
+      "category": "variable_construction_unclear",
+      "finding_summary": "The aggregation from article-level dates to project-level date and date precision is not specified. Table 6 and the ordered model use project-level precision, but the paper gives no rule for projects with several articles that give different dates or precisions.",
+      "issue_type": "manuscript_issue",
+      "severity": "medium",
+      "confidence": "medium",
+      "location": {
+        "page": 9,
+        "page_label": "9",
+        "section": "5 Results",
+        "text_quote": "Most projects are covered by one or two articles, and 29 can be dated to the day or month.",
+        "precision": "exact"
+      },
+      "claim_text": "Of 43 projects, 29 can be dated to the day or month (Table 6 date precision: Day 19, Month 10, Year 9, Not stated 5).",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "Table 6 counts date precision for 43 projects (19 + 10 + 9 + 5 = 43), but the article-level date and precision fields are extracted per article. About 92 articles map to 43 projects, and Homborsund alone has four articles, two published before the opening. Section 3.1.4 states the rule that relative dates are resolved against the earliest published version. It does not say which article's date or precision defines the project value (earliest, latest, most precise, or manual reconciliation), or how conflicting dates are resolved. The Section 6.3 model uses the same project-level precision outcome, so the aggregation rule determines the dependent variable.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "Page 9 text",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_009.md",
+          "page": 9,
+          "page_label": "9",
+          "section": "5",
+          "text_quote": "Most projects are covered by one or two articles, and 29",
+          "url": null,
+          "object_id": "OBJ-521bfe93a764059cd1136195",
+          "correspondence": "text",
+          "verification_note": "Quote truncated at the page-text line break; the sentence continues 'can be dated to the day or month.'"
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "Page 6 text",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_006.md",
+          "page": 6,
+          "page_label": "6",
+          "section": "3.1.4",
+          "text_quote": "should be resolved against the earliest published version of the article, not a later edition.",
+          "url": null,
+          "object_id": "OBJ-e13eccc23f4c883050d15bcf",
+          "correspondence": "text",
+          "verification_note": "Rule covers relative dates only, not project-level aggregation."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "29 of 43 projects dated to day or month",
+          "source_object_ids": [
+            "S1",
+            "S2"
+          ],
+          "relation": "partial",
+          "note": "Project-level rule for multi-article projects not stated."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "State the project-level date and precision rule (for example, take the most precise earliest-article date) and how conflicts among articles were resolved. Report how many projects had conflicting article-level dates."
+    },
+    {
+      "id": "SAMPLE-012",
+      "category": "variable_construction_unclear",
+      "finding_summary": "The 'official opening ceremony' indicator used for the 18 versus 26 split and the Table 7 field-group counts are keyword-coded, but neither the keyword lists nor the criteria for the hand check are given, and the ceremony indicator is not a defined field in Table 1.",
+      "issue_type": "manuscript_issue",
+      "severity": "medium",
+      "confidence": "medium",
+      "location": {
+        "page": 11,
+        "page_label": "11",
+        "section": "6.3 Proposed econometric analysis",
+        "text_quote": "Of these, 17 can be dated to the day, compared with 2 of the 26 projects without a reported ceremony.",
+        "precision": "exact"
+      },
+      "claim_text": "Of the 44 projects, 18 have a reported ceremony; 17 of these are dated to the day versus 2 of 26 without, so date precision depends on attention.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "The Table 7 note says counts are 'coded by keyword search for each field group, with every match checked by hand' and counts projects with at least one LLM-flagged article containing the information. The keyword lists, the hand-check criteria, the coder and the article set (the 92 plus four pilot articles) are not given in the main text or Appendix B, which only refers to a public repository. A ceremony field is absent from the Table 1 field list, and the 18/26 split is not shown in Table 7. The 44 denominator includes the Stord project, which Section 4 treats as a non-opening. The paper presents the 17-of-18 versus 2-of-26 contrast as evidence of non-random precision, so the construction of the indicator matters.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "Page 11 text, Section 6.3",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_011.md",
+          "page": 11,
+          "page_label": "11",
+          "section": "6.3",
+          "text_quote": "Of these, 17 can be dated to the day, compared with 2 of the 26 projects without a reported ceremony.",
+          "url": null,
+          "object_id": "OBJ-95b2618a59737e0b1725c4df",
+          "correspondence": "text",
+          "verification_note": "Page text used."
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "Page 11 text, Table 7 note",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_011.md",
+          "page": 11,
+          "page_label": "11",
+          "section": "6.2 / Table 7",
+          "text_quote": "Coded by keyword search for each field group, with every match checked by hand.",
+          "url": null,
+          "object_id": "OBJ-95b2618a59737e0b1725c4df",
+          "correspondence": "text",
+          "verification_note": "Table 7 read from page text, not table_7.md, whose counts are detached from labels."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Ceremony and field-group indicators are well defined",
+          "source_object_ids": [
+            "S1",
+            "S2"
+          ],
+          "relation": "partial",
+          "note": "A coding method is stated, but keywords, criteria and the ceremony definition are missing."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Provide the keyword lists and hand-check criteria, define the ceremony indicator, and report the field-group counts for the 43 verified openings alongside the 44."
+    },
+    {
+      "id": "SAMPLE-013",
+      "category": "variable_construction_unclear",
+      "finding_summary": "Table 2 shows Grettefoss Bridge as 'Planned' although its note says it opened on 3 November. The abstract and Figure 1 'only two actual openings' therefore depends on the pilot-time status and would be three by the paper's own date (9 November).",
+      "issue_type": "manuscript_issue",
+      "severity": "low",
+      "confidence": "medium",
+      "location": {
+        "page": 5,
+        "page_label": "5",
+        "section": "3.1.4 / Table 2",
+        "text_quote": "Confirmed to have opened 3 November as planned.",
+        "precision": "exact"
+      },
+      "claim_text": "The pilot sample contained only two actual openings.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "Table 2 lists four events: Homborsund and Stod are 'Opened', and Tromsø Bridge and Grettefoss Bridge are 'Planned'. Footnote c says Grettefoss was confirmed to have opened on 3 November, which falls before the 9 November paper date and after the sample window of 2 September to 10 October. Figure 1 counts 'Distinct openings that took place 2' and its caption codes the Tromsø and Grettefoss articles as 'unclear'. The count of actual openings is therefore fixed at the time of article publication rather than the analysis date, a status date not stated in the abstract. Whether 'planned' articles are positives is a design choice, but the status reference date should be explicit.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "Page 5 text, Table 2 note",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_005.md",
+          "page": 5,
+          "page_label": "5",
+          "section": "3.1.4 / Table 2",
+          "text_quote": "Confirmed to have opened 3 November as planned.",
+          "url": null,
+          "object_id": "OBJ-9d16c139938370d7a97e77c6",
+          "correspondence": "text",
+          "verification_note": "Footnote marker c precedes 'Confirmed' in the extraction; quote starts after it. Table 2 read from page text, not table_2.md."
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "Page 1 text, abstract",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_001.md",
+          "page": 1,
+          "page_label": "1",
+          "section": "Abstract",
+          "text_quote": "contained only two actual",
+          "url": null,
+          "object_id": "OBJ-ae6010b8e427194ea28d441e",
+          "correspondence": "text",
+          "verification_note": "Quote truncated at the line break before 'openings'."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Only two actual openings in the pilot",
+          "source_object_ids": [
+            "S1",
+            "S2"
+          ],
+          "relation": "partial",
+          "note": "Grettefoss opened 3 November per footnote c; the count is as of publication."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "State the status reference date for 'actual openings' in the abstract and Figure 1, or add the later-confirmed Grettefoss opening to the count and note the effect."
+    },
+    {
+      "id": "SAMPLE-014",
+      "category": "data_flow_inconsistency",
+      "finding_summary": "The seasonality claim about openings is not supported by any displayed monthly counts or denominators, and the text itself says July–August 2026 has few articles in the extraction.",
+      "issue_type": "manuscript_issue",
+      "severity": "low",
+      "confidence": "medium",
+      "location": {
+        "page": 10,
+        "page_label": "10",
+        "section": "5 Results",
+        "text_quote": "October–December 2025 and May–June 2026 have the highest share of relevant articles, and February–April 2026 the lowest.",
+        "precision": "exact"
+      },
+      "claim_text": "This indicates that openings cluster before winter and summer holidays.",
+      "assessment": "cannot_verify",
+      "cannot_verify_reason": "No monthly or quarterly counts of coded articles, relevant articles or projects are provided in the main text or appendix.",
+      "evidence_summary": "The shares are stated in words only. The number of articles coded per month and the number relevant are not shown. The text also notes that the archive extraction contains few articles from July–August 2026. The share is of articles, not projects, and by publication month, not opening month. Section 3.1.1 says the extraction is a restricted selection of articles, and the 3,187 are not described as exhaustive. The inference about when openings cluster therefore mixes article-publication timing, uneven extraction coverage and article counts per project.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "Page 10 text",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_010.md",
+          "page": 10,
+          "page_label": "10",
+          "section": "5",
+          "text_quote": "October–December 2025 and May–June 2026 have the highest share of relevant articles, and February–April 2026 the lowest.",
+          "url": null,
+          "object_id": "OBJ-e9b90e0f75ce05ff1ce150cc",
+          "correspondence": "text",
+          "verification_note": "Page text used."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Openings cluster before winter and summer holidays",
+          "source_object_ids": [
+            "S1"
+          ],
+          "relation": "cannot_verify",
+          "note": "No monthly counts or denominators shown."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Show monthly counts of coded articles, relevant articles and projects (by opening month where dated). Qualify the inference as indicative, and state the extraction coverage by month."
+    },
+    {
+      "id": "SAMPLE-015",
+      "category": "data_flow_inconsistency",
+      "finding_summary": "The text says only the first quarter of 2024 is missing from Figure 3, but the data gap is January to April 2024, so the plotted Q2 2024 point is based on at most May and June.",
+      "issue_type": "manuscript_issue",
+      "severity": "low",
+      "confidence": "medium",
+      "location": {
+        "page": 16,
+        "page_label": "16",
+        "section": "A.2 Analysis / Figure 3",
+        "text_quote": "The first quarter of 2024 is missing due to the gap in the listing text data.",
+        "precision": "exact"
+      },
+      "claim_text": "The first quarter of 2024 is missing due to the gap in the listing text data.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "Appendix A.1 says listings from January to April 2024 are missing, and the Figure 3 caption says the gap runs from January to April 2024. The retained figure shows a series ending at about Q4 2023 (33.6%) and restarting at the point about a quarter after the 2024 tick, i.e. Q2 2024 (about 38.9%). With April missing, that quarter covers only May and June, while the text says only Q1 is missing. The quarter's composition and number of listings are not reported, and the 33.6 to 38.9% step across the gap is not discussed. Plotted points were read from the figure image; exact values are approximate.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "Page 16 text",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_016.md",
+          "page": 16,
+          "page_label": "16",
+          "section": "A.2",
+          "text_quote": "The first quarter of 2024 is missing due to the gap in the listing text data.",
+          "url": null,
+          "object_id": "OBJ-8f4894d007c8a183053537bc",
+          "correspondence": "text",
+          "verification_note": "Page text used for prose; chart read from figure_3.png."
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "Page 15 text, A.1",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_015.md",
+          "page": 15,
+          "page_label": "15",
+          "section": "A.1",
+          "text_quote": "Listings from January to April 2024 are missing due to a gap in the listing text data.",
+          "url": null,
+          "object_id": "OBJ-6402cd90a906f1f82672a86f",
+          "correspondence": "text",
+          "verification_note": "Page text used."
+        },
+        {
+          "id": "S3",
+          "type": "figure",
+          "label": "figure_3.png",
+          "path": "work/bicycle-infrastructure-paper/parsed/figures/figure_3.png",
+          "page": 16,
+          "page_label": "16",
+          "section": "A.2 / Figure 3",
+          "text_quote": null,
+          "url": null,
+          "object_id": "OBJ-22f18338a427285653860df1",
+          "correspondence": "visual",
+          "verification_note": "Inspected the full crop: series ends near 2023.75, resumes near 2024.25. Point positions are approximate; the exact quarter assignment is read from x position."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Only Q1 2024 is missing",
+          "source_object_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "relation": "partial",
+          "note": "Gap spans Jan–Apr 2024; Q2 2024 point is plotted and would be a partial quarter."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Align the text with the January–April gap. Either drop Q2 2024 or flag it as partial, report listings per plotted quarter, and discuss the shift across the gap."
+    },
+    {
+      "id": "SAMPLE-016",
+      "category": "data_flow_inconsistency",
+      "finding_summary": "The '9 percentage point rise' and the 'about 44 percent at the end of the period' use endpoints that include a plotted Q4 2026 quarter containing only October 2026 listings, and the comparison spans the January–April 2024 data gap.",
+      "issue_type": "manuscript_issue",
+      "severity": "low",
+      "confidence": "medium",
+      "location": {
+        "page": 16,
+        "page_label": "16",
+        "section": "A.2 Analysis / Figure 3",
+        "text_quote": "about 35 percent in 2020 to about 44 percent at the end of the period",
+        "precision": "exact"
+      },
+      "claim_text": "The share has increased over the period, from about 35 percent in 2020 to about 44 percent at the end of the period, a rise of about 9 percentage points.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "The data end in October 2026 (Appendix A.1). The last point in Figure 3 sits at about the Q4 2026 position, which would hold only October listings. The first point is Q1 2020, and the series is broken by the January–April 2024 gap, across which the level moves from about 33.6% to 38.9%. The 9 percentage point rise in Section 6.1 and Appendix A therefore rests on a partial final quarter and on a series split by a data gap, so some of the change may be a level shift in the gap rather than a trend. The number of listings per quarter is not given, so sampling noise in the partial quarter cannot be assessed. The point positions were read from the image and are approximate.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "Page 16 text",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_016.md",
+          "page": 16,
+          "page_label": "16",
+          "section": "A.2",
+          "text_quote": "about 35 percent in 2020 to about 44 percent at the end of the period",
+          "url": null,
+          "object_id": "OBJ-8f4894d007c8a183053537bc",
+          "correspondence": "text",
+          "verification_note": "Quote spans a line break; whitespace only."
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "Page 10 text, Section 6.1",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_010.md",
+          "page": 10,
+          "page_label": "10",
+          "section": "6.1",
+          "text_quote": "The share mentioning cycling has risen by about 9 percentage points over the period.",
+          "url": null,
+          "object_id": "OBJ-e9b90e0f75ce05ff1ce150cc",
+          "correspondence": "text",
+          "verification_note": "Page text used."
+        },
+        {
+          "id": "S3",
+          "type": "figure",
+          "label": "figure_3.png",
+          "path": "work/bicycle-infrastructure-paper/parsed/figures/figure_3.png",
+          "page": 16,
+          "page_label": "16",
+          "section": "A.2 / Figure 3",
+          "text_quote": null,
+          "url": null,
+          "object_id": "OBJ-22f18338a427285653860df1",
+          "correspondence": "visual",
+          "verification_note": "Inspected last plotted point near x≈2026.75 (about 44%); inferred quarter from axis position, approximate."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Share rose about 9 pp from 2020 to end of period",
+          "source_object_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "relation": "partial",
+          "note": "Final quarter likely partial; series spans a data gap."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Mark the final quarter as partial or exclude it, report listings per quarter, and compare equal windows (for example, the year before and after the gap or complete years) with the gap flagged."
+    },
+    {
+      "id": "SAMPLE-017",
+      "category": "denominator_mismatch",
+      "finding_summary": "The listing shares (38.1%, Table 8, Figures 3 and 4) use 'all listings' as the denominator, but the paper does not report how many listings have non-empty text. Listings with missing or empty text would count as 'no mention', and the unit (listing versus home, relistings, multi-unit new-build listings) is not described.",
+      "issue_type": "manuscript_issue",
+      "severity": "medium",
+      "confidence": "medium",
+      "location": {
+        "page": 15,
+        "page_label": "15",
+        "section": "A.1 Norwegian house listing data",
+        "text_quote": "The data set contains the listing texts of all homes advertised between January 2020 and October 2026, excluding vacation homes.",
+        "precision": "exact"
+      },
+      "claim_text": "The data set contains the listing texts of all homes advertised; in total 700 579 listings, of which 38.1 percent mention cycling.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "Table 8 gives 266 625 (38.1%) with a mention and 433 954 (61.9%) without, summing to 700 579. The 'no mention' group is a residual and is not stated to exclude listings with missing, truncated or empty text. The paper documents one gap (January–April 2024), so partial text gaps elsewhere may exist. The unit is a 'listing', but the paper does not say whether a home relisted several times, or a multi-unit project advertised with shared text, is counted once or repeatedly. Table 8 read from page text, not table_8.md, which splits thousands separators.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "Page 15 text, A.1",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_015.md",
+          "page": 15,
+          "page_label": "15",
+          "section": "A.1",
+          "text_quote": "The data set contains the listing texts of all homes advertised",
+          "url": null,
+          "object_id": "OBJ-6402cd90a906f1f82672a86f",
+          "correspondence": "text",
+          "verification_note": "Quote truncated at the line break; sentence continues 'between January 2020 and October 2026, excluding vacation homes.'"
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "Page 15 text, Table 8",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_015.md",
+          "page": 15,
+          "page_label": "15",
+          "section": "A.2 / Table 8",
+          "text_quote": "No mention of cycling 433 954 61.9%",
+          "url": null,
+          "object_id": "OBJ-6402cd90a906f1f82672a86f",
+          "correspondence": "text",
+          "verification_note": "Page text used because table_8.md splits the counts across columns."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "All listings form the denominator of the 38.1% share",
+          "source_object_ids": [
+            "S1",
+            "S2"
+          ],
+          "relation": "partial",
+          "note": "Treatment of empty-text and repeated listings is not documented."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Report how many listings have non-empty text, whether the 'no mention' category includes missing text, and the treatment of relistings and multi-unit listings. Report listing counts per quarter and county."
+    },
+    {
+      "id": "SAMPLE-018",
+      "category": "variable_construction_unclear",
+      "finding_summary": "Figure 4 reports shares for 15 current counties over January 2020 to October 2026 without listing counts per county and without saying how listings were assigned to counties across the period's county boundary changes. This conditions on county definitions the paper does not document.",
+      "issue_type": "manuscript_issue",
+      "severity": "low",
+      "confidence": "low",
+      "location": {
+        "page": 17,
+        "page_label": "17",
+        "section": "A.2 Analysis / Figure 4",
+        "text_quote": "Cycling is mentioned in 61 percent of the listings in Oslo and 52 percent in Akershus, compared with 38 percent for Norway as a whole.",
+        "precision": "exact"
+      },
+      "claim_text": "Cycling is mentioned in 61 percent of the listings in Oslo and 52 percent in Akershus, compared with 38 percent for Norway as a whole; the lowest are Telemark, Nordland and Møre og Romsdal at 14, 13 and 7 percent.",
+      "assessment": "cannot_verify",
+      "cannot_verify_reason": "The paper gives neither the county assignment rule for 2020–2023 listings nor county-level listing counts, so the shares cannot be tied to a defined sample.",
+      "evidence_summary": "Figure 4 lists 15 counties (Oslo through Møre og Romsdal) with a pooled period from January 2020 to October 2026. Norwegian county boundaries changed during this window (external knowledge; the paper does not address this), so county assignment for earlier listings requires a mapping, for example by municipality, which is not described. No listing count by county is shown, so the weight of each share in the 38% national figure and the precision of the extreme values such as Møre og Romsdal 6.8% cannot be assessed. Part of the cross-county gradient may reflect agent or text conventions as well as local cycling.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "Page 17 text",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_017.md",
+          "page": 17,
+          "page_label": "17",
+          "section": "A.2",
+          "text_quote": "Cycling is mentioned in 61 percent of the listings in Oslo and 52 percent in Akershus, compared with 38 percent for Norway as a whole.",
+          "url": null,
+          "object_id": "OBJ-e4efa6f7c9c10daa107ce8a0",
+          "correspondence": "text",
+          "verification_note": "Bar values read from page text; page text carries the full caption."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "County shares are defined on a documented sample",
+          "source_object_ids": [
+            "S1"
+          ],
+          "relation": "cannot_verify",
+          "note": "No county assignment rule or county N."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "State the rule for assigning listings to counties across the period. Add listing counts per county, for example in a table or in the Figure 4 labels."
+    },
+    {
+      "id": "SAMPLE-019",
+      "category": "variable_construction_unclear",
+      "finding_summary": "Appendix A.3.2 says a word that fits more than one type takes the first type in Table 9, but its own example puts 'bysykkelstativ' (containing 'stativ', a Parking & storage part listed before Infrastructure) under infrastructure. 'syklende' contains 'sykle' (Proximity) but is listed under Infrastructure.",
+      "issue_type": "manuscript_issue",
+      "severity": "medium",
+      "confidence": "medium",
+      "location": {
+        "page": 18,
+        "page_label": "18",
+        "section": "A.3.2 Classification of cycling mentions",
+        "text_quote": "If a word fits more than one type, it is given the first type in the table.",
+        "precision": "exact"
+      },
+      "claim_text": "If a word fits more than one type, it is given the first type in the table. For example, words containing “bysykkel”, such as “bysykkelstativ”, are counted as infrastructure.",
+      "assessment": "no",
+      "cannot_verify_reason": null,
+      "evidence_summary": "Table 9 lists types in the order: The word 'bicycle', Proximity, Parking & storage, Leisure, Infrastructure, Other. 'Stativ' (rack) is a Parking & storage word part and 'bysykkel' is an Infrastructure part. Under the stated first-type rule, bysykkelstativ would be Parking & storage, yet the text and Figure 2 (blue bar) put it in Infrastructure. Likewise 'syklende' contains 'sykle', a Proximity part listed earlier. The table nevertheless lists 'syklende (cyclists)' under Infrastructure. The precedence is thus unclear, which shifts counts between the Parking & storage and Infrastructure shares in Table 8. The paper does not claim the rule was implemented as written, so this is an unresolved documentation conflict.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "Page 18 text, A.3.2",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_018.md",
+          "page": 18,
+          "page_label": "18",
+          "section": "A.3.2",
+          "text_quote": "If a word fits more than one type, it is given the first type in the table.",
+          "url": null,
+          "object_id": "OBJ-03dcf11e0f4853cb90843dbe",
+          "correspondence": "text",
+          "verification_note": "Table 9 type order read from page text; table_9.md is unstructured."
+        },
+        {
+          "id": "S2",
+          "type": "figure",
+          "label": "figure_2.png",
+          "path": "work/bicycle-infrastructure-paper/parsed/figures/figure_2.png",
+          "page": 16,
+          "page_label": "16",
+          "section": "A.2 / Figure 2",
+          "text_quote": null,
+          "url": null,
+          "object_id": "OBJ-be07133eb1a3ae76638fe011",
+          "correspondence": "visual",
+          "verification_note": "Inspected: 'bysykkelstativ (city bike station)' bar is blue (Infrastructure); 'syklende' is blue. Legend colours read from the figure."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "First-type rule and the bysykkelstativ example agree",
+          "source_object_ids": [
+            "S1",
+            "S2"
+          ],
+          "relation": "contradicts",
+          "note": "stativ (Parking & storage) precedes Infrastructure in the table order."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "State the precedence actually implemented, for example by listing explicit overrides for bysykkel- and syklende-, and confirm which type the Table 8 and Figure 2 counts use."
+    },
+    {
+      "id": "SAMPLE-020",
+      "category": "variable_construction_unclear",
+      "finding_summary": "Figure 2 plots 'sykkelmulighet (cycling opportunities)' in the Leisure colour, but none of the Leisure word parts in Table 9 appears in that word. By Table 9 it would fall under 'Other'.",
+      "issue_type": "manuscript_issue",
+      "severity": "low",
+      "confidence": "medium",
+      "location": {
+        "page": 16,
+        "page_label": "16",
+        "section": "A.2 / Figure 2",
+        "text_quote": "sykkelmulighet (cycling opportunities) 0.3%",
+        "precision": "exact"
+      },
+      "claim_text": "Each cycling-related word is given one type of mention, based on the word parts in Table 9, and Figure 2 colours indicate each word's category.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "Table 9 gives the Leisure parts as 'sykling', 'syklist', 'terreng', 'løype', 'klubb', 'miljø' and 'område'. 'Sykkelmulighet' contains none of these, nor any earlier-type part (avstand, tur, minutt, sete, sykle, parkering, bod, stativ, rom, skur, garasje, kjeller, verksted, vask), so Table 9 would assign it to 'Other'. In Figure 2 its bar is pink (Leisure) and elsykkel is grey (Other). Either the figure colour or the Table 9 list is incomplete, which would affect the Leisure (3.8%) and Other (1.0%) rows of Table 8. The colour was read from the figure image.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "figure",
+          "label": "figure_2.png",
+          "path": "work/bicycle-infrastructure-paper/parsed/figures/figure_2.png",
+          "page": 16,
+          "page_label": "16",
+          "section": "A.2 / Figure 2",
+          "text_quote": null,
+          "url": null,
+          "object_id": "OBJ-be07133eb1a3ae76638fe011",
+          "correspondence": "visual",
+          "verification_note": "Inspected: 'sykkelmulighet (cycling opportunities)' bar is pink, matching the Leisure legend entry; elsykkel is grey (Other)."
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "Page 18 text, Table 9",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_018.md",
+          "page": 18,
+          "page_label": "18",
+          "section": "A.3.2 / Table 9",
+          "text_quote": "Each cycling-related word in the listings is given one type of mention, based on what the word",
+          "url": null,
+          "object_id": "OBJ-03dcf11e0f4853cb90843dbe",
+          "correspondence": "text",
+          "verification_note": "Leisure word parts read from page text of Table 9; the quote is the sentence stating the classification principle."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Figure 2 colours follow Table 9 word parts",
+          "source_object_ids": [
+            "S1",
+            "S2"
+          ],
+          "relation": "contradicts",
+          "note": "sykkelmulighet is coloured Leisure but matches no Leisure part."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Add the missing word part to Table 9 (or recolour the bar) and confirm that Table 8 uses the intended mapping."
+    },
+    {
+      "id": "SAMPLE-021",
+      "category": "variable_construction_unclear",
+      "finding_summary": "The step that converts listing text into the word-level units behind Table 9 and Figure 2 (tokenisation and merging of grammatical forms) is described only in one sentence. The SQL in A.3.1 identifies listings with a match but does not extract words, so how 'sykkel on its own' versus compounds is determined is not given.",
+      "issue_type": "manuscript_issue",
+      "severity": "low",
+      "confidence": "low",
+      "location": {
+        "page": 18,
+        "page_label": "18",
+        "section": "A.3.2 Classification of cycling mentions",
+        "text_quote": "Before the words are classified, different grammatical forms are merged, so that for example",
+        "precision": "partial"
+      },
+      "claim_text": "Before the words are classified, different grammatical forms are merged, so that for example “sykkelstier” and “sykkelstien” are both counted as “sykkelsti” (bike path).",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "Appendix A.3.1 gives SQL that flags a listing when one of four patterns matches (sykkel, sykl[ae], sykli[ns], sykkl) after masking motorsykkel and sparkesykkel. This produces the listing-level 'any mention' flag. The word-level units in Figure 2 and the type flags in Table 8 require tokens, a lemma or form-merging rule, and a rule for what counts as 'sykkel on its own'. The paper gives only the one example, so how the 9.8% 'The word bicycle' share (68 974 listings, matching the 9.8% for 'sykkel' in Figure 2) is built cannot be reproduced from the text. The paper notes the classification is coarse, and Appendix B points to a repository, but the repository is not part of the retained evidence.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "Page 18 text, A.3.2",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_018.md",
+          "page": 18,
+          "page_label": "18",
+          "section": "A.3.2",
+          "text_quote": "“sykkelstier” and “sykkelstien” are both counted as “sykkelsti” (bike path).",
+          "url": null,
+          "object_id": "OBJ-03dcf11e0f4853cb90843dbe",
+          "correspondence": "text",
+          "verification_note": "Page text used."
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "Page 17 text, A.3.1",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_017.md",
+          "page": 17,
+          "page_label": "17",
+          "section": "A.3.1",
+          "text_quote": "A listing is classified as mentioning",
+          "url": null,
+          "object_id": "OBJ-e4efa6f7c9c10daa107ce8a0",
+          "correspondence": "text",
+          "verification_note": "Sentence continues on the next line: 'cycling if at least one pattern matches.'"
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Word-level classification is reproducible from the appendix",
+          "source_object_ids": [
+            "S1",
+            "S2"
+          ],
+          "relation": "partial",
+          "note": "Listing-level SQL is given; the word-extraction and merging step is not."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Describe the tokenisation and form-merging rule (list or lemmatiser) and the definition of 'sykkel on its own', or add the code to the appendix."
+    }
+  ],
+  "notes": [
+    "Tables were read from page text (pages/page_00X.md) and the retained page images, not the structured table CSV/markdown, per the parser-quality guidance. This applies especially to Tables 1, 2, 5, 6, 7 and 8. Figure 1 values were read from page text because the figure crop omits the chart. Figures 2 and 3 were inspected from the retained crops.",
+    "Arithmetic checks with no issue: Table 8 counts 266 625 + 433 954 = 700 579 and all shares match their counts. Table 6 date precision 19+10+9+5 = 43 and Day+Month = 29. The pilot split 5+8+21 = 34. Table 3 and Table 4 totals are internally consistent (3+31, 4+30, 34). Table 2 article counts sum to 7, equal to the 5 relevant plus 2 planned articles. Section 6.3's 18 + 26 = 44 and 17 + 2 = 19 day-dated projects match Table 6 Day = 19.",
+    "Not raised as findings: NVDB length 2,132 m versus road-reference spans 0–1492 and 0–641 (a 1 m difference, rounding-compatible); the single NVDB link is explicitly scoped as one illustrative example. No findings about regression samples, attrition or zero-consumption restrictions apply because the paper has no estimated models; Equations (1) and (2) are proposals only.",
+    "The 15-county boundary comment in SAMPLE-018 uses external background knowledge about Norwegian county reforms, which is not in the manuscript; it is flagged low confidence and framed as an undocumented assignment rule."
+  ],
+  "completion": {
+    "version": 1,
+    "state": "complete",
+    "scope_description": "Audit of sample construction, data flow and variable construction in work/bicycle-infrastructure-paper/parsed for all three data flows: the 70-hit pilot and its manual and LLM validation, the 3,187-article LLM run with project grouping and NVDB linkage, and the FINN.no housing-listing appendix. Main text, tables, figures and the appendix were read from page text and retained figure images.",
+    "checks_completed": [
+      "Read parser-quality output and used page text and retained images instead of the structured table files",
+      "Traced the pilot flow 70 hits to 36 duplicates to 34 unique to 5/8/21 manual coding to 3 recoded relevant, and checked Figure 1, Tables 2–4 and footnotes",
+      "Compared human-human and human-LLM agreement tables with the text and footnotes, including unclear and majority-rule handling",
+      "Traced the full run 3,187 to 92 to 43 projects, then 96 and 44 in Section 6, and checked Table 6 and Table 7 arithmetic and denominators",
+      "Checked variable definitions: relevance, opening date, date precision, ceremony indicator, keyword-coded field groups",
+      "Checked the housing appendix: Table 8 sums and shares, Figure 2 word shares against type shares, Figure 3 and Figure 4 against text, and SQL and Table 9 classification rules",
+      "Searched the main text and appendix for definitions of rounds, deduplication, missing-text handling and listing denominators before raising omissions"
+    ],
+    "missing_checks": [],
+    "evidence_limitations": [
+      "The public repository (bike-lane-pipeline), prompts and the coded Excel output are not part of the retained evidence, so implementation details could not be checked.",
+      "Figure 3 and Figure 2 quantities were read visually from images; point positions and colours are approximate.",
+      "No LLM output counts for the pilot (including unclear) are reported, so the pilot LLM flow could be checked only through Table 4.",
+      "The 15-county boundary comment relies on external background knowledge, not on a retained source."
+    ]
+  },
+  "coverage": [
+    {
+      "item_id": "assigned_remit",
+      "source_object_ids": [],
+      "claim": null,
+      "check_performed": "Traced each data flow (pilot, full LLM run, project grouping, NVDB linkage, housing listings) from raw hits through exclusions, coding and final tables. Checked table, figure and text consistency, denominators and variable definitions across the main text and appendix.",
+      "status": "linked_finding",
+      "reason": "Twenty-one findings, mainly unit and definition inconsistencies and undocumented flow steps. The paper has no regression samples, so assigned-versus-observed gaps were checked only on the descriptive pipeline counts. The main text and all appendices were read in full.",
+      "finding_ids": [
+        "SAMPLE-001",
+        "SAMPLE-002",
+        "SAMPLE-003",
+        "SAMPLE-004",
+        "SAMPLE-005",
+        "SAMPLE-006",
+        "SAMPLE-007",
+        "SAMPLE-008",
+        "SAMPLE-009",
+        "SAMPLE-010",
+        "SAMPLE-011",
+        "SAMPLE-012",
+        "SAMPLE-013",
+        "SAMPLE-014",
+        "SAMPLE-015",
+        "SAMPLE-016",
+        "SAMPLE-017",
+        "SAMPLE-018",
+        "SAMPLE-019",
+        "SAMPLE-020",
+        "SAMPLE-021"
+      ],
+      "attempted": true,
+      "importance": "central",
+      "scope": "exhaustive"
+    },
+    {
+      "item_id": "claim:pilot_flow_counts",
+      "source_object_ids": [
+        "OBJ-1a119a3cb70f2153fc56dd97",
+        "OBJ-9d16c139938370d7a97e77c6"
+      ],
+      "claim": "The pilot of 70 search hits contains 36 duplicates and 34 unique articles, with 5 relevant, 8 unclear and 21 not relevant, and only two actual openings.",
+      "check_performed": "Recomputed the funnel (70-36 = 34; 5+8+21 = 34; 34/70 = 49%; 5/34 = 15%) and compared the units in Figure 1, Section 3.1.2, Section 3.1.4 and Table 2.",
+      "status": "linked_finding",
+      "reason": "The counts add up, but the final 'only 2 of 34 articles' step mixes projects and articles (SAMPLE-001), and the status of two planned events is time-dependent (SAMPLE-013).",
+      "finding_ids": [
+        "SAMPLE-001",
+        "SAMPLE-013"
+      ],
+      "attempted": true,
+      "importance": "central",
+      "scope": "exhaustive"
+    },
+    {
+      "item_id": "claim:agreement_tables",
+      "source_object_ids": [
+        "OBJ-4e6da301f188ae5c7e5d0a63",
+        "OBJ-b41cc221a4f064e5990acabf"
+      ],
+      "claim": "The LLM agrees with the pilot coder on relevance for 97% of the 34 articles, the same as between the two human coders.",
+      "check_performed": "Checked Table 3 and Table 4 cell sums, the recoding of unclear and pre-opening articles, the conditioning sample for date agreement, and the Stord disagreement across Section 4 and footnote 3.",
+      "status": "linked_finding",
+      "reason": "Arithmetic is consistent. Problems are the contradictory Stord coding statement, a metric dominated by the negative class, unspecified LLM unclear and majority mapping, development-set overlap, and an ambiguous date construct.",
+      "finding_ids": [
+        "SAMPLE-002",
+        "SAMPLE-006",
+        "SAMPLE-007",
+        "SAMPLE-008",
+        "SAMPLE-010"
+      ],
+      "attempted": true,
+      "importance": "central",
+      "scope": "exhaustive"
+    },
+    {
+      "item_id": "claim:full_run_counts",
+      "source_object_ids": [
+        "OBJ-521bfe93a764059cd1136195",
+        "OBJ-e9b90e0f75ce05ff1ce150cc"
+      ],
+      "claim": "The LLM coded 3,187 articles, found 92 articles reporting an opening, grouped into 43 projects across 14 of 15 counties, 29 dated to the day or month.",
+      "check_performed": "Verified Table 6 internal sums (19+10+9+5 = 43; 19+10 = 29), compared Sections 1, 5 and 7 and the abstract, and traced the 96/44 reconciliation in Section 6 footnote 3. Looked for round definitions, deduplication, missing-text counts and project aggregation rules.",
+      "status": "linked_finding",
+      "reason": "Table sums are consistent. Round definitions and pilot overlap, missing-text handling, deduplication, the relevance criterion, project-level aggregation and seasonality support are undocumented or unsupported.",
+      "finding_ids": [
+        "SAMPLE-003",
+        "SAMPLE-004",
+        "SAMPLE-005",
+        "SAMPLE-009",
+        "SAMPLE-011",
+        "SAMPLE-014"
+      ],
+      "attempted": true,
+      "importance": "central",
+      "scope": "exhaustive"
+    },
+    {
+      "item_id": "claim:table7_section63",
+      "source_object_ids": [
+        "OBJ-95b2618a59737e0b1725c4df"
+      ],
+      "claim": "Table 7 and Section 6.3 report counts of further information over 44 projects and a 17-of-18 versus 2-of-26 date-precision contrast.",
+      "check_performed": "Checked the 44 = 43 + 1 reconciliation, 18+26 = 44, 17+2 = 19 against Table 6 Day = 19, and the stated keyword-coding method for Table 7. Table 7 was read from page text because table_7.md detaches counts from labels.",
+      "status": "linked_finding",
+      "reason": "Counts reconcile arithmetically, but the keyword and ceremony coding is undocumented and the 44 includes a non-opening project.",
+      "finding_ids": [
+        "SAMPLE-002",
+        "SAMPLE-012"
+      ],
+      "attempted": true,
+      "importance": "central",
+      "scope": "exhaustive"
+    },
+    {
+      "item_id": "claim:nvdb_example",
+      "source_object_ids": [
+        "OBJ-521bfe93a764059cd1136195"
+      ],
+      "claim": "Linking one opening (Homborsund) to NVDB shows that the articles add an exact opening date that NVDB lacks.",
+      "check_performed": "Read Table 5 from page text; checked the dates (geometry registered 4 September 2026, opening 5 October 2026, one month apart) and the road-reference lengths against the stated 2,132 m (1492 + 641 = 2,133, a 1 m difference compatible with rounding).",
+      "status": "checked_no_issue",
+      "reason": "The linkage is scoped as a single illustration. Dates and keys are internally consistent and the 1 m length difference is rounding-compatible. No restriction or denominator problem found.",
+      "finding_ids": [],
+      "attempted": true,
+      "importance": "peripheral",
+      "scope": "sampled"
+    },
+    {
+      "item_id": "claim:housing_listing_shares",
+      "source_object_ids": [
+        "OBJ-6402cd90a906f1f82672a86f",
+        "OBJ-8f4894d007c8a183053537bc",
+        "OBJ-e4efa6f7c9c10daa107ce8a0"
+      ],
+      "claim": "Of 700 579 FINN.no listings, 38.1% mention cycling; infrastructure 13.4%, parking and storage 10.8%, proximity 10.7%; shares rise about 9 percentage points; Oslo 61% to Møre og Romsdal 7%.",
+      "check_performed": "Recomputed Table 8 shares from counts (266 625/700 579 = 38.1%, 93 786/700 579 = 13.4%, and others), checked that 266 625 + 433 954 = 700 579, compared Figure 2 word shares with type shares, and compared Figure 3 and Figure 4 against the text and the January–April 2024 gap.",
+      "status": "linked_finding",
+      "reason": "Counts and shares are arithmetically consistent. Issues concern the denominator and text availability, the partial-quarter and gap handling in Figure 3, county definitions, and the Table 9 classification rules and Figure 2 colours.",
+      "finding_ids": [
+        "SAMPLE-015",
+        "SAMPLE-016",
+        "SAMPLE-017",
+        "SAMPLE-018",
+        "SAMPLE-019",
+        "SAMPLE-020",
+        "SAMPLE-021"
+      ],
+      "attempted": true,
+      "importance": "central",
+      "scope": "exhaustive"
+    }
+  ]
+}

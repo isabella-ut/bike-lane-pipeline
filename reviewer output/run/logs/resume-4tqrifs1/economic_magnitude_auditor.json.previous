@@ -1,0 +1,647 @@
+{
+  "reviewer": "economic_magnitude_auditor",
+  "paper_id": "bicycle-infrastructure-paper",
+  "run_status": "ok",
+  "summary": "The paper is a data-construction and validation study with no welfare, willingness-to-pay or calibration claims. Its magnitude language concerns agreement rates, project and article counts, a cost statement and descriptive shares. Nine places were found where the wording outruns the reported magnitudes or lacks a baseline. (1) The 97% human–LLM agreement headline rests on 3 positive articles, and the abstract and introduction do not carry the paper's own small-sample caveat. (2) The 43-project output has no benchmark for the true number of openings, and the full run is unvalidated. (3) The seasonal-clustering claim reports no numbers. (4) The 'cheap' and 'too costly by hand' cost claims have no baseline and exclude manual steps. (5) The abstract generalises the NVDB date advantage from a single linked project. (6) The housing-listing 38% share and the 'stronger selling point' inference are loosely tied to openings. (7) 'Keyword search alone is too noisy' is inferred from one broad query, although the paper's own preliminary searches show a narrower term. (8) The ceremony–date-precision gap uses an attention measure drawn from the same articles. (9) The 'between a third and a half' description of Table 7 does not match the table's counts. The parser-quality guidance was respected: all evidence comes from page text, and the structured table CSV/markdown was not used.",
+  "findings": [
+    {
+      "id": "MAG-001",
+      "category": "practical_significance_unclear",
+      "finding_summary": "The headline that LLM–human relevance agreement (97%) equals human–human agreement is carried into the abstract and introduction without the paper's own caveat that it rests on 3 positive articles. The agreement is dominated by easy negatives, including near-empty texts.",
+      "issue_type": "manuscript_issue",
+      "severity": "medium",
+      "confidence": "high",
+      "location": {
+        "page": 1,
+        "page_label": "1",
+        "section": "Abstract",
+        "text_quote": "the LLM agrees with a human coder on the relevance of 97 percent of the articles, the same rate as between two human coders",
+        "precision": "exact"
+      },
+      "claim_text": "On the pilot, the LLM agrees with a human coder on the relevance of 97 percent of the articles, the same rate as between two human coders, and gives the same opening date for all three relevant articles.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "Section 4 states 'With only 34 articles, of which 3 were coded as relevant in the pilot, the sample is too small to test whether the two agreement rates differ', yet the abstract and introduction present the parity without that qualification. Tables 3 and 4 show 33 of 34 agreements, of which 30 are not-relevant/not-relevant cells. Per the text, 6 of the 8 'unclear' articles had too little or no text and are set to 'not relevant', so they enter the agreement counts as trivial negatives. Raw agreement therefore mostly reflects the prevalence of negatives. By my own arithmetic from Table 4, the LLM flags 4 articles as relevant, of which 3 match the pilot coder (about 75 percent, n=4), and chance-corrected agreement would be well below 97% (kappa roughly 0.84). The date-match claim covers n=3 articles. The Section 4 caveat is a partial mitigation, but the abstract, intro and conclusion present the headline unconditionally.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "Abstract",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_001.md",
+          "page": 1,
+          "page_label": "1",
+          "section": "Abstract",
+          "text_quote": "the LLM agrees with a human coder on the relevance of 97 percent of the articles, the same rate as between two human coders",
+          "url": null,
+          "object_id": "OBJ-ae6010b8e427194ea28d441e",
+          "correspondence": "text",
+          "verification_note": null
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "Section 4 caveat and footnote 1",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_007.md",
+          "page": 7,
+          "page_label": "7",
+          "section": "4 Validation",
+          "text_quote": "With only 34 articles, of which 3 were coded as relevant in the pilot",
+          "url": null,
+          "object_id": "OBJ-4e6da301f188ae5c7e5d0a63",
+          "correspondence": "text",
+          "verification_note": "Footnote 1 on the same page says very-short-text articles are set to not relevant in the agreement analysis."
+        },
+        {
+          "id": "S3",
+          "type": "text",
+          "label": "Section 4.2 / Table 4",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_008.md",
+          "page": 8,
+          "page_label": "8",
+          "section": "4.2",
+          "text_quote": "The LLM gives the same date as the pilot coder in all three.",
+          "url": null,
+          "object_id": "OBJ-b41cc221a4f064e5990acabf",
+          "correspondence": "text",
+          "verification_note": "Table 4 body cells read from page text, not from the structured table file."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "LLM agreement matches human–human agreement at 97%",
+          "source_object_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "relation": "partial",
+          "note": "Equal raw agreement, but only 3 positives, easy negatives included, and no chance-corrected or positive-class measure."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Carry the small-sample caveat (3 relevant articles; 6 near-empty texts counted as negatives) into the abstract, introduction and conclusion. Report agreement on the relevant class (for example precision and recall) and a chance-corrected statistic alongside raw agreement. Avoid framing the result as parity."
+    },
+    {
+      "id": "MAG-002",
+      "category": "baseline_missing",
+      "finding_summary": "The 43 projects (92 articles) are presented as what the pipeline 'finds' with no benchmark for how many openings occurred in the period or how many the pipeline missed. The full-run output is also unvalidated.",
+      "issue_type": "manuscript_issue",
+      "severity": "medium",
+      "confidence": "medium",
+      "location": {
+        "page": 9,
+        "page_label": "9",
+        "section": "5 Results",
+        "text_quote": "The result was 92 articles reporting an opening and 43 unique projects, covered by 50 of the outlets.",
+        "precision": "exact"
+      },
+      "claim_text": "Applied to 3,187 articles, the pipeline finds 92 articles reporting an opening, which we group into 43 projects across 14 of 15 counties, 29 of them dated to the day or month.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "Section 5 reports counts only. No reference count of real openings, such as a count from NVDB or from municipal records, is given. Without it, 43 projects in a year cannot be interpreted as high or low coverage, and 14 of 15 counties describes where articles occur, not where openings occur. The pilot had 3 relevant articles, so it supplies no estimate of full-run false-positive or false-negative rates. Section 8 concedes that a random sample from the full run still has to be checked against human coding. The conclusion says the study 'demonstrated the potential' of the approach, which is hedged. The abstract, however, describes the 43 projects and the county breadth as results without noting that recall and precision on the full run are unknown. The 29 of 43 day- or month-dated projects is 67 percent; the remaining 14 are year-level or undated, so the share usable for before–after designs is not discussed.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "Section 5",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_009.md",
+          "page": 9,
+          "page_label": "9",
+          "section": "5 Results",
+          "text_quote": "The result was 92 articles reporting an opening and 43 unique projects, covered by 50 of the outlets.",
+          "url": null,
+          "object_id": "OBJ-521bfe93a764059cd1136195",
+          "correspondence": "text",
+          "verification_note": null
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "Section 8 Next Steps",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_012.md",
+          "page": 12,
+          "page_label": "12",
+          "section": "8 Next Steps",
+          "text_quote": "a random sample from the full run of 3,187 articles should also be checked against",
+          "url": null,
+          "object_id": "OBJ-a6c6d31e7be45f25b775aa47",
+          "correspondence": "text",
+          "verification_note": "The sentence continues 'human coding' after a line break."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Pipeline finds 43 projects in 14 of 15 counties",
+          "source_object_ids": [
+            "S1",
+            "S2"
+          ],
+          "relation": "partial",
+          "note": "Counts are reported but no population baseline or full-run accuracy is available to interpret them."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Report a baseline for the expected number of openings in the window, or state that none is available. Report full-run precision and recall from the planned random validation sample before presenting the project count and county coverage as evidence of pipeline performance. Report what share of projects have day or month dates."
+    },
+    {
+      "id": "MAG-003",
+      "category": "practical_significance_unclear",
+      "finding_summary": "The statement that openings 'cluster before winter and summer holidays' rests on unreported monthly shares of relevant articles from a single year. These shares measure publication timing, not opening timing.",
+      "issue_type": "manuscript_issue",
+      "severity": "medium",
+      "confidence": "high",
+      "location": {
+        "page": 10,
+        "page_label": "10",
+        "section": "5 Results",
+        "text_quote": "This indicates that openings cluster before winter and summer holidays, although the archive extraction contains few articles from July–August 2026.",
+        "precision": "exact"
+      },
+      "claim_text": "October–December 2025 and May–June 2026 have the highest share of relevant articles, ... This indicates that openings cluster before winter and summer holidays.",
+      "assessment": "no",
+      "cannot_verify_reason": null,
+      "evidence_summary": "No monthly counts, shares or figure support the claim. Table 6 gives only totals. The data cover roughly one year (October 2025 to October 2026), so a seasonal pattern cannot be separated from one-off variation. The metric is the share of relevant articles among all coded articles, which depends on the volume of non-relevant articles in each month. It describes publication, not opening dates. The paper itself notes that the archive has few articles from July–August 2026, so the denominator is thin in the very months that would test a summer pattern. 'Indicates' is stronger than the evidence displayed.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "Section 5 seasonal statement",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_010.md",
+          "page": 10,
+          "page_label": "10",
+          "section": "5 Results",
+          "text_quote": "This indicates that openings cluster before winter and summer holidays, although the archive extraction contains few articles from July–August 2026.",
+          "url": null,
+          "object_id": "OBJ-e9b90e0f75ce05ff1ce150cc",
+          "correspondence": "text",
+          "verification_note": "Table 6 on this page contains only aggregate counts, as read from the page text."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Openings cluster before holidays",
+          "source_object_ids": [
+            "S1"
+          ],
+          "relation": "cannot_verify",
+          "note": "No monthly numbers are reported and the metric is article share, not openings."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Report monthly counts and shares of relevant articles and of projects by opening month, with denominators. Soften the claim to describe article shares in one year, or remove it."
+    },
+    {
+      "id": "MAG-004",
+      "category": "welfare_or_cost_overreach",
+      "finding_summary": "The claim that the API run was 'cheap' (NOK 70) and that hand collection was 'too costly' has no baseline. The NOK 70 excludes substantial manual work that the paper itself describes.",
+      "issue_type": "manuscript_issue",
+      "severity": "medium",
+      "confidence": "medium",
+      "location": {
+        "page": 6,
+        "page_label": "6",
+        "section": "3.2 LLM pipeline",
+        "text_quote": "The API analysis was cheap, costing only NOK 70 in total.",
+        "precision": "exact"
+      },
+      "claim_text": "The API analysis was cheap, costing only NOK 70 in total.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "The introduction asserts that this information 'has been too costly to collect by hand'. No manual cost per article or per project is reported, so NOK 70 for 3,187 articles (about NOK 0.02 per article by simple division) has no comparator. The figure covers only the API call. The paper describes manual steps outside it: manual coding and validation of the pilot, grouping articles into projects by hand, hand-matching to NVDB, and hand-checking keyword matches for Table 7. Section 8 lists automating them as future work. Model choice was also driven by availability of 300 dollars in trial credits, and the reasoning level was set to 'low', so the cost may not carry over to settings with higher accuracy. 'Cheap' and 'feasible at scale' are therefore not supported by a cost-per-usable-project measure.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "Section 3.2 cost statement",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_006.md",
+          "page": 6,
+          "page_label": "6",
+          "section": "3.2 LLM pipeline",
+          "text_quote": "The API analysis was cheap, costing only NOK 70 in total.",
+          "url": null,
+          "object_id": "OBJ-e13eccc23f4c883050d15bcf",
+          "correspondence": "text",
+          "verification_note": null
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "Introduction cost claim",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_002.md",
+          "page": 2,
+          "page_label": "2",
+          "section": "1 Introduction",
+          "text_quote": "This information has been too costly to collect by hand",
+          "url": null,
+          "object_id": "OBJ-c45862491200db070adbb6ed",
+          "correspondence": "text",
+          "verification_note": null
+        },
+        {
+          "id": "S3",
+          "type": "text",
+          "label": "Section 8 manual steps",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_012.md",
+          "page": 12,
+          "page_label": "12",
+          "section": "8 Next Steps",
+          "text_quote": "the steps that were done by hand in this paper should be automated",
+          "url": null,
+          "object_id": "OBJ-a6c6d31e7be45f25b775aa47",
+          "correspondence": "text",
+          "verification_note": "The sentence continues 'grouping articles on the same project into one record' after a line break."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "LLM extraction is cheap relative to manual collection",
+          "source_object_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "relation": "partial",
+          "note": "No manual-cost baseline; the NOK 70 excludes hand steps the paper describes."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Give a comparator, such as estimated manual coding time per article, and state what NOK 70 includes. Report total cost including human validation and grouping per usable project, or soften the claim to 'low API cost'."
+    },
+    {
+      "id": "MAG-005",
+      "category": "magnitude_overstatement",
+      "finding_summary": "The abstract states that linking to NVDB 'shows' articles add an exact opening date, which NVDB lacks. This is based on one linked project, and the size of the NVDB–opening gap in general is not measured.",
+      "issue_type": "manuscript_issue",
+      "severity": "low",
+      "confidence": "medium",
+      "location": {
+        "page": 1,
+        "page_label": "1",
+        "section": "Abstract",
+        "text_quote": "Linking one opening to the national road database NVDB shows that the articles add an exact opening date, which NVDB lacks.",
+        "precision": "exact"
+      },
+      "claim_text": "Linking one opening to the national road database NVDB shows that the articles add an exact opening date, which NVDB lacks.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "The abstract says 'one opening', and the text calls the link an illustration. The verb 'shows' and the conclusion's statement that newspapers 'complement administrative data by adding opening dates' reach beyond n=1. The reported gap is that geometry was registered one month before the opening (4 September vs 5 October 2026). Whether this lag is typical, and how many of the 43 projects can be matched, is unreported. Section 8 acknowledges that systematic comparison with NVDB registration dates is still to be done. The practical value of day-level dates depends on how far registration dates deviate from real openings, which is not quantified.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "Abstract",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_001.md",
+          "page": 1,
+          "page_label": "1",
+          "section": "Abstract",
+          "text_quote": "Linking one opening to the national road database NVDB shows that the articles add an exact opening date, which NVDB lacks.",
+          "url": null,
+          "object_id": "OBJ-ae6010b8e427194ea28d441e",
+          "correspondence": "text",
+          "verification_note": null
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "Table 5 note",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_009.md",
+          "page": 9,
+          "page_label": "9",
+          "section": "Table 5",
+          "text_quote": "NVDB only records when the geometry was registered, which in this case was one month before the opening.",
+          "url": null,
+          "object_id": "OBJ-521bfe93a764059cd1136195",
+          "correspondence": "text",
+          "verification_note": "Quote from the page-text note, not the structured table."
+        },
+        {
+          "id": "S3",
+          "type": "text",
+          "label": "Section 8",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_012.md",
+          "page": 12,
+          "page_label": "12",
+          "section": "8 Next Steps",
+          "text_quote": "Third, the opening dates should be compared systematically with NVDB registration dates",
+          "url": null,
+          "object_id": "OBJ-a6c6d31e7be45f25b775aa47",
+          "correspondence": "text",
+          "verification_note": null
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Articles add an exact opening date relative to NVDB",
+          "source_object_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "relation": "partial",
+          "note": "Supported for one project; generality and size of the gap unmeasured."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Phrase the abstract as 'in one example, NVDB lacks an opening date and the articles supply it'. If possible, report how many of the 43 projects match NVDB and the distribution of the registration-to-opening lag."
+    },
+    {
+      "id": "MAG-006",
+      "category": "practical_significance_unclear",
+      "finding_summary": "The housing-listing statistics (38% mention cycling; 9 percentage-point rise) are used to motivate the application. The proposed reading that any increase in mentions indicates a 'stronger selling point' is not tied to openings and ignores a large secular trend and coarse keyword types.",
+      "issue_type": "manuscript_issue",
+      "severity": "low",
+      "confidence": "medium",
+      "location": {
+        "page": 10,
+        "page_label": "10",
+        "section": "6.1 An application to house listing data",
+        "text_quote": "An increase in any type of mention would thus indicate that the route has made cycling a stronger selling point.",
+        "precision": "exact"
+      },
+      "claim_text": "An increase in any type of mention would thus indicate that the route has made cycling a stronger selling point.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "The listings have not been linked to the database ('We have not yet linked the listings to the database'), so the 38 percent figure and the county range (61 percent in Oslo to 7 percent in Møre og Romsdal) say nothing about the effect of openings. The share rose by about 9 percentage points over 2020–2026 (from about 35 to 44 percent), a large background trend against which an opening-related change would be measured. The keyword rule counts any mention of 'sykkel' or 'sykling' (9.8 percent of listings use 'sykkel' alone) and assigns types by substrings, which the paper calls 'coarse'. An increase in any type, including generic mentions or proximity words such as 'tur', would not necessarily reflect route salience. The abstract places '38 percent of listings mention cycling' next to the openings database without saying it is a descriptive baseline.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "Section 6.1",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_010.md",
+          "page": 10,
+          "page_label": "10",
+          "section": "6.1",
+          "text_quote": "An increase in any type of mention would thus indicate that the route has made cycling a stronger selling point.",
+          "url": null,
+          "object_id": "OBJ-e9b90e0f75ce05ff1ce150cc",
+          "correspondence": "text",
+          "verification_note": null
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "Appendix A.2 share",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_015.md",
+          "page": 15,
+          "page_label": "15",
+          "section": "A.2",
+          "text_quote": "In total, 38.1 percent of the listings mention cycling in some way.",
+          "url": null,
+          "object_id": "OBJ-6402cd90a906f1f82672a86f",
+          "correspondence": "text",
+          "verification_note": null
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Mention increase indicates stronger selling point",
+          "source_object_ids": [
+            "S1",
+            "S2"
+          ],
+          "relation": "partial",
+          "note": "Hypothesis stated without a baseline for effect size, trend or type-specific meaning."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Label the 38 percent and the 9 percentage-point rise as descriptive baselines unrelated to openings. Say that interpretation as a selling-point effect depends on the planned design (type-specific outcomes, trend and fixed-effect controls) and the keyword coarseness."
+    },
+    {
+      "id": "MAG-007",
+      "category": "baseline_missing",
+      "finding_summary": "The abstract concludes that 'keyword search alone is too noisy' from 2 openings among 34 unique articles for one broad query. The paper's own preliminary searches show a much narrower term that was not tested.",
+      "issue_type": "manuscript_issue",
+      "severity": "low",
+      "confidence": "medium",
+      "location": {
+        "page": 1,
+        "page_label": "1",
+        "section": "Abstract",
+        "text_quote": "contained only two actual openings, showing that keyword search alone is too noisy and that an LLM filter is needed",
+        "precision": "exact"
+      },
+      "claim_text": "A pilot of 70 search hits, of which 34 were unique articles, contained only two actual openings, showing that keyword search alone is too noisy and that an LLM filter is needed.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "The yield (2 of 34 unique articles, about 6 percent) comes from the broad query 'sykkelvei' over about five weeks. Section 3.1.1 reports preliminary searches returning between about 530 (the narrower term 'åpning sykkelvei') and 13 800 hits over three years, but the pilot did not evaluate the narrower term's precision. How the 70 hits were selected is not stated. The yield therefore describes the chosen query, not keyword search in general. The 2-opening count is also tiny, so the yield is imprecise. The full run reports 92 relevant of 3,187 articles (about 2.9 percent), which supports low yield for this query, but a better-targeted keyword baseline is not compared with the LLM filter.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "Abstract",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_001.md",
+          "page": 1,
+          "page_label": "1",
+          "section": "Abstract",
+          "text_quote": "contained only two actual openings, showing that keyword search alone is too noisy",
+          "url": null,
+          "object_id": "OBJ-ae6010b8e427194ea28d441e",
+          "correspondence": "text",
+          "verification_note": null
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "Section 3.1.1 search terms",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_004.md",
+          "page": 4,
+          "page_label": "4",
+          "section": "3.1.1",
+          "text_quote": "between about 530 (using the search term",
+          "url": null,
+          "object_id": "OBJ-1a119a3cb70f2153fc56dd97",
+          "correspondence": "text",
+          "verification_note": "The next characters on the page give the narrower term åpning sykkelvei; the pilot term is stated as sykkelvei."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Keyword search alone is too noisy",
+          "source_object_ids": [
+            "S1",
+            "S2"
+          ],
+          "relation": "partial",
+          "note": "Shown for a broad query; a narrower query in the paper's own preliminary search was not assessed."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Restrict the claim to the 'sykkelvei' query used. State how the 70 pilot hits were drawn, and either evaluate a narrower query as a baseline or say it was not tested."
+    },
+    {
+      "id": "MAG-008",
+      "category": "magnitude_overstatement",
+      "finding_summary": "The contrast between day-precision dating for projects with a ceremony (17 of 18) and without (2 of 26) is read as showing date precision 'depends on how much attention an opening receives'. Both the ceremony indicator and the date come from the same articles, and the comparison is unadjusted.",
+      "issue_type": "manuscript_issue",
+      "severity": "low",
+      "confidence": "low",
+      "location": {
+        "page": 11,
+        "page_label": "11",
+        "section": "6.3 Proposed econometric analysis",
+        "text_quote": "This suggests that the precision of the dates is not random but depends on how much attention an opening receives.",
+        "precision": "exact"
+      },
+      "claim_text": "Of the 44 projects, 18 have an article reporting an official opening ceremony. Of these, 17 can be dated to the day, compared with 2 of the 26 projects without a reported ceremony. This suggests that the precision of the dates is not random but depends on how much attention an opening receives.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "The counts are 17/18 (94 percent) vs 2/26 (8 percent). The 'attention' proxy is a ceremony reported in the same articles from which the date is extracted. An article describing a ceremony naturally states a date, so the relationship may be partly mechanical and the gap says little about economic attention. The comparison is unconditional on project size, article type, or whether the project is one of the pre-opening-only records. The paper does propose a model to test this and says the specifications are examples, so the sentence is hedged ('suggests'), but 'not random' is stated as a finding and the 44-project denominator includes the Stord project that both human coders coded as not relevant.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "Section 6.3",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_011.md",
+          "page": 11,
+          "page_label": "11",
+          "section": "6.3",
+          "text_quote": "Of these, 17 can be dated to the day, compared with 2 of the 26 projects",
+          "url": null,
+          "object_id": "OBJ-95b2618a59737e0b1725c4df",
+          "correspondence": "text",
+          "verification_note": "The sentence continues 'without a reported ceremony' after a line break."
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "Footnote 3 on the 44 projects",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_010.md",
+          "page": 10,
+          "page_label": "10",
+          "section": "6",
+          "text_quote": "was coded as not",
+          "url": null,
+          "object_id": "OBJ-e9b90e0f75ce05ff1ce150cc",
+          "correspondence": "text",
+          "verification_note": "The footnote reads 'the project in Stord, which appears only in the pilot and was coded as not relevant by both human coders'."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "Date precision depends on attention",
+          "source_object_ids": [
+            "S1",
+            "S2"
+          ],
+          "relation": "partial",
+          "note": "Large raw gap, but the proxy and outcome are drawn from the same articles."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "Describe the 17/18 vs 2/26 gap as a descriptive pattern that may partly reflect how articles are written. Note that the attention proxy is not independent of date extraction until it is measured from a separate source, such as outlet counts."
+    },
+    {
+      "id": "MAG-009",
+      "category": "unit_or_scale_mismatch",
+      "finding_summary": "The text describes Table 7 as showing that 'between a third and a half' of projects contain most field groups. The table's counts range from 4 of 44 (9 percent) to 24 of 44 (55 percent), so the description does not match.",
+      "issue_type": "manuscript_issue",
+      "severity": "low",
+      "confidence": "medium",
+      "location": {
+        "page": 10,
+        "page_label": "10",
+        "section": "6.2 Additional information in the articles",
+        "text_quote": "Almost all of the projects contained location descriptions, and between a third and a half of them contained",
+        "precision": "exact"
+      },
+      "claim_text": "Almost all of the projects contained location descriptions, and between a third and a half of them contained most of the other groups, although the articles were not selected for this purpose.",
+      "assessment": "partially",
+      "cannot_verify_reason": null,
+      "evidence_summary": "From the page-11 text of Table 7 (denominator 44 projects): Physical characteristics 19 (43 percent), Project-stage dates 19 (43), Use and attention 21 (48), Metadata and coverage 16 (36), Trigger 15 (34), Reasons for delay 4 (9), Concurrent interventions 23 (52), Initiator and conflict 19 (43), Project status 24 (55), Location description 42 (95), Cost 16 (36). Most groups fall within 34 to 55 percent, but Reasons for delay is 9 percent and two groups exceed one half, so 'between a third and a half' is only approximately right. The counts also measure only that a keyword match was found in at least one article for the project, not the completeness or usability of the information. These are readings of my own arithmetic from the displayed counts.",
+      "source_objects": [
+        {
+          "id": "S1",
+          "type": "text",
+          "label": "Section 6.2 prose",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_010.md",
+          "page": 10,
+          "page_label": "10",
+          "section": "6.2",
+          "text_quote": "Almost all of the projects contained location descriptions, and between a third and a half of them contained",
+          "url": null,
+          "object_id": "OBJ-e9b90e0f75ce05ff1ce150cc",
+          "correspondence": "text",
+          "verification_note": null
+        },
+        {
+          "id": "S2",
+          "type": "text",
+          "label": "Table 7 rows",
+          "path": "work/bicycle-infrastructure-paper/parsed/pages/page_011.md",
+          "page": 11,
+          "page_label": "11",
+          "section": "Table 7",
+          "text_quote": "Reasons for delay 4 Defects and budget overrun (Alstahaug)",
+          "url": null,
+          "object_id": "OBJ-95b2618a59737e0b1725c4df",
+          "correspondence": "text",
+          "verification_note": "Counts read from the page-text rows, not the structured table markdown, which detaches counts from labels."
+        }
+      ],
+      "claim_evidence_links": [
+        {
+          "claim_text": "A third to a half of projects contain most field groups",
+          "source_object_ids": [
+            "S1",
+            "S2"
+          ],
+          "relation": "partial",
+          "note": "Range in Table 7 runs from 9 to 55 percent of 44 projects."
+        }
+      ],
+      "numeric_check": null,
+      "suggested_fix": "State the range accurately, for example 'from 4 to 24 of 44 projects (9 to 55 percent), and 42 for location descriptions', and note that the counts reflect keyword presence, not data completeness."
+    }
+  ],
+  "notes": [
+    "Evidence came from full_text.md and the registered page-text objects. The structured table CSV/markdown was not used, per the parser-quality guidance that these tables are mis-columned. Table 3/4/7/8 figures were read from page text.",
+    "The paper contains no welfare, willingness-to-pay, calibration or investment-share claims. Cost appears only as the NOK 70 API cost and as a keyword-matched field in Table 7.",
+    "Figure 2 and 3 values were not used for any finding. The arithmetic in MAG-001 and MAG-009 (about 75 percent precision, kappa roughly 0.84, shares of 44) is my own computation from displayed counts. The safe numerical wrapper was not executed, so it is not claimed as independently recomputed.",
+    "Exact-correspondence quotes with curly quotation marks around Norwegian search terms were truncated before the curly quote so that the quoted spans are verbatim."
+  ],
+  "completion": {
+    "version": 1,
+    "state": "complete",
+    "scope_description": "Audit of economic magnitude and practical-significance language across the full 18-page paper, including abstract, introduction, validation, results, further uses, conclusion and Appendix A. The paper has no welfare, WTP, calibration or investment-share claims.",
+    "checks_completed": [
+      "Read the parser-quality output and avoided the structured table CSV/markdown as primary evidence",
+      "Read the full text and compared abstract, introduction and conclusion magnitude claims with the underlying counts and tables",
+      "Assessed agreement-rate claims against sample size, prevalence and counting rules (Tables 3 and 4)",
+      "Checked the project, article, county and date-precision counts against baselines and denominators",
+      "Checked cost statements (NOK 70, 'too costly by hand') for baselines and omitted manual costs",
+      "Checked the NVDB linkage generalisation, the seasonal and geographic descriptive claims, and the Table 7 shares",
+      "Checked the housing-listing shares and trend, and the proposed-model interpretation language",
+      "Checked the applicability of welfare, willingness-to-pay and calibration checks (absent)"
+    ],
+    "missing_checks": [],
+    "evidence_limitations": [
+      "Figures 2–4 values were read from page text only; Figure 3 axis text is scrambled and its plotted series was not used.",
+      "External cited effect sizes (Fosgerau et al. 2023 at 60 percent; Fyhri et al. 2026 at up to five percentage points) were not verified against the cited sources.",
+      "The safe numerical wrapper was unavailable, so simple arithmetic was done by hand."
+    ]
+  },
+  "coverage": [
+    {
+      "item_id": "assigned_remit",
+      "source_object_ids": [],
+      "claim": null,
+      "check_performed": "Read the full paper text and the parser-quality guidance. Checked every magnitude, effect-size, cost, share and practical-significance statement in the abstract, main text and appendix against reported counts, denominators and baselines. Checked applicability of welfare, WTP and calibration checks.",
+      "status": "linked_finding",
+      "reason": "Nine places were found where magnitude wording outruns reported magnitudes or lacks a baseline. No welfare, WTP or calibration content exists in the paper. The Figure 2–4 share descriptions and the Table 8 shares were read and found consistent with the text, so no findings were raised for them.",
+      "finding_ids": [
+        "MAG-001",
+        "MAG-002",
+        "MAG-003",
+        "MAG-004",
+        "MAG-005",
+        "MAG-006",
+        "MAG-007",
+        "MAG-008",
+        "MAG-009"
+      ],
+      "attempted": true,
+      "importance": "central",
+      "scope": "exhaustive"
+    }
+  ]
+}

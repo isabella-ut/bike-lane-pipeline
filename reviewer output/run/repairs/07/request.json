@@ -1,0 +1,8 @@
+{
+  "stage": "robustness_auditor",
+  "call_reserved": true,
+  "errors": [
+    "Added central/peripheral claims must link manuscript evidence"
+  ],
+  "previous_sha256": "bad4be4e2f2bcb8c4c7939f2c4addbe47c6df155f7f17e29729b26d06ff3498c"
+}

@@ -1,0 +1,5 @@
+[
+  "Added central/peripheral claims must link manuscript evidence",
+  "reviewer/stage=robustness_auditor finding=ROB-007 source=S2 object=None field=findings.6.source_objects.1 artifact=work/bicycle-infrastructure-paper/parsed/page_images/page_016.png: Missing or unknown registered source object ID",
+  "reviewer/stage=robustness_auditor finding=ROB-008 source=S3 object=None field=findings.7.source_objects.2 artifact=work/bicycle-infrastructure-paper/parsed/page_images/page_016.png: Missing or unknown registered source object ID"
+]
