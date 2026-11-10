@@ -33,3 +33,7 @@ The paper tests how accurately a large language model can identify openings of c
 The full newspaper article texts and the manual coding sheets are **not** included in this repository. They contain articles from the Retriever/Atekst archive, many of them behind paywalls, which the licence does not allow us to redistribute. The AI output files include only short evidence quotes.
 
 To reproduce the coding, export articles from Retriever/Atekst with the search terms described in the paper, convert them with the scripts in `articles_to_csv/`, and run `AI_pipeline/run_coding.py`. The pipeline needs Python 3.10 or newer with `google-genai` and `openpyxl`, and a Google Cloud project with the Vertex AI API enabled. The scripts expect the article spreadsheets in the folder layout described in [`AI_pipeline/README.md`](AI_pipeline/README.md).
+
+## Statement on the use of AI
+
+Generative AI is both the subject of this paper and a key tool we used to prepare it. As part of the method, Gemini 3.8 Flash was used to classify and extract information from the newspaper articles (Section 3.2 of the paper). In addition, we used AI assistants to write and debug analysis code, to support the coding of the articles, and to draft, edit, and proofread parts of the text. All AI-generated output was reviewed and revised by the authors, who take full responsibility for the content of the paper.
