@@ -14,7 +14,7 @@ The paper tests how accurately a large language model can identify openings of c
 | [`prompts/`](prompts) | The coding schema (`Coding_Schema_EN.xlsx`, with the original Norwegian version), both prompt versions (`prompt_v1.md`, `prompt_v2.md`), the JSON output format, an example output, and `prompt_changelog.txt`, which records what changed between versions and why. |
 | [`AI_pipeline/`](AI_pipeline) | `run_coding.py` sends each article to Gemini in a separate API call and writes the AI coding next to the human coding. The folder README describes setup, Google Cloud login and how to run it. |
 | [`AI_coded_articles/`](AI_coded_articles) | Output of the LLM runs: the validation run on the 34 pilot articles (each coded three times), runs 2–4 on the later extracts, and `Combined_runs_2-4.xlsx` with all 3,187 articles. |
-| [`codes/`](codes) | `Mari_codebook_analysis.py`: the analysis behind the paper's results, including the AI vs. human comparison for the pilot, the descriptive results for rounds 2–4, the hand grouping of relevant articles into 44 projects, and the table of further information in the articles. |
+| [`codes/`](codes) | `Codebook_analysis.py`: the analysis behind the paper's results, including the AI vs. human comparison for the pilot, the descriptive results for rounds 2–4, the grouping of relevant articles into 44 projects, and the table of further information in the articles. `coding_further_uses_of_articles.xlsx` is its output, with the project-level coding, the flagged articles and a codebook describing each variable. |
 
 ## Model settings
 

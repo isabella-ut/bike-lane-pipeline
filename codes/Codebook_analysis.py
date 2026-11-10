@@ -1,12 +1,12 @@
 # %% [markdown]
 # # Codebook: analysis of the LLM-coded newspaper articles
 #
-# Term paper "Creating a Database of Bike Lane Infrastructure" (NHH).
-# Compiled by Mari, 9 November 2026.
+# Term paper "Building a Database of Bicycle Infrastructure Changes in Norway"
+# (ECS579, NHH). Compiled by Mari Baklund Størseth, 9 November 2026.
 #
-# The code was written with assistance from Claude (Anthropic) based on
-# the authors' instructions. All steps, hand coding and results were
-# checked by the authors.
+# The code, the grouping of articles into projects and the field-group coding
+# were done with assistance from Claude (Anthropic) based on the authors'
+# instructions. All steps and results were reviewed by the authors.
 #
 # The file collects all code used for the following parts of the analysis:
 #
@@ -18,8 +18,12 @@
 #   Part 4  Export of the project coding (appendix file)
 #   Part 5  Figures (not used in the current draft of Section 5)
 #
-# Run from the project folder:  py Mari_codebook_analysis.py
+# Run from the folder with the data files:  py Codebook_analysis.py
 # Requires: pandas, openpyxl, matplotlib (Part 5 only).
+#
+# The article files (Retriever/Atekst) and the LLM output files are not
+# included in the repository because of licence restrictions. The resulting
+# project coding is in coding_further_uses_of_articles.xlsx.
 # All outputs are written to the folder codebook_output/ so that existing
 # files in the project folder are not overwritten.
 #
