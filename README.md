@@ -32,6 +32,8 @@ The paper tests how accurately a large language model can identify openings of c
 
 The full newspaper article texts and the manual coding sheets are **not** included in this repository. They contain articles from the Retriever/Atekst archive, many of them behind paywalls, which the licence does not allow us to redistribute. The AI output files include only short evidence quotes.
 
+The FINN.no housing listings used in Section 6.1 and Appendix A of the paper are **not** shared either. The data set was provided by Eiendomsverdi AS. It is proprietary and was made available for this term paper only, so neither the listing texts nor any listing-level data derived from them are included here. Appendix A.3 of the paper documents the word search and the classification of cycling mentions.
+
 To reproduce the coding, export articles from Retriever/Atekst with the search terms described in the paper, convert them with the scripts in `articles_to_csv/`, and run `AI_pipeline/run_coding.py`. The pipeline needs Python 3.10 or newer with `google-genai` and `openpyxl`, and a Google Cloud project with the Vertex AI API enabled. The scripts expect the article spreadsheets in the folder layout described in [`AI_pipeline/README.md`](AI_pipeline/README.md).
 
 ## Statement on the use of AI
